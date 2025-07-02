@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tolleya</title>
-
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -19,82 +16,21 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-
         /* Mobile Menu Styles */
         #mobile-menu {
             transition: all 0.3s ease;
         }
-
         #mobile-menu a {
             padding: 0.5rem 0;
         }
-
         #mobile-menu .flex {
             gap: 0.5rem;
         }
     </style>
 </head>
-
 <body class="bg-gray-50">
-
-    <!-- Navigation Bar -->
-    <nav class="bg-indigo-800 text-white shadow-lg">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo -->
-            <a class="navbar-brand" href="index.html">
-                <img src="image/logo.png" alt="Makhado Logo" class="h-10">
-            </a>
-
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="index.html" class="hover:text-indigo-200">Home</a>
-                <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
-                <a href="healthcare.html" class="hover:text-indigo-200">Healthcare</a>
-                <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
-                <a href="Agriculture.html" class="hover:text-indigo-200">Agriculture</a>
-                <a href="educational res.html" class="hover:text-indigo-200">Education</a>
-                <a href="social j and civil e.html" class="hover:text-indigo-200">Social Justice</a>
-                <a href="news/index.html" class="hover:text-indigo-200">News</a>
-                <div class="flex space-x-4">
-                    <a href="signin and signup/signup.html"
-                        class="bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100">Sign
-                        In</a>
-                    <a href="signin and signup/signup.html"
-                        class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Sign
-                        Up</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu (Hidden by Default) -->
-        <div id="mobile-menu" class="md:hidden hidden bg-indigo-800">
-            <div class="flex flex-col space-y-4 px-4 pb-4">
-                <a href="index.html" class="hover:text-indigo-200">Home</a>
-                <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
-                <a href="healthcare.html" class="hover:text-indigo-200">Healthcare</a>
-                <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
-                <a href="Agriculture.html" class="hover:text-indigo-200">Agriculture</a>
-                <a href="educational res.html" class="hover:text-indigo-200">Education</a>
-                <a href="social j and civil e.html" class="hover:text-indigo-200">Social Justice</a>
-                <a href="news/index.html" class="hover:text-indigo-200">News</a>
-                <div class="flex flex-col space-y-2">
-                    <a href="signin and signup/signup.html"
-                        class="bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100 text-center">Sign
-                        In</a>
-                    <a href="signin and signup/signup.html"
-                        class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 text-center">Sign
-                        Up</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Include Header -->
+    <div id="header-placeholder"></div>
 
     <!-- Hero Section -->
     <section class="bg-indigo-900 text-white py-20">
@@ -294,80 +230,26 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">SAimpactHub</h3>
-                    <p class="text-gray-400">Empowering communities through connection and access to essential
-                        resources.</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
 
-                <div>
-                    <h4 class="font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
-                        <li><a href="jobs.html" class="text-gray-400 hover:text-white">Jobs</a></li>
-                        <li><a href="health.html" class="text-gray-400 hover:text-white">Healthcare</a></li>
-                        <li><a href="crowdfunding.html" class="text-gray-400 hover:text-white">Crowdfunding</a></li>
-                        <li><a href="Agriculture.html" class="text-gray-400 hover:text-white">Agriculture</a></li>
-                        <li><a href="educational res.html" class="text-gray-400 hover:text-white">Education</a></li>
-                        <li><a href="social j and civil e.html" class="text-gray-400 hover:text-white">Social
-                                Justice</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Contact Us</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-map-marker-alt mr-2"></i>17 Thondoni, Mashamba, Limpopo</li>
-                        <li><i class="fas fa-phone mr-2"></i>+27 71 136 7089</li>
-                        <li><i class="fas fa-envelope mr-2"></i> info@saimpactadminhub.com</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Subscribe</h4>
-                    <p class="text-gray-400 mb-4">Stay updated with our latest initiatives and opportunities.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Your email"
-                            class="px-4 py-2 rounded-l-lg w-full text-gray-900">
-                        <button type="submit" class="bg-indigo-600 px-4 py-2 rounded-r-lg hover:bg-indigo-700">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 SAimpactHub. All rights reserved.</p>
-                <div class="mt-2">
-                    <a href="Privacy.html" class="text-gray-400 hover:text-white mx-2">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-white mx-2">Terms of Service</a>
-                    <a href="#" class="text-gray-400 hover:text-white mx-2">Cookie Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile Menu Toggle Script -->
+    <!-- Script to load header and footer -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+        // Load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
 
-            mobileMenuButton.addEventListener('click', function () {
-                mobileMenu.classList.toggle('hidden');
-            });
-        });
+        // Load footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
     </script>
 </body>
-
 </html>
