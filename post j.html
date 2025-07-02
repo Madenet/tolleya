@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - SA Impact Platform</title>
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation Bar (Same as Homepage) -->
+    <nav class="bg-indigo-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a class="navbar-brand" href="index.html">
+                <img src="image/logo.png" alt="Makhado Logo" class="h-10">
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="hover:text-indigo-200">Home</a>
+                <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
+                <a href="healthcare.html" class="hover:text-indigo-200">Healthcare</a>
+                <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
+                <a href="Agriculture.html" class="hover:text-indigo-200">Agriculture</a>
+                <a href="educational res.html" class="hover:text-indigo-200">Education</a>
+                <a href="social j and civil e.html" class="hover:text-indigo-200">Social Justice</a>
+                <div class="flex space-x-4">
+                    <a href="signin and signup/signup.html" class="bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100">Sign In</a>
+                    <a href="signin and signup/signup.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Sign Up</a>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button class="text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Post a Job Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Post a Job Opportunity</h2>
+            <div class="bg-gray-100 rounded-lg p-6 shadow-md">
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Job Title -->
+                        <div>
+                            <label class="block text-gray-700 mb-2">Job Title</label>
+                            <input type="text" placeholder="Enter job title" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        </div>
+
+                        <!-- Company Name -->
+                        <div>
+                            <label class="block text-gray-700 mb-2">Company Name</label>
+                            <input type="text" placeholder="Enter company name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        </div>
+
+                        <!-- Job Location -->
+                        <div>
+                            <label class="block text-gray-700 mb-2">Job Location</label>
+                            <input type="text" placeholder="Enter job location" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        </div>
+
+                        <!-- Job Type -->
+                        <div>
+                            <label class="block text-gray-700 mb-2">Job Type</label>
+                            <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                                <option>Full-time</option>
+                                <option>Part-time</option>
+                                <option>Contract</option>
+                                <option>Internship</option>
+                                <option>Remote</option>
+                            </select>
+                        </div>
+
+                        <!-- Industry -->
+                        <div>
+                            <label class="block text-gray-700 mb-2">Industry</label>
+                            <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                                <option>Technology</option>
+                                <option>Healthcare</option>
+                                <option>Education</option>
+                                <option>Agriculture</option>
+                                <option>Nonprofit</option>
+                                <option>Finance</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Experience Level -->
+                        <div>
+                            <label class="block text-gray-700 mb-2">Experience Level</label>
+                            <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                                <option>Entry Level</option>
+                                <option>Mid Level</option>
+                                <option>Senior Level</option>
+                                <option>Manager</option>
+                                <option>Executive</option>
+                            </select>
+                        </div>
+
+                        <!-- Salary Range -->
+                        <div>
+                            <label class="block text-gray-700 mb-2">Salary Range</label>
+                            <input type="text" placeholder="Enter salary range" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        </div>
+
+                        <!-- Application Deadline -->
+                        <div>
+                            <label class="block text-gray-700 mb-2">Application Deadline</label>
+                            <input type="date" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        </div>
+                    </div>
+
+                    <!-- Job Description -->
+                    <div class="mt-6">
+                        <label class="block text-gray-700 mb-2">Job Description</label>
+                        <textarea placeholder="Enter job description" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" rows="6"></textarea>
+                    </div>
+
+                    <!-- Requirements -->
+                    <div class="mt-6">
+                        <label class="block text-gray-700 mb-2">Requirements</label>
+                        <textarea placeholder="Enter job requirements" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" rows="6"></textarea>
+                    </div>
+
+                    <!-- How to Apply -->
+                    <div class="mt-6">
+                        <label class="block text-gray-700 mb-2">How to Apply</label>
+                        <textarea placeholder="Enter instructions on how to apply" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" rows="6"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="mt-8 text-center">
+                        <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">Post Job</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as Jobs & Skills Page) -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SAimpactHub</h3>
+                    <p class="text-gray-400">Empowering communities through connection and access to essential resources.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="jobs.html" class="text-gray-400 hover:text-white">Jobs</a></li>
+                        <li><a href="health.html" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="crowdfunding.html" class="text-gray-400 hover:text-white">Crowdfunding</a></li>
+                        <li><a href="Agriculture.html" class="text-gray-400 hover:text-white">Agriculture</a></li>
+                        <li><a href="educational res.html" class="text-gray-400 hover:text-white">Education</a></li>
+                        <li><a href="social j and civil e.html" class="text-gray-400 hover:text-white">Social Justice</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>17 Thondoni, Mashamba, Limpopo</li>
+                        <li><i class="fas fa-phone mr-2"></i>+27 71 136 7089</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@saimpactadminhub.com</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Subscribe</h4>
+                    <p class="text-gray-400 mb-4">Stay updated with our latest initiatives and opportunities.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full text-gray-900">
+                        <button type="submit" class="bg-indigo-600 px-4 py-2 rounded-r-lg hover:bg-indigo-700">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 SAimpactHub. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Tools | AgriSmart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --soil: #5D4037;
+            --leaf: #689F38;
+            --sun: #FFA000;
+            --sky: #1976D2;
+        }
+
+        .agric-texture {
+            background-image: 
+                radial-gradient(circle, #e8f5e9 10%, transparent 10%),
+                linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.9));
+            background-size: 20px 20px, auto;
+        }
+
+        .farmers-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Mobile optimized touch targets */
+        @media (max-width: 768px) {
+            .touch-target {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .card-stack {
+                margin-left: -1rem;
+                margin-right: -1rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                display: flex;
+                gap: 1rem;
+            }
+
+            .card-stack > div {
+                scroll-snap-align: start;
+                min-width: 85%;
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+<body class="agric-texture">
+    <!-- Smart Alert System -->
+    <div class="bg-[var(--leaf)] text-white py-2 md:py-3 px-3 md:px-4">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
+            <div class="flex items-center w-full md:w-auto justify-center md:justify-start">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <span class="text-xs md:text-base">Monsoon Alert: Optimal sowing window opens next week</span>
+            </div>
+            <div class="flex items-center w-full md:w-auto justify-center md:justify-start">
+                <i class="fas fa-rupee-sign mr-2"></i>
+                <span class="text-xs md:text-base">Wheat: ₹22/kg ↑5% | Tomato: ₹18/kg ↓2%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="farmers-font text-xl md:text-2xl text-[var(--soil)]">
+                    <i class="fas fa-tractor text-[var(--leaf)]"></i> AgriSmart
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+
+                    <a href="index.html" class="hover:text-[var(--leaf)] group relative">
+                        Home Page
+                        <div class="h-1 bg-[var(--leaf)] absolute bottom-0 left-0 right-0 scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                    </a>
+
+                    <a href="agric marketplace.html" class="hover:text-[var(--leaf)] group relative">
+                        Marketplace
+                        <div class="h-1 bg-[var(--leaf)] absolute bottom-0 left-0 right-0 scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                    </a>
+                    <a href="farm tool.html" class="hover:text-[var(--leaf)] group relative">
+                        Farm Tools
+                        <div class="h-1 bg-[var(--leaf)] absolute bottom-0 left-0 right-0 scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                    </a>
+                    <a href="AI Advisor.html" class="hover:text-[var(--leaf)] group relative">
+                        AI Advisor
+                        <div class="h-1 bg-[var(--leaf)] absolute bottom-0 left-0 right-0 scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                    </a>
+                    <a href="#" class="hover:text-[var(--leaf)] group relative">
+                        Community
+                        <div class="h-1 bg-[var(--leaf)] absolute bottom-0 left-0 right-0 scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                    </a>
+                    <a href="#" class="bg-[var(--leaf)] text-white px-4 py-2 rounded-full hover:bg-green-700">
+                        Login <i class="fas fa-user ml-1"></i>
+                    </a>
+                </div>
+                <a id="mobileMenuBtn" class="md:hidden touch-target w-10 h-10 flex items-center justify-center">
+                    <i class="fas fa-bars text-xl"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-white z-50 p-4 flex flex-col">
+            <div class="flex justify-between items-center mb-8">
+                <span class="farmers-font text-xl text-[var(--soil)]">
+                    <i class="fas fa-tractor text-[var(--leaf)]"></i> AgriSmart
+                </span>
+                <a id="closeMenuBtn" class="touch-target w-10 h-10 flex items-center justify-center">
+                    <i class="fas fa-times text-xl"></i>
+                </a>
+            </div>
+            <div class="flex flex-col space-y-4">
+                <a href="#" class="p-3 touch-target border-b border-gray-100 flex justify-between items-center">
+                    Marketplace <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+                <a href="#" class="p-3 touch-target border-b border-gray-100 flex justify-between items-center">
+                    Farm Tools <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+                <a href="#" class="p-3 touch-target border-b border-gray-100 flex justify-between items-center">
+                    AI Advisor <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+                <a href="#" class="p-3 touch-target border-b border-gray-100 flex justify-between items-center">
+                    Community <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+                <a href="#" class="mt-4 bg-[var(--leaf)] text-white p-3 rounded-lg text-center">
+                    Login <i class="fas fa-user ml-1"></i>
+                </a>
+            </div>
+            <div class="mt-auto">
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100">
+                        <i class="fab fa-whatsapp text-[var(--leaf)]"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100">
+                        <i class="fas fa-phone text-[var(--leaf)]"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-center mt-4 text-gray-500">© 2024 AgriSmart</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Farm Tools Hero Section -->
+    <header class="relative bg-gradient-to-br from-[var(--leaf)] to-[var(--sky)] text-white py-12 md:py-20 overflow-hidden">
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="farmers-font text-3xl md:text-5xl lg:text-7xl mb-6 leading-tight">
+                Farm Tools & Equipment
+                <span class="block text-lg md:text-xl mt-2 text-[var(--sun)]">Explore the best tools for modern farming</span>
+            </h1>
+        </div>
+    </header>
+
+    <!-- Farm Tools Section -->
+    <section class="container mx-auto px-4 py-10 md:py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Tool Card 1 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all">
+                <div class="h-48 bg-gray-100 rounded-t-xl flex items-center justify-center">
+                    <i class="fas fa-tractor text-6xl text-[var(--sun)]"></i>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Tractor</h3>
+                    <p class="text-sm text-gray-600">Powerful tractors for all your farming needs.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-lg font-bold text-[var(--soil)]">₹800/day</span>
+                        <button class="bg-[var(--leaf)] text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-cart-plus"></i> Rent Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool Card 2 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all">
+                <div class="h-48 bg-gray-100 rounded-t-xl flex items-center justify-center">
+                    <i class="fas fa-seedling text-6xl text-[var(--sun)]"></i>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Seed Drill</h3>
+                    <p class="text-sm text-gray-600">Efficient seed drills for precise planting.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-lg font-bold text-[var(--soil)]">₹1200/day</span>
+                        <button class="bg-[var(--leaf)] text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-cart-plus"></i> Rent Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool Card 3 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all">
+                <div class="h-48 bg-gray-100 rounded-t-xl flex items-center justify-center">
+                    <i class="fas fa-spray-can text-6xl text-[var(--sun)]"></i>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Sprayer</h3>
+                    <p class="text-sm text-gray-600">High-capacity sprayers for pest control.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-lg font-bold text-[var(--soil)]">₹500/day</span>
+                        <button class="bg-[var(--leaf)] text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-cart-plus"></i> Rent Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool Card 4 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all">
+                <div class="h-48 bg-gray-100 rounded-t-xl flex items-center justify-center">
+                    <i class="fas fa-tools text-6xl text-[var(--sun)]"></i>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">Harvester</h3>
+                    <p class="text-sm text-gray-600">Advanced harvesters for efficient crop collection.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-lg font-bold text-[var(--soil)]">₹1500/day</span>
+                        <button class="bg-[var(--leaf)] text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                            <i class="fas fa-cart-plus"></i> Rent Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--soil)] text-white pt-16 pb-8 mt-20">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <!-- About Section -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">About AgriSmart</h3>
+                    <p class="text-sm text-gray-300">AgriSmart is a next-gen farming platform powered by AI, helping farmers optimize their yields and connect with the agricultural community.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-sm text-gray-300 hover:text-[var(--sun)]">Marketplace</a></li>
+                        <li><a href="#" class="text-sm text-gray-300 hover:text-[var(--sun)]">Farm Tools</a></li>
+                        <li><a href="#" class="text-sm text-gray-300 hover:text-[var(--sun)]">AI Advisor</a></li>
+                        <li><a href="#" class="text-sm text-gray-300 hover:text-[var(--sun)]">Community</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="text-sm text-gray-300"><i class="fas fa-phone mr-2"></i> +91 98765 43210</li>
+                        <li class="text-sm text-gray-300"><i class="fas fa-envelope mr-2"></i> support@agrismart.com</li>
+                        <li class="text-sm text-gray-300"><i class="fas fa-map-marker-alt mr-2"></i> Bangalore, India</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+                    <p class="text-sm text-gray-300 mb-4">Subscribe to get the latest updates and farming insights.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Enter email" class="flex-1 p-2 rounded-lg text-gray-900">
+                        <button class="bg-[var(--sun)] text-white px-4 rounded-lg hover:bg-orange-600">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="pt-8 border-t border-white/20 text-center opacity-80">
+                <p>© 2024 AgriSmart. Empowering India's Farmers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-8 right-8 flex flex-col gap-4">
+        <button class="w-14 h-14 bg-[var(--leaf)] rounded-full shadow-xl flex items-center justify-center hover:rotate-12 hover:scale-110 transition-transform">
+            <i class="fas fa-robot text-white text-xl"></i>
+        </button>
+        <button class="w-14 h-14 bg-[var(--sun)] rounded-full shadow-xl flex items-center justify-center hover:rotate-12 hover:scale-110 transition-transform">
+            <i class="fas fa-seedling text-white text-xl"></i>
+        </button>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

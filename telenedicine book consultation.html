@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telemedicine - Healthcare Access</title>
+    <link href="img/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .video-chat-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .video-chat-window {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        #localVideo, #remoteVideo {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-indigo-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a class="navbar-brand" href="index.html">
+                <img src="image/logo.png" alt="Makhado Logo" class="h-10">
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="hover:text-indigo-200">Home</a>
+                <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
+                <a href="healthcare.html" class="hover:text-indigo-200">Healthcare</a>
+                <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
+                <a href="Agriculture.html" class="hover:text-indigo-200">Agriculture</a>
+                <a href="educational res.html" class="hover:text-indigo-200">Education</a>
+                <a href="social j and civil e.html" class="hover:text-indigo-200">Social Justice</a>
+                <div class="flex space-x-4">
+                    <a href="signin and signup/signup.html" class="bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100">Sign In</a>
+                    <a href="signin and signup/signup.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Sign Up</a>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button class="text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center text-indigo-800 mb-4">Telemedicine Services</h1>
+        <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-8">
+            Connect with healthcare professionals virtually from anywhere. Book appointments, 
+            get prescriptions, and receive medical advice without leaving your home.
+        </p>
+
+        <!-- Telemedicine Section -->
+        <section id="telemedicine" class="telemedicine-section">
+            <div class="container">
+                <div class="appointment-form bg-white p-8 rounded-lg shadow-md max-w-2xl mx-auto">
+                    <h2 class="text-2xl font-bold text-center mb-6">Book a Virtual Consultation</h2>
+                    <form id="bookingForm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="specialty" class="block text-gray-700 mb-2">Medical Specialty</label>
+                                <select id="specialty" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                                    <option value="">Select a specialty</option>
+                                    <option value="general">General Practice</option>
+                                    <option value="pediatrics">Pediatrics</option>
+                                    <option value="internal">Internal Medicine</option>
+                                    <option value="dermatology">Dermatology</option>
+                                    <option value="psychiatry">Psychiatry</option>
+                                    <option value="gynecology">Gynecology</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date" class="block text-gray-700 mb-2">Preferred Date</label>
+                                <input type="date" id="date" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time" class="block text-gray-700 mb-2">Preferred Time</label>
+                                <input type="time" id="time" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            </div>
+                        </div>
+                        <div class="form-group mt-6">
+                            <label for="reason" class="block text-gray-700 mb-2">Reason for Consultation</label>
+                            <textarea id="reason" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" rows="4" placeholder="Briefly describe your symptoms or concerns" required></textarea>
+                        </div>
+                        <div class="text-center mt-8">
+                            <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">Book Appointment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Chat Modal -->
+        <div id="videoChatModal" class="video-chat-container">
+            <div class="video-chat-window">
+                <span class="close-btn" onclick="closeVideoChat()">&times;</span>
+                <h2 class="text-2xl font-bold mb-4">Video Consultation</h2>
+                <div class="video-container flex gap-4 mb-4">
+                    <video id="localVideo" autoplay muted></video>
+                    <video id="remoteVideo" autoplay></video>
+                </div>
+                <div class="text-center">
+                    <button id="startVideoBtn" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700">Start Video</button>
+                    <button id="endVideoBtn" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 ml-2">End Call</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SAimpactHub</h3>
+                    <p class="text-gray-400">Empowering communities through connection and access to essential resources.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="jobs.html" class="text-gray-400 hover:text-white">Jobs</a></li>
+                        <li><a href="health.html" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="crowdfunding.html" class="text-gray-400 hover:text-white">Crowdfunding</a></li>
+                        <li><a href="Agriculture.html" class="text-gray-400 hover:text-white">Agriculture</a></li>
+                        <li><a href="educational res.html" class="text-gray-400 hover:text-white">Education</a></li>
+                        <li><a href="social j and civil e.html" class="text-gray-400 hover:text-white">Social Justice</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>17 Thondoni, Mashamba, Limpopo</li>
+                        <li><i class="fas fa-phone mr-2"></i>+27 71 136 7089</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@saimpactadminhub.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Subscribe</h4>
+                    <p class="text-gray-400 mb-4">Stay updated with our latest initiatives and opportunities.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full text-gray-900">
+                        <button type="submit" class="bg-indigo-600 px-4 py-2 rounded-r-lg hover:bg-indigo-700">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 SAimpactHub. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Chat Script -->
+    <script>
+        // Video Chat Modal
+        function openVideoChat() {
+            document.getElementById('videoChatModal').style.display = 'flex';
+        }
+
+        function closeVideoChat() {
+            document.getElementById('videoChatModal').style.display = 'none';
+        }
+
+        // Video Chat Integration (Example using Agora)
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+        const startVideoBtn = document.getElementById('startVideoBtn');
+        const endVideoBtn = document.getElementById('endVideoBtn');
+
+        startVideoBtn.addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                localVideo.srcObject = stream;
+                startVideoBtn.disabled = true;
+                endVideoBtn.disabled = false;
+            } catch (error) {
+                console.error('Error accessing media devices:', error);
+            }
+        });
+
+        endVideoBtn.addEventListener('click', () => {
+            const stream = localVideo.srcObject;
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                localVideo.srcObject = null;
+                remoteVideo.srcObject = null;
+                startVideoBtn.disabled = false;
+                endVideoBtn.disabled = true;
+            }
+            closeVideoChat();
+        });
+
+        // Booking Form Submission
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Appointment booked successfully!');
+            // Here, you can send the form data to your backend for processing
+        });
+    </script>
+</body>
+</html>

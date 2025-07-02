@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Employer Dashboard</title>
+    <!-- Tailwind CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS for animations -->
+    <style>
+        /* Custom animations */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .animated {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Custom styles for the dashboard */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        /* Settings card styles */
+        .settings-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .settings-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-indigo-500 to-purple-600 min-h-screen">
+    <!-- Dashboard Container -->
+    <div class="dashboard-container p-8 animated">
+        <!-- Sidebar -->
+        <div class="sidebar text-white fade-in">
+            <h2 class="text-2xl font-bold mb-6">Employer Dashboard</h2>
+            <ul class="space-y-4">
+                <li><a href="Home DashBoard.html" class="hover:text-indigo-200"><i class="fas fa-home mr-2"></i>Home</a></li>
+                <li><a href="post a Job.html" class="hover:text-indigo-200"><i class="fas fa-briefcase mr-2"></i>Post a Job</a></li>
+                <li><a href="job listing.html" class="hover:text-indigo-200"><i class="fas fa-list mr-2"></i>Job Listings</a></li>
+                <li><a href="settings.html" class="hover:text-indigo-200"><i class="fas fa-cog mr-2"></i>Settings</a></li>
+                <li><a href="#" class="hover:text-indigo-200"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content - Settings Section -->
+        <div class="main-content fade-in">
+            <!-- Page Title -->
+            <h1 class="text-3xl font-bold text-white mb-8">Settings</h1>
+
+            <!-- Profile Settings -->
+            <div class="settings-card text-white mb-8">
+                <h2 class="text-2xl font-bold mb-6">Profile Settings</h2>
+                <form id="profileForm" class="space-y-6">
+                    <!-- Full Name -->
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-white">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name"
+                            class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                        <p id="fullNameError" class="text-red-400 text-sm mt-1 hidden">Please enter your full name.</p>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-white">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email"
+                            class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                        <p id="emailError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid email.</p>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-white">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
+                            class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                        <p id="phoneError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid phone number.</p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100 transition-all duration-300">
+                        Update Profile
+                    </button>
+                </form>
+            </div>
+
+            <!-- Change Password -->
+            <div class="settings-card text-white mb-8">
+                <h2 class="text-2xl font-bold mb-6">Change Password</h2>
+                <form id="passwordForm" class="space-y-6">
+                    <!-- Current Password -->
+                    <div>
+                        <label for="currentPassword" class="block text-sm font-medium text-white">Current Password</label>
+                        <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter your current password"
+                            class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                        <p id="currentPasswordError" class="text-red-400 text-sm mt-1 hidden">Please enter your current password.</p>
+                    </div>
+
+                    <!-- New Password -->
+                    <div>
+                        <label for="newPassword" class="block text-sm font-medium text-white">New Password</label>
+                        <input type="password" id="newPassword" name="newPassword" placeholder="Enter your new password"
+                            class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                        <p id="newPasswordError" class="text-red-400 text-sm mt-1 hidden">Please enter a new password.</p>
+                    </div>
+
+                    <!-- Confirm New Password -->
+                    <div>
+                        <label for="confirmNewPassword" class="block text-sm font-medium text-white">Confirm New Password</label>
+                        <input type="password" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm your new password"
+                            class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                        <p id="confirmNewPasswordError" class="text-red-400 text-sm mt-1 hidden">Passwords do not match.</p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100 transition-all duration-300">
+                        Change Password
+                    </button>
+                </form>
+            </div>
+
+            <!-- Account Preferences -->
+            <div class="settings-card text-white">
+                <h2 class="text-2xl font-bold mb-6">Account Preferences</h2>
+                <form id="preferencesForm" class="space-y-6">
+                    <!-- Notification Preferences -->
+                    <div>
+                        <label class="block text-sm font-medium text-white">Notification Preferences</label>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="emailNotifications" class="form-checkbox text-indigo-600">
+                                <span class="ml-2">Email Notifications</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="checkbox" name="smsNotifications" class="form-checkbox text-indigo-600">
+                                <span class="ml-2">SMS Notifications</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100 transition-all duration-300">
+                        Save Preferences
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Settings Page -->
+    <script>
+        // Profile Form Validation
+        const profileForm = document.getElementById('profileForm');
+        const fullName = document.getElementById('fullName');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const fullNameError = document.getElementById('fullNameError');
+        const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
+
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Validate inputs
+            if (fullName.value.trim() === '') {
+                fullNameError.classList.remove('hidden');
+            } else {
+                fullNameError.classList.add('hidden');
+            }
+
+            if (!email.checkValidity()) {
+                emailError.classList.remove('hidden');
+            } else {
+                emailError.classList.add('hidden');
+            }
+
+            if (!phone.checkValidity()) {
+                phoneError.classList.remove('hidden');
+            } else {
+                phoneError.classList.add('hidden');
+            }
+
+            // Simulate profile update
+            if (fullName.value.trim() !== '' && email.checkValidity() && phone.checkValidity()) {
+                alert('Profile updated successfully!');
+                // Redirect or perform further actions
+            }
+        });
+
+        // Password Form Validation
+        const passwordForm = document.getElementById('passwordForm');
+        const currentPassword = document.getElementById('currentPassword');
+        const newPassword = document.getElementById('newPassword');
+        const confirmNewPassword = document.getElementById('confirmNewPassword');
+        const currentPasswordError = document.getElementById('currentPasswordError');
+        const newPasswordError = document.getElementById('newPasswordError');
+        const confirmNewPasswordError = document.getElementById('confirmNewPasswordError');
+
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Validate inputs
+            if (currentPassword.value.trim() === '') {
+                currentPasswordError.classList.remove('hidden');
+            } else {
+                currentPasswordError.classList.add('hidden');
+            }
+
+            if (newPassword.value.trim() === '') {
+                newPasswordError.classList.remove('hidden');
+            } else {
+                newPasswordError.classList.add('hidden');
+            }
+
+            if (newPassword.value !== confirmNewPassword.value) {
+                confirmNewPasswordError.classList.remove('hidden');
+            } else {
+                confirmNewPasswordError.classList.add('hidden');
+            }
+
+            // Simulate password change
+            if (currentPassword.value.trim() !== '' && newPassword.value.trim() !== '' && newPassword.value === confirmNewPassword.value) {
+                alert('Password changed successfully!');
+                // Redirect or perform further actions
+            }
+        });
+
+        // Preferences Form Submission
+        const preferencesForm = document.getElementById('preferencesForm');
+        preferencesForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Preferences saved successfully!');
+            // Redirect or perform further actions
+        });
+    </script>
+</body>
+</html>

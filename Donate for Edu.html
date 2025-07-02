@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Education for All Initiative</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        .campaign-image {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #3b82f6;
+        }
+
+        .amount-option {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .amount-option:hover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+
+        .amount-option.selected {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+            color: #3b82f6;
+        }
+
+        .donate-button {
+            background-color: #3b82f6;
+            transition: background-color 0.3s;
+        }
+
+        .donate-button:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-indigo-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold">CommunityCare</div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-indigo-200">Home</a>
+                <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
+                <a href="health.html" class="hover:text-indigo-200">Healthcare</a>
+                <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
+                <a href="Agriculture.html" class="hover:text-indigo-200">Agriculture</a>
+                <a href="educational res.html" class="hover:text-indigo-200">Education</a>
+                <a href="#" class="hover:text-indigo-200">Social Justice</a>
+            </nav>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Back Button -->
+    <div class="container mx-auto px-4 mt-4">
+        <a href="crowdfunding.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">
+            Back to Crowdfunding
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Campaign Information -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img src="/api/placeholder/600/300" alt="Education for All Initiative" class="w-full campaign-image">
+                <div class="p-6">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-4">Education for All Initiative</h1>
+                    <p class="text-gray-600 mb-6">
+                        Help us provide educational resources to underserved schools in rural communities. Your donations will fund books, computers, and school supplies for students who lack access to quality educational materials.
+                    </p>
+                    <div class="mb-6">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mt-2">
+                            <span>$15,000 raised</span>
+                            <span>75% of $20,000</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Recent Updates</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-500 mb-2">March 5, 2025</p>
+                                <p class="text-gray-700">We've just delivered our first batch of textbooks and tablets to 10 schools! Thank you to all our donors who made this possible.</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-500 mb-2">February 20, 2025</p>
+                                <p class="text-gray-700">We've partnered with three local publishing companies who have agreed to provide books at discounted rates, allowing us to stretch your donations even further!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donation Form -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Make a Donation</h2>
+                <form id="donation-form">
+                    <!-- Donation Amount -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2">Choose an amount</label>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="amount-option">$25</div>
+                            <div class="amount-option selected">$50</div>
+                            <div class="amount-option">$100</div>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-gray-700 font-medium mb-2">Custom amount</label>
+                            <input type="number" placeholder="Enter amount" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        </div>
+                    </div>
+
+                    <!-- Donation Frequency -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2">Donation frequency</label>
+                        <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                            <option>One-time donation</option>
+                            <option>Monthly donation</option>
+                            <option>Quarterly donation</option>
+                            <option>Annual donation</option>
+                        </select>
+                    </div>
+
+                    <!-- Personal Information -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2">Personal Information</label>
+                        <input type="text" placeholder="Full Name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 mb-4" required>
+                        <input type="email" placeholder="Email Address" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 mb-4" required>
+                        <input type="tel" placeholder="Phone Number (optional)" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2">Payment Method</label>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" name="payment" id="card" checked class="mr-2">
+                                <label for="card">Credit/Debit Card</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" name="payment" id="paystack" class="mr-2">
+                                <label for="paystack">Paystack</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" name="payment" id="bank" class="mr-2">
+                                <label for="bank">Bank Transfer</label>
+                            </div>
+                        </div>
+                        <div class="flex justify-center space-x-4 mt-4">
+                            <span>🏦</span>
+                            <span>💳</span>
+                            <span>💸</span>
+                        </div>
+                    </div>
+
+                    <!-- Comment -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2">Leave a comment (optional)</label>
+                        <textarea rows="3" placeholder="Share why you're supporting this campaign" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
+                    </div>
+
+                    <!-- Donation Summary -->
+                    <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">Donation Summary</h3>
+                        <div class="flex justify-between text-gray-700 mb-2">
+                            <span>Donation amount:</span>
+                            <span>$50.00</span>
+                        </div>
+                        <div class="flex justify-between text-gray-700 mb-2">
+                            <span>Processing fee:</span>
+                            <span>$1.50</span>
+                        </div>
+                        <div class="flex justify-between text-gray-700 font-bold pt-2 border-t border-gray-200">
+                            <span>Total amount:</span>
+                            <span>$51.50</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full donate-button text-white py-3 rounded-lg font-bold">
+                        Complete Donation
+                    </button>
+                    <p class="text-center text-sm text-gray-500 mt-4">🔒 Your payment information is secure and encrypted</p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">About Us</h3>
+                    <p class="text-gray-400">CommunityCare is a platform dedicated to empowering communities through job creation, healthcare access, crowdfunding, and more.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-indigo-200">Home</a></li>
+                        <li><a href="jobs.html" class="text-gray-400 hover:text-indigo-200">Jobs</a></li>
+                        <li><a href="health.html" class="text-gray-400 hover:text-indigo-200">Healthcare</a></li>
+                        <li><a href="crowdfunding.html" class="text-gray-400 hover:text-indigo-200">Crowdfunding</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Email: info@communitycare.org</li>
+                        <li>Phone: +123-456-7890</li>
+                        <li>Address: 123 Community St, City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-gray-400 mt-8 pt-4 border-t border-gray-700">
+                <p>&copy; 2025 CommunityCare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for donation amount selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const amountOptions = document.querySelectorAll('.amount-option');
+            const summaryAmount = document.querySelector('.donation-summary .text-gray-700:first-child span:last-child');
+            const summaryTotal = document.querySelector('.donation-summary .font-bold span:last-child');
+
+            amountOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    amountOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const amount = this.textContent.replace('$', '');
+                    summaryAmount.textContent = '$' + amount + '.00';
+                    const total = parseFloat(amount) + 1.50;
+                    summaryTotal.textContent = '$' + total.toFixed(2);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

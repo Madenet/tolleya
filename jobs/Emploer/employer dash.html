@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Dashboard</title>
+    <!-- Tailwind CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS for animations -->
+    <style>
+        /* Custom animations */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .animated {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Custom styles for the form */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-field {
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Dashboard layout */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-indigo-500 to-purple-600 min-h-screen">
+    <!-- Dashboard Container -->
+    <div class="dashboard-container p-8 animated">
+        <!-- Sidebar -->
+        <div class="sidebar text-white fade-in">
+            <h2 class="text-2xl font-bold mb-6">Employer Dashboard</h2>
+            <ul class="space-y-4">
+                <li><a href="#" class="hover:text-indigo-200"><i class="fas fa-home mr-2"></i>Home</a></li>
+                <li><a href="#" class="hover:text-indigo-200"><i class="fas fa-briefcase mr-2"></i>Post a Job</a></li>
+                <li><a href="#" class="hover:text-indigo-200"><i class="fas fa-list mr-2"></i>Job Listings</a></li>
+                <li><a href="#" class="hover:text-indigo-200"><i class="fas fa-cog mr-2"></i>Settings</a></li>
+                <li><a href="#" class="hover:text-indigo-200"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content fade-in">
+            <!-- Welcome Message -->
+            <h1 class="text-3xl font-bold text-white mb-8">Welcome, [Employer Name]!</h1>
+
+            <!-- Post a Job Form -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-6">Post a Job</h2>
+                <form id="postJobForm" class="space-y-6">
+                    <!-- Job Title -->
+                    <div>
+                        <label for="jobTitle" class="block text-sm font-medium text-gray-700">Job Title</label>
+                        <input type="text" id="jobTitle" name="jobTitle" placeholder="Enter job title"
+                            class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                        <p id="jobTitleError" class="text-red-400 text-sm mt-1 hidden">Please enter a job title.</p>
+                    </div>
+
+                    <!-- Job Description -->
+                    <div>
+                        <label for="jobDescription" class="block text-sm font-medium text-gray-700">Job Description</label>
+                        <textarea id="jobDescription" name="jobDescription" placeholder="Enter job description"
+                            class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            rows="4" required></textarea>
+                        <p id="jobDescriptionError" class="text-red-400 text-sm mt-1 hidden">Please enter a job description.</p>
+                    </div>
+
+                    <!-- Job Location -->
+                    <div>
+                        <label for="jobLocation" class="block text-sm font-medium text-gray-700">Job Location</label>
+                        <input type="text" id="jobLocation" name="jobLocation" placeholder="Enter job location"
+                            class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                        <p id="jobLocationError" class="text-red-400 text-sm mt-1 hidden">Please enter a job location.</p>
+                    </div>
+
+                    <!-- Job Type -->
+                    <div>
+                        <label for="jobType" class="block text-sm font-medium text-gray-700">Job Type</label>
+                        <select id="jobType" name="jobType"
+                            class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                            <option value="">Select job type</option>
+                            <option value="full-time">Full-time</option>
+                            <option value="part-time">Part-time</option>
+                            <option value="contract">Contract</option>
+                            <option value="internship">Internship</option>
+                        </select>
+                        <p id="jobTypeError" class="text-red-400 text-sm mt-1 hidden">Please select a job type.</p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300">
+                        Post Job
+                    </button>
+                </form>
+            </div>
+
+            <!-- Posted Jobs Section -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-6">Posted Jobs</h2>
+                <div id="jobList" class="space-y-4">
+                    <!-- Job cards will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Form Validation and Job Posting -->
+    <script>
+        const postJobForm = document.getElementById('postJobForm');
+        const jobTitle = document.getElementById('jobTitle');
+        const jobDescription = document.getElementById('jobDescription');
+        const jobLocation = document.getElementById('jobLocation');
+        const jobType = document.getElementById('jobType');
+        const jobTitleError = document.getElementById('jobTitleError');
+        const jobDescriptionError = document.getElementById('jobDescriptionError');
+        const jobLocationError = document.getElementById('jobLocationError');
+        const jobTypeError = document.getElementById('jobTypeError');
+        const jobList = document.getElementById('jobList');
+
+        // Job Title validation
+        jobTitle.addEventListener('input', () => {
+            if (jobTitle.value.trim() === '') {
+                jobTitleError.classList.remove('hidden');
+            } else {
+                jobTitleError.classList.add('hidden');
+            }
+        });
+
+        // Job Description validation
+        jobDescription.addEventListener('input', () => {
+            if (jobDescription.value.trim() === '') {
+                jobDescriptionError.classList.remove('hidden');
+            } else {
+                jobDescriptionError.classList.add('hidden');
+            }
+        });
+
+        // Job Location validation
+        jobLocation.addEventListener('input', () => {
+            if (jobLocation.value.trim() === '') {
+                jobLocationError.classList.remove('hidden');
+            } else {
+                jobLocationError.classList.add('hidden');
+            }
+        });
+
+        // Job Type validation
+        jobType.addEventListener('change', () => {
+            if (jobType.value === '') {
+                jobTypeError.classList.remove('hidden');
+            } else {
+                jobTypeError.classList.add('hidden');
+            }
+        });
+
+        // Function to create a job card
+        function createJobCard(job) {
+            return `
+                <div class="job-card bg-gray-50 rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold">${job.title}</h3>
+                    <p class="text-gray-700 mt-2">${job.description}</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>${job.location}</span>
+                        <span class="text-gray-600">${job.type}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Form submission
+        postJobForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Validate inputs
+            if (jobTitle.value.trim() === '' || jobDescription.value.trim() === '' ||
+                jobLocation.value.trim() === '' || jobType.value === '') {
+                alert('Please fill out the form correctly.');
+                return;
+            }
+
+            // Create job object
+            const job = {
+                title: jobTitle.value,
+                description: jobDescription.value,
+                location: jobLocation.value,
+                type: jobType.value,
+            };
+
+            // Add job to the job list
+            jobList.insertAdjacentHTML('afterbegin', createJobCard(job));
+
+            // Clear the form
+            postJobForm.reset();
+
+            // Notify the user
+            alert('Job posted successfully!');
+        });
+    </script>
+</body>
+</html>

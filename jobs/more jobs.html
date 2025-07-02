@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA Impact Platform - Jobs & Skills</title>
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation Bar (Same as Homepage) -->
+    <nav class="bg-indigo-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a class="navbar-brand" href="index.html">
+                <img src="image/logo.png" alt="Makhado Logo" class="h-10">
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="hover:text-indigo-200">Home</a>
+                <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
+                <a href="healthcare.html" class="hover:text-indigo-200">Healthcare</a>
+                <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
+                <a href="Agriculture.html" class="hover:text-indigo-200">Agriculture</a>
+                <a href="educational res.html" class="hover:text-indigo-200">Education</a>
+                <a href="social j and civil e.html" class="hover:text-indigo-200">Social Justice</a>
+                <div class="flex space-x-4">
+                    <button class="bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100">Sign In</button>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Sign Up</button>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button class="text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-indigo-900 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Job Creation & Skills Development</h1>
+            <p class="text-xl max-w-3xl mx-auto">Find opportunities, develop your skills, and connect with mentors to advance your career path.</p>
+        </div>
+    </section>
+
+    <!-- Job Search Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="mb-6">
+                <a href="jobs.html" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300">
+                    <i class="fas fa-arrow-left mr-2"></i>Back to Jobs
+                </a>
+            </div>
+            <div class="bg-gray-100 rounded-lg p-6 shadow-md">
+                <h2 class="text-2xl font-bold mb-6">Find Your Next Opportunity</h2>
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Keywords</label>
+                            <input type="text" placeholder="Job title, skills, company" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Location</label>
+                            <input type="text" placeholder="City, state or remote" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Industry</label>
+                            <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                                <option>All Industries</option>
+                                <option>Technology</option>
+                                <option>Healthcare</option>
+                                <option>Education</option>
+                                <option>Agriculture</option>
+                                <option>Nonprofit</option>
+                                <option>Finance</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Experience Level</label>
+                            <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                                <option>All Levels</option>
+                                <option>Entry Level</option>
+                                <option>Mid Level</option>
+                                <option>Senior Level</option>
+                                <option>Manager</option>
+                                <option>Executive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <button class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">
+                            Search Jobs <i class="fas fa-search ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Listings -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold">Featured Job Opportunities</h2>
+                <div class="flex items-center">
+                    <span class="mr-2">Sort by:</span>
+                    <select class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        <option>Most Recent</option>
+                        <option>Relevance</option>
+                        <option>Salary: High to Low</option>
+                        <option>Salary: Low to High</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Job Cards Container -->
+            <div id="job-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Initial Job Cards (loaded by default) -->
+                <div class="job-card bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all border-l-4 border-indigo-600">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <div class="mb-4 md:mb-0">
+                            <div class="flex items-center">
+                                <img src="/api/placeholder/60/60" alt="Company Logo" class="w-12 h-12 mr-4">
+                                <div>
+                                    <h3 class="text-xl font-bold">Agricultural Project Manager</h3>
+                                    <p class="text-gray-600">GreenGrowth Initiatives • Full-time</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:items-end">
+                            <span class="text-green-600 font-semibold mb-2">R145,000 - R160,000/year</span>
+                            <span class="text-gray-500 text-sm">Posted 2 days ago</span>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700">Leading sustainable farming projects, managing team of field officers, and coordinating with community farmers.</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Project Management</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Agriculture</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Sustainability</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Community Development</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between items-center">
+                        <span class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>Nairobi, Kenya (Hybrid)</span>
+                        <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Apply Now</button>
+                    </div>
+                </div>
+
+                <!-- Add more initial job cards here -->
+            </div>
+
+            <!-- Load More Jobs Button -->
+            <div class="mt-8 text-center">
+                <button id="load-more-jobs" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">
+                    Load More Jobs
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Development Section (Same as before) -->
+    <!-- Mentorship Section (Same as before) -->
+    <!-- Upload Resume Section (Same as before) -->
+    <!-- Employer Registration Section (Same as before) -->
+    <!-- Footer (Same as before) -->
+
+    <!-- JavaScript for Load More Jobs -->
+    <script>
+        // Sample job data (can be fetched from an API in a real-world scenario)
+        const jobs = [
+            {
+                title: "Community Health Coordinator",
+                company: "HealthBridge NGO",
+                type: "Contract",
+                salary: "R85,000 - R242,000/year",
+                posted: "Posted 1 week ago",
+                description: "Coordinating community health programs, organizing health campaigns, and facilitating access to healthcare services for underserved populations.",
+                skills: ["Healthcare", "Community Outreach", "Program Management"],
+                location: "Lagos, Nigeria (On-site)"
+            },
+            {
+                title: "Online Education Developer",
+                company: "EduAccess Initiative",
+                type: "Full-time",
+                salary: "R50,000 - R85,000/year",
+                posted: "Posted 3 days ago",
+                description: "Developing online educational content, designing curriculum, and implementing e-learning solutions for underserved communities.",
+                skills: ["E-Learning", "Curriculum Development", "Education", "Instructional Design"],
+                location: "Remote (Africa-based)"
+            },
+            // Add more job objects here
+        ];
+
+        // Function to create a job card
+        function createJobCard(job) {
+            return `
+                <div class="job-card bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all border-l-4 border-indigo-600">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <div class="mb-4 md:mb-0">
+                            <div class="flex items-center">
+                                <img src="/api/placeholder/60/60" alt="Company Logo" class="w-12 h-12 mr-4">
+                                <div>
+                                    <h3 class="text-xl font-bold">${job.title}</h3>
+                                    <p class="text-gray-600">${job.company} • ${job.type}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:items-end">
+                            <span class="text-green-600 font-semibold mb-2">${job.salary}</span>
+                            <span class="text-gray-500 text-sm">${job.posted}</span>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700">${job.description}</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            ${job.skills.map(skill => `<span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between items-center">
+                        <span class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>${job.location}</span>
+                        <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Apply Now</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load more jobs functionality
+        const jobContainer = document.getElementById('job-container');
+        const loadMoreButton = document.getElementById('load-more-jobs');
+        let visibleJobs = 3; // Number of jobs initially visible
+
+        loadMoreButton.addEventListener('click', () => {
+            // Load the next set of jobs
+            for (let i = visibleJobs; i < visibleJobs + 3 && i < jobs.length; i++) {
+                jobContainer.insertAdjacentHTML('beforeend', createJobCard(jobs[i]));
+            }
+            visibleJobs += 3;
+
+            // Hide the button if all jobs are loaded
+            if (visibleJobs >= jobs.length) {
+                loadMoreButton.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

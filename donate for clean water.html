@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Water Donation | Community Support Hub</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #0077B6;
+            --secondary-color: #90E0EF;
+            --accent-color: #03045E;
+            --light-color: #CAF0F8;
+            --dark-color: #023E8A;
+            --success-color: #38B000;
+            --white: #FFFFFF;
+            --black: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-menu li {
+            margin-left: 25px;
+        }
+
+        .navbar-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-menu a:hover {
+            color: var(--secondary-color);
+        }
+
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Header */
+        .campaign-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/api/placeholder/1200/400") no-repeat center center;
+            background-size: cover;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .campaign-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .campaign-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Main Content */
+        .campaign-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 50px 0;
+        }
+
+        .campaign-info {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .campaign-info h2 {
+            color: var(--dark-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .campaign-info p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .impact-stats {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .impact-stats h3 {
+            color: var(--dark-color);
+            margin-top: 0;
+        }
+
+        .impact-stat {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .impact-stat-icon {
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .impact-stat-text {
+            flex: 1;
+        }
+
+        .impact-stat-text strong {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+
+        /* Donation Form */
+        .donation-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            position: sticky;
+            top: 85px; /* Adjusted to account for navbar */
+        }
+
+        .donation-form h3 {
+            color: var(--dark-color);
+            margin-top: 0;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .donation-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .donation-option {
+            flex: 1 0 calc(50% - 10px);
+            background-color: var(--light-color);
+            border: 2px solid var(--light-color);
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .donation-option:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--primary-color);
+        }
+
+        .donation-option.selected {
+            background-color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .donation-option strong {
+            display: block;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+        }
+
+        .donation-option small {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+        .custom-amount {
+            margin-top: 20px;
+        }
+
+        .custom-amount input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .donate-button {
+            background-color: var(--success-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #2D9200;
+        }
+
+        /* Progress Bar */
+        .campaign-progress {
+            margin-bottom: 30px;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background-color: #eee;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background-color: var(--success-color);
+            height: 100%;
+            width: 65%;
+        }
+
+        /* Gallery */
+        .project-gallery {
+            margin: 40px 0;
+        }
+
+        .gallery-images {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .gallery-image {
+            flex: 0 0 auto;
+            width: 250px;
+            height: 150px;
+            background-color: var(--light-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: var(--dark-color);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-menu li {
+                margin: 10px 0;
+            }
+
+            .navbar-toggle {
+                display: block;
+            }
+
+            .campaign-header {
+                padding: 60px 0;
+            }
+
+            .campaign-header h1 {
+                font-size: 2rem;
+            }
+
+            .donation-option {
+                flex: 1 0 100%;
+            }
+
+            .footer-column {
+                flex: 1 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="navbar-logo">Community Support Hub</a>
+            <button class="navbar-toggle">☰</button>
+            <ul class="navbar-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Healthcare</a></li>
+                <li><a href="#">Crowdfunding</a></li>
+                <li><a href="#">Agriculture</a></li>
+                <li><a href="#">Education</a></li>
+                <li><a href="#">Social Justice</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Campaign Header -->
+    <header class="campaign-header">
+        <div class="container">
+            <h1>Bring Clean Water to Drought-Affected Communities</h1>
+            <p>Help us build sustainable water systems for communities in need</p>
+        </div>
+    </header>
+
+    <!-- Main Campaign Content -->
+    <div class="container">
+        <div class="campaign-content">
+            <!-- Campaign Information -->
+            <div class="campaign-info">
+                <h2>Clean Water Initiative</h2>
+
+                <div class="campaign-progress">
+                    <div class="progress-stats">
+                        <div>R546,000 raised of R840,000 goal</div>
+                        <div>65% funded</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                </div>
+
+                <p>Every drop counts. Your donation helps us build sustainable water systems in communities facing severe drought conditions. Access to clean drinking water isn't just about quenching thirst—it's about health, education, and economic opportunity.</p>
+
+                <div class="impact-stats">
+                    <h3>Your Donation's Impact</h3>
+
+                    <div class="impact-stat">
+                        <div class="impact-stat-icon">💧</div>
+                        <div class="impact-stat-text">
+                            <strong>R450</strong>
+                            Provides clean water to one person for a decade
+                        </div>
+                    </div>
+
+                    <div class="impact-stat">
+                        <div class="impact-stat-icon">👪</div>
+                        <div class="impact-stat-text">
+                            <strong>R1,800</strong>
+                            Helps a family access safe drinking water
+                        </div>
+                    </div>
+
+                    <div class="impact-stat">
+                        <div class="impact-stat-icon">🔄</div>
+                        <div class="impact-stat-text">
+                            <strong>R9,000</strong>
+                            Contributes to building a community water filtration system
+                        </div>
+                    </div>
+
+                    <div class="impact-stat">
+                        <div class="impact-stat-icon">⛲</div>
+                        <div class="impact-stat-text">
+                            <strong>R18,000</strong>
+                            Helps fund a complete water well for a village
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-gallery">
+                    <h3>Project Gallery</h3>
+                    <div class="gallery-images">
+                        <div class="gallery-image">
+                            <img src="/api/placeholder/250/150" alt="Community water project">
+                        </div>
+                        <div class="gallery-image">
+                            <img src="/api/placeholder/250/150" alt="Water well construction">
+                        </div>
+                        <div class="gallery-image">
+                            <img src="/api/placeholder/250/150" alt="Children with clean water">
+                        </div>
+                        <div class="gallery-image">
+                            <img src="/api/placeholder/250/150" alt="Water filtration system">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donation Form -->
+            <div class="donation-form">
+                <h3>Make a Donation</h3>
+
+                <div class="donation-options">
+                    <div class="donation-option">
+                        <strong>R450</strong>
+                        <small>Clean water for one person</small>
+                    </div>
+                    <div class="donation-option selected">
+                        <strong>R1,800</strong>
+                        <small>Family water access</small>
+                    </div>
+                    <div class="donation-option">
+                        <strong>R9,000</strong>
+                        <small>Community filtration</small>
+                    </div>
+                    <div class="donation-option">
+                        <strong>R18,000</strong>
+                        <small>Village water well</small>
+                    </div>
+                </div>
+
+                <div class="custom-amount">
+                    <label for="custom-amount">Or enter custom amount (ZAR)</label>
+                    <input type="number" id="custom-amount" placeholder="Enter amount in Rand">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" placeholder="Your phone number">
+                </div>
+
+                <button class="donate-button">Donate Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-column">
+                <h4>About Us</h4>
+                <p>Community Support Hub is dedicated to empowering communities through sustainable initiatives.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Campaigns</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p>Email: info@communityhub.org</p>
+                <p>Phone: +27 71 136 7089</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Community Support Hub. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle mobile menu
+        const navbarToggle = document.querySelector('.navbar-toggle');
+        const navbarMenu = document.querySelector('.navbar-menu');
+
+        navbarToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
+
+        // Handle donation option selection
+        const donationOptions = document.querySelectorAll('.donation-option');
+        donationOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                donationOptions.forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>

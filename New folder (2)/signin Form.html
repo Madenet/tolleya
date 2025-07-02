@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Login Form</title>
+    <!-- Tailwind CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS for animations -->
+    <style>
+        /* Custom animations */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .animated {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Custom styles for the form */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-field {
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center">
+    <!-- Login Form Container -->
+    <div class="form-container p-8 max-w-md w-full animated">
+        <h1 class="text-3xl font-bold text-white text-center mb-6 fade-in">Welcome Back!</h1>
+        <form id="loginForm" class="space-y-6">
+            <!-- Email Input -->
+            <div class="fade-in">
+                <label for="email" class="block text-sm font-medium text-white">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email"
+                    class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    required>
+                <p id="emailError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid email.</p>
+            </div>
+
+            <!-- Password Input -->
+            <div class="fade-in">
+                <label for="password" class="block text-sm font-medium text-white">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password"
+                    class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    required>
+                <p id="passwordError" class="text-red-400 text-sm mt-1 hidden">Password must be at least 6 characters.</p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                class="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100 transition-all duration-300 fade-in">
+                Sign In
+            </button>
+        </form>
+
+        <!-- Additional Links -->
+        <div class="mt-6 text-center fade-in">
+            <a href="#" class="text-white hover:text-indigo-200 text-sm">Forgot Password?</a>
+            <p class="text-white mt-2">Don't have an account? <a href="#" class="text-indigo-200 hover:text-indigo-100">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- JavaScript for Form Validation and Animations -->
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        // Email validation
+        emailInput.addEventListener('input', () => {
+            if (!emailInput.checkValidity()) {
+                emailError.classList.remove('hidden');
+            } else {
+                emailError.classList.add('hidden');
+            }
+        });
+
+        // Password validation
+        passwordInput.addEventListener('input', () => {
+            if (passwordInput.value.length < 6) {
+                passwordError.classList.remove('hidden');
+            } else {
+                passwordError.classList.add('hidden');
+            }
+        });
+
+        // Form submission
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Check if inputs are valid
+            if (!emailInput.checkValidity() || passwordInput.value.length < 6) {
+                alert('Please fill out the form correctly.');
+                return;
+            }
+
+            // Simulate form submission
+            alert('Login successful! Redirecting...');
+            // Redirect to another page or perform further actions
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll Now - Community Health Worker Training</title>
+    <!-- Tailwind CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS for animations -->
+    <style>
+        /* Custom animations */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .animated {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Custom styles for the form */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-field {
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center">
+    <!-- Enroll Now Container -->
+    <div class="form-container p-8 max-w-4xl w-full animated">
+        <!-- Course Details Section -->
+        <div class="text-white fade-in">
+            <h1 class="text-4xl font-bold mb-4">Community Health Worker Training</h1>
+            <p class="text-lg mb-6">Get trained as a community health worker and learn to provide essential healthcare services in underserved areas.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Course Highlights -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-4">Course Highlights</h2>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Learn to provide basic healthcare services in underserved communities.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Hands-on training with real-world scenarios.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Access to a network of healthcare professionals.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Certificate of completion.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Course Details -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-4">Course Details</h2>
+                    <ul class="space-y-3">
+                        <li><strong>Duration:</strong> 12 weeks</li>
+                        <li><strong>Effort:</strong> 6 hours/week</li>
+                        <li><strong>Level:</strong> Beginner</li>
+                        <li><strong>Language:</strong> English</li>
+                        <li><strong>Price:</strong> Free</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enroll Form Section -->
+        <div class="mt-8 fade-in">
+            <h2 class="text-3xl font-bold text-white mb-6">Enroll Now</h2>
+            <form id="enrollForm" class="space-y-6">
+                <!-- Name Input -->
+                <div>
+                    <label for="name" class="block text-sm font-medium text-white">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name"
+                        class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        required>
+                    <p id="nameError" class="text-red-400 text-sm mt-1 hidden">Please enter your name.</p>
+                </div>
+
+                <!-- Email Input -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-white">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email"
+                        class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        required>
+                    <p id="emailError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid email.</p>
+                </div>
+
+                <!-- Phone Input -->
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-white">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
+                        class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        required>
+                    <p id="phoneError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid phone number.</p>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100 transition-all duration-300">
+                    Enroll Now
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript for Form Validation and Email Submission -->
+    <script>
+        const enrollForm = document.getElementById('enrollForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
+
+        // Name validation
+        nameInput.addEventListener('input', () => {
+            if (nameInput.value.trim() === '') {
+                nameError.classList.remove('hidden');
+            } else {
+                nameError.classList.add('hidden');
+            }
+        });
+
+        // Email validation
+        emailInput.addEventListener('input', () => {
+            if (!emailInput.checkValidity()) {
+                emailError.classList.remove('hidden');
+            } else {
+                emailError.classList.add('hidden');
+            }
+        });
+
+        // Phone validation
+        phoneInput.addEventListener('input', () => {
+            if (!phoneInput.checkValidity()) {
+                phoneError.classList.remove('hidden');
+            } else {
+                phoneError.classList.add('hidden');
+            }
+        });
+
+        // Form submission
+        enrollForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Validate inputs
+            if (nameInput.value.trim() === '' || !emailInput.checkValidity() || !phoneInput.checkValidity()) {
+                alert('Please fill out the form correctly.');
+                return;
+            }
+
+            // Prepare email data
+            const emailData = {
+                name: nameInput.value,
+                email: emailInput.value,
+                phone: phoneInput.value,
+                course: "Community Health Worker Training",
+            };
+
+            // Send email using EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', emailData)
+                .then((response) => {
+                    console.log('Email sent successfully!', response.status, response.text);
+                    alert('Enrollment successful! You will receive a confirmation email shortly.');
+                    // Redirect to a confirmation page
+                    window.location.href = 'confirmation.html'; // Replace with your confirmation page URL
+                })
+                .catch((error) => {
+                    console.error('Failed to send email:', error);
+                    alert('Failed to submit the form. Please try again later.');
+                });
+        });
+    </script>
+
+    <!-- EmailJS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS with your User ID
+        emailjs.init('YOUR_USER_ID'); // Replace with your EmailJS User ID
+    </script>
+</body>
+</html>

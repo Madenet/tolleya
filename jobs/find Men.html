@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Mentor</title>
+    <!-- Tailwind CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS for animations -->
+    <style>
+        /* Custom animations */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .animated {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Custom styles for the form */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-field {
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Mentor card hover effect */
+        .mentor-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mentor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center">
+    <!-- Find a Mentor Container -->
+    <div class="form-container p-8 max-w-6xl w-full animated">
+        <!-- Page Title -->
+        <h1 class="text-4xl font-bold text-white text-center mb-8 fade-in">Find a Mentor</h1>
+
+        <!-- Search Bar -->
+        <div class="mb-8 fade-in">
+            <form id="searchForm" class="flex items-center">
+                <input type="text" id="searchQuery" placeholder="Search by name, expertise, or industry"
+                    class="input-field flex-grow px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <button type="submit"
+                    class="bg-white text-indigo-600 px-4 py-2 rounded-r-lg font-semibold hover:bg-indigo-100 transition-all duration-300">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Mentor Cards -->
+        <div id="mentorList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 fade-in">
+            <!-- Mentor Card 1 -->
+            <div class="mentor-card bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://via.placeholder.com/80" alt="Mentor" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <h3 class="text-xl font-bold">John Doe</h3>
+                        <p class="text-gray-600">Digital Marketing Expert</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">10+ years of experience in digital marketing. Specializes in SEO, social media, and email marketing.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>New York, USA</span>
+                    <button class="connect-button bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700" data-mentor="John Doe">Connect</button>
+                </div>
+            </div>
+
+            <!-- Mentor Card 2 -->
+            <div class="mentor-card bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://via.placeholder.com/80" alt="Mentor" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <h3 class="text-xl font-bold">Jane Smith</h3>
+                        <p class="text-gray-600">Healthcare Professional</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">15+ years of experience in community health. Passionate about training healthcare workers.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>London, UK</span>
+                    <button class="connect-button bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700" data-mentor="Jane Smith">Connect</button>
+                </div>
+            </div>
+
+            <!-- Mentor Card 3 -->
+            <div class="mentor-card bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://via.placeholder.com/80" alt="Mentor" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <h3 class="text-xl font-bold">Michael Brown</h3>
+                        <p class="text-gray-600">Agriculture Specialist</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">Expert in sustainable farming techniques with 12+ years of experience.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>Nairobi, Kenya</span>
+                    <button class="connect-button bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700" data-mentor="Michael Brown">Connect</button>
+                </div>
+            </div>
+
+            <!-- Add more mentor cards here -->
+        </div>
+    </div>
+
+    <!-- JavaScript for Search and Connect Functionality -->
+    <script>
+        const searchForm = document.getElementById('searchForm');
+        const searchQuery = document.getElementById('searchQuery');
+        const mentorList = document.getElementById('mentorList');
+
+        // Sample mentor data (can be fetched from an API in a real-world scenario)
+        const mentors = [
+            {
+                name: "John Doe",
+                expertise: "Digital Marketing Expert",
+                description: "10+ years of experience in digital marketing. Specializes in SEO, social media, and email marketing.",
+                location: "New York, USA",
+                image: "https://via.placeholder.com/80"
+            },
+            {
+                name: "Jane Smith",
+                expertise: "Healthcare Professional",
+                description: "15+ years of experience in community health. Passionate about training healthcare workers.",
+                location: "London, UK",
+                image: "https://via.placeholder.com/80"
+            },
+            {
+                name: "Michael Brown",
+                expertise: "Agriculture Specialist",
+                description: "Expert in sustainable farming techniques with 12+ years of experience.",
+                location: "Nairobi, Kenya",
+                image: "https://via.placeholder.com/80"
+            },
+            // Add more mentor objects here
+        ];
+
+        // Function to create a mentor card
+        function createMentorCard(mentor) {
+            return `
+                <div class="mentor-card bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="${mentor.image}" alt="Mentor" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="text-xl font-bold">${mentor.name}</h3>
+                            <p class="text-gray-600">${mentor.expertise}</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">${mentor.description}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>${mentor.location}</span>
+                        <button class="connect-button bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700" data-mentor="${mentor.name}">Connect</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to filter mentors based on search query
+        function filterMentors(query) {
+            const filteredMentors = mentors.filter(mentor =>
+                mentor.name.toLowerCase().includes(query.toLowerCase()) ||
+                mentor.expertise.toLowerCase().includes(query.toLowerCase()) ||
+                mentor.location.toLowerCase().includes(query.toLowerCase())
+            );
+
+            mentorList.innerHTML = filteredMentors.map(createMentorCard).join('');
+        }
+
+        // Search form submission
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            filterMentors(searchQuery.value);
+        });
+
+        // Connect button functionality
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('connect-button')) {
+                const mentorName = e.target.getAttribute('data-mentor');
+                alert(`Connection request sent to ${mentorName}.`);
+                // Redirect to a confirmation page or perform further actions
+            }
+        });
+
+        // Initial load of mentor cards
+        mentorList.innerHTML = mentors.map(createMentorCard).join('');
+    </script>
+</body>
+</html>

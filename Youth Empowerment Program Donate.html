@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth Empowerment Program - CommunityCare</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for progress bar */
+        .progress-bar {
+            background-color: #e5e7eb; /* Light gray */
+            border-radius: 9999px; /* Fully rounded */
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #4f46e5; /* Indigo */
+            transition: width 0.3s ease;
+        }
+
+        /* Testimonial card styling */
+        .testimonial-card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-indigo-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a class="navbar-brand" href="index.html">
+                <img src="image/logo.png" alt="CommunityCare Logo" class="h-10">
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="hover:text-indigo-200">Home</a>
+                <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
+                <a href="healthcare.html" class="hover:text-indigo-200">Healthcare</a>
+                <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
+                <a href="agriculture.html" class="hover:text-indigo-200">Agriculture</a>
+                <a href="education.html" class="hover:text-indigo-200">Education</a>
+                <a href="social-justice.html" class="hover:text-indigo-200">Social Justice</a>
+                <a href="contact.html" class="hover:text-indigo-200">Contact</a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="signin.html" class="bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100">Sign In</a>
+                <a href="signup.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-indigo-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">Youth Empowerment Program</h1>
+            <p class="text-lg mb-8">Equipping young adults with the skills and mentorship needed to succeed in today's job market.</p>
+            <a href="#donate" class="bg-white text-indigo-800 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-100">Donate Now</a>
+        </div>
+    </section>
+
+    <!-- Program Overview -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h2 class="text-2xl font-bold text-indigo-800 mb-4">About the Program</h2>
+                <p class="text-gray-600 mb-4">Our Youth Empowerment Program is designed to provide young adults with the tools, training, and mentorship they need to thrive in today's competitive job market. Through workshops, internships, and career guidance, we aim to bridge the gap between education and employment.</p>
+                <p class="text-gray-600 mb-4">We focus on:</p>
+                <ul class="list-disc list-inside text-gray-600 mb-4">
+                    <li>Skill development (e.g., coding, communication, leadership)</li>
+                    <li>Career counseling and mentorship</li>
+                    <li>Internship opportunities with local businesses</li>
+                    <li>Entrepreneurship training</li>
+                </ul>
+            </div>
+            <div>
+                <img src="/api/placeholder/600/400" alt="Youth Empowerment Program" class="w-full h-64 md:h-96 object-cover rounded-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals and Impact -->
+    <section class="bg-indigo-100 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-8 text-center">Our Goals and Impact</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-2">Empower 1,000 Youth</h3>
+                    <p class="text-gray-600">Our goal is to empower 1,000 young adults with skills and opportunities by 2025.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-4xl mb-4">💼</div>
+                    <h3 class="text-xl font-bold mb-2">Create Job Opportunities</h3>
+                    <p class="text-gray-600">We partner with local businesses to create internship and job opportunities.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-4xl mb-4">🌟</div>
+                    <h3 class="text-xl font-bold mb-2">Foster Entrepreneurship</h3>
+                    <p class="text-gray-600">We provide training and resources to help young entrepreneurs launch their own businesses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold text-indigo-800 mb-4">Funding Progress</h2>
+        <div class="progress-bar h-4 mb-4">
+            <div class="progress-fill" style="width: 75%;"></div>
+        </div>
+        <p class="text-gray-600">R12,750 raised of R15,000 goal</p>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-8 text-center">Support the Youth Empowerment Program</h2>
+            <div class="max-w-md mx-auto bg-indigo-100 rounded-lg p-6">
+                <form id="donation-form">
+                    <div class="mb-6">
+                        <label for="amount" class="block text-gray-700 font-bold mb-2">Donation Amount (R)</label>
+                        <input type="number" id="amount" name="amount" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="e.g., 500" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 font-bold mb-2">Full Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Your name" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Your email" required>
+                    </div>
+                    <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 w-full">Donate Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Opportunities -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold text-indigo-800 mb-8 text-center">Get Involved</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-2">Volunteer as a Mentor</h3>
+                <p class="text-gray-600 mb-4">Share your expertise and guide young adults in their career journeys.</p>
+                <a href="signin and signup/signup.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign Up</a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-2">Organize Workshops</h3>
+                <p class="text-gray-600 mb-4">Help us conduct skill-building workshops for youth in your community.</p>
+                <a href="signin and signup/signup.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign Up</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="bg-indigo-100 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-8 text-center">What People Are Saying</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="testimonial-card">
+                    <p class="text-gray-600 mb-4">"This program changed my life! I gained valuable skills and landed my first job thanks to the mentorship I received."</p>
+                    <p class="text-gray-800 font-bold">- Sarah T.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="text-gray-600 mb-4">"Volunteering as a mentor has been incredibly rewarding. I love seeing the youth grow and achieve their goals."</p>
+                    <p class="text-gray-800 font-bold">- John D.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 CommunityCare. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Donation Form -->
+    <script>
+        const donationForm = document.getElementById('donation-form');
+        donationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const amount = document.getElementById('amount').value;
+            const name = document.getElementById('name').value;
+            alert(`Thank you, ${name}, for your donation of R${amount}!`);
+            donationForm.reset();
+        });
+    </script>
+</body>
+</html>

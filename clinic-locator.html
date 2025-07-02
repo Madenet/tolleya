@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Locator - Healthcare Access</title>
+    <link href="img/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .clinic-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .clinic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-indigo-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a class="navbar-brand" href="index.html">
+                <img src="image/logo.png" alt="Makhado Logo" class="h-10">
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="hover:text-indigo-200">Home</a>
+                <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
+                <a href="healthcare.html" class="hover:text-indigo-200">Healthcare</a>
+                <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
+                <a href="Agriculture.html" class="hover:text-indigo-200">Agriculture</a>
+                <a href="educational res.html" class="hover:text-indigo-200">Education</a>
+                <a href="social j and civil e.html" class="hover:text-indigo-200">Social Justice</a>
+                <div class="flex space-x-4">
+                    <a href="signin and signup/signup.html" class="bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100">Sign In</a>
+                    <a href="signin and signup/signup.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Sign Up</a>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button class="text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-indigo-800 mb-4">Clinic Locator</h1>
+        <p class="text-lg text-gray-600 mb-8">Find healthcare facilities near you including hospitals, clinics, pharmacies, and specialized care centers.</p>
+
+        <!-- Search and Filter Section -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-bold mb-4">Search for Clinics</h2>
+            <form class="flex flex-col md:flex-row gap-4">
+                <input type="text" id="searchInput" class="w-full md:w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Enter clinic name or location...">
+                <select id="filterProvince" class="w-full md:w-1/4 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                    <option value="">All Provinces</option>
+                    <option value="Eastern Cape">Eastern Cape</option>
+                    <option value="Free State">Free State</option>
+                    <option value="Gauteng">Gauteng</option>
+                    <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+                    <option value="Limpopo">Limpopo</option>
+                    <option value="Mpumalanga">Mpumalanga</option>
+                    <option value="Northern Cape">Northern Cape</option>
+                    <option value="North West">North West</option>
+                    <option value="Western Cape">Western Cape</option>
+                </select>
+                <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700">Search</button>
+            </form>
+        </div>
+
+        <!-- Clinic List -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Clinic Card 1 -->
+            <div class="clinic-card bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-2">Johannesburg Clinic</h3>
+                <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>123 Main Street, Johannesburg, Gauteng</p>
+                <p class="text-gray-600 mb-2"><i class="fas fa-phone mr-2"></i>+27 11 123 4567</p>
+                <p class="text-gray-600"><i class="fas fa-clock mr-2"></i>Mon-Fri: 8am - 5pm</p>
+            </div>
+
+            <!-- Clinic Card 2 -->
+            <div class="clinic-card bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-2">Cape Town Clinic</h3>
+                <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>456 Long Street, Cape Town, Western Cape</p>
+                <p class="text-gray-600 mb-2"><i class="fas fa-phone mr-2"></i>+27 21 987 6543</p>
+                <p class="text-gray-600"><i class="fas fa-clock mr-2"></i>Mon-Fri: 8am - 5pm</p>
+            </div>
+
+            <!-- Clinic Card 3 -->
+            <div class="clinic-card bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-2">Durban Clinic</h3>
+                <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>789 Beach Road, Durban, KwaZulu-Natal</p>
+                <p class="text-gray-600 mb-2"><i class="fas fa-phone mr-2"></i>+27 31 456 7890</p>
+                <p class="text-gray-600"><i class="fas fa-clock mr-2"></i>Mon-Fri: 8am - 5pm</p>
+            </div>
+
+            <!-- Clinic Card 4 -->
+            <div class="clinic-card bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-2">Pretoria Clinic</h3>
+                <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>321 Church Street, Pretoria, Gauteng</p>
+                <p class="text-gray-600 mb-2"><i class="fas fa-phone mr-2"></i>+27 12 345 6789</p>
+                <p class="text-gray-600"><i class="fas fa-clock mr-2"></i>Mon-Fri: 8am - 5pm</p>
+            </div>
+
+            <!-- Clinic Card 5 -->
+            <div class="clinic-card bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-2">Port Elizabeth Clinic</h3>
+                <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>654 Beach Road, Port Elizabeth, Eastern Cape</p>
+                <p class="text-gray-600 mb-2"><i class="fas fa-phone mr-2"></i>+27 41 123 4567</p>
+                <p class="text-gray-600"><i class="fas fa-clock mr-2"></i>Mon-Fri: 8am - 5pm</p>
+            </div>
+
+            <!-- Clinic Card 6 -->
+            <div class="clinic-card bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-2">Bloemfontein Clinic</h3>
+                <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>987 President Street, Bloemfontein, Free State</p>
+                <p class="text-gray-600 mb-2"><i class="fas fa-phone mr-2"></i>+27 51 987 6543</p>
+                <p class="text-gray-600"><i class="fas fa-clock mr-2"></i>Mon-Fri: 8am - 5pm</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SAimpactHub</h3>
+                    <p class="text-gray-400">Empowering communities through connection and access to essential resources.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="jobs.html" class="text-gray-400 hover:text-white">Jobs</a></li>
+                        <li><a href="health.html" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="crowdfunding.html" class="text-gray-400 hover:text-white">Crowdfunding</a></li>
+                        <li><a href="Agriculture.html" class="text-gray-400 hover:text-white">Agriculture</a></li>
+                        <li><a href="educational res.html" class="text-gray-400 hover:text-white">Education</a></li>
+                        <li><a href="social j and civil e.html" class="text-gray-400 hover:text-white">Social Justice</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>17 Thondoni, Mashamba, Limpopo</li>
+                        <li><i class="fas fa-phone mr-2"></i>+27 71 136 7089</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@saimpactadminhub.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Subscribe</h4>
+                    <p class="text-gray-400 mb-4">Stay updated with our latest initiatives and opportunities.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full text-gray-900">
+                        <button type="submit" class="bg-indigo-600 px-4 py-2 rounded-r-lg hover:bg-indigo-700">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 SAimpactHub. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script for Search and Filter -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const filterProvince = document.getElementById('filterProvince');
+            const clinicCards = document.querySelectorAll('.clinic-card');
+
+            function filterClinics() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const province = filterProvince.value.toLowerCase();
+
+                clinicCards.forEach(card => {
+                    const name = card.querySelector('h3').textContent.toLowerCase();
+                    const location = card.querySelector('p').textContent.toLowerCase();
+
+                    const matchesSearch = name.includes(searchTerm) || location.includes(searchTerm);
+                    const matchesProvince = province === '' || location.includes(province);
+
+                    if (matchesSearch && matchesProvince) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            searchInput.addEventListener('input', filterClinics);
+            filterProvince.addEventListener('change', filterClinics);
+        });
+    </script>
+</body>
+</html>

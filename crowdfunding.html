@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowdfunding for NPOs - CommunityCare</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for progress bar */
+        .progress-bar {
+            background-color: #e5e7eb; /* Light gray */
+            border-radius: 9999px; /* Fully rounded */
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #4f46e5; /* Indigo */
+            transition: width 0.3s ease;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-indigo-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a class="navbar-brand" href="index.html">
+                <img src="image/logo.png" alt="CommunityCare Logo" class="h-10">
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="hover:text-indigo-200">Home</a>
+                <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
+                <a href="healthcare.html" class="hover:text-indigo-200">Healthcare</a>
+                <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
+                <a href="agriculture.html" class="hover:text-indigo-200">Agriculture</a>
+                <a href="education.html" class="hover:text-indigo-200">Education</a>
+                <a href="social-justice.html" class="hover:text-indigo-200">Social Justice</a>
+                <a href="contact.html" class="hover:text-indigo-200">Contact</a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="signin.html" class="bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100">Sign In</a>
+                <a href="signup.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Sign Up</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-indigo-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">Empower Change Through Crowdfunding</h1>
+            <p class="text-lg mb-8">Support local non-profit organizations making a difference in our communities. Every contribution helps create lasting impact for those who need it most.</p>
+            <a href="Start Campaign CFNG.html" class="bg-white text-indigo-800 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-100">Start a Campaign</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Featured Campaigns Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-6">Featured Campaigns</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Campaign 1 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <img src="/api/placeholder/300/200" alt="Education for All" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Education for All Initiative</h3>
+                    <p class="text-gray-600 mb-4">Help us provide educational resources to underserved schools in rural communities. Your donations will fund books, computers, and school supplies.</p>
+                    <div class="progress-bar h-2 mb-4">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">$15,000 raised of $20,000 goal</p>
+                    <a href="Donate for Edu.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 donate-button">Donate Now</a>
+                </div>
+
+                <!-- Campaign 2 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <img src="/api/placeholder/300/200" alt="Clean Water Project" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Clean Water Project</h3>
+                    <p class="text-gray-600 mb-4">Support our initiative to bring clean drinking water to communities affected by drought. We aim to build sustainable water systems.</p>
+                    <div class="progress-bar h-2 mb-4">
+                        <div class="progress-fill" style="width: 45%;"></div>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">$9,000 raised of $20,000 goal</p>
+                    <a href="donate for clean water.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 donate-button">Donate Now</a>
+                </div>
+
+                <!-- Campaign 3 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <img src="/api/placeholder/300/200" alt="Youth Empowerment" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Youth Empowerment Program</h3>
+                    <p class="text-gray-600 mb-4">Help us equip young adults with skills and mentorship needed to succeed in today's job market through workshops and training.</p>
+                    <div class="progress-bar h-2 mb-4">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">R12,750 raised of R15,000 goal</p>
+                    <a href="Youth Empowerment Program Donate.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 donate-button">Donate Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start a Campaign Section -->
+        <section class="bg-indigo-100 py-12">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-2xl font-bold text-indigo-800 mb-4">Start Your Own Fundraising Campaign</h2>
+                <p class="text-gray-600 mb-8">Whether you're a registered non-profit organization or an individual with a cause, you can start a campaign to raise funds for what matters most to you. Our platform provides the tools you need to reach donors and make an impact.</p>
+                <a href="Start Campaign CFNG.html" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">Create Campaign</a>
+            </div>
+        </section>
+
+        <!-- Transparency Section -->
+        <section class="my-12">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-6">Transparency You Can Trust</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold mb-2">Fund Utilization Breakdown</h3>
+                    <p class="text-gray-600">Track exactly how your donations are spent with detailed fund utilization reports for each campaign.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h3 class="text-xl font-bold mb-2">Secure Donations</h3>
+                    <p class="text-gray-600">All donations are processed through secure payment gateways like Paystack and Stripe to ensure your financial information is protected.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold mb-2">Impact Reporting</h3>
+                    <p class="text-gray-600">Regular updates from campaign creators show the real-world impact of your contributions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteer Opportunities Section -->
+        <section class="my-12">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-6">Volunteer Opportunities</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-2">Campaign Ambassadors</h3>
+                    <p class="text-gray-600 mb-4">Help spread the word about ongoing campaigns through your networks and social media channels.</p>
+                    <a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign Up</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-2">Tech Volunteers</h3>
+                    <p class="text-gray-600 mb-4">Offer your technical skills to help NPOs with their digital needs, from website development to social media management.</p>
+                    <a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign Up</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-2">Event Organizers</h3>
+                    <p class="text-gray-600 mb-4">Help plan and execute fundraising events both online and offline to boost campaign visibility.</p>
+                    <a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign Up</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">CommunityCare</h3>
+                    <p class="text-gray-400">Empowering communities through connection and access to essential resources.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="jobs.html" class="text-gray-400 hover:text-white">Jobs</a></li>
+                        <li><a href="healthcare.html" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="crowdfunding.html" class="text-gray-400 hover:text-white">Crowdfunding</a></li>
+                        <li><a href="agriculture.html" class="text-gray-400 hover:text-white">Agriculture</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>123 Community St, City</li>
+                        <li><i class="fas fa-phone mr-2"></i>+123-456-7890</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@communitycare.org</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Subscribe</h4>
+                    <p class="text-gray-400 mb-4">Stay updated with our latest initiatives and opportunities.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full text-gray-900">
+                        <button type="submit" class="bg-indigo-600 px-4 py-2 rounded-r-lg hover:bg-indigo-700">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 CommunityCare. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Open Donation Modal
+        const donateButtons = document.querySelectorAll('.donate-button');
+        const modal = document.getElementById('donation-modal');
+        const closeModal = document.getElementById('close-modal');
+        const donationForm = document.getElementById('donation-form');
+
+        donateButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modal.classList.add('active');
+            });
+        });
+
+        // Close Donation Modal
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Handle Donation Form Submission
+        donationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const amount = document.getElementById('amount').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            alert(`Thank you, ${name}, for your donation of $${amount}!`);
+            modal.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

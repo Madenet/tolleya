@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Access - Community Support Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare Access Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-gray-50 min-h-screen p-6">
+    <header class="bg-white rounded-lg shadow p-4 mb-6">
+      <h1 class="text-2xl font-bold text-blue-700">Healthcare Access</h1>
+      <p class="text-gray-600">Connect with healthcare providers, find resources, and manage your health</p>
+    </header>
+    
+    <!-- Navigation Tabs -->
+    <div class="flex flex-wrap gap-2 mb-6">
+      <button id="telemedicine-tab" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white">
+        <span>Telemedicine</span>
+      </button>
+      <button id="clinics-tab" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-gray-700 hover:bg-gray-100">
+        <span>Find Clinics</span>
+      </button>
+      <button id="education-tab" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-gray-700 hover:bg-gray-100">
+        <span>Health Education</span>
+      </button>
+      <button id="emergency-tab" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-gray-700 hover:bg-gray-100">
+        <span>Emergency</span>
+      </button>
+    </div>
+    
+    <!-- Content Area -->
+    <div class="bg-white rounded-lg shadow p-6" id="content-area">
+      <!-- Telemedicine Content -->
+      <div id="telemedicine-content">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold">Virtual Consultations</h2>
+          <div class="relative">
+            <input type="text" placeholder="Search for doctors..." class="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+            <div class="flex p-4">
+              <img src="/api/placeholder/150/150" alt="Dr. Sarah Johnson" class="w-16 h-16 rounded-full mr-4">
+              <div>
+                <h3 class="font-medium">Dr. Sarah Johnson</h3>
+                <p class="text-sm text-gray-600">General Practitioner</p>
+                <div class="flex items-center mt-2 text-sm text-gray-500">
+                  <span>Mon, Wed, Fri</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 p-3 flex justify-between">
+              <button class="text-blue-600 text-sm font-medium">View Profile</button>
+              <button class="bg-blue-600 text-white px-3 py-1 rounded-md text-sm">Book Now</button>
+            </div>
+          </div>
+          <!-- Repeat similar blocks for other doctors -->
+        </div>
+      </div>
+      
+      <!-- Clinics Content -->
+      <div id="clinics-content" style="display: none;">
+        <h2 class="text-xl font-semibold mb-6">Find Nearby Clinics</h2>
+        <div class="mb-6 p-4 border rounded-lg bg-gray-50">
+          <div class="flex flex-wrap gap-4">
+            <input type="text" placeholder="Enter your location" class="flex-grow px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <select class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="">All Services</option>
+              <option value="general">General Medicine</option>
+              <option value="pediatric">Pediatrics</option>
+              <option value="womens">Women's Health</option>
+            </select>
+            <button class="bg-blue-600 text-white px-6 py-2 rounded-lg">Search</button>
+          </div>
+        </div>
+        
+        <div class="space-y-4">
+          <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex justify-between">
+              <div>
+                <h3 class="font-medium">Community Health Center</h3>
+                <p class="text-sm text-gray-600 flex items-center mt-1">
+                  <span>123 Main Street</span>
+                </p>
+              </div>
+              <button class="bg-blue-600 text-white px-4 py-1 h-8 rounded-md text-sm self-start">Directions</button>
+            </div>
+            <div class="mt-3">
+              <p class="text-sm text-gray-700 font-medium">Services:</p>
+              <div class="flex flex-wrap gap-2 mt-1">
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">General Medicine</span>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Pediatrics</span>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Vaccinations</span>
+              </div>
+            </div>
+          </div>
+          <!-- Repeat similar blocks for other clinics -->
+        </div>
+      </div>
+      
+      <!-- Education Content -->
+      <div id="education-content" style="display: none;">
+        <h2 class="text-xl font-semibold mb-6">Health Education Resources</h2>
+        
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+          <div class="border rounded-lg p-4 bg-blue-50 text-center">
+            <h3 class="font-medium mb-2">Articles</h3>
+            <p class="text-sm text-gray-600 mb-4">Read in-depth health information</p>
+            <button class="bg-white text-blue-600 border border-blue-600 px-4 py-2 rounded-lg text-sm font-medium">Browse Articles</button>
+          </div>
+          <div class="border rounded-lg p-4 bg-green-50 text-center">
+            <h3 class="font-medium mb-2">Videos</h3>
+            <p class="text-sm text-gray-600 mb-4">Watch educational health videos</p>
+            <button class="bg-white text-green-600 border border-green-600 px-4 py-2 rounded-lg text-sm font-medium">Watch Videos</button>
+          </div>
+          <div class="border rounded-lg p-4 bg-purple-50 text-center">
+            <h3 class="font-medium mb-2">Interactive Guides</h3>
+            <p class="text-sm text-gray-600 mb-4">Learn through interactive content</p>
+            <button class="bg-white text-purple-600 border border-purple-600 px-4 py-2 rounded-lg text-sm font-medium">Explore Guides</button>
+          </div>
+        </div>
+        
+        <h3 class="font-medium mb-4">Popular Resources</h3>
+        <div class="space-y-3">
+          <div class="border rounded-lg p-3 flex justify-between items-center hover:bg-gray-50">
+            <div>
+              <h4 class="font-medium">Understanding Diabetes</h4>
+              <p class="text-sm text-gray-600">Article • 10 min read</p>
+            </div>
+            <button class="text-blue-600 hover:text-blue-800">View</button>
+          </div>
+          <!-- Repeat similar blocks for other resources -->
+        </div>
+      </div>
+      
+      <!-- Emergency Content -->
+      <div id="emergency-content" style="display: none;">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+          <h2 class="text-xl font-semibold text-red-700 mb-2">Emergency Resources</h2>
+          <p class="text-red-600 mb-2">For life-threatening emergencies, call emergency services immediately.</p>
+          <button class="bg-red-600 text-white px-6 py-2 rounded-lg font-medium">Call Emergency Services</button>
+        </div>
+        
+        <h3 class="font-medium mb-4">Important Contact Numbers</h3>
+        <div class="space-y-3 mb-6">
+          <div class="border rounded-lg p-3 flex justify-between items-center">
+            <div>
+              <h4 class="font-medium">Ambulance Service</h4>
+              <p class="text-sm text-gray-600">Available: 24/7</p>
+            </div>
+            <a href="tel:123-456-7890" class="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
+              <span>123-456-7890</span>
+            </a>
+          </div>
+          <!-- Repeat similar blocks for other contacts -->
+        </div>
+        
+        <h3 class="font-medium mb-4">First Aid Resources</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="border rounded-lg p-3 hover:bg-gray-50">
+            <h4 class="font-medium">CPR Guide</h4>
+            <p class="text-sm text-gray-600 mb-2">Learn the basics of CPR</p>
+            <button class="text-blue-600 text-sm font-medium">View Guide</button>
+          </div>
+          <!-- Repeat similar blocks for other guides -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="Platform Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Jobs & Skills</a></li>
+                <li><a href="healthcare.html" class="active">Healthcare</a></li>
+                <li><a href="crowdfunding.html">Crowdfunding</a></li>
+                <li><a href="agriculture.html">Agriculture</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="social-justice.html">Social Justice</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Log In</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero healthcare-hero">
+        <div class="hero-content">
+            <h1>Healthcare Access For Everyone</h1>
+            <p>Connect with healthcare professionals, find local clinics, and access vital health information - all in one place.</p>
+            <div class="hero-cta">
+                <a href="#telemedicine" class="btn btn-primary">Book Consultation</a>
+                <a href="#find-clinic" class="btn btn-secondary">Find Nearby Clinic</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Telemedicine Section -->
+        <section id="telemedicine" class="telemedicine-section">
+            <div class="section-header">
+                <h2>Virtual Consultations</h2>
+                <p>Connect with qualified healthcare professionals from the comfort of your home</p>
+            </div>
+            
+            <div class="doctor-categories">
+                <div class="category-card">
+                    <div class="icon"><i class="fas fa-heart"></i></div>
+                    <h3>General Practitioner</h3>
+                    <p>For common illnesses and general health concerns</p>
+                    <a href="telemedicine-book.html?specialty=general" class="btn btn-outline">Find Doctor</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="icon"><i class="fas fa-baby"></i></div>
+                    <h3>Pediatrics</h3>
+                    <p>Specialized care for infants, children and adolescents</p>
+                    <a href="telemedicine-book.html?specialty=pediatrics" class="btn btn-outline">Find Doctor</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="icon"><i class="fas fa-brain"></i></div>
+                    <h3>Mental Health</h3>
+                    <p>Professional support for mental wellbeing and emotional health</p>
+                    <a href="telemedicine-book.html?specialty=mental-health" class="btn btn-outline">Find Doctor</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="icon"><i class="fas fa-teeth"></i></div>
+                    <h3>Dental Care</h3>
+                    <p>Consultation for dental hygiene and oral health issues</p>
+                    <a href="telemedicine-book.html?specialty=dental" class="btn btn-outline">Find Doctor</a>
+                </div>
+            </div>
+            
+            <div class="consultation-booking">
+                <div class="booking-form">
+                    <h3>Book Your Consultation</h3>
+                    <form action="process-booking.php" method="post">
+                        <div class="form-group">
+                            <label for="specialty">Medical Specialty</label>
+                            <select id="specialty" name="specialty" required>
+                                <option value="">Select a specialty</option>
+                                <option value="general">General Practitioner</option>
+                                <option value="pediatrics">Pediatrics</option>
+                                <option value="mental-health">Mental Health</option>
+                                <option value="dental">Dental Care</option>
+                                <option value="dermatology">Dermatology</option>
+                                <option value="nutrition">Nutrition</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="appointment-date">Preferred Date</label>
+                            <input type="date" id="appointment-date" name="appointment-date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="appointment-time">Preferred Time</label>
+                            <input type="time" id="appointment-time" name="appointment-time" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="symptoms">Brief Description of Symptoms</label>
+                            <textarea id="symptoms" name="symptoms" rows="3" placeholder="Please describe your symptoms or concerns"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Schedule Consultation</button>
+                    </form>
+                </div>
+                
+                <div class="booking-info">
+                    <h3>How It Works</h3>
+                    <ol>
+                        <li>Select your preferred medical specialty</li>
+                        <li>Choose a convenient date and time</li>
+                        <li>Provide a brief description of your symptoms</li>
+                        <li>Receive confirmation via email with consultation link</li>
+                        <li>Connect with your doctor at the scheduled time</li>
+                    </ol>
+                    <div class="consultation-fees">
+                        <h4>Consultation Fees</h4>
+                        <p>General consultation: $10-15</p>
+                        <p>Specialist consultation: $15-25</p>
+                        <p><strong>Note:</strong> Subsidized rates available for eligible individuals</p>
+                        <a href="financial-assistance.html" class="link">Learn about financial assistance</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Clinic Locator Section -->
+        <section id="find-clinic" class="clinic-locator">
+            <div class="section-header">
+                <h2>Find Nearby Clinics</h2>
+                <p>Locate healthcare facilities in your area for in-person consultations</p>
+            </div>
+            
+            <div class="clinic-search">
+                <div class="search-form">
+                    <form action="clinic-search-results.html" method="get">
+                        <div class="form-group">
+                            <label for="location">Your Location</label>
+                            <input type="text" id="location" name="location" placeholder="Enter city, town or ZIP code" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="clinic-type">Type of Facility</label>
+                            <select id="clinic-type" name="clinic-type">
+                                <option value="all">All Facilities</option>
+                                <option value="hospital">Hospital</option>
+                                <option value="clinic">Community Clinic</option>
+                                <option value="emergency">Emergency Center</option>
+                                <option value="specialty">Specialty Center</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="all">All Services</option>
+                                <option value="general">General Care</option>
+                                <option value="emergency">Emergency Care</option>
+                                <option value="vaccination">Vaccination</option>
+                                <option value="maternal">Maternal Care</option>
+                                <option value="lab">Laboratory Services</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Search Clinics</button>
+                    </form>
+                </div>
+                
+                <div class="map-container">
+                    <!-- Interactive map will be loaded here via JavaScript -->
+                    <div id="clinic-map" class="clinic-map">
+                        <!-- Placeholder for map -->
+                        <img src="images/map-placeholder.jpg" alt="Map Placeholder" class="placeholder-map">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="emergency-contacts">
+                <h3>Emergency Contacts</h3>
+                <div class="emergency-grid">
+                    <div class="emergency-card">
+                        <div class="emergency-icon"><i class="fas fa-ambulance"></i></div>
+                        <h4>Ambulance</h4>
+                        <p class="emergency-number">911</p>
+                    </div>
+                    
+                    <div class="emergency-card">
+                        <div class="emergency-icon"><i class="fas fa-hospital"></i></div>
+                        <h4>Emergency Room</h4>
+                        <p class="emergency-number">911</p>
+                    </div>
+                    
+                    <div class="emergency-card">
+                        <div class="emergency-icon"><i class="fas fa-phone"></i></div>
+                        <h4>Health Hotline</h4>
+                        <p class="emergency-number">800-HEALTH</p>
+                    </div>
+                    
+                    <div class="emergency-card">
+                        <div class="emergency-icon"><i class="fas fa-brain"></i></div>
+                        <h4>Mental Health Crisis</h4>
+                        <p class="emergency-number">800-273-8255</p>
+                    </div>
+                </div>
+                <div class="emergency-note">
+                    <p><strong>Note:</strong> Always call emergency services in case of life-threatening situations.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Health Education Section -->
+        <section id="health-education" class="health-education">
+            <div class="section-header">
+                <h2>Health Education</h2>
+                <p>Reliable information and resources to help you manage your health</p>
+            </div>
+            
+            <div class="education-categories">
+                <div class="edu-category">
+                    <h3>Featured Articles</h3>
+                    <div class="article-cards">
+                        <div class="article-card">
+                            <img src="images/article-nutrition.jpg" alt="Nutrition Article">
+                            <div class="article-content">
+                                <h4>Nutrition Basics for All Ages</h4>
+                                <p>Learn about essential nutrients and balanced diets for different life stages.</p>
+                                <a href="articles/nutrition-basics.html" class="read-more">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="article-card">
+                            <img src="images/article-prevention.jpg" alt="Prevention Article">
+                            <div class="article-content">
+                                <h4>Preventive Health Measures</h4>
+                                <p>Simple steps you can take today to prevent common health issues tomorrow.</p>
+                                <a href="articles/preventive-health.html" class="read-more">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="article-card">
+                            <img src="images/article-mental.jpg" alt="Mental Health Article">
+                            <div class="article-content">
+                                <h4>Managing Stress and Anxiety</h4>
+                                <p>Effective techniques for maintaining mental wellbeing in challenging times.</p>
+                                <a href="articles/stress-management.html" class="read-more">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="articles/index.html" class="btn btn-outline">View All Articles</a>
+                </div>
+                
+                <div class="edu-category">
+                    <h3>Video Resources</h3>
+                    <div class="video-gallery">
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <img src="images/video-first-aid.jpg" alt="First Aid Video">
+                                <div class="play-button"><i class="fas fa-play"></i></div>
+                            </div>
+                            <h4>Basic First Aid Techniques</h4>
+                            <p>10:15 mins</p>
+                        </div>
+                        
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <img src="images/video-exercise.jpg" alt="Exercise Video">
+                                <div class="play-button"><i class="fas fa-play"></i></div>
+                            </div>
+                            <h4>Home Exercises for All Fitness Levels</h4>
+                            <p>15:30 mins</p>
+                        </div>
+                        
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <img src="images/video-hygiene.jpg" alt="Hygiene Video">
+                                <div class="play-button"><i class="fas fa-play"></i></div>
+                            </div>
+                            <h4>Personal Hygiene and Disease Prevention</h4>
+                            <p>8:45 mins</p>
+                        </div>
+                    </div>
+                    <a href="videos/index.html" class="btn btn-outline">View All Videos</a>
+                </div>
+                
+                <div class="edu-category">
+                    <h3>Health Guides</h3>
+                    <div class="guides-list">
+                        <div class="guide-item">
+                            <div class="guide-icon"><i class="fas fa-book-medical"></i></div>
+                            <div class="guide-info">
+                                <h4>Family Health Handbook</h4>
+                                <p>Comprehensive guide covering common health issues for all family members</p>
+                                <a href="guides/family-health.pdf" class="download-link">Download PDF</a>
+                            </div>
+                        </div>
+                        
+                        <div class="guide-item">
+                            <div class="guide-icon"><i class="fas fa-heartbeat"></i></div>
+                            <div class="guide-info">
+                                <h4>Chronic Disease Management</h4>
+                                <p>Tips and strategies for living well with chronic health conditions</p>
+                                <a href="guides/chronic-disease.pdf" class="download-link">Download PDF</a>
+                            </div>
+                        </div>
+                        
+                        <div class="guide-item">
+                            <div class="guide-icon"><i class="fas fa-pills"></i></div>
+                            <div class="guide-info">
+                                <h4>Medication Safety Guide</h4>
+                                <p>Important information about proper medication use and storage</p>
+                                <a href="guides/medication-safety.pdf" class="download-link">Download PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="guides/index.html" class="btn btn-outline">View All Guides</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Health Programs Section -->
+        <section id="health-programs" class="health-programs">
+            <div class="section-header">
+                <h2>Health Programs</h2>
+                <p>Special initiatives and support programs for various health needs</p>
+            </div>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="images/program-maternal.jpg" alt="Maternal Health Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Maternal Health Initiative</h3>
+                        <p>Comprehensive support for expectant mothers including prenatal care, nutrition guidance, and childbirth preparation.</p>
+                        <ul class="program-features">
+                            <li>Free prenatal check-ups</li>
+                            <li>Nutrition supplements for eligible mothers</li>
+                            <li>Childbirth education workshops</li>
+                        </ul>
+                        <a href="programs/maternal-health.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="images/program-vaccination.jpg" alt="Vaccination Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Community Vaccination Program</h3>
+                        <p>Access to essential vaccinations for children and adults to prevent communicable diseases.</p>
+                        <ul class="program-features">
+                            <li>Free childhood immunizations</li>
+                            <li>Adult vaccination services</li>
+                            <li>Mobile vaccination clinics</li>
+                        </ul>
+                        <a href="programs/vaccination.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="images/program-chronic.jpg" alt="Chronic Disease Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Chronic Disease Management</h3>
+                        <p>Support for individuals managing diabetes, hypertension, and other chronic conditions.</p>
+                        <ul class="program-features">
+                            <li>Regular health monitoring</li>
+                            <li>Medication assistance programs</li>
+                            <li>Support groups and education</li>
+                        </ul>
+                        <a href="programs/chronic-disease.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="images/program-mental.jpg" alt="Mental Health Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Mental Health Support</h3>
+                        <p>Resources and assistance for individuals dealing with mental health challenges.</p>
+                        <ul class="program-features">
+                            <li>Counseling services</li>
+                            <li>Peer support networks</li>
+                            <li>Crisis intervention</li>
+                        </ul>
+                        <a href="programs/mental-health.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>How our healthcare services have made a difference</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"The telemedicine service was a lifesaver for my family. Living in a remote area, it used to take hours to see a doctor. Now we can get medical advice without the lengthy travel."</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonial-1.jpg" alt="Maria J.">
+                            <div class="author-info">
+                                <h4>Maria J.</h4>
+                                <p>Rural Community Resident</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"The health education resources helped me understand and manage my diabetes better. The guides are easy to understand and the virtual support group has been incredibly helpful."</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonial-2.jpg" alt="James T.">
+                            <div class="author-info">
+                                <h4>James T.</h4>
+                                <p>Diabetes Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"Finding the right mental health professional used to be challenging. Through this platform, I was connected with a therapist who truly understands my needs. It has made a world of difference."</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonial-3.jpg" alt="Sophia K.">
+                            <div class="author-info">
+                                <h4>Sophia K.</h4>
+                                <p>Mental Health Advocate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-controls">
+                <button class="prev-slide"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="next-slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+        
+        <!-- Call to Action -->
+        <section class="healthcare-cta">
+            <div class="cta-content">
+                <h2>Ready to Take Control of Your Health?</h2>
+                <p>Create an account to access all our healthcare services and resources.</p>
+                <div class="cta-buttons">
+                    <a href="signup.html" class="btn btn-primary">Sign Up Now</a>
+                    <a href="contact.html" class="btn btn-outline">Contact Support</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>We're dedicated to making healthcare accessible to everyone through technology and community support.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#telemedicine">Book Consultation</a></li>
+                    <li><a href="#find-clinic">Find Clinic</a></li>
+                    <li><a href="#health-education">Health Education</a></li>
+                    <li><a href="#health-programs">Health Programs</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Community Way, City, Country</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> support@healthcareaccess.org</p>
+            </div>
+            
+            <div class="footer-section newsletter">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter for the latest health tips and resources.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Healthcare Access Platform. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="accessibility.html">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/healthcare.js"></script>
+</body>
+</html>

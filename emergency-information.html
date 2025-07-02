@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Information - Healthcare Access</title>
+    <link href="img/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .emergency-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .emergency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        a.tel-link {
+            color: #4a5568; /* Gray color for consistency */
+            text-decoration: none; /* Remove underline */
+        }
+        a.tel-link:hover {
+            color: #3182ce; /* Blue color on hover */
+        }
+        .first-aid-content, .emergency-prep-content, .mental-health-content {
+            display: none;
+            margin-top: 1rem;
+        }
+        .first-aid-content.active, .emergency-prep-content.active, .mental-health-content.active {
+            display: block;
+        }
+        .navbar-menu {
+            display: none;
+        }
+        .navbar-menu.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-indigo-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a class="navbar-brand" href="index.html">
+                <img src="image/logo.png" alt="Makhado Logo" class="h-10">
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="hover:text-indigo-200">Home</a>
+                <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
+                <a href="healthcare.html" class="hover:text-indigo-200">Healthcare</a>
+                <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
+                <a href="Agriculture.html" class="hover:text-indigo-200">Agriculture</a>
+                <a href="educational res.html" class="hover:text-indigo-200">Education</a>
+                <a href="social j and civil e.html" class="hover:text-indigo-200">Social Justice</a>
+                <div class="flex space-x-4">
+                    <a href="signin and signup/signup.html" class="bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100">Sign In</a>
+                    <a href="signin and signup/signup.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Sign Up</a>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="navbar-menu md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 hover:bg-indigo-700">Home</a>
+                <a href="jobs.html" class="block px-3 py-2 hover:bg-indigo-700">Jobs</a>
+                <a href="healthcare.html" class="block px-3 py-2 hover:bg-indigo-700">Healthcare</a>
+                <a href="crowdfunding.html" class="block px-3 py-2 hover:bg-indigo-700">Crowdfunding</a>
+                <a href="Agriculture.html" class="block px-3 py-2 hover:bg-indigo-700">Agriculture</a>
+                <a href="educational res.html" class="block px-3 py-2 hover:bg-indigo-700">Education</a>
+                <a href="social j and civil e.html" class="block px-3 py-2 hover:bg-indigo-700">Social Justice</a>
+                <div class="mt-4">
+                    <a href="signin and signup/signup.html" class="block px-3 py-2 bg-white text-indigo-800 rounded-lg font-semibold hover:bg-indigo-100">Sign In</a>
+                    <a href="signin and signup/signup.html" class="block px-3 py-2 mt-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-indigo-800 mb-4">Emergency Information</h1>
+        <p class="text-lg text-gray-600 mb-8">Access emergency contact information, first aid guides, and critical health resources for urgent situations.</p>
+
+        <!-- Emergency Contacts -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-6">Emergency Contacts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Emergency Card 1 -->
+                <div class="emergency-card bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl text-red-600 mb-4">🚑</div>
+                    <h3 class="text-xl font-bold mb-2">Ambulance</h3>
+                    <p class="text-gray-600 mb-2">
+                        <i class="fas fa-phone mr-2"></i>
+                        <a href="tel:10177" class="tel-link">10177</a> (National Emergency Number)
+                    </p>
+                    <p class="text-gray-600"><i class="fas fa-info-circle mr-2"></i>Available 24/7 for medical emergencies.</p>
+                </div>
+
+                <!-- Emergency Card 2 -->
+                <div class="emergency-card bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl text-blue-600 mb-4">🚓</div>
+                    <h3 class="text-xl font-bold mb-2">Police</h3>
+                    <p class="text-gray-600 mb-2">
+                        <i class="fas fa-phone mr-2"></i>
+                        <a href="tel:10111" class="tel-link">10111</a> (South African Police Service)
+                    </p>
+                    <p class="text-gray-600"><i class="fas fa-info-circle mr-2"></i>Available 24/7 for crime-related emergencies.</p>
+                </div>
+
+                <!-- Emergency Card 3 -->
+                <div class="emergency-card bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl text-orange-600 mb-4">🚒</div>
+                    <h3 class="text-xl font-bold mb-2">Fire Department</h3>
+                    <p class="text-gray-600 mb-2">
+                        <i class="fas fa-phone mr-2"></i>
+                        <a href="tel:10177" class="tel-link">10177</a> (National Emergency Number)
+                    </p>
+                    <p class="text-gray-600"><i class="fas fa-info-circle mr-2"></i>Available 24/7 for fire-related emergencies.</p>
+                </div>
+
+                <!-- Emergency Card 4 -->
+                <div class="emergency-card bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl text-green-600 mb-4">🏥</div>
+                    <h3 class="text-xl font-bold mb-2">Poison Control</h3>
+                    <p class="text-gray-600 mb-2">
+                        <i class="fas fa-phone mr-2"></i>
+                        <a href="tel:0861555777" class="tel-link">0861 555 777</a> (Poison Information Helpline)
+                    </p>
+                    <p class="text-gray-600"><i class="fas fa-info-circle mr-2"></i>Available 24/7 for poison-related emergencies.</p>
+                </div>
+
+                <!-- Emergency Card 5 -->
+                <div class="emergency-card bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl text-purple-600 mb-4">🚨</div>
+                    <h3 class="text-xl font-bold mb-2">Childline</h3>
+                    <p class="text-gray-600 mb-2">
+                        <i class="fas fa-phone mr-2"></i>
+                        <a href="tel:0800055555" class="tel-link">0800 055 555</a> (Childline South Africa)
+                    </p>
+                    <p class="text-gray-600"><i class="fas fa-info-circle mr-2"></i>Available 24/7 for child-related emergencies.</p>
+                </div>
+
+                <!-- Emergency Card 6 -->
+                <div class="emergency-card bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl text-yellow-600 mb-4">🆘</div>
+                    <h3 class="text-xl font-bold mb-2">Disaster Management</h3>
+                    <p class="text-gray-600 mb-2">
+                        <i class="fas fa-phone mr-2"></i>
+                        <a href="tel:112" class="tel-link">112</a> (National Disaster Management Center)
+                    </p>
+                    <p class="text-gray-600"><i class="fas fa-info-circle mr-2"></i>Available 24/7 for disaster-related emergencies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Resources -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-indigo-800 mb-6">Additional Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Resource Card 1 - First Aid Guide -->
+                <div class="emergency-card bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl text-indigo-600 mb-4">📋</div>
+                    <h3 class="text-xl font-bold mb-2">First Aid Guide</h3>
+                    <p class="text-gray-600 mb-4">Learn basic first aid techniques to handle emergencies.</p>
+                    <button id="first-aid-toggle" class="text-indigo-600 font-semibold hover:text-indigo-800">Read Guide →</button>
+                    <div id="first-aid-content" class="first-aid-content">
+                        <h4 class="font-bold mt-4">Basic First Aid Guide</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li><strong>CPR:</strong> 30 chest compressions followed by 2 rescue breaths.</li>
+                            <li><strong>Choking:</strong> Perform the Heimlich maneuver.</li>
+                            <li><strong>Bleeding:</strong> Apply direct pressure and elevate the wound.</li>
+                            <li><strong>Burns:</strong> Cool under running water for 10-15 minutes.</li>
+                            <li><strong>Fractures:</strong> Immobilize the injured area.</li>
+                            <li><strong>Heat Exhaustion:</strong> Move to a cooler place and hydrate.</li>
+                            <li><strong>Hypothermia:</strong> Warm the person gradually.</li>
+                            <li><strong>Seizures:</strong> Clear the area and place the person on their side.</li>
+                            <li><strong>Poisoning:</strong> Call poison control immediately.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Resource Card 2 - Emergency Preparedness -->
+                <div class="emergency-card bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl text-indigo-600 mb-4">📚</div>
+                    <h3 class="text-xl font-bold mb-2">Emergency Preparedness</h3>
+                    <p class="text-gray-600 mb-4">Prepare for emergencies with these essential tips.</p>
+                    <button id="emergency-prep-toggle" class="text-indigo-600 font-semibold hover:text-indigo-800">Learn More →</button>
+                    <div id="emergency-prep-content" class="emergency-prep-content">
+                        <h4 class="font-bold mt-4">Emergency Preparedness Guide</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li><strong>Create an Emergency Kit:</strong> Include water, non-perishable food, flashlight, batteries, first aid kit, and medications.</li>
+                            <li><strong>Develop a Communication Plan:</strong> Ensure all family members know how to contact each other during an emergency.</li>
+                            <li><strong>Know Evacuation Routes:</strong> Identify safe exits and meeting points in case of evacuation.</li>
+                            <li><strong>Stay Informed:</strong> Monitor weather alerts and emergency broadcasts.</li>
+                            <li><strong>Secure Your Home:</strong> Anchor heavy furniture and secure hazardous materials.</li>
+                            <li><strong>Practice Drills:</strong> Conduct regular fire, earthquake, or tornado drills with your family.</li>
+                            <li><strong>Protect Important Documents:</strong> Store copies of IDs, insurance policies, and medical records in a waterproof container.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Resource Card 3 - Mental Health Support -->
+                <div class="emergency-card bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl text-indigo-600 mb-4">📞</div>
+                    <h3 class="text-xl font-bold mb-2">Mental Health Support</h3>
+                    <p class="text-gray-600 mb-4">Access mental health resources and support hotlines.</p>
+                    <button id="mental-health-toggle" class="text-indigo-600 font-semibold hover:text-indigo-800">Find Help →</button>
+                    <div id="mental-health-content" class="mental-health-content">
+                        <h4 class="font-bold mt-4">Mental Health Resources</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li><strong>Crisis Hotline:</strong> Call <a href="tel:0861322322" class="tel-link">0861 322 322</a> (South African Depression and Anxiety Group).</li>
+                            <li><strong>Therapy and Counseling:</strong> Find licensed therapists through <a href="https://www.sadag.org" target="_blank" class="text-indigo-600 hover:text-indigo-800">SADAG</a>.</li>
+                            <li><strong>Support Groups:</strong> Join local or online support groups for mental health.</li>
+                            <li><strong>Self-Care Tips:</strong> Practice mindfulness, exercise regularly, and maintain a healthy routine.</li>
+                            <li><strong>Emergency Help:</strong> If you or someone you know is in immediate danger, call <a href="tel:10111" class="tel-link">10111</a> (Police) or visit the nearest hospital.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SAimpactHub</h3>
+                    <p class="text-gray-400">Empowering communities through connection and access to essential resources.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="jobs.html" class="text-gray-400 hover:text-white">Jobs</a></li>
+                        <li><a href="health.html" class="text-gray-400 hover:text-white">Healthcare</a></li>
+                        <li><a href="crowdfunding.html" class="text-gray-400 hover:text-white">Crowdfunding</a></li>
+                        <li><a href="Agriculture.html" class="text-gray-400 hover:text-white">Agriculture</a></li>
+                        <li><a href="educational res.html" class="text-gray-400 hover:text-white">Education</a></li>
+                        <li><a href="social j and civil e.html" class="text-gray-400 hover:text-white">Social Justice</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>17 Thondoni, Mashamba, Limpopo</li>
+                        <li><i class="fas fa-phone mr-2"></i>+27 71 136 7089</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@saimpactadminhub.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Subscribe</h4>
+                    <p class="text-gray-400 mb-4">Stay updated with our latest initiatives and opportunities.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full text-gray-900">
+                        <button type="submit" class="bg-indigo-600 px-4 py-2 rounded-r-lg hover:bg-indigo-700">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 SAimpactHub. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Toggles and Mobile Menu -->
+    <script>
+        // Toggle First Aid Guide
+        document.getElementById('first-aid-toggle').addEventListener('click', function() {
+            const content = document.getElementById('first-aid-content');
+            content.classList.toggle('active');
+            console.log('First Aid Toggle Clicked'); // Debugging
+        });
+
+        // Toggle Emergency Preparedness Guide
+        document.getElementById('emergency-prep-toggle').addEventListener('click', function() {
+            const content = document.getElementById('emergency-prep-content');
+            content.classList.toggle('active');
+            console.log('Emergency Preparedness Toggle Clicked'); // Debugging
+        });
+
+        // Toggle Mental Health Support Guide
+        document.getElementById('mental-health-toggle').addEventListener('click', function() {
+            const content = document.getElementById('mental-health-content');
+            content.classList.toggle('active');
+            console.log('Mental Health Toggle Clicked'); // Debugging
+        });
+
+        // Toggle Mobile Menu
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

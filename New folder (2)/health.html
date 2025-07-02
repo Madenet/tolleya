@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Access - Community Empowerment Platform</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #4285f4;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --accent: #5c95ff;
+            --danger: #ea4335;
+            --success: #34a853;
+            --info: #46b3e6;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            padding: 3rem 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            background-color: var(--light);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+        }
+        
+        .telemedicine-section, .health-education-section, .clinic-locator-section, .emergency-section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .appointment-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .resource-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .resource-image {
+            height: 150px;
+            background-color: #eee;
+        }
+        
+        .resource-content {
+            padding: 1rem;
+        }
+        
+        .resource-card h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .map-container {
+            height: 400px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        
+        .clinic-list {
+            margin-top: 2rem;
+        }
+        
+        .clinic-item {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .emergency-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .emergency-card {
+            background-color: #f8d7da;
+            border-left: 4px solid var(--danger);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        
+        .emergency-card h4 {
+            margin-top: 0;
+            color: var(--danger);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h4 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Community Health</div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="jobs.html">Jobs</a>
+                    <a href="health.html">Healthcare</a>
+                    <a href="crowdfunding.html">Crowdfunding</a>
+                    <a href="educational res.html">Education</a>
+                    <a href="Agriculture.html">Agriculture</a>
+                    <a href="social j and civil e.html">Social Justice</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="hero">
+        <div class="container">
+            <h1>Accessible Healthcare for Everyone</h1>
+            <p>Breaking barriers to quality healthcare through technology, education, and community resources</p>
+        </div>
+    </div>
+    
+    <section class="features">
+        <div class="container">
+            <h2>Healthcare Services</h2>
+            <p>Our platform offers various healthcare solutions to ensure you and your family have access to quality care.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <span>📱</span>
+                    </div>
+                    <h3>Telemedicine</h3>
+                    <p>Connect with healthcare professionals remotely through video consultations.</p>
+                    <a href="#telemedicine" class="btn">Book Consultation</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <span>📚</span>
+                    </div>
+                    <h3>Health Education</h3>
+                    <p>Access informative resources about various health conditions and preventive care.</p>
+                    <a href="#health-education" class="btn">Explore Resources</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <span>🏥</span>
+                    </div>
+                    <h3>Clinic Locator</h3>
+                    <p>Find healthcare facilities near you with our interactive map and directory.</p>
+                    <a href="#clinic-locator" class="btn">Find Clinics</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <span>🚑</span>
+                    </div>
+                    <h3>Emergency Help</h3>
+                    <p>Quick access to emergency contacts and first aid information when you need it most.</p>
+                    <a href="#emergency" class="btn">Emergency Info</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="telemedicine" class="telemedicine-section">
+        <div class="container">
+            <h2>Telemedicine Services</h2>
+            <p>Connect with qualified healthcare providers from the comfort of your home. Our telemedicine service provides secure video consultations for various health concerns.</p>
+            
+            <div class="appointment-form">
+                <h3>Book a Virtual Consultation</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="specialty">Medical Specialty</label>
+                        <select id="specialty" class="form-control">
+                            <option value="">Select a specialty</option>
+                            <option value="general">General Practice</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="internal">Internal Medicine</option>
+                            <option value="dermatology">Dermatology</option>
+                            <option value="psychiatry">Psychiatry</option>
+                            <option value="gynecology">Gynecology</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" id="time" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason">Reason for Consultation</label>
+                        <textarea id="reason" class="form-control" rows="3" placeholder="Briefly describe your symptoms or concerns"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Schedule Appointment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section id="health-education" class="health-education-section">
+        <div class="container">
+            <h2>Health Education Resources</h2>
+            <p>Empower yourself with knowledge about common health conditions, preventive care, and healthy lifestyle habits.</p>
+            
+            <div class="resource-cards">
+                <div class="resource-card">
+                    <div class="resource-image"></div>
+                    <div class="resource-content">
+                        <h4>Understanding Diabetes</h4>
+                        <p>Learn about causes, symptoms, and management of diabetes.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-image"></div>
+                    <div class="resource-content">
+                        <h4>Maternal Health</h4>
+                        <p>Essential information for expectant mothers and newborn care.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>

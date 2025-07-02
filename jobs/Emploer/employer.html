@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register as Employer</title>
+    <!-- Tailwind CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS for animations -->
+    <style>
+        /* Custom animations */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .animated {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Custom styles for the form */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-field {
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center">
+    <!-- Register as Employer Container -->
+    <div class="form-container p-8 max-w-2xl w-full animated">
+        <!-- Page Title -->
+        <h1 class="text-4xl font-bold text-white text-center mb-8 fade-in">Register as Employer</h1>
+
+        <!-- Registration Form -->
+        <form id="employerForm" class="space-y-6 fade-in">
+            <!-- Company Name -->
+            <div>
+                <label for="companyName" class="block text-sm font-medium text-white">Company Name</label>
+                <input type="text" id="companyName" name="companyName" placeholder="Enter your company name"
+                    class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    required>
+                <p id="companyNameError" class="text-red-400 text-sm mt-1 hidden">Please enter your company name.</p>
+            </div>
+
+            <!-- Industry -->
+            <div>
+                <label for="industry" class="block text-sm font-medium text-white">Industry</label>
+                <select id="industry" name="industry"
+                    class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    required>
+                    <option value="">Select your industry</option>
+                    <option value="technology">Technology</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="education">Education</option>
+                    <option value="agriculture">Agriculture</option>
+                    <option value="finance">Finance</option>
+                    <option value="nonprofit">Nonprofit</option>
+                </select>
+                <p id="industryError" class="text-red-400 text-sm mt-1 hidden">Please select your industry.</p>
+            </div>
+
+            <!-- Contact Person -->
+            <div>
+                <label for="contactPerson" class="block text-sm font-medium text-white">Contact Person</label>
+                <input type="text" id="contactPerson" name="contactPerson" placeholder="Enter the contact person's name"
+                    class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    required>
+                <p id="contactPersonError" class="text-red-400 text-sm mt-1 hidden">Please enter the contact person's name.</p>
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-white">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email"
+                    class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    required>
+                <p id="emailError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid email.</p>
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+                <label for="phone" class="block text-sm font-medium text-white">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
+                    class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    required>
+                <p id="phoneError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid phone number.</p>
+            </div>
+
+            <!-- Company Website -->
+            <div>
+                <label for="website" class="block text-sm font-medium text-white">Company Website</label>
+                <input type="url" id="website" name="website" placeholder="Enter your company website"
+                    class="input-field mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <p id="websiteError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid website URL.</p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                class="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100 transition-all duration-300">
+                Register
+            </button>
+        </form>
+    </div>
+
+    <!-- JavaScript for Form Validation -->
+    <script>
+        const employerForm = document.getElementById('employerForm');
+        const companyName = document.getElementById('companyName');
+        const industry = document.getElementById('industry');
+        const contactPerson = document.getElementById('contactPerson');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const website = document.getElementById('website');
+        const companyNameError = document.getElementById('companyNameError');
+        const industryError = document.getElementById('industryError');
+        const contactPersonError = document.getElementById('contactPersonError');
+        const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
+        const websiteError = document.getElementById('websiteError');
+
+        // Company Name validation
+        companyName.addEventListener('input', () => {
+            if (companyName.value.trim() === '') {
+                companyNameError.classList.remove('hidden');
+            } else {
+                companyNameError.classList.add('hidden');
+            }
+        });
+
+        // Industry validation
+        industry.addEventListener('change', () => {
+            if (industry.value === '') {
+                industryError.classList.remove('hidden');
+            } else {
+                industryError.classList.add('hidden');
+            }
+        });
+
+        // Contact Person validation
+        contactPerson.addEventListener('input', () => {
+            if (contactPerson.value.trim() === '') {
+                contactPersonError.classList.remove('hidden');
+            } else {
+                contactPersonError.classList.add('hidden');
+            }
+        });
+
+        // Email validation
+        email.addEventListener('input', () => {
+            if (!email.checkValidity()) {
+                emailError.classList.remove('hidden');
+            } else {
+                emailError.classList.add('hidden');
+            }
+        });
+
+        // Phone validation
+        phone.addEventListener('input', () => {
+            if (!phone.checkValidity()) {
+                phoneError.classList.remove('hidden');
+            } else {
+                phoneError.classList.add('hidden');
+            }
+        });
+
+        // Website validation
+        website.addEventListener('input', () => {
+            if (website.value && !website.checkValidity()) {
+                websiteError.classList.remove('hidden');
+            } else {
+                websiteError.classList.add('hidden');
+            }
+        });
+
+        // Form submission
+        employerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Validate inputs
+            if (companyName.value.trim() === '' || industry.value === '' || contactPerson.value.trim() === '' ||
+                !email.checkValidity() || !phone.checkValidity() || (website.value && !website.checkValidity())) {
+                alert('Please fill out the form correctly.');
+                return;
+            }
+
+            // Simulate form submission
+            alert('Registration successful! We will contact you shortly.');
+            // Redirect to another page or perform further actions
+        });
+    </script>
+</body>
+</html>
