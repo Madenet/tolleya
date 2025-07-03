@@ -1,3 +1,10 @@
+
+
+{% load static %}
+
+{% extends 'landing/base.html' %}
+
+{% block content %}
 <div class="dropdown">
 	<span class="badge bg-primary notification-badge" onclick="showNotifications()">{{ notifications.count }}</span>
 	<div class="dropdown-content d-none" id="notification-container">
@@ -35,3 +42,6 @@
 			{% endfor %}
 		</div>
 	</div>
+
+
+	{% endblock %}

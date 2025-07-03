@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'market_recorder',
     'filestore',
+  
     
     #aws database
     'storages',
