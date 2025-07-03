@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Single Post - ZenBlog Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Community News - Tolleya</title>
+  <meta name="description" content="Latest community news from Elim, Shihlobyeni">
+  <meta name="keywords" content="Tolleya, community news, South Africa, Limpopo, Elim, Shihlobyeni">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -26,13 +26,323 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: ZenBlog
-  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
-  * Updated: Aug 08 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --secondary-color: #6c757d;
+      --light-bg: #f8f9fa;
+      --dark-bg: #212529;
+      --border-radius: 8px;
+      --box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #212529;
+    }
+    
+    /* Article Styling */
+    .article {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .post-img {
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+    }
+    
+    .post-img img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .post-img:hover img {
+      transform: scale(1.02);
+    }
+    
+    .title {
+      font-family: 'EB Garamond', serif;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--dark-bg);
+    }
+    
+    .meta-top {
+      margin-bottom: 1.5rem;
+    }
+    
+    .meta-top ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .meta-top li {
+      display: flex;
+      align-items: center;
+      color: var(--secondary-color);
+    }
+    
+    .meta-top i {
+      margin-right: 0.5rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      margin: 1rem 0;
+    }
+    
+    /* Comment System */
+    .comment-system {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2rem;
+    }
+    
+    .comment {
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--light-bg);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+    
+    .comment:hover {
+      box-shadow: var(--box-shadow);
+    }
+    
+    .comment-reply {
+      margin-left: 3rem;
+      margin-top: 1rem;
+      border-left: 3px solid var(--primary-color);
+    }
+    
+    .comment-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .comment-meta {
+      font-size: 0.9rem;
+      color: var(--secondary-color);
+    }
+    
+    .comment-actions {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    /* Reactions System */
+    .reactions-summary {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .reactions-list {
+      display: flex;
+      margin-right: 0.5rem;
+    }
+    
+    .reaction-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-right: -5px;
+    }
+    
+    .reaction-icon:first-child {
+      margin-right: 0;
+    }
+    
+    .reactions-count {
+      font-size: 0.85rem;
+      color: var(--secondary-color);
+    }
+    
+    .reaction-container {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .reaction-btn {
+      background: none;
+      border: none;
+      color: var(--secondary-color);
+      padding: 0.5rem 0.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      border-radius: 20px;
+    }
+    
+    .reaction-btn:hover {
+      background: rgba(0,0,0,0.05);
+    }
+    
+    .reaction-btn.active {
+      color: var(--primary-color);
+    }
+    
+    .reaction-btn i {
+      margin-right: 5px;
+      font-size: 1.1rem;
+    }
+    
+    .reaction-options {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      background: white;
+      border-radius: 50px;
+      padding: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 100;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+    
+    .reaction-options.active {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .reaction-options img {
+      width: 30px;
+      height: 30px;
+      margin: 0 2px;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    
+    .reaction-options img:hover {
+      transform: scale(1.3) translateY(-5px);
+    }
+    
+    .reaction-preview {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      background: white;
+      border-radius: 20px;
+      padding: 5px 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 100;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+    
+    /* Reply Form */
+    .reply-form {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #f1f1f1;
+      border-radius: var(--border-radius);
+    }
+    
+    .reply-form.active {
+      display: block;
+    }
+    
+    /* Widgets */
+    .widget-item {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .widget-title {
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      .sidebar {
+        margin-top: 3rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .comment-reply {
+        margin-left: 1.5rem;
+      }
+      
+      .comment-avatar {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .reaction-options {
+        padding: 3px;
+      }
+      
+      .reaction-options img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .article, .comment-system {
+        padding: 1.5rem;
+      }
+      
+      .comment {
+        padding: 1rem;
+      }
+      
+      .comment-actions {
+        gap: 0.5rem;
+      }
+      
+      .reaction-btn {
+        padding: 0.3rem 0.6rem;
+      }
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .new-comment {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
 </head>
 
 <body class="single-post-page">
@@ -41,31 +351,20 @@
     <div class="container position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">ZenBlog</h1>
+        <h1 class="sitename">Tolleya</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="single-post.html" class="active">Single Post</a></li>
+          <li><a href="single-post.html" class="active">News</a></li>
           <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="category.html">Category 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="category.html">Category 2</a></li>
-              <li><a href="category.html">Category 3</a></li>
-              <li><a href="category.html">Category 4</a></li>
+              <li><a href="category.html">Local News</a></li>
+              <li><a href="category.html">Sports</a></li>
+              <li><a href="category.html">Events</a></li>
+              <li><a href="category.html">Business</a></li>
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
@@ -77,7 +376,7 @@
         <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="#" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
       </div>
 
     </div>
@@ -88,11 +387,12 @@
     <!-- Page Title -->
     <div class="page-title">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Single Post</h1>
+        <h1 class="mb-2 mb-lg-0">Community News</h1>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Single Post</li>
+            <li><a href="category.html">News</a></li>
+            <li class="current">Article</li>
           </ol>
         </nav>
       </div>
@@ -110,214 +410,362 @@
               <article class="article">
 
                 <div class="post-img">
-                  <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                  <img src="assets/img/blog/blog-1.jpg" alt="Community meeting in Elim" class="img-fluid rounded" loading="lazy">
                 </div>
 
-                <h2 class="title">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</h2>
+                <h1 class="title">New Community Center Opens in Shihlobyeni</h1>
 
                 <div class="meta-top">
                   <ul>
-                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">Thabo Mokoena</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2024-06-15">June 15, 2024</time></a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#comments">24 Comments</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-eye"></i> 1,245 Views</li>
                   </ul>
                 </div><!-- End meta top -->
 
                 <div class="content">
                   <p>
-                    Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                    Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                    The community of Shihlobyeni celebrated the grand opening of its new multipurpose center this past weekend. 
+                    The facility, funded through a partnership between local government and community contributions, will serve 
+                    as a hub for education, social gatherings, and skills development programs.
                   </p>
 
                   <p>
-                    Sit repellat hic cupiditate hic ut nemo. Quis nihil sunt non reiciendis. Sequi in accusamus harum vel aspernatur. Excepturi numquam nihil cumque odio. Et voluptate cupiditate.
+                    Local dignitaries including Mayor Ndlovu and Chief Mabunda attended the ribbon-cutting ceremony, 
+                    emphasizing the importance of community spaces for social cohesion and youth development. 
+                    "This center represents our commitment to building a brighter future together," said Mayor Ndlovu.
                   </p>
 
-                  <blockquote>
+                  <blockquote class="blockquote">
                     <p>
-                      Et vero doloremque tempore voluptatem ratione vel aut. Deleniti sunt animi aut. Aut eos aliquam doloribus minus autem quos.
+                      "When we invest in our community spaces, we invest in our children's future. This center will be 
+                      a place of learning, celebration, and growth for generations to come."
                     </p>
+                    <footer class="blockquote-footer">Chief Mabunda at the opening ceremony</footer>
                   </blockquote>
 
                   <p>
-                    Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat.
-                    Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque.
-                    Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora.
+                    The two-story building features a computer lab, meeting rooms, a kitchen, and a large hall that can 
+                    accommodate up to 200 people. Construction began in January and was completed ahead of schedule thanks 
+                    to volunteer labor from community members.
                   </p>
 
-                  <h3>Et quae iure vel ut odit alias.</h3>
+                  <h3>Community Impact</h3>
                   <p>
-                    Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.
-                    Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
-                    Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
+                    Already, several groups have scheduled use of the facility. The local women's cooperative will hold 
+                    sewing classes, the youth forum plans career guidance workshops, and the elders council will host 
+                    monthly community meetings. A schedule will be posted at the center and on the Tolleya community app.
                   </p>
-                  <img src="assets/img/blog/blog-inside-post.jpg" class="img-fluid" alt="">
+                  <img src="assets/img/blog/blog-inside-post.jpg" class="img-fluid rounded" alt="Inside the new community center" loading="lazy">
 
-                  <h3>Ut repellat blanditiis est dolore sunt dolorum quae.</h3>
+                  <h3>Future Plans</h3>
                   <p>
-                    Rerum ea est assumenda pariatur quasi et quam. Facilis nam porro amet nostrum. In assumenda quia quae a id praesentium. Quos deleniti libero sed occaecati aut porro autem. Consectetur sed excepturi sint non placeat quia repellat incidunt labore. Autem facilis hic dolorum dolores vel.
-                    Consectetur quasi id et optio praesentium aut asperiores eaque aut. Explicabo omnis quibusdam esse. Ex libero illum iusto totam et ut aut blanditiis. Veritatis numquam ut illum ut a quam vitae.
+                    The management committee is exploring partnerships with NGOs to offer adult education classes and 
+                    health screenings. "We're just getting started," said committee chairperson Mrs. Khumalo. "This 
+                    building is just the shell - it's the people and programs that will bring it to life."
                   </p>
                   <p>
-                    Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
+                    Volunteers are needed for various roles at the center. Those interested can sign up at the facility 
+                    or through the Tolleya platform.
                   </p>
+
+                  <div class="article-footer mt-4 pt-3 border-top">
+                    <div class="tags">
+                      <a href="#" class="btn btn-sm btn-outline-secondary me-1">#Community</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary me-1">#Development</a>
+                      <a href="#" class="btn btn-sm btn-outline-secondary me-1">#Shihlobyeni</a>
+                    </div>
+                    <div class="share-buttons mt-3">
+                      <span class="me-2">Share:</span>
+                      <a href="#" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-facebook"></i></a>
+                      <a href="#" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-twitter-x"></i></a>
+                      <a href="#" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-whatsapp"></i></a>
+                      <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-link-45deg"></i></a>
+                    </div>
+                  </div>
 
                 </div><!-- End post content -->
-
-                <div class="meta-bottom">
-                  <i class="bi bi-folder"></i>
-                  <ul class="cats">
-                    <li><a href="#">Business</a></li>
-                  </ul>
-
-                  <i class="bi bi-tags"></i>
-                  <ul class="tags">
-                    <li><a href="#">Creative</a></li>
-                    <li><a href="#">Tips</a></li>
-                    <li><a href="#">Marketing</a></li>
-                  </ul>
-                </div><!-- End meta bottom -->
 
               </article>
 
             </div>
           </section><!-- /Blog Details Section -->
 
-          <!-- Blog Comments Section -->
-          <section id="blog-comments" class="blog-comments section">
+          <!-- Comment System Section -->
+          <section id="comments" class="comment-system section">
 
             <div class="container">
 
-              <h4 class="comments-count">8 Comments</h4>
+              <div class="section-header d-flex justify-content-between align-items-center mb-4">
+                <h3>Community Discussion <span class="badge bg-primary">24</span></h3>
+                <button class="btn btn-sm btn-outline-primary" id="sort-comments">
+                  <i class="bi bi-arrow-down-up"></i> Sort
+                </button>
+              </div>
 
-              <div id="comment-1" class="comment">
-                <div class="d-flex">
-                  <div class="comment-img"><img src="assets/img/blog/comments-1.jpg" alt=""></div>
-                  <div>
-                    <h5><a href="">Georgia Reader</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan,2022</time>
-                    <p>
-                      Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente quis molestiae est qui cum soluta.
-                      Vero aut rerum vel. Rerum quos laboriosam placeat ex qui. Sint qui facilis et.
-                    </p>
+              <!-- Comment Form -->
+              <div class="comment-form mb-5">
+                <h4>Add Your Voice</h4>
+                <form id="main-comment-form">
+                  <div class="mb-3">
+                    <textarea class="form-control" id="comment-text" rows="3" placeholder="Share your thoughts..." required></textarea>
                   </div>
-                </div>
-              </div><!-- End comment #1 -->
-
-              <div id="comment-2" class="comment">
-                <div class="d-flex">
-                  <div class="comment-img"><img src="assets/img/blog/comments-2.jpg" alt=""></div>
-                  <div>
-                    <h5><a href="">Aron Alvarado</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan,2022</time>
-                    <p>
-                      Ipsam tempora sequi voluptatem quis sapiente non. Autem itaque eveniet saepe. Officiis illo ut beatae.
-                    </p>
-                  </div>
-                </div>
-
-                <div id="comment-reply-1" class="comment comment-reply">
-                  <div class="d-flex">
-                    <div class="comment-img"><img src="assets/img/blog/comments-3.jpg" alt=""></div>
-                    <div>
-                      <h5><a href="">Lynda Small</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                      <time datetime="2020-01-01">01 Jan,2022</time>
-                      <p>
-                        Enim ipsa eum fugiat fuga repellat. Commodi quo quo dicta. Est ullam aspernatur ut vitae quia mollitia id non. Qui ad quas nostrum rerum sed necessitatibus aut est. Eum officiis sed repellat maxime vero nisi natus. Amet nesciunt nesciunt qui illum omnis est et dolor recusandae.
-
-                        Recusandae sit ad aut impedit et. Ipsa labore dolor impedit et natus in porro aut. Magnam qui cum. Illo similique occaecati nihil modi eligendi. Pariatur distinctio labore omnis incidunt et illum. Expedita et dignissimos distinctio laborum minima fugiat.
-
-                        Libero corporis qui. Nam illo odio beatae enim ducimus. Harum reiciendis error dolorum non autem quisquam vero rerum neque.
-                      </p>
+                  <div class="row g-2">
+                    <div class="col-md-4">
+                      <input type="text" class="form-control" id="comment-name" placeholder="Your name" required>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="email" class="form-control" id="comment-email" placeholder="Your email (optional)">
+                    </div>
+                    <div class="col-md-4">
+                      <button type="submit" class="btn btn-primary w-100">Post Comment</button>
                     </div>
                   </div>
+                </form>
+              </div>
 
-                  <div id="comment-reply-2" class="comment comment-reply">
-                    <div class="d-flex">
-                      <div class="comment-img"><img src="assets/img/blog/comments-4.jpg" alt=""></div>
-                      <div>
-                        <h5><a href="">Sianna Ramsay</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                        <time datetime="2020-01-01">01 Jan,2022</time>
-                        <p>
-                          Et dignissimos impedit nulla et quo distinctio ex nemo. Omnis quia dolores cupiditate et. Ut unde qui eligendi sapiente omnis ullam. Placeat porro est commodi est officiis voluptas repellat quisquam possimus. Perferendis id consectetur necessitatibus.
-                        </p>
+              <!-- Comments List -->
+              <div class="comments-list" id="comments-container">
+
+                <!-- Top Comment (Most Liked) -->
+                <div class="comment top-comment" id="comment-3">
+                  <span class="top-comment-badge">Top Comment</span>
+                  <div class="d-flex">
+                    <div class="flex-shrink-0">
+                      <img src="assets/img/blog/comments-4.jpg" alt="User" class="comment-avatar" loading="lazy">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <div class="d-flex justify-content-between">
+                        <h5 class="mb-1">David Mahlangu</h5>
+                        <small class="comment-meta">Yesterday</small>
+                      </div>
+                      <p class="mb-2">
+                        I helped with the construction on weekends. So proud to see the finished product! 
+                        The community really came together for this one.
+                      </p>
+                      
+                      <!-- Reactions Summary -->
+                      <div class="reactions-summary">
+                        <div class="reactions-list">
+                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" class="reaction-icon">
+                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" class="reaction-icon">
+                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" class="reaction-icon">
+                        </div>
+                        <span class="reactions-count">Mulalo Fáfth, Maanda Gift and 791 others</span>
+                      </div>
+                      
+                      <div class="comment-actions">
+                        <div class="reaction-container">
+                          <button class="reaction-btn active">
+                            <i class="bi bi-hand-thumbs-up-fill"></i> Like
+                          </button>
+                          <div class="reaction-preview">You and 791 others</div>
+                          <div class="reaction-options">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
+                          </div>
+                        </div>
+                        <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
+                        <a href="#" class="share-btn text-decoration-none"><i class="bi bi-share"></i> Share</a>
+                      </div>
+                      
+                      <!-- Reply Form -->
+                      <div class="reply-form">
+                        <form class="reply-to-comment">
+                          <input type="hidden" name="parent-id" value="3">
+                          <div class="mb-2">
+                            <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
+                          </div>
+                          <div class="d-flex justify-content-end gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
+                            <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
-
-                  </div><!-- End comment reply #2-->
-
-                </div><!-- End comment reply #1-->
-
-              </div><!-- End comment #2-->
-
-              <div id="comment-3" class="comment">
-                <div class="d-flex">
-                  <div class="comment-img"><img src="assets/img/blog/comments-5.jpg" alt=""></div>
-                  <div>
-                    <h5><a href="">Nolan Davidson</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan,2022</time>
-                    <p>
-                      Distinctio nesciunt rerum reprehenderit sed. Iste omnis eius repellendus quia nihil ut accusantium tempore. Nesciunt expedita id dolor exercitationem aspernatur aut quam ut. Voluptatem est accusamus iste at.
-                      Non aut et et esse qui sit modi neque. Exercitationem et eos aspernatur. Ea est consequuntur officia beatae ea aut eos soluta. Non qui dolorum voluptatibus et optio veniam. Quam officia sit nostrum dolorem.
-                    </p>
                   </div>
-                </div>
-
-              </div><!-- End comment #3 -->
-
-              <div id="comment-4" class="comment">
-                <div class="d-flex">
-                  <div class="comment-img"><img src="assets/img/blog/comments-6.jpg" alt=""></div>
-                  <div>
-                    <h5><a href="">Kay Duggan</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan,2022</time>
-                    <p>
-                      Dolorem atque aut. Omnis doloremque blanditiis quia eum porro quis ut velit tempore. Cumque sed quia ut maxime. Est ad aut cum. Ut exercitationem non in fugiat.
-                    </p>
+                  
+                  <!-- Replies -->
+                  <div class="replies mt-3">
+                    <!-- Reply Example -->
+                    <div class="comment comment-reply" id="reply-3-1">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0">
+                          <img src="assets/img/blog/comments-5.jpg" alt="User" class="comment-avatar" loading="lazy">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                          <div class="d-flex justify-content-between">
+                            <h5 class="mb-1">Mashudu Mia Phuti Rambau</h5>
+                            <small class="comment-meta">12h</small>
+                          </div>
+                          <p class="mb-2">Ndo no flirta Ha Manskraal</p>
+                          
+                          <div class="reactions-summary">
+                            <div class="reactions-list">
+                              <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" class="reaction-icon">
+                            </div>
+                            <span class="reactions-count">24 people</span>
+                          </div>
+                          
+                          <div class="comment-actions">
+                            <div class="reaction-container">
+                              <button class="reaction-btn">
+                                <i class="bi bi-hand-thumbs-up"></i> Like
+                              </button>
+                              <div class="reaction-preview">24 people</div>
+                              <div class="reaction-options">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
+                              </div>
+                            </div>
+                            <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
+                            <span class="text-muted"><i class="bi bi-pencil"></i> Edited</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div><!-- End Reply Example -->
                   </div>
-                </div>
+                </div><!-- End Top Comment -->
 
-              </div><!-- End comment #4 -->
+                <!-- Comment 1 -->
+                <div class="comment" id="comment-1">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0">
+                      <img src="assets/img/blog/comments-1.jpg" alt="User" class="comment-avatar" loading="lazy">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <div class="d-flex justify-content-between">
+                        <h5 class="mb-1">Sarah Khumalo</h5>
+                        <small class="comment-meta">2 hours ago</small>
+                      </div>
+                      <p class="mb-2">
+                        This is such wonderful news! My daughter can't wait for the computer classes to start. 
+                        Thank you to everyone who made this possible.
+                      </p>
+                      
+                      <div class="reactions-summary">
+                        <div class="reactions-list">
+                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" class="reaction-icon">
+                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" class="reaction-icon">
+                        </div>
+                        <span class="reactions-count">12 people</span>
+                      </div>
+                      
+                      <div class="comment-actions">
+                        <div class="reaction-container">
+                          <button class="reaction-btn">
+                            <i class="bi bi-hand-thumbs-up"></i> Like
+                          </button>
+                          <div class="reaction-preview">12 people</div>
+                          <div class="reaction-options">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
+                          </div>
+                        </div>
+                        <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
+                        <a href="#" class="share-btn text-decoration-none"><i class="bi bi-share"></i> Share</a>
+                      </div>
+                      
+                      <!-- Reply Form (Hidden by default) -->
+                      <div class="reply-form">
+                        <form class="reply-to-comment">
+                          <input type="hidden" name="parent-id" value="1">
+                          <div class="mb-2">
+                            <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
+                          </div>
+                          <div class="d-flex justify-content-end gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
+                            <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Replies -->
+                  <div class="replies mt-3">
+                    
+                    <!-- Reply 1 -->
+                    <div class="comment comment-reply" id="reply-1-1">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0">
+                          <img src="assets/img/blog/comments-2.jpg" alt="User" class="comment-avatar" loading="lazy">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                          <div class="d-flex justify-content-between">
+                            <h5 class="mb-1">Thomas Mabasa</h5>
+                            <small class="comment-meta">1 hour ago</small>
+                          </div>
+                          <p class="mb-2">
+                            @Sarah Khumalo The computer lab has 10 new machines with internet access! 
+                            Perfect for school projects.
+                          </p>
+                          
+                          <div class="reactions-summary">
+                            <div class="reactions-list">
+                              <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" class="reaction-icon">
+                            </div>
+                            <span class="reactions-count">4 people</span>
+                          </div>
+                          
+                          <div class="comment-actions">
+                            <div class="reaction-container">
+                              <button class="reaction-btn">
+                                <i class="bi bi-hand-thumbs-up"></i> Like
+                              </button>
+                              <div class="reaction-preview">4 people</div>
+                              <div class="reaction-options">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
+                              </div>
+                            </div>
+                            <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
+                          </div>
+                          
+                          <!-- Nested Reply Form -->
+                          <div class="reply-form">
+                            <form class="reply-to-comment">
+                              <input type="hidden" name="parent-id" value="1-1">
+                              <div class="mb-2">
+                                <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
+                              </div>
+                              <div class="d-flex justify-content-end gap-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div><!-- End Reply 1 -->
+                    
+                  </div><!-- End Replies -->
+                </div><!-- End Comment 1 -->
+
+              </div><!-- End Comments List -->
+
+              <div class="text-center mt-4">
+                <button class="btn btn-outline-primary load-more" id="load-more-comments">
+                  <i class="bi bi-chat-square-text"></i> View more comments
+                </button>
+              </div>
 
             </div>
 
-          </section><!-- /Blog Comments Section -->
-
-          <!-- Comment Form Section -->
-          <section id="comment-form" class="comment-form section">
-            <div class="container">
-
-              <form action="">
-
-                <h4>Post Comment</h4>
-                <p>Your email address will not be published. Required fields are marked * </p>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input name="name" type="text" class="form-control" placeholder="Your Name*">
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input name="email" type="text" class="form-control" placeholder="Your Email*">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col form-group">
-                    <input name="website" type="text" class="form-control" placeholder="Your Website">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col form-group">
-                    <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
-                  </div>
-                </div>
-
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Post Comment</button>
-                </div>
-
-              </form>
-
-            </div>
-          </section><!-- /Comment Form Section -->
+          </section><!-- /Comment System Section -->
 
         </div>
 
@@ -330,103 +778,100 @@
 
               <div class="d-flex flex-column align-items-center">
                 <div class="d-flex align-items-center w-100">
-                  <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
+                  <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="Reporter" loading="lazy">
                   <div>
-                    <h4>Jane Smith</h4>
+                    <h4>Thabo Mokoena</h4>
                     <div class="social-links">
-                      <a href="https://x.com/#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                      <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-                      <a href="https://instagram.com/#"><i class="biu bi-linkedin"></i></a>
+                      <a href="#"><i class="bi bi-twitter-x"></i></a>
+                      <a href="#"><i class="bi bi-facebook"></i></a>
                     </div>
                   </div>
                 </div>
 
-                <p>
-                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                <p class="mt-2 text-center">
+                  Community reporter covering Elim and Shihlobyeni news. Passionate about local development stories.
                 </p>
 
               </div>
 
             </div><!--/Blog Author Widget -->
 
-            <!-- Search Widget -->
-            <div class="search-widget widget-item">
+            <!-- Trending Now Widget -->
+            <div class="trending-widget widget-item">
 
-              <h3 class="widget-title">Search</h3>
-              <form action="">
-                <input type="text">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-              </form>
-
-            </div><!--/Search Widget -->
-
-            <!-- Recent Posts Widget -->
-            <div class="recent-posts-widget widget-item">
-
-              <h3 class="widget-title">Recent Posts</h3>
+              <h3 class="widget-title">Trending in Elim</h3>
 
               <div class="post-item">
-                <img src="assets/img/blog/blog-recent-1.jpg" alt="" class="flex-shrink-0">
+                <img src="assets/img/blog/blog-recent-1.jpg" alt="" class="flex-shrink-0" loading="lazy">
                 <div>
-                  <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                  <h4><a href="blog-details.html">New soccer field construction begins</a></h4>
+                  <time datetime="2024-06-14">Jun 14, 2024</time>
                 </div>
-              </div><!-- End recent post item-->
+              </div>
 
               <div class="post-item">
-                <img src="assets/img/blog/blog-recent-2.jpg" alt="" class="flex-shrink-0">
+                <img src="assets/img/blog/blog-recent-2.jpg" alt="" class="flex-shrink-0" loading="lazy">
                 <div>
-                  <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                  <h4><a href="blog-details.html">Local farmers market every Saturday</a></h4>
+                  <time datetime="2024-06-10">Jun 10, 2024</time>
                 </div>
-              </div><!-- End recent post item-->
+              </div>
 
               <div class="post-item">
-                <img src="assets/img/blog/blog-recent-3.jpg" alt="" class="flex-shrink-0">
+                <img src="assets/img/blog/blog-recent-3.jpg" alt="" class="flex-shrink-0" loading="lazy">
                 <div>
-                  <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                  <h4><a href="blog-details.html">Youth entrepreneurship workshop</a></h4>
+                  <time datetime="2024-06-08">Jun 8, 2024</time>
                 </div>
-              </div><!-- End recent post item-->
+              </div>
 
-              <div class="post-item">
-                <img src="assets/img/blog/blog-recent-4.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
+            </div><!--/Trending Now Widget -->
+
+            <!-- Community Events Widget -->
+            <div class="events-widget widget-item">
+
+              <h3 class="widget-title">Upcoming Events</h3>
+
+              <div class="event-item">
+                <div class="event-date">
+                  <span class="day">20</span>
+                  <span class="month">Jun</span>
                 </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="assets/img/blog/blog-recent-5.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                <div class="event-info">
+                  <h4><a href="#">Computer basics class</a></h4>
+                  <p>New community center • 10:00 AM</p>
                 </div>
-              </div><!-- End recent post item-->
+              </div>
 
-            </div><!--/Recent Posts Widget -->
+              <div class="event-item">
+                <div class="event-date">
+                  <span class="day">22</span>
+                  <span class="month">Jun</span>
+                </div>
+                <div class="event-info">
+                  <h4><a href="#">Community clean-up day</a></h4>
+                  <p>Meet at soccer field • 8:00 AM</p>
+                </div>
+              </div>
 
-            <!-- Tags Widget -->
-            <div class="tags-widget widget-item">
+              <div class="event-item">
+                <div class="event-date">
+                  <span class="day">25</span>
+                  <span class="month">Jun</span>
+                </div>
+                <div class="event-info">
+                  <h4><a href="#">Elders council meeting</a></h4>
+                  <p>Community hall • 3:00 PM</p>
+                </div>
+              </div>
 
-              <h3 class="widget-title">Tags</h3>
-              <ul>
-                <li><a href="#">App</a></li>
-                <li><a href="#">IT</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Mac</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Office</a></li>
-                <li><a href="#">Creative</a></li>
-                <li><a href="#">Studio</a></li>
-                <li><a href="#">Smart</a></li>
-                <li><a href="#">Tips</a></li>
-                <li><a href="#">Marketing</a></li>
-              </ul>
+              <div class="text-center mt-3">
+                <button class="btn btn-sm btn-outline-primary load-more" id="load-more-events">
+                  <i class="bi bi-calendar-event"></i> View More Events
+                </button>
+              </div>
 
-            </div><!--/Tags Widget -->
+            </div><!--/Community Events Widget -->
 
           </div>
 
@@ -443,77 +888,59 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">ZenBlog</span>
+            <span class="sitename">Tolleya</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
+            <p>Elim, Shihlobyeni</p>
+            <p>Limpopo, South Africa</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>060 205 3583</span></p>
+            <p><strong>Email:</strong> <span>tolleyanet@gmail.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-whatsapp"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
           </div>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
+          <h4>Quick Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="category.html">News</a></li>
+            <li><a href="category.html">Sports</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
+          <h4>Categories</h4>
           <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Local News</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Announcements</a></li>
           </ul>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Hic solutasetp</h4>
-          <ul>
-            <li><a href="#">Molestiae accusamus iure</a></li>
-            <li><a href="#">Excepturi dignissimos</a></li>
-            <li><a href="#">Suscipit distinctio</a></li>
-            <li><a href="#">Dilecta</a></li>
-            <li><a href="#">Sit quas consectetur</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Nobis illum</h4>
-          <ul>
-            <li><a href="#">Ipsam</a></li>
-            <li><a href="#">Laudantium dolorum</a></li>
-            <li><a href="#">Dinera</a></li>
-            <li><a href="#">Trodelas</a></li>
-            <li><a href="#">Flexo</a></li>
-          </ul>
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+          <h4>Community Alerts</h4>
+          <p>Get important updates directly to your phone</p>
+          <form action="">
+            <input type="tel" class="form-control" placeholder="Your phone number" required>
+            <button type="submit" class="btn btn-primary mt-2">Subscribe</button>
+          </form>
         </div>
 
       </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">ZenBlog</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Tolleya</strong> <span>2024. All Rights Reserved</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Proudly serving the Elim community
       </div>
     </div>
 
@@ -527,12 +954,577 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    // Enhanced Comment System Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track reaction timers
+      const reactionTimers = {};
+      
+      // Toggle reply forms
+      const replyButtons = document.querySelectorAll('.reply-btn');
+      replyButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          const replyForm = this.closest('.comment').querySelector('.reply-form');
+          replyForm.classList.toggle('active');
+        });
+      });
+      
+      // Cancel reply
+      const cancelButtons = document.querySelectorAll('.cancel-reply');
+      cancelButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          this.closest('.reply-form').classList.remove('active');
+        });
+      });
+      
+      // Facebook-style reactions with hover and hold
+      const reactionContainers = document.querySelectorAll('.reaction-container');
+      reactionContainers.forEach(container => {
+        const button = container.querySelector('.reaction-btn');
+        const options = container.querySelector('.reaction-options');
+        const preview = container.querySelector('.reaction-preview');
+        const count = container.querySelector('.reaction-count');
+        
+        // Generate unique ID for this button
+        button.id = 'reaction-btn-' + Math.random().toString(36).substr(2, 9);
+        
+        // Show preview on hover
+        button.addEventListener('mouseenter', function() {
+          if (preview.textContent !== '0 people') {
+            preview.style.display = 'block';
+          }
+        });
+        
+        button.addEventListener('mouseleave', function() {
+          preview.style.display = 'none';
+        });
+        
+        // Show options on click or hold
+        button.addEventListener('mousedown', function() {
+          // Start timer for long press
+          reactionTimers[button.id] = setTimeout(() => {
+            options.classList.add('active');
+          }, 300);
+        });
+        
+        button.addEventListener('mouseup', function() {
+          // Clear timer if released before timeout
+          clearTimeout(reactionTimers[button.id]);
+        });
+        
+        button.addEventListener('mouseleave', function() {
+          // Clear timer if mouse leaves
+          clearTimeout(reactionTimers[button.id]);
+        });
+        
+        button.addEventListener('click', function(e) {
+          // On click (not hold), just toggle like
+          if (!options.classList.contains('active')) {
+            if (!button.classList.contains('active')) {
+              button.classList.add('active');
+              const icon = button.querySelector('i');
+              
+              icon.classList.replace('bi-hand-thumbs-up', 'bi-hand-thumbs-up-fill');
+              
+              // Update preview text
+              if (preview.textContent.includes('people')) {
+                const currentCount = parseInt(preview.textContent);
+                preview.textContent = 'You and ' + currentCount + ' others';
+              } else if (preview.textContent === '0 people') {
+                preview.textContent = 'You';
+              }
+            } else {
+              // Unlike
+              button.classList.remove('active');
+              const icon = button.querySelector('i');
+              
+              icon.classList.replace('bi-hand-thumbs-up-fill', 'bi-hand-thumbs-up');
+              
+              // Update preview text
+              if (preview.textContent.includes('You and')) {
+                const currentCount = parseInt(preview.textContent.split(' ')[2]);
+                if (currentCount === 1) {
+                  preview.textContent = '1 person';
+                } else {
+                  preview.textContent = currentCount + ' people';
+                }
+              } else {
+                preview.textContent = '0 people';
+              }
+            }
+          }
+        });
+        
+        // Handle selecting specific reactions
+        const reactionImgs = options.querySelectorAll('img');
+        reactionImgs.forEach(img => {
+          img.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const btn = container.querySelector('.reaction-btn');
+            
+            // Update reaction
+            btn.classList.add('active');
+            btn.querySelector('i').className = 'bi bi-hand-thumbs-up-fill';
+            
+            // Update preview text
+            if (preview.textContent.includes('people')) {
+              const currentCount = parseInt(preview.textContent);
+              preview.textContent = 'You and ' + currentCount + ' others';
+            } else if (preview.textContent === '0 people') {
+              preview.textContent = 'You';
+            }
+            
+            // Hide reaction options after selection
+            options.classList.remove('active');
+          });
+        });
+        
+        // Hide options when clicking elsewhere
+        document.addEventListener('click', function(e) {
+          if (!container.contains(e.target)) {
+            options.classList.remove('active');
+          }
+        });
+      });
+      
+      // Form submission with immediate display
+      const commentForm = document.getElementById('main-comment-form');
+      const commentsContainer = document.getElementById('comments-container');
+      let commentCount = 3; // Starting count for new comment IDs
+      
+      commentForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('comment-name').value;
+        const text = document.getElementById('comment-text').value;
+        
+        if (name && text) {
+          // Create new comment element
+          const newComment = document.createElement('div');
+          newComment.className = 'comment new-comment';
+          newComment.id = `comment-${++commentCount}`;
+          
+          newComment.innerHTML = `
+            <div class="d-flex">
+              <div class="flex-shrink-0">
+                <img src="assets/img/blog/avatar-placeholder.jpg" alt="User" class="comment-avatar" loading="lazy">
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <div class="d-flex justify-content-between">
+                  <h5 class="mb-1">${name}</h5>
+                  <small class="comment-meta">Just now</small>
+                </div>
+                <p class="mb-2">${text}</p>
+                
+                <div class="reactions-summary">
+                  <div class="reactions-list">
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" class="reaction-icon">
+                  </div>
+                  <span class="reactions-count">0 people</span>
+                </div>
+                
+                <div class="comment-actions">
+                  <div class="reaction-container">
+                    <button class="reaction-btn">
+                      <i class="bi bi-hand-thumbs-up"></i> Like
+                    </button>
+                    <div class="reaction-preview">0 people</div>
+                    <div class="reaction-options">
+                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
+                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
+                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
+                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
+                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
+                    </div>
+                  </div>
+                  <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
+                  <a href="#" class="share-btn text-decoration-none"><i class="bi bi-share"></i> Share</a>
+                </div>
+                
+                <!-- Reply Form (Hidden by default) -->
+                <div class="reply-form">
+                  <form class="reply-to-comment">
+                    <input type="hidden" name="parent-id" value="${commentCount}">
+                    <div class="mb-2">
+                      <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
+                    </div>
+                    <div class="d-flex justify-content-end gap-2">
+                      <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
+                      <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          `;
+          
+          // Prepend new comment to the list
+          commentsContainer.insertBefore(newComment, commentsContainer.firstChild.nextSibling);
+          
+          // Reset form
+          this.reset();
+          
+          // Update comment count in header
+          const commentBadge = document.querySelector('.section-header .badge');
+          commentBadge.textContent = parseInt(commentBadge.textContent) + 1;
+          
+          // Add event listeners to new comment
+          addCommentEventListeners(newComment);
+        }
+      });
+      
+      // Add event listeners to all reply forms (including dynamically added ones)
+      function addCommentEventListeners(commentElement) {
+        // Reply button
+        const replyBtn = commentElement.querySelector('.reply-btn');
+        if (replyBtn) {
+          replyBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const replyForm = this.closest('.comment').querySelector('.reply-form');
+            replyForm.classList.toggle('active');
+          });
+        }
+        
+        // Cancel reply
+        const cancelBtn = commentElement.querySelector('.cancel-reply');
+        if (cancelBtn) {
+          cancelBtn.addEventListener('click', function() {
+            this.closest('.reply-form').classList.remove('active');
+          });
+        }
+        
+        // Reply form submission
+        const replyForm = commentElement.querySelector('.reply-to-comment');
+        if (replyForm) {
+          replyForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const text = this.querySelector('textarea').value;
+            const parentId = this.querySelector('[name="parent-id"]').value;
+            
+            if (text) {
+              // Create new reply element
+              const newReply = document.createElement('div');
+              newReply.className = 'comment comment-reply new-comment';
+              newReply.id = `reply-${parentId}-${Date.now()}`;
+              
+              newReply.innerHTML = `
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <img src="assets/img/blog/avatar-placeholder.jpg" alt="User" class="comment-avatar" loading="lazy">
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <div class="d-flex justify-content-between">
+                      <h5 class="mb-1">${document.getElementById('comment-name').value || 'Anonymous'}</h5>
+                      <small class="comment-meta">Just now</small>
+                    </div>
+                    <p class="mb-2">${text}</p>
+                    
+                    <div class="reactions-summary">
+                      <div class="reactions-list">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" class="reaction-icon">
+                      </div>
+                      <span class="reactions-count">0 people</span>
+                    </div>
+                    
+                    <div class="comment-actions">
+                      <div class="reaction-container">
+                        <button class="reaction-btn">
+                          <i class="bi bi-hand-thumbs-up"></i> Like
+                        </button>
+                        <div class="reaction-preview">0 people</div>
+                        <div class="reaction-options">
+                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
+                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
+                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
+                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
+                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
+                        </div>
+                      </div>
+                      <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
+                    </div>
+                  </div>
+                </div>
+              `;
+              
+              // Find the replies container or create one
+              let repliesContainer = commentElement.querySelector('.replies');
+              if (!repliesContainer) {
+                repliesContainer = document.createElement('div');
+                repliesContainer.className = 'replies mt-3';
+                commentElement.appendChild(repliesContainer);
+              }
+              
+              // Add the new reply
+              repliesContainer.appendChild(newReply);
+              
+              // Reset form
+              this.reset();
+              this.closest('.reply-form').classList.remove('active');
+              
+              // Update comment count in header
+              const commentBadge = document.querySelector('.section-header .badge');
+              commentBadge.textContent = parseInt(commentBadge.textContent) + 1;
+              
+              // Add event listeners to new reply
+              addCommentEventListeners(newReply);
+            }
+          });
+        }
+        
+        // Reaction button
+        const container = commentElement.querySelector('.reaction-container');
+        if (container) {
+          const button = container.querySelector('.reaction-btn');
+          const options = container.querySelector('.reaction-options');
+          const preview = container.querySelector('.reaction-preview');
+          
+          // Generate unique ID for this button
+          button.id = 'reaction-btn-' + Math.random().toString(36).substr(2, 9);
+          
+          // Show preview on hover
+          button.addEventListener('mouseenter', function() {
+            if (preview.textContent !== '0 people') {
+              preview.style.display = 'block';
+            }
+          });
+          
+          button.addEventListener('mouseleave', function() {
+            preview.style.display = 'none';
+          });
+          
+          // Show options on click or hold
+          button.addEventListener('mousedown', function() {
+            // Start timer for long press
+            reactionTimers[button.id] = setTimeout(() => {
+              options.classList.add('active');
+            }, 300);
+          });
+          
+          button.addEventListener('mouseup', function() {
+            // Clear timer if released before timeout
+            clearTimeout(reactionTimers[button.id]);
+          });
+          
+          button.addEventListener('mouseleave', function() {
+            // Clear timer if mouse leaves
+            clearTimeout(reactionTimers[button.id]);
+          });
+          
+          button.addEventListener('click', function(e) {
+            // On click (not hold), just toggle like
+            if (!options.classList.contains('active')) {
+              if (!button.classList.contains('active')) {
+                button.classList.add('active');
+                const icon = button.querySelector('i');
+                
+                icon.classList.replace('bi-hand-thumbs-up', 'bi-hand-thumbs-up-fill');
+                
+                // Update preview text
+                if (preview.textContent.includes('people')) {
+                  const currentCount = parseInt(preview.textContent);
+                  preview.textContent = 'You and ' + currentCount + ' others';
+                } else if (preview.textContent === '0 people') {
+                  preview.textContent = 'You';
+                }
+              } else {
+                // Unlike
+                button.classList.remove('active');
+                const icon = button.querySelector('i');
+                
+                icon.classList.replace('bi-hand-thumbs-up-fill', 'bi-hand-thumbs-up');
+                
+                // Update preview text
+                if (preview.textContent.includes('You and')) {
+                  const currentCount = parseInt(preview.textContent.split(' ')[2]);
+                  if (currentCount === 1) {
+                    preview.textContent = '1 person';
+                  } else {
+                    preview.textContent = currentCount + ' people';
+                  }
+                } else {
+                  preview.textContent = '0 people';
+                }
+              }
+            }
+          });
+          
+          // Handle selecting specific reactions
+          const reactionImgs = options.querySelectorAll('img');
+          reactionImgs.forEach(img => {
+            img.addEventListener('click', function(e) {
+              e.stopPropagation();
+              const btn = container.querySelector('.reaction-btn');
+              
+              // Update reaction
+              btn.classList.add('active');
+              btn.querySelector('i').className = 'bi bi-hand-thumbs-up-fill';
+              
+              // Update preview text
+              if (preview.textContent.includes('people')) {
+                const currentCount = parseInt(preview.textContent);
+                preview.textContent = 'You and ' + currentCount + ' others';
+              } else if (preview.textContent === '0 people') {
+                preview.textContent = 'You';
+              }
+              
+              // Hide reaction options after selection
+              options.classList.remove('active');
+            });
+          });
+        }
+      }
+      
+      // Initialize event listeners for existing comments
+      document.querySelectorAll('.comment').forEach(comment => {
+        addCommentEventListeners(comment);
+      });
+      
+      // Sort comments functionality
+      const sortButton = document.getElementById('sort-comments');
+      sortButton.addEventListener('click', function() {
+        alert('Sorting comments... (This would reorder comments in a live system)');
+      });
+      
+      // Load more comments
+      const loadMoreCommentsBtn = document.getElementById('load-more-comments');
+      loadMoreCommentsBtn.addEventListener('click', function() {
+        this.classList.add('loading');
+        this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+        
+        // Simulate AJAX loading
+        setTimeout(() => {
+          // Create new comments (in a real app, these would come from the server)
+          for (let i = 0; i < 2; i++) {
+            const newComment = document.createElement('div');
+            newComment.className = 'comment new-comment';
+            newComment.id = `comment-${++commentCount}`;
+            
+            newComment.innerHTML = `
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img src="assets/img/blog/comments-${Math.floor(Math.random() * 5) + 1}.jpg" alt="User" class="comment-avatar" loading="lazy">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="mb-1">Community Member ${commentCount}</h5>
+                    <small class="comment-meta">${Math.floor(Math.random() * 24)} hours ago</small>
+                  </div>
+                  <p class="mb-2">This is an additional loaded comment to show the load more functionality working properly.</p>
+                  
+                  <div class="reactions-summary">
+                    <div class="reactions-list">
+                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" class="reaction-icon">
+                    </div>
+                    <span class="reactions-count">${Math.floor(Math.random() * 10)} people</span>
+                  </div>
+                  
+                  <div class="comment-actions">
+                    <div class="reaction-container">
+                      <button class="reaction-btn">
+                        <i class="bi bi-hand-thumbs-up"></i> Like
+                      </button>
+                      <div class="reaction-preview">${Math.floor(Math.random() * 10)} people</div>
+                      <div class="reaction-options">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
+                      </div>
+                    </div>
+                    <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
+                    <a href="#" class="share-btn text-decoration-none"><i class="bi bi-share"></i> Share</a>
+                  </div>
+                  
+                  <!-- Reply Form (Hidden by default) -->
+                  <div class="reply-form">
+                    <form class="reply-to-comment">
+                      <input type="hidden" name="parent-id" value="${commentCount}">
+                      <div class="mb-2">
+                        <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
+                      </div>
+                      <div class="d-flex justify-content-end gap-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            `;
+            
+            // Append new comment
+            commentsContainer.appendChild(newComment);
+            
+            // Add event listeners
+            addCommentEventListeners(newComment);
+          }
+          
+          // Update button state
+          this.classList.remove('loading');
+          this.innerHTML = '<i class="bi bi-chat-square-text"></i> View more comments';
+          
+          // Update comment count in header
+          const commentBadge = document.querySelector('.section-header .badge');
+          commentBadge.textContent = parseInt(commentBadge.textContent) + 2;
+        }, 800);
+      });
+      
+      // Load more events
+      const loadMoreEventsBtn = document.getElementById('load-more-events');
+      const eventsWidget = document.querySelector('.events-widget');
+      
+      loadMoreEventsBtn.addEventListener('click', function() {
+        this.classList.add('loading');
+        this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+        
+        // Simulate AJAX loading
+        setTimeout(() => {
+          // Create new events (in a real app, these would come from the server)
+          for (let i = 0; i < 2; i++) {
+            const days = [28, 30, 2, 5, 8];
+            const months = ['Jun', 'Jul'];
+            const events = [
+              'Youth talent show auditions',
+              'Community health screening',
+              'Women\'s empowerment workshop',
+              'Local soccer tournament',
+              'Farmers cooperative meeting'
+            ];
+            
+            const newEvent = document.createElement('div');
+            newEvent.className = 'event-item';
+            
+            newEvent.innerHTML = `
+              <div class="event-date">
+                <span class="day">${days[Math.floor(Math.random() * days.length)]}</span>
+                <span class="month">${months[Math.floor(Math.random() * months.length)]}</span>
+              </div>
+              <div class="event-info">
+                <h4><a href="#">${events[Math.floor(Math.random() * events.length)]}</a></h4>
+                <p>Community center • ${Math.floor(Math.random() * 12) + 1}:00 ${Math.random() > 0.5 ? 'AM' : 'PM'}</p>
+              </div>
+            `;
+            
+            // Insert before the load more button
+            eventsWidget.insertBefore(newEvent, loadMoreEventsBtn.parentElement);
+          }
+          
+          // Update button state
+          this.classList.remove('loading');
+          this.innerHTML = '<i class="bi bi-calendar-event"></i> View More Events';
+        }, 800);
+      });
+    });
+  </script>
 
 </body>
 
