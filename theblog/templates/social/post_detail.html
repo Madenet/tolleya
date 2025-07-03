@@ -1,0 +1,1433 @@
+{% extends 'landing/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<!--by colors-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #130b2d;
+            text-align: center;
+            padding: 10px 0; /* Reduce top and bottom padding */
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .content {
+            background-color: #190f2c;
+            padding: 10px; /* You can adjust this value as needed */
+            border-radius: 5px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        p {
+            margin: 0; /* Remove default paragraph margin */
+        }
+    </style>
+</head>
+
+    <br>
+    <div class="container">
+    <div class="row mt-3">
+        <div class="col">
+        <a class="btn btn-secondary bi bi-bar-chart-line" target="_blank" href="{% url 'brokergallery' %}" role="button">
+            View_Broker
+        </a>
+        <a class="btn btn-success bi me-2 bi bi-cursor" target="_blank" href="{% url 'home' %}" role="button">
+            Home
+        </a>
+        <a class="btn btn-danger bi bi-bank" target="_blank" href="" role="button">
+            Events
+        </a>
+        <a class="btn btn-warning bi bi-gear-wide-connected" target="_blank" href="{% url 'edit_profile' %}" role="button">
+            Settings
+        </a>
+        <a class="btn btn-info bi bi-bounding-box" target="_blank" href="{% url 'add' %}" role="button">
+            Add_Propfirms
+        </a>
+        <a class="btn btn-light bi bi-bag-plus" target="_blank" href="{% url 'addbroker' %}" role="button">
+            Add_Broker
+        </a>
+        </div>
+    </div>
+    </div>
+
+    <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5 col-sm-6">
+        <a href="{% url 'home' %}" class="btn btn-light"></a>
+        </div>
+    </div>
+    <!--Post details-->
+    <div class="settings mtb15">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 col-lg-3">
+              <div class="nav flex-column nav-pills settings-nav" id="v-pills-tab" role="tablist"
+                aria-orientation="vertical">
+                <a class="nav-link" id="settings-profile-tab" data-toggle="pill" href="#settings-profile" role="tab"
+                  aria-controls="settings-profile" aria-selected="true"><i class="bi bi-gear-wide"></i>Trade_Settings</a>
+                <a class="nav-link" id="settings-wallet-tab" data-toggle="pill" href="#settings-wallet" role="tab"
+                  aria-controls="settings-wallet" aria-selected="false"><i class="bi bi-graph-up"></i>Trade_Activity</a>
+                <a class="nav-link active" id="settings-tab" data-toggle="pill" href="#settings" role="tab"
+                  aria-controls="settings" aria-selected="false"><i class="bi bi-front"></i>Your_Analysis</a>
+              </div>
+            </div>
+            <div class="col-md-12 col-lg-9">
+              <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade" id="settings-profile" role="tabpanel" aria-labelledby="settings-profile-tab">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">General Information</h5>
+                      <div class="settings-profile">
+                        <form>
+                          <img src="{% static 'assets/img/avatar.svg' %}" alt="avatar">
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="fileUpload">
+                            <label class="custom-file-label" for="fileUpload">Choose avatar</label>
+                          </div>
+                          <div class="form-row mt-4">
+                            <div class="col-md-6">
+                              <label for="formFirst">First name</label>
+                              <input id="formFirst" type="text" class="form-control" placeholder="First name">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="formLast">Last name</label>
+                              <input id="formLast" type="text" class="form-control" placeholder="Last name">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="emailAddress">Email</label>
+                              <input id="emailAddress" type="text" class="form-control" placeholder="Enter your email">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="phoneNumber">Phone</label>
+                              <input id="phoneNumber" type="text" class="form-control" placeholder="Enter phone number">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="selectLanguage">Language</label>
+                              <select id="selectLanguage" class="custom-select">
+                                <option selected>English</option>
+                                <option>Mandarin Chinese</option>
+                                <option>Spanish</option>
+                                <option>Arabic</option>
+                                <option>Russian</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="selectCurrency">Currency</label>
+                              <select id="selectCurrency" class="custom-select">
+                                <option selected>USD</option>
+                                <option>EUR</option>
+                                <option>GBP</option>
+                                <option>CHF</option>
+                              </select>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="submit" value="Update">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Security Information</h5>
+                      <div class="settings-profile">
+                        <form>
+                          <div class="form-row">
+                            <div class="col-md-6">
+                              <label for="currentPass">Current password</label>
+                              <input id="currentPass" type="text" class="form-control" placeholder="Enter your password">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="newPass">New password</label>
+                              <input id="newPass" type="text" class="form-control" placeholder="Enter new password">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="securityOne">Security questions #1</label>
+                              <select id="securityOne" class="custom-select">
+                                <option selected>What was the name of your first pet?</option>
+                                <option>What's your Mother's middle name?</option>
+                                <option>What was the name of your first school?</option>
+                                <option>Where did you travel for the first time?</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="securityAnsOne">Answer</label>
+                              <input id="securityAnsOne" type="text" class="form-control" placeholder="Enter your answer">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="securityTwo">Security questions #2</label>
+                              <select id="securityTwo" class="custom-select">
+                                <option selected>Choose...</option>
+                                <option>What was the name of your first pet?</option>
+                                <option>What's your Mother's middle name?</option>
+                                <option>What was the name of your first school?</option>
+                                <option>Where did you travel for the first time?</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="securityAnsTwo">Answer</label>
+                              <input id="securityAnsTwo" type="text" class="form-control" placeholder="Enter your answer">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="securityThree">Security questions #3</label>
+                              <select id="securityThree" class="custom-select">
+                                <option selected>Choose...</option>
+                                <option>What was the name of your first pet?</option>
+                                <option>What's your Mother's middle name?</option>
+                                <option>What was the name of your first school?</option>
+                                <option>Where did you travel for the first time?</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="securityFore">Answer</label>
+                              <input id="securityFore" type="text" class="form-control" placeholder="Enter your answer">
+                            </div>
+                            <div class="col-md-12">
+                              <input type="submit" value="Update">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="settings-wallet" role="tabpanel" aria-labelledby="settings-wallet-tab">
+                  <div class="wallet">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-4">
+                        <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                          {% if user.profile.pk %}
+                          <a class="nav-link d-flex justify-content-between align-items-center active" data-toggle="pill"
+                            href="#coinBTC" role="tab" aria-selected="true">
+                            <div class="d-flex">
+                              <!--img src="assets/img/icon/18.png" alt="btc"-->
+                              <div>
+                                <!--USER ACTIVITY-->
+                                <h2><i class="bi bi-search"></i>Result:</h2>
+                                <p>{{ user_activity.get_result_display }}</p>
+                              </div>
+                            </div>
+                            <!--div>
+                              <h3>4.5484254</h3>
+                              <p class="text-right"><i class="icon ion-md-lock"></i> 0.0000000</p>
+                            </div-->
+                          </a>
+                          {% endif %}
+                          <a class="nav-link d-flex justify-content-between align-items-center" data-toggle="pill"
+                            href="#coinETH" role="tab" aria-selected="true">
+                            <div class="d-flex">
+                              <!--img src="assets/img/icon/1.png" alt="btc"-->
+                              <div>
+                                <!--USER ACTIVITY DETAILS2-->
+                                <h2><i class="bi bi-cloud-snow"></i>Details:</h2>
+                                <p>{{ user_activity.details }}</p>
+                              </div>
+                            </div>
+                            <!--div>
+                              <h3>13.454845</h3>
+                              <p class="text-right"><i class="icon ion-md-lock"></i> 0.0000000</p>
+                            </div-->
+                          </a>
+                          <!--USER ACTIVITY3-->
+                          {% if user_activity.strategy %}
+                          <a class="nav-link d-flex justify-content-between align-items-center" data-toggle="pill"
+                            href="#coinBNB" role="tab" aria-selected="true">
+                            <div class="d-flex">
+                              <!-- img src="assets/img/icon/9.png" alt="btc"-->
+                              <div>
+                                <h2><i class="bi bi-archive-fill"></i>Strategy:</h2>
+                                <p>{{ user_activity.strategy }}</p>
+                              </div>
+                            </div>
+                            <!--div>
+                              <h3>35.4842458</h3>
+                              <p class="text-right"><i class="icon ion-md-lock"></i> 0.0000000</p>
+                            </div-->
+                          </a>
+                          {% endif %}
+                          <!--USER ACTIVITY4-->
+                          {% if user_activity.analysis %}
+                          <a class="nav-link d-flex justify-content-between align-items-center" data-toggle="pill"
+                            href="#coinTRX" role="tab" aria-selected="true">
+                            <div class="d-flex">
+                              <!--img src="assets/img/icon/6.png" alt="btc"-->
+                              <div>
+                                <h2><i class="bi bi-layout-text-window-reverse"></i>Analysis:</h2>
+                                <p>{{ user_activity.analysis }}</p>
+                              </div>
+                            </div>
+                          {% endif %}
+                          <!--USER ACTIVITY5-->
+                          {% if user_activity.improvement %}
+                          <a class="nav-link d-flex justify-content-between align-items-center" data-toggle="pill"
+                            href="#coinTRX" role="tab" aria-selected="true">
+                            <div class="d-flex">
+                              <!--img src="assets/img/icon/6.png" alt="btc"-->
+                              <div>
+                                <h2><i class="bi bi-diamond-half"></i>Improvement:</h2>
+                                <p>{{ user_activity.improvement }}</p>
+                              </div>
+                            </div>
+                          </a>
+                          {% endif %}
+                          <!--END ACTIVITY-->
+                        
+                            <!--div>
+                              <h3>4.458941</h3>
+                              <p class="text-right"><i class="icon ion-md-lock"></i> 0.0000000</p>
+                            </div-->
+                          
+                          <!--a class="nav-link d-flex justify-content-between align-items-center" data-toggle="pill"
+                            href="#coinEOS" role="tab" aria-selected="true">
+                            <div class="d-flex">
+                              <img src="assets/img/icon/2.png" alt="btc">
+                              <div>
+                                <h2>EOS</h2>
+                                <p>Eosio</p>
+                              </div>
+                            </div>
+                            <div>
+                              <h3>33.478951</h3>
+                              <p class="text-right"><i class="icon ion-md-lock"></i> 0.0000000</p>
+                            </div>
+                          </a>
+                          <a class="nav-link d-flex justify-content-between align-items-center" data-toggle="pill"
+                            href="#coinXMR" role="tab" aria-selected="true">
+                            <div class="d-flex">
+                              <img src="assets/img/icon/7.png" alt="btc">
+                              <div>
+                                <h2>XMR</h2>
+                                <p>Monero</p>
+                              </div>
+                            </div>
+                            <div>
+                              <h3>99.465975</h3>
+                              <p class="text-right"><i class="icon ion-md-lock"></i> 0.0000000</p>
+                            </div>
+                          </a>
+                          <a class="nav-link d-flex justify-content-between align-items-center" data-toggle="pill"
+                            href="#coinKCS" role="tab" aria-selected="true">
+                            <div class="d-flex">
+                              <img src="assets/img/icon/4.png" alt="btc">
+                              <div>
+                                <h2>KCS</h2>
+                                <p>Kstarcoin</p>
+                              </div>
+                            </div>
+                            <div>
+                              <h3>114.57564</h3>
+                              <p class="text-right"><i class="icon ion-md-lock"></i> 0.0000000</p>
+                            </div>
+                          </a!-->
+                        </div>
+                      </div>
+                      <!--WORK ON INSERTING ACTIVITIES FROM THIS-->
+                      <div class="col-md-12 col-lg-8">
+                        <div class="tab-content">
+                          <div class="tab-pane fade show active" id="coinBTC" role="tabpanel">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Your Trade Matters[0_0]</h5>
+                                <ul>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-cash"></i>
+                                    </div>
+                                    <div>
+                                      <h3></h3>
+                                {% if user.is_authenticated %}
+                                      <h2>My Activity</h2>
+                                      <form method="post" action="{% url 'submit_activity' post.id %}" id="activity-form">
+                                      {% csrf_token %}
+                                      <!--RESULTS-->
+                                      <script>
+                                        // Add a JavaScript function to check if "I won" or "I lost" is selected
+                                        document.getElementById("activity-form").addEventListener("submit", function(event) {
+                                            if (!document.getElementById("won").checked && !document.getElementById("lost").checked) {
+                                                // If neither "I won" nor "I lost" is selected, prevent form submission
+                                                alert("Please select whether you won or lost.");
+                                                event.preventDefault(); // Prevent form submission
+                                            }
+                                        });
+                                      </script>
+                                      <div class="form-check">
+                                        <label class="form-check-label" for="result"></label>
+                                        <input type="radio" class="form-check-input" id="won" name="result" value="win">
+                                        <label class="form-check-label" for="won">I won</label>
+                                        <input type="radio" class="form-check-input" id="lost" name="result" value="loss">
+                                        <label class="form-check-label" for="lost">I lost</label>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-checkmark"></i>
+                                      <!-- Details -->
+                                      <div class="form-group">
+                                        <label for="details">Details</label>
+                                        <textarea class="form-control" id="details" name="details" rows="3"></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-checkmark"></i>
+                                       <!-- Strategy -->
+                                      <div class="form-group">
+                                        <label for="strategy">Strategy</label>
+                                        <textarea class="form-control" id="strategy" name="strategy" rows="3"></textarea>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <!--activity 2-->
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-checkmark"></i>
+                                      <!-- Analysis -->
+                                      <div class="form-group">
+                                        <label for="analysis">Analysis</label>
+                                        <textarea class="form-control" id="analysis" name="analysis" rows="3"></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-checkmark"></i>
+                                      <!-- Improvement -->
+                                      <div class="form-group">
+                                        <label for="improvement">Improvement</label>
+                                        <textarea class="form-control" id="improvement" name="improvement" rows="3"></textarea>
+                                      </div>
+                                    </div>
+                                {% endif %}
+                                  </li>
+                                  <button class="btn green" type="submit" class="btn btn-primary">Submit Activity</button>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Share Your Thoughts</h5>
+                                <div class="row wallet-address">
+                                  <div class="col-md-8">
+                                    <!--content here-->
+                                    <!--text area-->
+                                    <style>
+                                      /* Comment section styles */
+                                      .comment-section {
+                                          margin-top: 20px;
+                                          padding: 20px;
+                                          border: 1px solid #2b2626;
+                                          background-color: #383333;
+                                      }
+                                  
+                                      .comment-list {
+                                          list-style: none;
+                                          padding: 0;
+                                      }
+                                  
+                                      .comment {
+                                          margin-bottom: 20px;
+                                      }
+                                  
+                                      .comment .author {
+                                          display: flex;
+                                          align-items: center;
+                                          font-weight: bold;
+                                      }
+                                  
+                                      .comment .author .profile-picture {
+                                          width: 30px;
+                                          height: 30px;
+                                          border-radius: 50%;
+                                          object-fit: cover;
+                                          margin-right: 10px;
+                                      }
+                                  
+                                      .comment .timestamp {
+                                          color: #888;
+                                          font-size: 12px;
+                                      }
+                                  
+                                      .comment .content {
+                                          margin-top: 5px;
+                                      }
+                                  
+                                      .comment .actions {
+                                          margin-top: 10px;
+                                      }
+                                  
+                                      .comment .reply-button {
+                                          color: #007bff;
+                                          cursor: pointer;
+                                          text-decoration: underline;
+                                      }
+                                  
+                                      .comment-form {
+                                          margin-top: 20px;
+                                      }
+                                  
+                                      .comment-form textarea {
+                                          width: 100%;
+                                          min-height: 100px;
+                                          resize: vertical;
+                                      }
+                                  
+                                      .comment-form button {
+                                          margin-top: 10px;
+                                          padding: 8px 16px;
+                                          background-color: #007bff;
+                                          color: #fff;
+                                          border: none;
+                                          border-radius: 4px;
+                                          cursor: pointer;
+                                          transition: background-color 0.3s ease;
+                                      }
+                                  
+                                      .comment-form button:hover {
+                                          background-color: #0056b3;
+                                      }
+                                  
+                                      .comment-success {
+                                          color: green;
+                                      }
+                                  
+                                      .comment-error {
+                                          color: red;
+                                      }
+                                  </style>
+                                  
+                                  <!-- Comment section -->
+                                  <div class="comment-section align-items-center">
+                                      <h3>Comments</h3>
+                                  
+                                      <ul class="comment-list">
+                                          <!-- Render comments -->
+                                          {% for comment in comments %}
+                                              <li class="comment">
+                                                  <div class="author">
+                                                      {% if comment.author.profile.picture %}
+                                                          <img src="{{ comment.author.profile.picture.url }}" alt="Profile Picture" class="profile-picture">
+                                                      {% else %}
+                                                          <img src="{% static 'default_profile_picture.jpg' %}" alt="Default Profile Picture" class="profile-picture">
+                                                      {% endif %}
+                                                      {{ comment.author.username }}
+                                                  </div>
+                                                  <div class="timestamp">{{ comment.created_on }}</div>
+                                                  <div class="content">{{ comment.comment }}</div>
+                                                  <div class="actions">
+                                                      <span class="reply-button">Reply</span>
+                                                  </div>
+                                                  <!-- Render child comments recursively -->
+                                                  {% if comment.is_parent %}
+                                                      <ul class="comment-list">
+                                                          {% for reply in comment.children %}
+                                                              <li class="comment">
+                                                                  <!-- Render reply content -->
+                                                                  <!-- Add any desired styling or formatting here -->
+                                                              </li>
+                                                          {% endfor %}
+                                                      </ul>
+                                                  {% endif %}
+                                              </li>
+                                          {% endfor %}
+                                      </ul>
+                                  
+                                      <!-- Comment form -->
+                                      <div class="comment-form">
+                                          <h4>Leave a Comment</h4>
+                                          <form id="comment-form" method="post">
+                                              {% csrf_token %}
+                                              <textarea name="comment" id="comment-input" placeholder="Write your comment here" required></textarea>
+                                              <br>
+                                              <button type="submit" id="submit-comment">Submit</button>
+                                          </form>
+                                          <div id="comment-status"></div>
+                                      </div>
+                                  </div>
+                                  
+                                  </div>
+                                  <!--div class="col-md-4">
+                                    <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                  </div-->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Your Views!</h5>
+                                <div class="wallet-history">
+                                  <table class="table">
+                                    <head>
+                                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                      <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+                                      <style>
+                                          .paper {
+                                              background-color: #130a1f;
+                                              border: 1px solid #0b0125;
+                                              padding: 20px;
+                                              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                                              margin: 20px;
+                                          }
+                                  
+                                          .content {
+                                              font-size: 16px;
+                                          }
+                                  
+                                          .btn-copy {
+                                              padding: 10px 20px;
+                                              background-color: #af4c4c;
+                                              color: #fff;
+                                              border: none;
+                                              border-radius: 4px;
+                                              cursor: pointer;
+                                              transition: background-color 0.3s ease;
+                                          }
+                                  
+                                          .btn-copy:hover {
+                                              background-color: #a04550;
+                                          }
+                                  
+                                          @media screen and (max-width: 480px) {
+                                              .paper {
+                                                  padding: 10px;
+                                              }
+                                  
+                                              .btn-copy {
+                                                  padding: 5px 10px;
+                                                  font-size: 14px;
+                                              }
+                                          }
+                                      </style>
+                                  </head>
+                                  <body>
+                                      <hr>
+                                      <div class="paper">
+                                          <div class="content">
+                                              <div id="postContent">
+                                                  {{ post.Where_to_Apply }}<br>
+                                                  <hr>
+                                                  {{ post.body|safe }}
+                                              </div>
+                                              <!-- Copy button -->
+                                              <button onclick="copyText()" class="btn-copy">Copy</button>
+                                          </div>
+                                      </div>
+                                  
+                                      <script>
+                                          function copyText() {
+                                              var postContent = document.getElementById('postContent');
+                                              var range = document.createRange();
+                                              range.selectNode(postContent);
+                                              window.getSelection().removeAllRanges();
+                                              window.getSelection().addRange(range);
+                                              document.execCommand('copy');
+                                              window.getSelection().removeAllRanges();
+                                  
+                                              alert('Content copied to clipboard!');
+                                          }
+                                      </script>
+                                  </body>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--div class="tab-pane fade" id="coinETH" role="tabpanel">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Balances</h5>
+                                <ul>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-cash"></i>
+                                      <h2>Total Equity</h2>
+                                    </div>
+                                    <div>
+                                      <h3>4.1542 ETH</h3>
+                                      <!-- Result (Win or Loss) 
+                                  
+                                    </div>
+                                  </li>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-checkmark"></i>
+                                      <h2>Available Margin</h2>
+                                    </div>
+                                    <div>
+                                      <h3>1.334 ETH</h3>
+                                    </div>
+                                  </li>
+                                </ul>
+                                <button class="btn green">Deposit</button>
+                                <button class="btn red">Withdraw</button>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Wallet Deposit Address</h5>
+                                <div class="row wallet-address">
+                                  <div class="col-md-8">
+                                    <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                      of your
+                                      funds at once if you deposit more than your daily withdrawal limit.</p>
+                                    <div class="input-group">
+                                      <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                      <div class="input-group-prepend">
+                                        <button class="btn btn-primary">COPY</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Latest Transactions</h5>
+                                <div class="wallet-history">
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>No.</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Amount</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>25-04-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>4.5454334</td>
+                                      </tr>
+                                      <tr>
+                                        <td>2</td>
+                                        <td>25-05-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>0.5484468</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-06-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                      <tr>
+                                        <td>4</td>
+                                        <td>25-07-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>1.45894147</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-08-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="coinBNB" role="tabpanel">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Balances</h5>
+                                <ul>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-cash"></i>
+                                      <h2>Total Equity</h2>
+                                    </div>
+                                    <div>
+                                      <h3>7.342 BNB</h3>
+                                    </div>
+                                  </li>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-checkmark"></i>
+                                      <h2>Available Margin</h2>
+                                    </div>
+                                    <div>
+                                      <h3>0.332 BNB</h3>
+                                    </div>
+                                  </li>
+                                </ul>
+                                <button class="btn green">Deposit</button>
+                                <button class="btn red">Withdraw</button>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Wallet Deposit Address</h5>
+                                <div class="row wallet-address">
+                                  <div class="col-md-8">
+                                    <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                      of your
+                                      funds at once if you deposit more than your daily withdrawal limit.</p>
+                                    <div class="input-group">
+                                      <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                      <div class="input-group-prepend">
+                                        <button class="btn btn-primary">COPY</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Latest Transactions</h5>
+                                <div class="wallet-history">
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>No.</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Amount</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>25-04-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>4.5454334</td>
+                                      </tr>
+                                      <tr>
+                                        <td>2</td>
+                                        <td>25-05-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>0.5484468</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-06-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                      <tr>
+                                        <td>4</td>
+                                        <td>25-07-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>1.45894147</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-08-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="coinTRX" role="tabpanel">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Balances</h5>
+                                <ul>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-cash"></i>
+                                      <h2>Total Equity</h2>
+                                    </div>
+                                    <div>
+                                      <h3>4.3344 TRX</h3>
+                                    </div>
+                                  </li>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-checkmark"></i>
+                                      <h2>Available Margin</h2>
+                                    </div>
+                                    <div>
+                                      <h3>1.453 TRX</h3>
+                                    </div>
+                                  </li>
+                                </ul>
+                                <button class="btn green">Deposit</button>
+                                <button class="btn red">Withdraw</button>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Wallet Deposit Address</h5>
+                                <div class="row wallet-address">
+                                  <div class="col-md-8">
+                                    <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                      of your
+                                      funds at once if you deposit more than your daily withdrawal limit.</p>
+                                    <div class="input-group">
+                                      <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                      <div class="input-group-prepend">
+                                        <button class="btn btn-primary">COPY</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Latest Transactions</h5>
+                                <div class="wallet-history">
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>No.</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Amount</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>25-04-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>4.5454334</td>
+                                      </tr>
+                                      <tr>
+                                        <td>2</td>
+                                        <td>25-05-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>0.5484468</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-06-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                      <tr>
+                                        <td>4</td>
+                                        <td>25-07-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>1.45894147</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-08-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="coinEOS" role="tabpanel">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Balances</h5>
+                                <ul>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-cash"></i>
+                                      <h2>Total Equity</h2>
+                                    </div>
+                                    <div>
+                                      <h3>33.35 EOS</h3>
+                                    </div>
+                                  </li>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-checkmark"></i>
+                                      <h2>Available Margin</h2>
+                                    </div>
+                                    <div>
+                                      <h3>4.445 EOS</h3>
+                                    </div>
+                                  </li>
+                                </ul>
+                                <button class="btn green">Deposit</button>
+                                <button class="btn red">Withdraw</button>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Wallet Deposit Address</h5>
+                                <div class="row wallet-address">
+                                  <div class="col-md-8">
+                                    <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                      of your
+                                      funds at once if you deposit more than your daily withdrawal limit.</p>
+                                    <div class="input-group">
+                                      <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                      <div class="input-group-prepend">
+                                        <button class="btn btn-primary">COPY</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Latest Transactions</h5>
+                                <div class="wallet-history">
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>No.</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Amount</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>25-04-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>4.5454334</td>
+                                      </tr>
+                                      <tr>
+                                        <td>2</td>
+                                        <td>25-05-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>0.5484468</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-06-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                      <tr>
+                                        <td>4</td>
+                                        <td>25-07-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>1.45894147</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-08-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="coinXMR" role="tabpanel">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Balances</h5>
+                                <ul>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-cash"></i>
+                                      <h2>Total Equity</h2>
+                                    </div>
+                                    <div>
+                                      <h3>34.333 XMR</h3>
+                                    </div>
+                                  </li>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-checkmark"></i>
+                                      <h2>Available Margin</h2>
+                                    </div>
+                                    <div>
+                                      <h3>2.354 XMR</h3>
+                                    </div>
+                                  </li>
+                                </ul>
+                                <button class="btn green">Deposit</button>
+                                <button class="btn red">Withdraw</button>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Wallet Deposit Address</h5>
+                                <div class="row wallet-address">
+                                  <div class="col-md-8">
+                                    <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                      of your
+                                      funds at once if you deposit more than your daily withdrawal limit.</p>
+                                    <div class="input-group">
+                                      <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                      <div class="input-group-prepend">
+                                        <button class="btn btn-primary">COPY</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Latest Transactions</h5>
+                                <div class="wallet-history">
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>No.</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Amount</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>25-04-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>4.5454334</td>
+                                      </tr>
+                                      <tr>
+                                        <td>2</td>
+                                        <td>25-05-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>0.5484468</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-06-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                      <tr>
+                                        <td>4</td>
+                                        <td>25-07-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>1.45894147</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-08-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="coinKCS" role="tabpanel">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Balances</h5>
+                                <ul>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-cash"></i>
+                                      <h2>Total Equity</h2>
+                                    </div>
+                                    <div>
+                                      <h3>86.577 KCS</h3>
+                                    </div>
+                                  </li>
+                                  <li class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                      <i class="icon ion-md-checkmark"></i>
+                                      <h2>Available Margin</h2>
+                                    </div>
+                                    <div>
+                                      <h3>5.78 KCS</h3>
+                                    </div>
+                                  </li>
+                                </ul>
+                                <button class="btn green">Deposit</button>
+                                <button class="btn red">Withdraw</button>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Wallet Deposit Address</h5>
+                                <div class="row wallet-address">
+                                  <div class="col-md-8">
+                                    <p>Deposits to this address are unlimited. Note that you may not be able to withdraw all
+                                      of your
+                                      funds at once if you deposit more than your daily withdrawal limit.</p>
+                                    <div class="input-group">
+                                      <input type="text" class="form-control" value="Ad87deD4gEe8dG57Ede4eEg5dREs4d5e8f4e">
+                                      <div class="input-group-prepend">
+                                        <button class="btn btn-primary">COPY</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <img src="assets/img/qr-code-light.svg" alt="qr-code">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">Latest Transactions</h5>
+                                <div class="wallet-history">
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>No.</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Amount</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>25-04-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>4.5454334</td>
+                                      </tr>
+                                      <tr>
+                                        <td>2</td>
+                                        <td>25-05-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>0.5484468</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-06-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                      <tr>
+                                        <td>4</td>
+                                        <td>25-07-2019</td>
+                                        <td><i class="icon ion-md-checkmark-circle-outline green"></i></td>
+                                        <td>1.45894147</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>25-08-2019</td>
+                                        <td><i class="icon ion-md-close-circle-outline red"></i></td>
+                                        <td>2.5454545</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ post.title }}</h5>
+                      <small>
+                          By: {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.created_on }}-
+                          {% if user.is_authenticated %}
+                          {% if user.id == post.author.id %}
+                              -<a href="{% url 'post-edit'  post.pk %}">(Edit)</a>
+                          {% endif %}
+                          {% endif %}
+                      </small><br>
+                      <div class="settings-notification">
+                        <ul>
+                            <div class="notification-info">
+                             <!--ENter field-->
+                             <style>
+                              /* Add your existing CSS here */
+                              /* ... */
+                              /* Full screen styles */
+                              .fullscreen {
+                                  position: fixed;
+                                  top: 0;
+                                  left: 0;
+                                  width: 100%;
+                                  height: 100%;
+                                  background-color: rgba(0, 0, 0, 0.8);
+                                  display: flex;
+                                  align-items: center;
+                                  justify-content: center;
+                                  z-index: 9999;
+                              }
+                      
+                              /* Additional styling for the image in full screen mode */
+                              .fullscreen img {
+                                  max-width: 90%;
+                                  max-height: 90%;
+                              }
+                      
+                              /* Hide the full screen button when in full screen mode */
+                              .fullscreen #fullscreen-button {
+                                  display: none;
+                              }
+                          </style>
+                      </head>
+                      <body>
+                          <div class="container mt-5">
+                              <!-- Card component -->
+                              <div class="card">
+                                  <div class="card-body">
+                                      <h5 class="card-title">Analysis</h5>
+                                      <p class="card-text">Your analysis content goes here.</p>
+                                      <hr>
+                                    </h5>     
+                                    <p class="small text-muted">
+                                      {% if post.author.profile.website_url %}
+                                      | <a href="https://{{ post.author.profile.website_url }}" class="Website"><i class="bx bxl-Website">Website</i></a>
+                                      {% endif %}
+                                      
+                                      {% if post.author.profile.google_url %}
+                                          | <a href="https://{{ post.author.profile.google_url }}" class="Website"><i class="bx bxl-Website">Google</i></a>
+                                      {% endif %}
+                                      
+                                      {% if post.author.profile.playstore_url %}
+                                          | <a href="https://{{ post.author.profile.playstore_url }}" class="Website"><i class="bx bxl-Website">Playstore</i></a>
+                                      {% endif %}
+                                      
+                                      {% if post.author.profile.zoom_url %}
+                                          | <a href="https://{{ post.author.profile.zoom_url }}" class="Website"><i class="bx bxl-Website" style="background-color: rgb(168, 72, 72); color: white; padding: 5px 10px; border-radius: 5px;">Zoom</i></a>
+                                      {% endif %}
+                                      
+                                      {% if post.author.profile.linkedin_url %}
+                                          | <a href="https://{{ post.author.profile.linkedin_url }}" class="facebook"><i class="bx bxl-facebook">LinkedIn</i></a>
+                                      {% endif %}
+                                      
+                                      {% if post.author.profile.facebook_url %}
+                                          | <a href="https://{{ post.author.profile.facebook_url }}" class="facebook"><i class="bx bxl-facebook">Facebook</i></a>
+                                      {% endif %}
+
+                                      {% if post.author.profile.twitter_url %}
+                                          | <a href="https://{{ post.author.profile.twitter_url }}" class="twitter"><i class="bx bxl-twitter">Twitter</i></a>
+                                      {% endif %}
+                                      
+                                      {% if post.author.profile.youtube_url %}
+                                          | <a href="https://{{ post.author.profile.youtube_url }}" class="youtube"><i class="bx bxl-youtube">Youtube</i></a>
+                                      {% endif %}
+                                      
+                                      {% if post.author.profile.instagram_url %}
+                                          | <a href="https://{{ post.author.profile.instagram_url }}" class="Instagram"><i class="bx bxl-Instagram">Instagram</i></a>
+                                      {% endif %}
+                  
+                                      {% if post.author.profile.telegram_url %}
+                                          | <a href="https://{{ post.author.profile.telegram_url }}" class="Instagram"><i class="bx bxl-Instagram">Telegram</i></a>
+                                      {% endif %}
+                                      
+                                      {% if post.author.profile.pinterest_url %}
+                                          | <a href="https://{{ post.author.profile.pinterest_url }}" class="pinterest"><i class="bx bxl-pinterest">Pinterest</i></a>
+                                      {% endif %}
+                                      
+                                      <!-- Full screen image container (toggle on button click) -->
+                                      {% if post.header_image %}
+                                      <div class="image-container">
+                                          <button id="fullscreen-button" class="btn btn-link">
+                                              <i class="fas fa-expand"></i> <!-- Font Awesome icon for full screen -->
+                                          </button>
+                                          <img src="{{ post.header_image.url }}" class="responsive-img" alt="...">
+                                      </div>
+                                      {% endif %}
+                                  </div>
+                              </div>
+                          </div>
+                         <!--END-->                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // Submit comment form using AJAX
+                $('#comment-form').on('submit', function(event) {
+                    event.preventDefault();
+        
+                    // Prepare form data
+                    var formData = {
+                        'comment': $('#comment-input').val(),
+                        'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+                    };
+        
+                    // Send AJAX request
+                    $.ajax({
+                        type: 'POST',
+                        url: '{% url "add_comment" %}',
+                        data: formData,
+                        success: function(response) {
+                            // Clear comment input
+                            $('#comment-input').val('');
+        
+                            // Display success message
+                            $('#comment-status').removeClass('comment-error').addClass('comment-success').text('Comment submitted successfully.');
+        
+                            // Add the new comment to the comment list
+                            var newComment = $('<li class="comment">' +
+                                '<div class="author">' + response.author + '</div>' +
+                                '<div class="timestamp">' + response.created_on + '</div>' +
+                                '<div class="content">' + response.comment + '</div>' +
+                                '<div class="actions">' +
+                                '<span class="reply-button">Reply</span>' +
+                                '</div>' +
+                                '</li>');
+        
+                            // Append the new comment to the comment list
+                            $('.comment-list').append(newComment);
+                        },
+                        error: function(xhr) {
+                            // Display error message
+                            $('#comment-status').removeClass('comment-success').addClass('comment-error').text('Error submitting comment.');
+                        }
+                    });
+                });
+            });
+        </script>
+        </div>            
+<script src="{% static 'assets/js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/amcharts-core.min.js' %}"></script>
+<script src="{% static 'assets/js/amcharts.min.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+   
+  
+{% endblock content %}

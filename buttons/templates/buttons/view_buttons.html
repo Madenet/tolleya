@@ -1,0 +1,14 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+  <h2>Your Button has been deleted</h2>
+  <ul>
+    {% for button in buttons %}
+      <li>
+        <img src="{{ button.logo.url }}" alt="{{ button.web_url }} logo" width="50">
+        <a href="{{ button.web_url }}" target="_blank">{{ button.web_url }}</a>
+        <a href="{% url 'remove_button' button.id %}">Remove</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

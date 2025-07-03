@@ -1,0 +1,7 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+  <h2>Shared Button</h2>
+  <img src="{{ button.logo.url }}" alt="{{ button.web_url }} logo" width="50">
+  <a href="{{ button.web_url }}" target="_blank">{{ button.web_url }}</a>
+{% endblock %}

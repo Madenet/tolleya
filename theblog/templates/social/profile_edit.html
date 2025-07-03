@@ -1,0 +1,193 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center mt-3">
+    <div class="col-md-6 col-sm-12">
+        <h2 class="text-center">Edit Profile</h2>
+    </div>
+</div>
+<!-- edit_profile.html -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+        <!-- Bio -->
+        <div class="form-group">
+            <label for="{{ form.bio.id_for_label }}" class="form-label">Bio</label>
+            <textarea
+            name="{{ form.bio.name }}"
+            id="{{ form.bio.id_for_label }}"
+            class="form-control"
+            rows="4"
+            >{{ form.bio.value }}</textarea>
+        </div>
+
+        <!-- Picture -->
+        <div class="form-group">
+            <label for="{{ form.picture.id_for_label }}" class="form-label">Picture</label>
+            {{ form.picture }}
+        </div>
+
+        <!-- Website URL -->
+        <div class="form-group">
+            <label for="{{ form.whatsapp_url.id_for_label }}" class="form-label">WhatsApp URL</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text">http://</span>
+                </div>
+                <input
+                type="url"
+                name="{{ form.whatsApp.name }}"
+                id="{{ form.whatsApp.id_for_label }}"
+                class="form-control"
+                value="{{ form.whatsapp_url.value }}"
+                >
+            </div>
+        </div>
+
+        <!-- Website URL -->
+        <div class="form-group">
+        <label for="{{ form.website_url.id_for_label }}" class="form-label">Website URL</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">http://</span>
+            </div>
+            <input
+            type="url"
+            name="{{ form.website_url.name }}"
+            id="{{ form.website_url.id_for_label }}"
+            class="form-control"
+            value="{{ form.website_url.value }}"
+            >
+        </div>
+        </div>
+
+        <!-- microsoftTeam URL -->
+        <div class="form-group">
+        <label for="{{ form.microsoftTeam_url.id_for_label }}" class="form-label">microsoftTeam URL</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">http://</span>
+            </div>
+            <input
+            type="url"
+            name="{{ form.microsoftTeam_url.name }}"
+            id="{{ form.microsoftTeam_url.id_for_label }}"
+            class="form-control"
+            value="{{ form.microsoftTeam_url.value }}"
+            >
+        </div>
+        </div>
+    
+        <!-- Google URL -->
+        <div class="form-group">
+        <label for="{{ form.google_url.id_for_label }}" class="form-label">Google URL</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">http://</span>
+            </div>
+            <input
+            type="url"
+            name="{{ form.google_url.name }}"
+            id="{{ form.google_url.id_for_label }}"
+            class="form-control"
+            value="{{ form.google_url.value }}"
+            >
+        </div>
+        </div>
+
+        <!-- Zoom URL -->
+        <div class="form-group">
+        <label for="{{ form.zoom_url.id_for_label }}" class="form-label">Zoom URL</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">http://</span>
+            </div>
+            <input
+            type="url"
+            name="{{ form.zoom_url.name }}"
+            id="{{ form.zoom_url.id_for_label }}"
+            class="form-control"
+            value="{{ form.zoom_url.value }}"
+            >
+        </div>
+        </div>
+
+        <!-- Playstore URL -->
+        <div class="form-group">
+        <label for="{{ form.playstore_url.id_for_label }}" class="form-label">Playstore URL</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">http://</span>
+            </div>
+            <input
+            type="url"
+            name="{{ form.playstore_url.name }}"
+            id="{{ form.playstore_url.id_for_label }}"
+            class="form-control"
+            value="{{ form.playstore_url.value }}"
+            >
+        </div>
+        </div>
+
+        <!-- Instagram URL -->
+        <div class="form-group">
+        <label for="{{ form.instagram.id_for_label }}" class="form-label">Instagram URL</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">http://</span>
+            </div>
+            <input
+            type="url"
+            name="{{ form.instagram.name }}"
+            id="{{ form.instagram.id_for_label }}"
+            class="form-control"
+            value="{{ form.instagram.value }}"
+            >
+        </div>
+        </div>
+
+        <!-- Telegram URL -->
+        <div class="form-group">
+            <label for="{{ form.telegram.id_for_label }}" class="form-label">telegram URL</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text">http://</span>
+                </div>
+                <input
+                type="url"
+                name="{{ form.telegram.name }}"
+                id="{{ form.telegram.id_for_label }}"
+                class="form-control"
+                value="{{ form.telegram.value }}"
+                >
+        </div>
+        </div>
+
+        <!-- Facebook URL -->
+        <div class="form-group">
+        <label for="{{ form.facebook_url.id_for_label }}" class="form-label">Facebook URL</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">http://</span>
+            </div>
+            <input
+            type="url"
+            name="{{ form.facebook_url.name }}"
+            id="{{ form.facebook_url.id_for_label }}"
+            class="form-control"
+            value="{{ form.facebook_url.value }}"
+            >
+        </div>
+        </div>
+
+        <!-- ... (Other URL fields) ... -->
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    </div>
+</div>
+</div>    
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+    <style>
+         .image-thumbnail {
+        max-width: 100%; /* Ensure the image doesn't exceed its container width */
+        max-height: 100%; /* Ensure the image doesn't exceed its container height */
+        object-fit: cover; /* Maintain aspect ratio and cover the container */
+        }
+
+        .list-group-item a {
+            text-decoration: none;
+            color: black;
+        }
+
+        /* Custom styles for the card and container */
+        .custom-card {
+            border: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, border-color 0.3s; /* Added border-color transition */
+            border-color: transparent; /* Initial border color */
+            height: 100%; /* Set the card height to take full container height */
+            display: flex;
+            flex-direction: column; /* Arrange items vertically */
+            justify-content: space-between; /* Distribute space evenly */
+        }
+
+        .custom-card:hover {
+            transform: scale(1.05);
+            border-color: #d2dde2; /* Change border color on hover */
+        }
+
+        .custom-container {
+            background-color: #43586d;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            height: 100%; /* Set the container height to take full card height */
+        }
+
+        .custom-heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <body class="m-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Categories
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <a href="{% url 'gallery' %}">Home</a>
+                            </li>
+
+                            <li class="list-group-item">
+                               
+                            </li>
+                            
+                            <a href="{% url 'upload_file' %}" class="btn btn-dark btn-block btn-sm m-1 bi bi-bag">Add to store</a>
+                            <a href="{% url 'logout' %}" class="btn btn-dark btn-block btn-sm m-1">Logout</a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="custom-heading bi bi-bag">macrosecond store</h1>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="custom-container">
+                                <div class="card custom-card">                            
+                                    <div class="card-body">
+                                        <h5 class="card-title"><p>{{ file.title }}</p></h5>
+                                        <p class="card-text">Price: R{{ file.price }}</p>
+                                        <ul class="list-unstyled">
+                                                                 
+                                            {% if file.image %}
+                                            <img src="{{ file.image.url }}" alt="Logo" class="image-thumbnail">
+                                            {% endif %}
+                                            {% if file.website_url %}
+                                            <li><a href="https://{{ file.website_url }}">Website</a></li>
+                                            {% endif %}
+                                             
+                                            {% if file.whatsapp_number %}
+                                            <p>WhatsApp: <a href="https://wa.me/{{ file.whatsapp_number }}" target="_blank" class="bx bxl-whatsapp">{{ file.whatsapp_number }}</a></p>
+                                            {% endif %}
+                                            
+                                            {% if file.facebook_url %}
+                                            <p>Facebook: <a href="{{ file.facebook_url }}" target="_blank">{{ file.facebook_url }}</a></p>
+                                            {% endif %}
+                                            {% if file.zoom_url %}
+                                            <p>Zoom: <a href="{{ file.zoom_url }}" target="_blank">{{ file.facebook_url }}</a></p>
+                                            {% endif %}
+                                            {% if file.microsoftTeam_url %}
+                                            <p>microsoftTeam: <a href="{{ file.microsoftTeam_url }}" target="_blank">{{ file.facebook_url }}</a></p>
+                                            {% endif %}
+                                            <p>Description: {{ file.description }}</p>
+                                            <!-- Video Player --
+                                            <div class="mt-5">
+                                                <h2>Video</h2>
+                                                <div class="embed-responsive embed-responsive-16by9 rounded">
+                                                    <video class="embed-responsive-item" controls>
+                                                        <source src="{{ file.video.url }}" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                </div>
+                                            </div>
+                                            --file likes and dislikes-->
+                                            <form method="post" action="{% url 'like_file' file_id=file.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit">Like</button>
+                                            </form>
+                                             <!-- "Add to Cart" form -->
+                                  
+                                            <form method="post" action="{% url 'add_to_cart' file_id=file.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                            </form>
+
+                                            <!-- Add more links with the unique variable (https://) as needed -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}

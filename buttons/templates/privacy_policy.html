@@ -1,0 +1,8 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<h1>{{ privacy_policy.title }}</h1>
+<p>{{ privacy_policy.content|safe }}</p>
+
+<a href="{% url 'terms_of_use' %}">Terms of Use</a>
+{% endblock %}

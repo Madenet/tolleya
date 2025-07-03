@@ -1,0 +1,20 @@
+{% extends "landing/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Create New Trading Activity</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" class="form-control" name="title" placeholder="Title">
+        </div>
+        <div class="input-group">
+            <textarea class="form-control" name="description" rows="4" placeholder="Description"></textarea>
+        </div>
+        <div class="input-group">
+            <input type="datetime-local" class="form-control" name="due_date" placeholder="Due Date">
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Create Activity</button>
+    </form>
+</div>
+{% endblock %}

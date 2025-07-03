@@ -1,0 +1,98 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+
+<style>
+    /* CSS for the file wrapper */
+    .file-wrapper {
+        max-height: 500px; /* Adjust the maximum height as needed */
+        overflow-y: auto; /* Enable vertical scrolling if needed */
+        margin-bottom: 20px; /* Add spacing at the bottom */
+    }
+
+    /* CSS for the file container */
+    .file-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Adjust the alignment as needed */
+        gap: 20px; /* Add spacing between file cards */
+    }
+
+    /* CSS for the file cards */
+    .file-card {
+        flex: 0 0 calc(33.33% - 20px); /* Adjust the card width as needed */
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        /* Adjust the layout for smaller screens if needed */
+        .file-card {
+            flex: 0 0 calc(50% - 20px); /* Adjust card width for smaller screens */
+            padding: 10px;
+        }
+    }
+</style>
+<hr>
+<a href="{{ view_uploaded_files_url }}" class="d-block text-center text-decoration-none">
+  <h2 class="bi bi-bag">
+    macrosecond store
+  </h2>
+</a>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="file-wrapper">
+                <div class="file-container">
+                    {% for file in files %}
+                    <div class="file-card">
+                        <h5 class="card-title"><p>{{ file.title }}</p></h5>
+                        <p class="card-text">Price: R{{ file.price }}</p>
+                        {% if file.image %}
+                        <img src="{{ file.image.url }}" alt="Logo" class="img-fluid image-thumbnail">
+                        {% endif %}
+                        {% if file.website_url %}
+                        <p><a href="https://{{ file.website_url }}" target="_blank">Website</a></p>
+                        {% endif %}
+                        {% if file.whatsapp_number %}
+                        <p>WhatsApp: <a href="https://wa.me/{{ file.whatsapp_number }}" target="_blank" class="bx bxl-whatsapp">{{ file.whatsapp_number }}</a></p>
+                        {% endif %}
+                        {% if file.facebook_url %}
+                        <p>Facebook: <a href="{{ file.facebook_url }}" target="_blank">{{ file.facebook_url }}</a></p>
+                        {% endif %}
+                        {% if file.zoom_url %}
+                        <p>zoom: <a href="{{ file.zoom_url }}" target="_blank">{{ file.facebook_url }}</a></p>
+                        {% endif %}
+                        {% if file.microsoftTeam_url %}
+                        <p>microsoftTeam: <a href="{{ file.microsoftTeam_url }}" target="_blank">{{ file.microsoftTeam_url }}</a></p>
+                        {% endif %}
+                        <p>Description: {{ file.description }}</p>
+                        <!-- Video Player 
+                        <div class="mt-3"> 
+                            <h2>Video</h2>
+                            <div class="embed-responsive embed-responsive-16by9 rounded">
+                                <video class="embed-responsive-item" controls>
+                                    <source src="{{ file.video.url }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                         "Add to Cart" form -->
+                        <form method="post" action="{% url 'add_to_cart' file_id=file.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+                        </form>
+                        <!-- Add more links with the unique variable (https://) as needed -->
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

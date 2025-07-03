@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Error</title>
+</head>
+<body>
+    <h1>Payment Error</h1>
+    <p>{{ error_message }}</p>
+    
+    <!-- You can provide a link to go back to the file purchase page -->
+    <a href="{% url 'purchase_file' file_id=file.id %}">Go back to purchase page</a>
+</body>
+</html>

@@ -1,0 +1,227 @@
+{% extends 'sports/base.html' %}
+{% load static %}
+
+{% block title %}Sports Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'sports/css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <!-- Filters Section -->
+    <div class="filters-section">
+        <form method="get" class="filter-form">
+            <div class="filter-group">
+                <label for="sport_type">Sport Type:</label>
+                <select name="sport_type" id="sport_type" onchange="this.form.submit()">
+                    <option value="">All Sports</option>
+                    {% for name, slug in sport_types %}
+                        <option value="{{ slug }}" {% if selected_sport_type == slug %}selected{% endif %}>
+                            {{ name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="league">League:</label>
+                <select name="league" id="league" onchange="this.form.submit()">
+                    <option value="">All Leagues</option>
+                    {% for league in leagues %}
+                        <option value="{{ league.slug }}" {% if selected_league == league.slug %}selected{% endif %}>
+                            {{ league.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="level">Level:</label>
+                <select name="level" id="level" onchange="this.form.submit()">
+                    <option value="">All Levels</option>
+                    {% for value, name in levels %}
+                        <option value="{{ value }}" {% if selected_level == value %}selected{% endif %}>
+                            {{ name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="time_range">Time Range:</label>
+                <select name="time_range" id="time_range" onchange="this.form.submit()">
+                    <option value="today" {% if selected_time_range == 'today' %}selected{% endif %}>Today</option>
+                    <option value="week" {% if selected_time_range == 'week' %}selected{% endif %}>This Week</option>
+                    <option value="month" {% if selected_time_range == 'month' %}selected{% endif %}>This Month</option>
+                    <option value="all" {% if selected_time_range == 'all' %}selected{% endif %}>All</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <!-- Main Dashboard Grid -->
+    <div class="dashboard-grid">
+        <!-- Live Matches Section -->
+        <div class="dashboard-card live-matches">
+            <h2 class="card-header">Live Matches</h2>
+            {% if live_matches %}
+                <div class="matches-container">
+                    {% for match in live_matches %}
+                    <div class="match-card live">
+                        <div class="match-league">{{ match.league.name }}</div>
+                        <div class="match-teams">
+                            <div class="team home-team">
+                                <span class="team-name">{{ match.home_team.name }}</span>
+                                <span class="team-score">{{ match.home_score|default:"0" }}</span>
+                            </div>
+                            <div class="match-vs">vs</div>
+                            <div class="team away-team">
+                                <span class="team-score">{{ match.away_score|default:"0" }}</span>
+                                <span class="team-name">{{ match.away_team.name }}</span>
+                            </div>
+                        </div>
+                        <div class="match-time">
+                            {{ match.match_date|time }} - {{ match.match_date|date:"M j" }}
+                        </div>
+                        <div class="match-status live-badge">LIVE</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-matches">No live matches currently</p>
+            {% endif %}
+        </div>
+
+        <!-- Upcoming Matches Section -->
+        <div class="dashboard-card upcoming-matches">
+            <h2 class="card-header">Upcoming Matches</h2>
+            {% if upcoming_matches %}
+                <div class="matches-container">
+                    {% for match in upcoming_matches %}
+                    <div class="match-card">
+                        <div class="match-league">{{ match.league.name }}</div>
+                        <div class="match-teams">
+                            <div class="team home-team">
+                                <span class="team-name">{{ match.home_team.name }}</span>
+                            </div>
+                            <div class="match-vs">vs</div>
+                            <div class="team away-team">
+                                <span class="team-name">{{ match.away_team.name }}</span>
+                            </div>
+                        </div>
+                        <div class="match-time">
+                            {{ match.match_date|time }} - {{ match.match_date|date:"M j" }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-matches">No upcoming matches</p>
+            {% endif %}
+        </div>
+
+        <!-- Recent Results Section -->
+        <div class="dashboard-card recent-results">
+            <h2 class="card-header">Recent Results</h2>
+            {% if recent_matches %}
+                <div class="matches-container">
+                    {% for match in recent_matches %}
+                    <div class="match-card result">
+                        <div class="match-league">{{ match.league.name }}</div>
+                        <div class="match-teams">
+                            <div class="team home-team">
+                                <span class="team-name">{{ match.home_team.name }}</span>
+                                <span class="team-score">{{ match.home_score|default:"0" }}</span>
+                            </div>
+                            <div class="match-vs">vs</div>
+                            <div class="team away-team">
+                                <span class="team-score">{{ match.away_score|default:"0" }}</span>
+                                <span class="team-name">{{ match.away_team.name }}</span>
+                            </div>
+                        </div>
+                        <div class="match-time">
+                            {{ match.match_date|date:"M j" }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-matches">No recent matches</p>
+            {% endif %}
+        </div>
+
+        <!-- Standings Section -->
+        <div class="dashboard-card standings">
+            <h2 class="card-header">League Standings</h2>
+            {% if standings_by_league %}
+                <div class="standings-container">
+                    {% for league_name, standings in standings_by_league.items %}
+                    <div class="league-standings">
+                        <h3>{{ league_name }}</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pos</th>
+                                    <th>Team</th>
+                                    <th>P</th>
+                                    <th>W</th>
+                                    <th>D</th>
+                                    <th>L</th>
+                                    <th>GD</th>
+                                    <th>Pts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for standing in standings|slice:":5" %}
+                                <tr>
+                                    <td>{{ standing.position }}</td>
+                                    <td>{{ standing.team.name }}</td>
+                                    <td>{{ standing.played }}</td>
+                                    <td>{{ standing.won }}</td>
+                                    <td>{{ standing.drawn }}</td>
+                                    <td>{{ standing.lost }}</td>
+                                    <td>{{ standing.goal_difference }}</td>
+                                    <td>{{ standing.points }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% if standings|length > 5 %}
+                        <div class="view-more">
+                            <a href="#">View full table</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-standings">No standings available</p>
+            {% endif %}
+        </div>
+
+        <!-- Headlines Section -->
+        <div class="dashboard-card headlines">
+            <h2 class="card-header">Latest Headlines</h2>
+            {% if headlines %}
+                <div class="news-container">
+                    {% for news in headlines %}
+                    <div class="news-item">
+                        <h3><a href="{% url 'news_detail' news.slug %}">{{ news.title }}</a></h3>
+                        <p class="news-excerpt">{{ news.content|truncatewords:20 }}</p>
+                        <div class="news-meta">
+                            <span class="news-date">{{ news.published_date|date:"M j, Y" }}</span>
+                            {% if news.related_league %}
+                            <span class="news-league">{{ news.related_league.name }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-news">No headlines available</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

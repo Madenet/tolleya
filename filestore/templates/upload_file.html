@@ -1,0 +1,199 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<body class="m-5">
+    <div class="container">
+        <div class="row justify-content-center"> 
+            <div class="col-md-4">
+                <div class="container mt-5">
+                    <h1>Sell your files</h1>
+                    <form method="post" enctype="multipart/form-data" class="mt-4">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" id="price" name="price" step="0.01" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" rows="4" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="file">Upload File (ZIP/RAR)</label>
+                            <input type="file" id="file" name="file" accept=".zip, .rar" class="form-control-file" required>
+                        </div>
+                        
+                        <!-- Image Upload -->
+                        <div class="form-group">
+                            <label for="imageInput">Upload Image</label>
+                            <input required name="image" type="file" class="form-control-file" id="imageInput">
+                        </div>
+                        <!-- Image Preview -->
+                        <div id="imagePreview" style="display: none;">
+                            <label>Image Preview</label>
+                            <img id="previewImage" src="#" alt="Image Preview" style="max-width: 100%;">
+                            <button type="button" class="btn btn-danger mt-2" onclick="cancelImagePreview()">Cancel</button>
+                        </div>
+                        <!-- 
+                            
+                            <style>
+                                /* Styles for responsive video embedding */
+                                .form-group {
+                                    margin-bottom: 20px;
+                                }
+                        
+                                .video-container {
+                                    position: relative;
+                                    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                                    height: 0;
+                                    overflow: hidden;
+                                }
+                        
+                                .video-container video {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                        
+                                /* Media query for small screens */
+                                @media (max-width: 767px) {
+                                    .video-container {
+                                        padding-bottom: 100%; /* Adjust as needed for small screens */
+                                    }
+                                }
+                            </style>
+                        <script src="path-to-ffmpeg.js"></script>
+                        <div class="form-group">
+                            <label for="video">Upload Video (Max 3 minutes)</label>
+                            <input type="file" id="video" name="video" accept="video/*" class="form-control-file" required>
+                            <div class="video-container">
+                                <video id="video-preview" controls style="display: none;"></video>
+                                <button type="button" id="crop-video-button" style="display: none;">Crop Video</button>
+                            </div>
+                        </div>
+                        WhatsApp Number -->
+                        <div class="form-group">
+                            <label for="whatsapp_number">WhatsApp Number</label>
+                            <input name="whatsapp_number" type="text" placeholder="Enter WhatsApp number" class="form-control">
+                        </div>
+                        
+                        <!-- Select URL Type -->
+                        <div class="form-group">
+                            <label>Select URL Type</label>
+                            <select name="url_type" id="urlType" class="form-control">
+                                <option value="">Select URL Type...</option>
+                                <option value="website_url">Website URL</option>
+                                <option value="facebook_url">Facebook URL</option>
+                                <option value="twitter_url">Twitter URL</option>
+                                <option value="zoom_url">Zoom URL</option>
+                                <option value="microsoftTeam_url">microsoftTeam URL</option>
+                                <!-- Add more options for other URL types -->
+                            </select>
+                        </div>
+                        
+                        <!-- Container for dynamic URL input fields -->
+                        <div id="dynamicUrlFields" class="mb-4"></div>
+                        
+                        <!-- Button to add more URLs -->
+                        <button type="button" class="btn btn-secondary mb-3" onclick="addUrlField()">Add URL Field</button>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function addUrlField() {
+        const urlTypeDropdown = document.getElementById('urlType');
+        const dynamicUrlFields = document.getElementById('dynamicUrlFields');
+
+        // Get the selected URL type
+        const selectedUrlType = urlTypeDropdown.value;
+
+        if (selectedUrlType) {
+            const urlField = document.createElement('div');
+            urlField.className = 'form-group m-3';
+
+            const label = document.createElement('label');
+            label.textContent = selectedUrlType.replace("_", " ").toUpperCase();
+            urlField.appendChild(label);
+
+            const input = document.createElement('input');
+            input.name = selectedUrlType;
+            input.type = 'text';
+            input.placeholder = 'Enter ' + selectedUrlType.replace("_", " ");
+            input.className = 'form-control';
+            urlField.appendChild(input);
+
+            const deleteButton = document.createElement('button');
+            deleteButton.type = 'button';
+            deleteButton.className = 'btn btn-danger';
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', function() {
+                dynamicUrlFields.removeChild(urlField);
+            });
+            urlField.appendChild(deleteButton);
+
+            dynamicUrlFields.appendChild(urlField);
+        }
+    }
+
+    function cancelImagePreview() {
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImage = document.getElementById('previewImage');
+
+        imageInput.value = ''; // Clear the input
+        previewImage.src = '#';
+        imagePreview.style.display = 'none';
+    }
+
+    // Handle image preview when a file is selected
+    const imageInput = document.getElementById('imageInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImage = document.getElementById('previewImage');
+
+    imageInput.addEventListener('change', function(event) {
+        const selectedImage = event.target.files[0];
+        if (selectedImage) {
+            previewImage.src = URL.createObjectURL(selectedImage);
+            imagePreview.style.display = 'block';
+        }
+    });
+
+    const videoInput = document.getElementById('video');
+    const videoPreview = document.getElementById('video-preview');
+    const cropVideoButton = document.getElementById('crop-video-button');
+
+    videoInput.addEventListener('change', function(event) {
+        const selectedVideo = event.target.files[0];
+
+        if (selectedVideo) {
+            videoPreview.style.display = 'block';
+            videoPreview.src = URL.createObjectURL(selectedVideo);
+
+            // Show the crop button once the video is selected
+            cropVideoButton.style.display = 'block';
+
+            // Add an event listener to the crop button to start editing
+            cropVideoButton.addEventListener('click', function() {
+                // Here, you can use ffmpeg.js to open the video for editing
+                // and provide a user interface for cropping and other edits.
+                // Implementing video editing with ffmpeg.js is complex and
+                // goes beyond the scope of this response.
+            });
+        }
+    });
+
+</script>
+{% endblock %}

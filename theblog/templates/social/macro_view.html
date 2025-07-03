@@ -1,0 +1,300 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+
+{% block title %}Price{% endblock %}
+
+
+{% block content %}
+<section class="container ">
+    <!--for integrated trading views, investment charts and the rest , including fundamentals-->
+    <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text"></span></a></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+      "symbols": [
+        {
+          "proName": "FOREXCOM:SPXUSD",
+          "title": "S&P 500"
+        },
+        {
+          "proName": "FOREXCOM:NSXUSD",
+          "title": "US 100"
+        },
+        {
+          "proName": "FX_IDC:EURUSD",
+          "title": "EUR to USD"
+        },
+        {
+          "proName": "BITSTAMP:BTCUSD",
+          "title": "Bitcoin"
+        },
+        {
+          "proName": "BITSTAMP:ETHUSD",
+          "title": "Ethereum"
+        }
+      ],
+      "showSymbolLogo": true,
+      "colorTheme": "dark",
+      "isTransparent": false,
+      "displayMode": "adaptive",
+      "locale": "en"
+    }
+  </script>
+  </section>
+  <hr>
+  <!--cards-->
+  <div class="container-fluid mtb15 markets-overview">
+      <div class="row">
+        <div class="col-md-4">
+          <!-- TradingView Widget BEGIN -->
+          <div class="row justify-content-center mt-15">
+              <div class="col-md-25 text-center">  
+                  <!--Carousel Slide-->
+                  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                  <ol class="carousel-indicators">
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="0" class="active"  aria-current="true" aria-label="Slide 1"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="9"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="10"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="11"></li>
+                      <li data-bs-target="#carouselExampleIndicators" data-slide-to="12"></li>
+                  </ol>        
+                  
+                  <div class="carousel-inner">
+                      {% for post in object_list %}
+                      <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %} ">
+                      <!-- post carousel image-->
+                      {% if post.image %}
+                      <div onclick="window.location='{% url 'post-detail' post.pk %}';" style="cursor: pointer;">
+                          <img src="{{ post.image.url }}" class="col-md-25" style="width: 34.5rem;" alt="...">
+                      </div>
+                      {% endif %}
+                  
+                      <div class="carousel-caption mt-3">
+                          <h1 class="animate__animated
+                          {% if forloop.counter0 == 0 %}
+                          animate__fadeInDown
+                          {% endif %}
+                          {% if forloop.counter == 1 %}
+                          animate__slideInDown
+                          {% endif %}
+                          {% if forloop.revcounter == 2 %}
+                          animate__zoomIn
+                          {% endif %}">
+                          <!--Header-->
+                          <h5>
+                          <span onclick="window.location='{% url 'post-detail' post.pk %}';" style="cursor: pointer;">
+                              {{ post.title }}
+                          </span>
+                          </h5>
+                          <!--Link to posts page-->
+                          <p class="card-text">
+                          {{ post.sub_title }}
+                          {{ post.author.first_name }} 
+                          {{ post.author.last_name }} - 
+                          {{ post.created_on }} 
+                          </p>
+                          <!-- end -->
+                      </div>
+                      </div>
+                      {% endfor %}
+                  </div>
+                      
+              </div>
+                  <a class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" data-bs-target="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                  </a>
+              </div>
+          </div>
+          <!-- TradingView Widget END -->
+        </div>
+        <div class="col-md-4">
+          <!-- TradingView Widget BEGIN -->
+          <!-- TradingView Widget BEGIN -->
+          <div class="tradingview-widget-container">
+            <div id="tradingview_e8053"></div>
+            <script src="https://s3.tradingview.com/tv.js"></script>
+            <script>
+              new TradingView.widget(
+                {
+                  "width": "100%",
+                  "height": 660,
+                  "symbol": "BITSTAMP:BTCUSD",
+                  "interval": "D",
+                  "timezone": "Etc/UTC",
+                  "theme": "Dark",
+                  "style": "1",
+                  "locale": "en",
+                  "toolbar_bg": "#f1f3f6",
+                  "enable_publishing": false,
+                  "withdateranges": true,
+                  "hide_side_toolbar": false,
+                  "allow_symbol_change": true,
+                  "show_popup_button": true,
+                  "popup_width": "1000",
+                  "popup_height": "650",
+                  "container_id": "tradingview_e8053"
+                }
+              );
+            </script>
+          </div>
+          <!-- TradingView Widget END -->
+        </div>
+        <div class="col-md-4">
+          <!-- TradingView Widget BEGIN -->
+          <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript"
+              src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                {
+                  "colorTheme": "dark",
+                    "dateRange": "3m",
+                      "showChart": true,
+                        "locale": "en",
+                          "largeChartUrl": "",
+                            "isTransparent": false,
+                              "width": "100%",
+                                "height": "660",
+                                  "plotLineColorGrowing": "rgba(25, 118, 210, 1)",
+                                    "plotLineColorFalling": "rgba(25, 118, 210, 1)",
+                                      "gridLineColor": "rgba(42, 46, 57, 1)",
+                                        "scaleFontColor": "rgba(120, 123, 134, 1)",
+                                          "belowLineFillColorGrowing": "rgba(33, 150, 243, 0.12)",
+                                            "belowLineFillColorFalling": "rgba(33, 150, 243, 0.12)",
+                                              "symbolActiveColor": "rgba(33, 150, 243, 0.12)",
+                                                "tabs": [
+                                                  {
+                                                    "title": "Indices",
+                                                    "symbols": [
+                                                      {
+                                                        "s": "FOREXCOM:SPXUSD",
+                                                        "d": "S&P 500"
+                                                      },
+                                                      {
+                                                        "s": "FOREXCOM:NSXUSD",
+                                                        "d": "Nasdaq 100"
+                                                      },
+                                                      {
+                                                        "s": "FOREXCOM:DJI",
+                                                        "d": "Dow 30"
+                                                      },
+                                                      {
+                                                        "s": "INDEX:NKY",
+                                                        "d": "Nikkei 225"
+                                                      },
+                                                      {
+                                                        "s": "INDEX:DEU30",
+                                                        "d": "DAX Index"
+                                                      },
+                                                      {
+                                                        "s": "FOREXCOM:UKXGBP",
+                                                        "d": "FTSE 100"
+                                                      }
+                                                    ],
+                                                    "originalTitle": "Indices"
+                                                  },
+                                                  {
+                                                    "title": "Commodities",
+                                                    "symbols": [
+                                                      {
+                                                        "s": "CME_MINI:ES1!",
+                                                        "d": "E-Mini S&P"
+                                                      },
+                                                      {
+                                                        "s": "CME:6E1!",
+                                                        "d": "Euro"
+                                                      },
+                                                      {
+                                                        "s": "COMEX:GC1!",
+                                                        "d": "Gold"
+                                                      },
+                                                      {
+                                                        "s": "NYMEX:CL1!",
+                                                        "d": "Crude Oil"
+                                                      },
+                                                      {
+                                                        "s": "NYMEX:NG1!",
+                                                        "d": "Natural Gas"
+                                                      },
+                                                      {
+                                                        "s": "CBOT:ZC1!",
+                                                        "d": "Corn"
+                                                      }
+                                                    ],
+                                                    "originalTitle": "Commodities"
+                                                  },
+                                                  {
+                                                    "title": "Bonds",
+                                                    "symbols": [
+                                                      {
+                                                        "s": "CME:GE1!",
+                                                        "d": "Eurodollar"
+                                                      },
+                                                      {
+                                                        "s": "CBOT:ZB1!",
+                                                        "d": "T-Bond"
+                                                      },
+                                                      {
+                                                        "s": "CBOT:UB1!",
+                                                        "d": "Ultra T-Bond"
+                                                      },
+                                                      {
+                                                        "s": "EUREX:FGBL1!",
+                                                        "d": "Euro Bund"
+                                                      },
+                                                      {
+                                                        "s": "EUREX:FBTP1!",
+                                                        "d": "Euro BTP"
+                                                      },
+                                                      {
+                                                        "s": "EUREX:FGBM1!",
+                                                        "d": "Euro BOBL"
+                                                      }
+                                                    ],
+                                                    "originalTitle": "Bonds"
+                                                  },
+                                                  {
+                                                    "title": "Forex",
+                                                    "symbols": [
+                                                      {
+                                                        "s": "FX:EURUSD"
+                                                      },
+                                                      {
+                                                        "s": "FX:GBPUSD"
+                                                      },
+                                                      {
+                                                        "s": "FX:USDJPY"
+                                                      },
+                                                      {
+                                                        "s": "FX:USDCHF"
+                                                      },
+                                                      {
+                                                        "s": "FX:AUDUSD"
+                                                      },
+                                                      {
+                                                        "s": "FX:USDCAD"
+                                                      }
+                                                    ],
+                                                    "originalTitle": "Forex"
+                                                  }
+                                                ]
+                }
+              </script>
+          </div>
+          <!-- TradingView Widget END -->
+      </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,1635 @@
+{% extends 'landing/base.html' %}
+
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<script>
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = '{% static 'assets/css/style.css' %}';
+  document.head.appendChild(link);
+$('tbody, .market-news ul').mCustomScrollbar({
+  theme: 'minimal',
+});
+</script>
+<script src="{% static 'assets/scss/module/_market-news.scss' %}"></script>
+<script src="{% static 'assets/scss/module/_market-history.scss' %}"></script>
+<script src="{% static 'assets/css/jquery.mCustomScrollbar.min.css' %}"></script>
+<script src="{% static 'assets/scss/base/_common.scss' %}"></script>
+
+<script src="{% static 'assets/market-order.scss' %}"></script>
+<script src="{% static 'assets/css/bootstrap.min.css' %}"></script>
+<script src="{% static 'assets/typography.scss' %}"></script>
+<script src="{% static 'assets/css/ionicons.min.css' %}"></script>
+<script src="{% static 'assets/js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/amcharts-core.min.js' %}"></script>
+<script src="{% static 'assets/js/amcharts.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.mCustomScrollbar.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+
+<section class="container ">
+  <!--for integrated trading views, investment charts and the rest , including fundamentals-->
+  <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text"></span></a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+    "symbols": [
+      {
+        "proName": "FOREXCOM:SPXUSD",
+        "title": "S&P 500"
+      },
+      {
+        "proName": "FOREXCOM:NSXUSD",
+        "title": "US 100"
+      },
+      {
+        "proName": "FX_IDC:EURUSD",
+        "title": "EUR to USD"
+      },
+      {
+        "proName": "BITSTAMP:BTCUSD",
+        "title": "Bitcoin"
+      },
+      {
+        "proName": "BITSTAMP:ETHUSD",
+        "title": "Ethereum"
+      }
+    ],
+    "showSymbolLogo": true,
+    "colorTheme": "dark",
+    "isTransparent": false,
+    "displayMode": "adaptive",
+    "locale": "en"
+  }
+</script>
+</section>
+<hr>
+<!--cards-->
+<section class="container">
+    <!--for integrated trading views, investment charts and the rest , including fundamentals-->
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-10 col-sm-12 text-center">  
+        <!--Carousel Slide-->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="0" class="active"  aria-current="true" aria-label="Slide 1"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="5"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="6"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="7"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="9"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="10"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="11"></li>
+            <li data-bs-target="#carouselExampleIndicators" data-slide-to="12"></li>
+          </ol>        
+          
+          <div class="carousel-inner">
+            {% for post in object_list %}
+            <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %} ">
+              <!-- post carousel image-->
+              {% if post.image %}
+              <div onclick="window.location='{% url 'post-detail' post.pk %}';" style="cursor: pointer;">
+                <img src="{{ post.image.url }}" class="col-md-10" style="width: 25rem;" alt="...">
+                <!-- Display the tag -->
+                <div class="tag">
+                  <span class="custom-tag-style">{{ post.tags }}</span>
+                </div>
+                <style>
+                  .custom-tag-style {
+                      background-color: #FFA500; /* Custom background color */
+                      color: white; /* Text color */
+                      padding: 4px 8px; /* Padding for the tag */
+                      border-radius: 4px; /* Rounded corners */
+                  }
+                </style>
+              </div>
+              {% endif %}
+          
+              <div class="carousel-caption mt-3">
+                <h1 class="animate__animated
+                {% if forloop.counter0 == 0 %}
+                animate__fadeInDown
+                {% endif %}
+                {% if forloop.counter == 1 %}
+                animate__slideInDown
+                {% endif %}
+                {% if forloop.revcounter == 2 %}
+                animate__zoomIn
+                {% endif %}">
+                <!--Header-->
+                <h5>
+                  <span onclick="window.location='{% url 'post-detail' post.pk %}';" style="cursor: pointer;">
+                    {{ post.title }}
+                  </span>
+                </h5>
+                <!--Link to posts page-->
+                <p class="card-text">
+                  {{ post.sub_title }}
+                  {{ post.author.first_name }} 
+                  {{ post.author.last_name }} - 
+                  {{ post.created_on }} 
+                </p>
+                <!-- end -->
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+            
+          </div>
+            <a class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" data-bs-target="#carouselExampleIndicators" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!--end-->
+    </div>
+</section>
+<style>
+  /* Add your CSS styles here */
+  .white-text {
+      color: white;
+  }
+  /* Add more styles as needed */
+</style>  
+  
+<!--colors carousel-->
+<div class="container my-4">
+    <div class="text-center me-3 mb-3">
+        <body>
+            <div class="d-flex justify-content-center justify-content-md-start flex-wrap">
+                <p class="small text-muted white-text">
+                    {% if user_profile.website_url %}
+                    | <a href="https://{{ user_profile.website_url }}" class="Website"><i class="bx bxl-Website white-text">Website</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.google_url %}
+                        | <a href="https://{{ user_profile.google_url }}" class="Website"><i class="bx bxl-Website white-text">Google</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.playstore_url %}
+                        | <a href="https://{{ user_profile.playstore_url }}" class="Website"><i class="bx bxl-Website white-text">Playstore</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.zoom_url %}
+                        | <a href="https://{{ user_profile.zoom_url }}" class="Website" style="background-color: rgb(168, 72, 72); color: white; padding: 5px 10px; border-radius: 5px;"><i class="bx bxl-Website white-text">Zoom</i></a>
+                    {% endif %}
+
+                    {% if user_profile.microsoftTeam_url %}
+                    | <a href="https://{{ user_profile.microsoftTeam_url }}" class="Website" style="background-color: rgb(168, 96, 96); color: white; padding: 5px 10px; border-radius: 5px;"><i class="bx bxl-Website white-text">microsoftTeam</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.linkedin_url %}
+                        | <a href="https://{{ user_profile.linkedin_url }}" class="facebook"><i class="bx bxl-LinkedIn white-text">LinkedIn</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.facebook_url %}
+                        | <a href="https://{{ user_profile.facebook_url }}" class="facebook"><i class="bx bxl-facebook white-text">Facebook</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.twitter_url %}
+                        | <a href="https://{{ user_profile.twitter_url }}" class="twitter"><i class="bx bxl-twitter white-text">Twitter</i></a>
+                    {% endif %}
+
+                    {% if user_profile.youtube_url %}
+                        | <a href="{{ user_profile.youtube_url }}" class="youtube"><i class="bx bxl-youtube white-text">Youtube</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.pinterest_url %}
+                        | <a href="https://{{ user_profile.pinterest_url }}" class="pinterest"><i class="bx bxl-pinterest white-text">Pinterest</i></a>
+                    {% endif %}
+
+                    {% if user_profile.whatsapp_number %}
+                        | <a href="https://{{ user_profile.whatsapp_number }}" class="pinterest"><i class="bx bxl-pinterest white-text">Pinterest</i></a>
+                    {% endif %}
+
+                    {% if user_profile.instagram_url %}
+                        | <a href="https://{{ user_profile.instagram_url }}" class="pinterest"><i class="bx bxl-pinterest white-text">Pinterest</i></a>
+                    {% endif %}
+
+                    {% if user_profile.telegram_url %}
+                        | <a href="https://{{ user_profile.telegram_url }}" class="pinterest"><i class="bx bxl-telegram white-text">Telegram</i></a>
+                    {% endif %}
+                    
+                </p>
+            </div>
+        </body>
+    </div>
+</div>           
+
+<hr>
+<div class="text-center me-3 mb-3">
+  {% for button in custom_buttons %}
+    <a class="btn btn-sm btn-dark mb-1" target="_blank" href="https://{{ button.web_url }}" role="button">
+        <img src="{{ button.logo.url }}" alt="{{ button.web_url }} logo" width="32" height="32">
+    </a>
+    <a class="btn btn-sm btn-danger" href="{% url 'remove_button' button.id %}" role="button">
+        <i class="bi bi-trash"></i>
+    </a>
+  {% endfor %}
+</div>
+</div>
+      
+   
+<hr>
+<p class="mb-3" style="color: white;">Search to find your favorite Analysis - microsecond</p>
+<form class="mb-4" method="GET" action="{% url 'profile-search' %}">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Find Analysis" aria-label="Find Analysis" aria-describedby="basic-addon1" name="query" value="{{ request.GET.query }}">
+    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i> Search</button>
+  </div>
+</form>
+<!--brokers and propfirms fields-->
+<div class="d-flex justify-content-center justify-content-md-start">
+  <div class="text-center me-3">
+    <a class="btn btn-sm btn-dark mb-1 bi bi-cash" target="_blank" href="{% url 'gallery' %}" role="button"></a>
+    <p style="color: white;">Prop firm</p>
+  </div>
+  <div class="text-center me-3">
+    <a class="btn btn-sm btn-dark mb-1 bi bi-bag" target="_blank" href="{% url 'upload_file' %}" role="button"></a>
+    <p style="color: white;">FileShop</p>
+  </div>
+  <div class="text-center">
+    <a class="btn btn-sm btn-dark mb-1 bi bi-bar-chart-line" target="_blank" href="{% url 'brokerview' %}" role="button"></a>
+    <p style="color: white;">Add broker</p>
+  </div>
+</div>
+<!--end-->
+<!--post for brokers and propfirms-->
+
+       
+  <!--end-->
+  <!--post for brokers and propfirms-->
+  
+  
+  <style>
+    /* Your existing styles here */
+
+    /* New styles for the broker card and image */
+    .broker-card {
+        background-color: #503c3d;
+        border-radius: 10px;
+        padding: 5px;
+        text-align: center;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .broker-image {
+        max-width: 80px;
+        max-height: 80px;
+        border-radius: 5px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .broker-description {
+        margin-top: 5px;
+        font-size: 10px;
+    }
+
+    .broker-category {
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: 3px;
+    }
+</style>
+
+<body class="m-5">
+    <!-- Recently added broker card -->
+{% if recently_added_broker %}
+<hr>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="broker-card">
+                    <a href="https://{{ recently_added_broker.website_url }}" target="_blank">
+                        <img class="broker-image" src="{{ recently_added_broker.image.url }}" alt="Recently Added Broker">
+                    </a>
+                    <p class="broker-description white-text">{{ recently_added_broker.description }}</p>
+                    <p class="broker-category white-text">Category: {{ recently_added_broker.category.name }}</p>
+                    <!-- Other fields here -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+</body>
+
+<script>
+    // Add click event listener to the broker image
+    document.querySelector('.broker-image').addEventListener('click', function () {
+        window.open('{{ recently_added_broker.image.url }}', '_blank');
+    });
+</script>
+
+ 
+<!--this is for propfirms views-->
+<style>
+  /* Your existing styles here */
+
+  /* New styles for the photo card and image */
+  .photo-card {
+      background-color: #313253;
+      border-radius: 10px;
+      padding: 5px;
+      text-align: center;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .photo-image {
+      max-width: 80px;
+      max-height: 80px;
+      border-radius: 5px;
+      display: block;
+      margin: 0 auto;
+  }
+
+  .photo-description {
+      margin-top: 5px;
+      font-size: 10px;
+  }
+
+  .photo-category {
+      font-size: 10px;
+      font-weight: bold;
+      margin-top: 3px;
+  }
+</style>
+
+  <!-- Recently added photo card -->
+
+  {% if recently_added_photo %}
+<body>
+  <hr class="mb-5"/>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="photo-card">
+                    <a href="https://{{ recently_added_photo.website_url }}" target="_blank">
+                      <img class="photo-image" src="{{ recently_added_photo.image.url }}" alt="Recently Added photo">
+                    </a>
+                    <p class="photo-description white-text">{{ recently_added_photo.description }}</p>
+                    <p class="photo-category white-text">Category: {{ recently_added_photo.category.name }}</p>
+                    <!-- Other fields here -->
+                </div>
+            </div>
+        </div>
+    </div>
+  {% endif %}
+
+</body>
+
+<script>
+  // Add click event listener to the photo image
+  document.querySelector('.photo-image').addEventListener('click', function () {
+      window.open('{{ recently_added_photo.image.url }}', '_blank');
+  });
+</script>
+<style>
+    /* CSS for the file wrapper */
+    .file-wrapper {
+        max-height: 500px; /* Adjust the maximum height as needed */
+        overflow-y: auto; /* Enable vertical scrolling if needed */
+        margin-bottom: 20px; /* Add spacing at the bottom */
+    }
+
+    /* CSS for the file container */
+    .file-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Adjust the alignment as needed */
+        gap: 20px; /* Add spacing between file cards */
+    }
+
+    /* CSS for the file cards */
+    .file-card {
+        flex: 0 0 calc(33.33% - 20px); /* Adjust the card width as needed */
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        /* Adjust the layout for smaller screens if needed */
+        .file-card {
+            flex: 0 0 calc(50% - 20px); /* Adjust card width for smaller screens */
+            padding: 10px;
+        }
+    }
+</style>
+<hr>
+<a href="{{ view_uploaded_files_url }}" class="d-block text-center text-decoration-none">
+    <h2 class="bi bi-bag" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-weight: bold;">
+        macrosecond store
+    </h2>
+</a>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="file-wrapper">
+                <div class="file-container">
+                    {% for file in files %}
+                    <div class="file-card">
+                        <h5 class="card-title"><p>{{ file.title }}</p></h5>
+                        <p class="card-text">Price: R{{ file.price }}</p>
+                        {% if file.image %}
+                        <img src="{{ file.image.url }}" alt="Logo" class="img-fluid image-thumbnail">
+                        {% endif %}
+                        {% if file.website_url %}
+                        <p><a href="https://{{ file.website_url }}" target="_blank">Website</a></p>
+                        {% endif %}
+                        {% if file.whatsapp_number %}
+                        <p>WhatsApp: <a href="https://wa.me/{{ file.whatsapp_number }}" target="_blank" class="bx bxl-whatsapp">{{ file.whatsapp_number }}</a></p>
+                        {% endif %}
+                        {% if file.facebook_url %}
+                        <p>Facebook: <a href="{{ file.facebook_url }}" target="_blank">{{ file.facebook_url }}</a></p>
+                        {% endif %}
+                        <p>Description: {{ file.description }}</p>
+                        <!-- Video Player 
+                        <div class="mt-3">
+                            <h2>Video</h2>
+                            <div class="embed-responsive embed-responsive-16by9 rounded">
+                                <video class="embed-responsive-item" controls>
+                                    <source src="{{ file.video.url }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                        -- "Add to Cart" form -->
+                        <form method="post" action="{% url 'add_to_cart' file_id=file.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+                        </form>
+                        <!-- Add more links with the unique variable (https://) as needed -->
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom styles -->
+<style>
+  .image-thumbnail {
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+      cursor: pointer;
+  }
+
+  /* Custom styles for the card and container */
+  .custom-card {
+      border: none;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, border-color 0.3s;
+      border-color: transparent;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+
+  .custom-card:hover {
+      transform: scale(1.05);
+      border-color: #d2dde2;
+  }
+
+  .custom-container {
+      background-color: #43586d;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      height: 100%;
+  }
+
+  .custom-heading {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+  }
+</style>
+
+
+</div>
+{% for post, brokers in matched_brokers %}
+{% if brokers %}
+    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+        <div class="col-md-3" style="float:left">
+            <div class="card mb-2">
+                {% if post.header_image %}
+                    <img class="card-img-top" src="{{ post.header_image.url }}" alt="Card image cap">
+                {% endif %}
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a>
+                    </h4>
+                    <p class="card-text">{{ post.snippet }}</p>
+                    <a class="btn btn-primary"> <small class="text-white fmuted">{{ post.created_on }}</small></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Crypo</title>
+  <!--link rel="icon" href="assets/img/favicon.png" type="image/x-icon"-->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body id="dark">
+  <header class="dark-bb">
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="exchange-dark.html"><!--img src="assets/img/logo-light.svg" alt="logo"--></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerMenu"
+        aria-controls="headerMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="icon ion-md-menu"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="headerMenu">
+        <!--ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Landing Page
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="landing-page-dark.html">Landing One</a>
+              <a class="dropdown-item" href="landing-page-dark-two.html">Landing Two</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Exchange
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="exchange-dark.html">Exchange</a>
+              <a class="dropdown-item" href="exchange-dark-live-price.html">Exchange Live Price</a>
+              <a class="dropdown-item" href="exchange-dark-ticker.html">Exchange Ticker</a>
+              <a class="dropdown-item" href="exchange-dark-fluid.html">Exchange Fluid</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Markets
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="markets-dark.html">Markets</a>
+              <a class="dropdown-item" href="market-capital-dark.html">Markets Line</a>
+              <a class="dropdown-item" href="market-capital-bar-dark.html">Markets Bar</a>
+              <a class="dropdown-item" href="market-overview-dark.html">Market Overview</a>
+              <a class="dropdown-item" href="market-screener-dark.html">Market Screener</a>
+              <a class="dropdown-item" href="market-crypto-dark.html">Market Crypto</a>
+            </div>
+          </li-->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Dashboard
+            </a>
+            <div class="dropdown-menu">
+              {% if user.profile.pk %}
+              <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile</a>
+              {% endif %}
+              <!--comin soon-->
+              <!--a class="dropdown-item" href="settings-wallet-dark.html">Wallet</a-->
+              <a class="dropdown-item" href="{% url 'edit_profile' %}">Settings</a>
+            </div>
+          </li>
+          <!--li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Others
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="technical-analysis-dark.html">Technical Analysis</a>
+              <a class="dropdown-item" href="cross-rates-dark.html">Cross Rates</a>
+              <a class="dropdown-item" href="symbol-info-dark.html">Symbol Info</a>
+              <a class="dropdown-item" href="heat-map-dark.html">Heat Map</a>
+              <a class="dropdown-item" href="signin-dark.html">Sign in</a>
+              <a class="dropdown-item" href="signup-dark.html">Sign up</a>
+              <a class="dropdown-item" href="404-dark.html">404</a>
+            </div>
+          </li-->
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item header-custom-icon">
+            <a class="nav-link" href="#" id="clickFullscreen">
+              <i class="icon ion-md-expand"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown header-custom-icon">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <i class="icon ion-md-notifications"></i>
+              <span class="circle-pulse"></span>
+            </a>
+            {% load custom_tags %}
+            {% if user.is_authenticated %}
+            <div class="dropdown-menu">
+              <div class="dropdown-header d-flex align-items-center justify-content-between">
+                <p class="mb-0 font-weight-medium">New Notifications</p>
+                <!--a href="#!" class="text-muted">Clear all</a-->
+              </div>
+              <div class="dropdown-body">
+                <!--a href="#!" class="dropdown-item">
+                  <div class="icon">
+                    <i class="icon ion-md-lock"></i>
+                  </div>
+                  <div class="content">
+                    <p>Account password change</p>
+                    <p class="sub-text text-muted">5 sec ago</p>
+                  </div>
+                </a-->
+                <a href="#!" class="dropdown-item">
+                  <div class="icon">
+                    <i class="icon ion-md-alert"></i>
+                  </div>
+                  <div class="content">
+                    {% show_notifications %}
+                  </div>
+                </a>
+                <!--comin soon-->
+                <!--a href="#!" class="dropdown-item">
+                  <div class="icon">
+                    <i class="icon ion-logo-android"></i>
+                  </div>
+                  <div class="content">
+                    <p>Download android app</p>
+                    <p class="sub-text text-muted">1 hrs ago</p>
+                  </div>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <div class="icon">
+                    <i class="icon ion-logo-bitcoin"></i>
+                  </div>
+                  <div class="content">
+                    <p>Bitcoin price is high now</p>
+                    <p class="sub-text text-muted">2 hrs ago</p>
+                  </div>
+                </a>
+                <a href="#!" class="dropdown-item">
+                  <div class="icon">
+                    <i class="icon ion-logo-usd"></i>
+                  </div>
+                  <div class="content">
+                    <p>Payment completed</p>
+                    <p class="sub-text text-muted">4 hrs ago</p>
+                  </div>
+                </a>
+              </div>
+              <div class="dropdown-footer d-flex align-items-center justify-content-center">
+                <a href="#!">View all</a>
+              </div-->
+            {% endif %}
+            </div>
+          </li>
+          {% load custom_tags %}
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown header-img-icon">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <!--img src="assets/img/avatar.svg" alt="avatar"-->
+            </a>
+            <div class="dropdown-menu">
+              <div class="dropdown-header d-flex flex-column align-items-center">
+                {% if post.author.profile.picture %}
+                <div class="figure mb-3">
+                    <img src=""
+                        class="card-img">
+                        <img src="{{ post.author.profile.picture.url }}" alt="">
+                      </div>
+                {% else %}
+                  <div class="figure mb-3">
+                    <img src="{% static 'assets/img/avatar.svg' %}" alt="">
+                  </div>
+                {% endif %}
+                <div class="info text-center">
+                  <p class="name font-weight-bold mb-0"> {{ post.author.first_name }} 
+                    {{ post.author.last_name }}</p>
+                  <p class="email text-muted mb-3">macrosecond1@gmail.com</p>
+                </div>
+              </div>
+              <!--profile-->
+              <!--end-->
+              <div class="dropdown-body">
+                <ul class="profile-nav">
+                  <li class="nav-item">
+                    <a href="settings-profile-dark.html" class="nav-link">
+                      <i class="icon ion-md-person"></i>
+                      <span>Profile</span>
+                    </a>
+                  </li>
+
+                 <!--comin soon-->
+                  <!--li class="nav-item">
+                    <a href="settings-wallet-dark.html" class="nav-link">
+                      <i class="icon ion-md-wallet"></i>
+                      <span>My Wallet</span>
+                    </a>
+                  </li-->
+                  <li class="nav-item">
+                    <a href="{% url 'edit_profile' %}" class="nav-link">
+                      <i class="icon ion-md-settings"></i>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                  <!--li class="nav-item" id="changeThemeDark">
+                    <a href="#!" class="nav-link">
+                      <i class="icon ion-md-moon"></i>
+                      <span>Theme</span>
+                    </a>
+                  li-->
+                  <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link red">
+                      <i class="icon ion-md-power"></i>
+                      <span>Log Out</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="container-fluid mtb15 no-fluid">
+    <div class="row sm-gutters">
+      <div class="col-md-3">
+        <div class="market-pairs">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm"><i class="icon ion-md-search"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Search" aria-describedby="inputGroup-sizing-sm">
+          </div>
+          <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#STAR" role="tab" aria-selected="true"><i
+                  class="icon ion-md-star"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="pill" href="#BTC" role="tab" aria-selected="true">Buttons</a>
+            </li>
+            <!--li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#ETH" role="tab" aria-selected="false">ETH</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#NEO" role="tab" aria-selected="false">NEO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#USDT" role="tab" aria-selected="false">USDT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#DAI" role="tab" aria-selected="false">DAI</a>
+            </li-->
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade show" id="STAR" role="tabpanel">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Pairs</th>
+                    <th>Last Price</th>
+                    <th>Change</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><i class="icon ion-md-star"></i> ETH/BTC</td>
+                    <td>0.00020255</td>
+                    <td class="red">-2.58%</td>
+                  </tr>
+                  <tr>
+                    <td><i class="icon ion-md-star"></i> KCS/BTC</td>
+                    <td>0.00013192</td>
+                    <td class="green">+5.6%</td>
+                  </tr>
+                  <tr>
+                    <td><i class="icon ion-md-star"></i> XRP/BTC</td>
+                    <td>0.00002996</td>
+                    <td class="red">-1.55%</td>
+                  </tr>
+                  <tr>
+                    <td><i class="icon ion-md-star"></i> VET/BTC</td>
+                    <td>0.00000103</td>
+                    <td class="green">+1.8%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tab-pane fade show active" id="BTC" role="tabpanel">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Links</th>
+                    <th>To</th>
+                    <th>Favorite</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><i class="icon ion-md-star">
+                      {% for button in custom_buttons %}
+                      <a class="btn btn-sm btn-dark mb-1" target="_blank" href="https://{{ button.web_url }}" role="button">
+                          <img src="{{ button.logo.url }}" alt="{{ button.web_url }} logo" width="32" height="32">
+                      </a>
+                      <a class="btn btn-sm btn-danger" href="{% url 'remove_button' button.id %}" role="button">
+                          <i class="bi bi-trash"></i>
+                      </a>
+                      {% endfor %}
+                    </td>
+                  </tr>
+                  <tr>
+                 <td>
+                  <!-- TradingView Widget BEGIN -->
+                  <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text"></span></a></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                    {
+                    "colorTheme": "dark",
+                    "dateRange": "12M",
+                    "showChart": true,
+                    "locale": "en",
+                    "largeChartUrl": "",
+                    "isTransparent": false,
+                    "showSymbolLogo": true,
+                    "showFloatingTooltip": false,
+                    "width": "300",
+                    "height": "660",
+                    "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+                    "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+                    "gridLineColor": "rgba(42, 46, 57, 0)",
+                    "scaleFontColor": "rgba(134, 137, 147, 1)",
+                    "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+                    "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+                    "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+                    "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+                    "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+                    "tabs": [
+                      {
+                        "title": "Indices",
+                        "symbols": [
+                          {
+                            "s": "FOREXCOM:SPXUSD",
+                            "d": "S&P 500"
+                          },
+                          {
+                            "s": "FOREXCOM:NSXUSD",
+                            "d": "US 100"
+                          },
+                          {
+                            "s": "FOREXCOM:DJI",
+                            "d": "Dow 30"
+                          },
+                          {
+                            "s": "INDEX:NKY",
+                            "d": "Nikkei 225"
+                          },
+                          {
+                            "s": "INDEX:DEU40",
+                            "d": "DAX Index"
+                          },
+                          {
+                            "s": "FOREXCOM:UKXGBP",
+                            "d": "UK 100"
+                          }
+                        ],
+                        "originalTitle": "Indices"
+                      },
+                      {
+                        "title": "Futures",
+                        "symbols": [
+                          {
+                            "s": "CME_MINI:ES1!",
+                            "d": "S&P 500"
+                          },
+                          {
+                            "s": "CME:6E1!",
+                            "d": "Euro"
+                          },
+                          {
+                            "s": "COMEX:GC1!",
+                            "d": "Gold"
+                          },
+                          {
+                            "s": "NYMEX:CL1!",
+                            "d": "Oil"
+                          },
+                          {
+                            "s": "NYMEX:NG1!",
+                            "d": "Gas"
+                          },
+                          {
+                            "s": "CBOT:ZC1!",
+                            "d": "Corn"
+                          }
+                        ],
+                        "originalTitle": "Futures"
+                      },
+                      {
+                        "title": "Bonds",
+                        "symbols": [
+                          {
+                            "s": "CME:GE1!",
+                            "d": "Eurodollar"
+                          },
+                          {
+                            "s": "CBOT:ZB1!",
+                            "d": "T-Bond"
+                          },
+                          {
+                            "s": "CBOT:UB1!",
+                            "d": "Ultra T-Bond"
+                          },
+                          {
+                            "s": "EUREX:FGBL1!",
+                            "d": "Euro Bund"
+                          },
+                          {
+                            "s": "EUREX:FBTP1!",
+                            "d": "Euro BTP"
+                          },
+                          {
+                            "s": "EUREX:FGBM1!",
+                            "d": "Euro BOBL"
+                          }
+                        ],
+                        "originalTitle": "Bonds"
+                      },
+                      {
+                        "title": "Forex",
+                        "symbols": [
+                          {
+                            "s": "FX:EURUSD",
+                            "d": "EUR to USD"
+                          },
+                          {
+                            "s": "FX:GBPUSD",
+                            "d": "GBP to USD"
+                          },
+                          {
+                            "s": "FX:USDJPY",
+                            "d": "USD to JPY"
+                          },
+                          {
+                            "s": "FX:USDCHF",
+                            "d": "USD to CHF"
+                          },
+                          {
+                            "s": "FX:AUDUSD",
+                            "d": "AUD to USD"
+                          },
+                          {
+                            "s": "FX:USDCAD",
+                            "d": "USD to CAD"
+                          }
+                        ],
+                        "originalTitle": "Forex"
+                      }
+                    ]
+                  }
+                    </script>
+                  </div>
+                  <!-- TradingView Widget END -->
+                 </td>
+                </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="main-chart mb15">
+          <!-- TradingView Widget BEGIN -->
+          <div class="tradingview-widget-container">
+            <div id="tradingview_e8053"></div>
+            <script src="https://s3.tradingview.com/tv.js"></script>
+            <script>
+              new TradingView.widget(
+                {
+                  "width": "100%",
+                  "height": 550,
+                  "symbol": "BITSTAMP:BTCUSD",
+                  "interval": "D",
+                  "timezone": "Etc/UTC",
+                  "theme": "Dark",
+                  "style": "1",
+                  "locale": "en",
+                  "toolbar_bg": "#f1f3f6",
+                  "enable_publishing": false,
+                  "withdateranges": true,
+                  "hide_side_toolbar": false,
+                  "allow_symbol_change": true,
+                  "show_popup_button": true,
+                  "popup_width": "1000",
+                  "popup_height": "650",
+                  "container_id": "tradingview_e8053"
+                }
+              );
+            </script>
+          </div>
+          <!-- TradingView Widget END -->
+        </div>
+        <div class="market-trade">
+          <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="pill" href="#pills-trade-limit" role="tab"
+                aria-selected="true">Visit Trades</a>
+            </li>
+            <!--li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#pills-market" role="tab" aria-selected="false">Market</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#pills-stop-limit" role="tab" aria-selected="false">Stop
+                Limit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#pills-stop-market" role="tab" aria-selected="false">Stop
+                Market</a>
+            </li-->
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="pills-trade-limit" role="tabpanel">
+              <div class="d-flex justify-content-between">
+                <div class="market-trade-buy">
+                  <div class="input-group">
+                    <div class="input-group">
+                      
+                  </div>
+                  <p>Available: <span>
+                    {% if user_profile.website_url %}
+                    | <a href="https://{{ user_profile.website_url }}" class="Website"><i class="bx bxl-Website white-text">Website</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.google_url %}
+                        | <a href="https://{{ user_profile.google_url }}" class="Website"><i class="bx bxl-Goodle white-text">Google</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.playstore_url %}
+                        | <a href="https://{{ user_profile.playstore_url }}" class="Website"><i class="bx bxl-Playstore white-text">Playstore</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.zoom_url %}
+                        | <a href="https://{{ user_profile.zoom_url }}" class="Website" style="background-color: rgb(168, 72, 72); color: white; padding: 5px 10px; border-radius: 5px;"><i class="bx bxl-Website white-text">Zoom</i></a>
+                    {% endif %}
+
+                    {% if user_profile.microsoftTeam_url %}
+                    | <a href="https://{{ user_profile.microsoftTeam_url }}" class="Website" style="background-color: rgb(168, 96, 96); color: white; padding: 5px 10px; border-radius: 5px;"><i class="bx bxl-Website white-text">microsoftTeam</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.linkedin_url %}
+                        | <a href="https://{{ user_profile.linkedin_url }}" class="facebook"><i class="bx bxl-LinkedIn white-text">LinkedIn</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.facebook_url %}
+                        | <a href="https://{{ user_profile.facebook_url }}" class="facebook"><i class="bx bxl-facebook white-text">Facebook</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.twitter_url %}
+                        | <a href="https://{{ user_profile.twitter_url }}" class="twitter"><i class="bx bxl-twitter white-text">Twitter</i></a>
+                    {% endif %}
+                    
+                    {% if user_profile.pinterest_url %}
+                        | <a href="https://{{ user_profile.pinterest_url }}" class="pinterest"><i class="bx bxl-pinterest white-text">Pinterest</i></a>
+                    {% endif %}
+
+                    {% if user_profile.whatsapp_number %}
+                        | <a href="https://{{ user_profile.whatsapp_number }}" class="WhatsApp"><i class="bx bxl-whatsapp white-text">WhatsApp</i></a>
+                    {% endif %}
+
+                    {% if user_profile.instagram_url %}
+                        | <a href="https://{{ user_profile.instagram_url }}" class="pinterest"><i class="bx bxl-pinterest white-text">Pinterest</i></a>
+                    {% endif %}
+
+                    {% if user_profile.telegram_url %}
+                        | <a href="https://{{ user_profile.telegram_url }}" class="pinterest"><i class="bx bxl-telegram white-text">Telegram</i></a>
+                    {% endif %}
+                  </span></p>
+                 
+                  <button class="btn buy" onclick="window.location.href='{% url 'create-activity' %}'">Visit</button>
+                </div>
+                <div class="market-trade-sell white-text">
+                  <div class="input-group white-text">
+                    {% for activity in trading_activities %}
+                    <div class="input-group">
+                      <strong style="color: #FF5733; font-size: 18px;">{{ activity.title }}</strong>
+                      <span class="due-date" style="color: #3377FF;">{{ activity.due_date|date:"F d, Y H:i" }}</span>
+                    </div>
+                    <div class="input-group">
+                        <p>{{ activity.description }}</p>
+                    </div>
+                    <!--a href="{% url 'edit_activity' activity.id %}">Edit</a>
+                    <a href="{% url 'delete_activity' activity.id %}">Delete</a--> 
+                    {% empty %}
+                        <p>No trading activities found.</p>
+                    {% endfor %}               
+                  </div>
+                  <p>Bio: <span>
+                    <!-- Bio -->
+                    <p class="card-text">
+                    <!-- Profile followers -->
+                    {% if user_profile.bio %}
+                      <p>{{ user_profile.bio }}</p>
+                    {% endif %}  
+                    
+                  </span></p>
+                  </div>
+                  <a href="{% url 'create-activity' %}" class="btn btn-primary">New Trading Activity</a>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-market" role="tabpanel">
+              <div class="d-flex justify-content-between">
+                <div class="market-trade-buy">
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Price">
+                    <div class="input-group-append">
+                      <span class="input-group-text">BTC</span>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Amount">
+                    <div class="input-group-append">
+                      <span class="input-group-text">ETH</span>
+                    </div>
+                  </div>
+                  <ul class="market-trade-list">
+                    <li><a href="#!">25%</a></li>
+                    <li><a href="#!">50%</a></li>
+                    <li><a href="#!">75%</a></li>
+                    <li><a href="#!">100%</a></li>
+                  </ul>
+                  <p>Available: <span>0 BTC = 0 USD</span></p>
+                  <p>Volume: <span>0 BTC = 0 USD</span></p>
+                  <p>Margin: <span>0 BTC = 0 USD</span></p>
+                  <p>Fee: <span>0 BTC = 0 USD</span></p>
+                  <button class="btn buy">Buy</button>
+                </div>
+                <div class="market-trade-sell">
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Price">
+                    <div class="input-group-append">
+                      <span class="input-group-text">BTC</span>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Amount">
+                    <div class="input-group-append">
+                      <span class="input-group-text">ETH</span>
+                    </div>
+                  </div>
+                  <ul class="market-trade-list">
+                    <li><a href="#!">25%</a></li>
+                    <li><a href="#!">50%</a></li>
+                    <li><a href="#!">75%</a></li>
+                    <li><a href="#!">100%</a></li>
+                  </ul>
+                  <p>Available: <span>0 BTC = 0 USD</span></p>
+                  <p>Volume: <span>0 BTC = 0 USD</span></p>
+                  <p>Margin: <span>0 BTC = 0 USD</span></p>
+                  <p>Fee: <span>0 BTC = 0 USD</span></p>
+                  <button class="btn sell">Sell</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-stop-limit" role="tabpanel">
+              <div class="d-flex justify-content-between">
+                <div class="market-trade-buy">
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Price">
+                    <div class="input-group-append">
+                      <span class="input-group-text">BTC</span>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Amount">
+                    <div class="input-group-append">
+                      <span class="input-group-text">ETH</span>
+                    </div>
+                  </div>
+                  <ul class="market-trade-list">
+                    <li><a href="#!">25%</a></li>
+                    <li><a href="#!">50%</a></li>
+                    <li><a href="#!">75%</a></li>
+                    <li><a href="#!">100%</a></li>
+                  </ul>
+                  <p>Available: <span>0 BTC = 0 USD</span></p>
+                  <p>Volume: <span>0 BTC = 0 USD</span></p>
+                  <p>Margin: <span>0 BTC = 0 USD</span></p>
+                  <p>Fee: <span>0 BTC = 0 USD</span></p>
+                  <button class="btn buy">Buy</button>
+                </div>
+                <div class="market-trade-sell">
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Price">
+                    <div class="input-group-append">
+                      <span class="input-group-text">BTC</span>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Amount">
+                    <div class="input-group-append">
+                      <span class="input-group-text">ETH</span>
+                    </div>
+                  </div>
+                  <ul class="market-trade-list">
+                    <li><a href="#!">25%</a></li>
+                    <li><a href="#!">50%</a></li>
+                    <li><a href="#!">75%</a></li>
+                    <li><a href="#!">100%</a></li>
+                  </ul>
+                  <p>Available: <span>0 BTC = 0 USD</span></p>
+                  <p>Volume: <span>0 BTC = 0 USD</span></p>
+                  <p>Margin: <span>0 BTC = 0 USD</span></p>
+                  <p>Fee: <span>0 BTC = 0 USD</span></p>
+                  <button class="btn sell">Sell</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-stop-market" role="tabpanel">
+              <div class="d-flex justify-content-between">
+                <div class="market-trade-buy">
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Price">
+                    <div class="input-group-append">
+                      <span class="input-group-text">BTC</span>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Amount">
+                    <div class="input-group-append">
+                      <span class="input-group-text">ETH</span>
+                    </div>
+                  </div>
+                  <ul class="market-trade-list">
+                    <li><a href="#!">25%</a></li>
+                    <li><a href="#!">50%</a></li>
+                    <li><a href="#!">75%</a></li>
+                    <li><a href="#!">100%</a></li>
+                  </ul>
+                  <p>Available: <span>0 BTC = 0 USD</span></p>
+                  <p>Volume: <span>0 BTC = 0 USD</span></p>
+                  <p>Margin: <span>0 BTC = 0 USD</span></p>
+                  <p>Fee: <span>0 BTC = 0 USD</span></p>
+                  <button class="btn buy">Buy</button>
+                </div>
+                <div class="market-trade-sell">
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Price">
+                    <div class="input-group-append">
+                      <span class="input-group-text">BTC</span>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Amount">
+                    <div class="input-group-append">
+                      <span class="input-group-text">ETH</span>
+                    </div>
+                  </div>
+                  <ul class="market-trade-list">
+                    <li><a href="#!">25%</a></li>
+                    <li><a href="#!">50%</a></li>
+                    <li><a href="#!">75%</a></li>
+                    <li><a href="#!">100%</a></li>
+                  </ul>
+                  <p>Available: <span>0 BTC = 0 USD</span>
+                    
+                  </p>
+                  <button class="btn sell">Sell</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="order-book mb15">
+          <h2 class="heading">Quick Launcher</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Your</th>
+                <th>Recommend</th>
+                <style>
+                  /* Apply custom CSS to style the link as plain text */
+                  th a {
+                      text-decoration: none; /* Remove underlines */
+                      color: inherit; /* Inherit the color from the parent element */
+                  }
+                </style>
+                <th><a href="{% url 'brokerview' %}">Broker</a></th>
+              </tr>
+            </thead>
+              <tr class="red-bg-80">
+                <td class="red">
+                  {% for broker in brokers %}
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <a href="https://{{ broker.website_url }}">
+                          <img src="{{ broker.image.url }}" class="img-fluid rounded-start" alt="...">
+                        </a>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ broker.description }}</h5>
+                          <p class="card-text">Category: {{ broker.category.name }}</p>
+                          <p class="card-text"><small class="text-body-secondary">
+                            {% if broker.website_url %}
+                            <li><a href="https://{{ broker.website_url }}">Website</a></li>
+                            {% endif %}
+          
+                          </small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% empty %}
+                  <div class="col-md-12">
+                      <h3>No Brokers Found</h3>
+                  </div>
+                  {% endfor %}
+                </td>
+              </tr>
+             
+            <tbody class="ob-heading">
+              <tr>
+                <td>
+                  <span></span>
+                </td>
+                <td>
+                  <span>Recommend</span>
+                </td>
+                <td class="red">
+                    <a href="{% url 'gallery' %}"><span>Propfirm</span></a>
+                </td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr class="green-bg-8">
+                <td class="green">
+                  {% for photo in photos %}
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <a href="https://{{ photo.website_url }}">
+                          <img src="{{ photo.image.url }}" class="img-fluid rounded-start" alt="...">
+                        </a>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ photo.description }}</h5>
+                          <p class="card-text">Category: {{ photo.category.name }}</p>
+                          <p class="card-text">
+                            <small class="text-body-secondary">
+                              {% if photo.website_url %}
+                              <li><a href="{{ photo.website_url }}">Website</a></li>
+                              {% endif %}
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% empty %}
+                  <div class="col-md-12">
+                    <h3>No propfirm Found</h3>
+                  </div>
+                  {% endfor %}
+                </td>                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="market-history">
+          <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="pill" href="#recent-trades" role="tab" aria-selected="true">Recent
+                Trades</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#market-depth" role="tab" aria-selected="false">Market
+                Depth</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="recent-trades" role="tabpanel">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="green">
+                      <!-- TradingView Widget BEGIN -->
+                      <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+                          {
+                          "exchanges": [],
+                          "dataSource": "SPX500",
+                          "grouping": "sector",
+                          "blockSize": "market_cap_basic",
+                          "blockColor": "change",
+                          "locale": "en",
+                          "symbolUrl": "",
+                          "colorTheme": "dark",
+                          "hasTopBar": false,
+                          "isDataSetEnabled": false,
+                          "isZoomEnabled": true,
+                          "hasSymbolTooltip": true,
+                          "width": "100%",
+                          "height": "100%",
+                          }
+                        </script>
+                      </div>
+                      <!-- TradingView Widget END -->
+                    
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tab-pane fade" id="market-depth" role="tabpanel">
+              <div class="depth-chart-container">
+                <div class="depth-chart-inner">
+                  <div id="darkDepthChart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="market-news mt15">
+          <h2 class="heading">Macrosecond News</h2>
+          <ul>
+            <li><!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                {
+                "feedMode": "all_symbols",
+                "colorTheme": "dark",
+                "isTransparent": true,
+                "displayMode": "regular",
+                "width": 550,
+                "height": 830,
+                "locale": "en"
+              }
+                </script>
+              </div>
+              <!-- TradingView Widget END --></li>
+            <li><!--to be continued--></li>
+            
+              
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="market-history market-order mt15">
+          <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="pill" href="#open-orders" role="tab" aria-selected="true">Open
+                Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#stop-orders" role="tab" aria-selected="false">Closed
+                Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#order-history" role="tab" aria-selected="false">Order
+                history</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#trade-history" role="tab" aria-selected="false">Balance</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="open-orders" role="tabpanel">
+              <ul class="d-flex justify-content-between market-order-item">
+                <li>Time</li>
+                <li>All pairs</li>
+                <li>All Types</li>
+                <li>Buy/Sell</li>
+                <li>Price</li>
+                <li>Amount</li>
+                <li>Executed</li>
+                <li>Unexecuted</li>
+              </ul>
+              <span class="no-data">
+                <i class="icon ion-md-document"></i>
+                No data
+              </span>
+            </div>
+            <div class="tab-pane fade" id="stop-orders" role="tabpanel">
+              <ul class="d-flex justify-content-between market-order-item">
+                <li>Time</li>
+                <li>All pairs</li>
+                <li>All Types</li>
+                <li>Buy/Sell</li>
+                <li>Price</li>
+                <li>Amount</li>
+                <li>Executed</li>
+                <li>Unexecuted</li>
+              </ul>
+              <span class="no-data">
+                <i class="icon ion-md-document"></i>
+                No data
+              </span>
+            </div>
+            <div class="tab-pane fade" id="order-history" role="tabpanel">
+              <ul class="d-flex justify-content-between market-order-item">
+                <li>Time</li>
+                <li>All pairs</li>
+                <li>All Types</li>
+                <li>Buy/Sell</li>
+                <li>Price</li>
+                <li>Amount</li>
+                <li>Executed</li>
+                <li>Unexecuted</li>
+              </ul>
+              <span class="no-data">
+                <i class="icon ion-md-document"></i>
+                No data
+              </span>
+            </div>
+            <div class="tab-pane fade" id="trade-history" role="tabpanel">
+              <ul class="d-flex justify-content-between market-order-item">
+                <li>Time</li>
+                <li>All pairs</li>
+                <li>All Types</li>
+                <li>Buy/Sell</li>
+                <li>Price</li>
+                <li>Amount</li>
+                <li>Executed</li>
+                <li>Unexecuted</li>
+              </ul>
+              <span class="no-data">
+                <i class="icon ion-md-document"></i>
+                No data
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="{% static 'assets/js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/js/amcharts-core.min.js' %}"></script>
+  <script src="{% static 'assets/js/amcharts.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.mCustomScrollbar.js' %}"></script>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+  <script>
+    $('tbody, .market-news ul').mCustomScrollbar({
+      theme: 'minimal',
+    });
+</script>
+  
+<!--/.Carousel Wrapper-->
+{% endblock %}

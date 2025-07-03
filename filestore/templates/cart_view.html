@@ -1,0 +1,47 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<h1>Shopping Cart</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>File</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart_items %}
+        <tr>
+            <td>{{ item.file.title }}</td>
+            <td>R{{ item.file.price }}</td>
+            <td>{{ item.quantity }}</td>
+          
+            <td>
+                <a href="{% url 'add_to_cart' file_id=item.file.id %}">+</a>
+                <a href="{% url 'remove_from_cart' file_id=item.file.id %}">-</a>
+            </td>
+            <td>
+              <!-- Payment method selection -->
+              <label for="payment_method_{{ item.id }}">Select Payment Method:</label>
+              <select name="payment_method_{{ item.id }}" id="payment_method_{{ item.id }}">
+                  <option value="credit_card">Credit Card</option>
+                  <option value="paypal">PayPal</option>
+                  <!-- Add more payment options as needed -->
+              </select>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p>Total Price: R{{ total_price }}</p>
+
+<!-- Google Pay button -->
+
+
+
+{% endblock %}

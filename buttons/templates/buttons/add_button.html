@@ -1,0 +1,57 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<h2>Add Button</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <div class="mb-3">
+    <label for="logo">Logo</label>
+    <input type="file" class="form-control" id="logo" name="logo" accept="image/*" onchange="previewImage(this)">
+  </div>
+  
+  <div class="mb-3">
+    <label for="web_url">Web URL</label>
+    <input type="text" class="form-control" id="web_url" name="web_url" required>
+  </div>
+
+  <!-- Image preview container -->
+  <div class="mb-3">
+    <img id="image-preview" src="#" alt="Image Preview" class="img-thumbnail d-none">
+    <button type="button" class="btn btn-outline-danger d-none" id="cancel-image" onclick="cancelImage()">Cancel</button>
+  </div>
+  
+  <button type="submit">Add Button</button>
+</form>
+
+<script>
+  function previewImage(input) {
+    var preview = document.getElementById('image-preview');
+    var cancelBtn = document.getElementById('cancel-image');
+    
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        preview.src = e.target.result;
+        preview.classList.remove('d-none');
+        cancelBtn.classList.remove('d-none');
+      };
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      preview.src = '#';
+      preview.classList.add('d-none');
+      cancelBtn.classList.add('d-none');
+    }
+  }
+
+  function cancelImage() {
+    var input = document.getElementById('logo');
+    input.value = ''; // Clear the input value
+    var preview = document.getElementById('image-preview');
+    var cancelBtn = document.getElementById('cancel-image');
+    preview.src = '#';
+    preview.classList.add('d-none');
+    cancelBtn.classList.add('d-none');
+  }
+</script>
+{% endblock %}
