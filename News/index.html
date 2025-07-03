@@ -2,11 +2,128 @@
 <html lang="en">
 
 <head>
+
+  
+<!-- Advertisement Section -->
+<section id="advertisement" class="advertisement section">
+  <div class="container">
+
+    <!-- Ad Banner -->
+    <div class="ad-banner mb-4">
+      <header id="header" class="header d-flex align-items-center sticky-top">
+      <a href="https://madenet.site" target="_blank">
+        <img src="assets/img/banner/banner-1.jpg" alt="Ad Banner" class="img-fluid">
+        <h1>affordable website</h1>
+        <p1>madenet.site is offering complex website with a lowest affoedable price</p1>
+      </a>
+    </div>
+
+    <!-- Sidebar Ads -->
+    <div class="row">
+      <div class="col-md-4">
+        <div class="sidebar-ad">
+          <a href="https://your-ad-link.com" target="_blank">
+            <img src="assets/img/ads/ads-2.jpg" alt="Sidebar Ad 1" class="img-fluid">
+            <p1>Food Lovers</p1>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="sidebar-ad">
+          <a href="https://your-ad-link.com" target="_blank">
+            <img src="assets/img/ads/ads-3.jpg" alt="Sidebar Ad 2" class="img-fluid">
+            <p1>find Jobs</p1>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="sidebar-ad">
+          <a href="https://your-ad-link.com" target="_blank">
+            <img src="assets/img/ads/ads-4.jpg" alt="Sidebar Ad 3" class="img-fluid">
+            <p1>Education is the key to success</p1>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .advertisement.section {
+    padding: 20px 0;
+    background-color: #f8f9fa;
+  }
+
+  .ad-banner img {
+    text-align: center;
+    border-image-repeat: stretch;
+    width: 30%;
+    height: 20;
+    border-radius: 5px;
+  }
+
+  .sidebar-ad img {
+    width: 20%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+</style>
+
+
+
+ <!-- Search Section -->
+ <div class="header-search">
+  <form action="search_results.html" method="get" class="search-form d-flex">
+    <input type="text" name="query" class="form-control" placeholder="Search...">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+</div>
+
+<style>
+  .header-search {
+    flex-grow: 1;
+    margin-left: 20px;
+  }
+
+  .search-form {
+    display: flex;
+  }
+
+  .search-form .form-control {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px 0 0 5px;
+    flex-grow: 1;
+  }
+
+  .search-form .btn {
+    border-radius: 0 5px 5px 0;
+    padding: 8px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+  }
+
+  .search-form .btn:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+
+
+
+
+</head>
+
+
+<head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Community News - Tolleya</title>
-  <meta name="description" content="Latest community news from Elim, Shihlobyeni">
-  <meta name="keywords" content="Tolleya, community news, South Africa, Limpopo, Elim, Shihlobyeni">
+  <title>Latest News</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -26,263 +143,57 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <style>
-    /* Responsive Images */
-    .post-img img, .comment-avatar, .widget-item img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px;
-    }
-    
-    .post-img {
-      margin-bottom: 1.5rem;
-      overflow: hidden;
-    }
-    
-    .post-img img {
-      width: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    
-    .post-img:hover img {
-      transform: scale(1.02);
-    }
-    
-    /* Enhanced Comment System */
-    .comment-system {
-      margin-top: 2rem;
-    }
-    .comment {
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      background: #f8f9fa;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    .comment:hover {
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .comment-reply {
-      margin-left: 3rem;
-      margin-top: 1rem;
-      border-left: 3px solid #0d6efd;
-    }
-    .reply-form {
-      display: none;
-      margin-top: 1rem;
-      padding: 1rem;
-      background: #f1f1f1;
-      border-radius: 8px;
-    }
-    .reply-form.active {
-      display: block;
-    }
-    .comment-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .comment-meta {
-      font-size: 0.9rem;
-      color: #6c757d;
-    }
-    .comment-actions {
-      margin-top: 0.5rem;
-      display: flex;
-      align-items: center;
-    }
-    .comment-actions a {
-      margin-right: 1rem;
-      font-size: 0.9rem;
-    }
-    
-    /* Facebook-style Reactions */
-    .reaction-container {
-      position: relative;
-      display: inline-block;
-    }
-    
-    .reaction-btn {
-      background: none;
-      border: none;
-      color: #65676B;
-      padding: 0 8px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-    }
-    
-    .reaction-btn:hover, .reaction-btn.active {
-      color: #0d6efd;
-    }
-    
-    .reaction-btn i {
-      margin-right: 5px;
-      font-size: 1.1rem;
-    }
-    
-    .reaction-options {
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      background: white;
-      border-radius: 50px;
-      padding: 5px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      display: none;
-      z-index: 100;
-      transform: translateY(-10px);
-      opacity: 0;
-      transition: all 0.2s ease;
-    }
-    
-    .reaction-options.active {
-      display: flex;
-      transform: translateY(0);
-      opacity: 1;
-    }
-    
-    .reaction-options img {
-      width: 30px;
-      height: 30px;
-      margin: 0 2px;
-      transition: transform 0.2s;
-      cursor: pointer;
-    }
-    
-    .reaction-options img:hover {
-      transform: scale(1.3) translateY(-5px);
-    }
-    
-    .reaction-count {
-      font-size: 0.8rem;
-      margin-left: 5px;
-    }
-    
-    .reaction-preview {
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      background: white;
-      border-radius: 20px;
-      padding: 5px 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      display: none;
-      z-index: 100;
-      font-size: 0.8rem;
-      white-space: nowrap;
-    }
-    
-    /* Loading More Content */
-    .load-more {
-      transition: all 0.3s;
-    }
-    
-    .load-more:hover {
-      transform: translateY(-2px);
-    }
-    
-    .load-more.loading {
-      opacity: 0.7;
-      pointer-events: none;
-    }
-    
-    /* Top Comment Highlight */
-    .top-comment {
-      border: 2px solid #0d6efd;
-      background-color: #f0f7ff;
-      position: relative;
-    }
-    
-    .top-comment-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #0d6efd;
-      color: white;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 0.7rem;
-      font-weight: bold;
-    }
-    
-    /* Responsive Adjustments */
-    @media (max-width: 992px) {
-      .sidebar {
-        margin-top: 3rem;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .comment-reply {
-        margin-left: 1.5rem;
-      }
-      .comment-avatar {
-        width: 40px;
-        height: 40px;
-      }
-      .post-img img {
-        height: auto;
-      }
-      .reaction-options {
-        padding: 3px;
-      }
-      .reaction-options img {
-        width: 25px;
-        height: 25px;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .comment {
-        padding: 1rem;
-      }
-      .comment-actions a {
-        margin-right: 0.5rem;
-      }
-      .reaction-btn {
-        padding: 0 5px;
-      }
-    }
-    
-    /* Animation for new comments */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .new-comment {
-      animation: fadeIn 0.5s ease-out;
-    }
-  </style>
+  <!-- =======================================================
+  * Template Name: Community News
+  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
+  * Updated: Aug 08 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
-<body class="single-post-page">
 
+
+
+
+
+
+
+
+
+
+<body class="index-page">
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
-
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <h1 class="sitename">Tolleya News</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="single-post.html" class="active">News</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="news.html" class="active">News</a></li>
+          <li><a href="business.html">Business</a></li>
+          <li><a href="single-post.html">Weather</a></li>
           <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="category.html">Local News</a></li>
-              <li><a href="category.html">Sports</a></li>
-              <li><a href="category.html">Events</a></li>
-              <li><a href="category.html">Business</a></li>
+              <li><a href="category.html">Latest News</a></li>
+              <li class="dropdown"><a href="#"><span>Education News</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">School News Updates</a></li>
+                  <li><a href="#">Previous Question Papers</a></li>
+                  <li><a href="#">Read Study Guides</a></li>
+                  <li><a href="#">View Notes</a></li>
+                  <li><a href="#">Study Via Videos (youtube)</a></li>
+                  <li><a href="#">Refresh Mind</a></li>
+                  <li><a href="#">Online Applications</a></li>
+                  
+                </ul>
+              </li>
+              <li><a href="category.html">Politics News</a></li>
+              <li><a href="category.html">Sports News</a></li>
+              <li><a href="category.html">Entertainment News</a></li>
+              <li><a href="category.html">Technology News</a></li>
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
@@ -294,484 +205,1080 @@
         <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
       </div>
 
+
+      <!-- Modernized Login Section with Role Selection -->
+      <div class="login-section">
+        
+        <a href="file:///C:/Users/Wavhudi/Desktop/Business%20Doc/Tolleya/index.html" class="btn btn-primary" >Home</a>
+        <div id="loginDropdown" class="dropdown-content">
+          <form action="login.php" method="post" class="p-3">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username:</label>
+              <input type="text" id="username" name="username" class="form-control" placeholder="Enter username">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password:</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Enter password">
+            </div>
+            <div class="mb-3">
+              <label for="role" class="form-label">I am a:</label>
+              <select id="role" name="role" class="form-control">
+                <option value="student">Student</option>
+                <option value="graduate">Graduate</option>
+                <option value="admin">Admin</option>
+                <option value="employee">Employee</option>
+                <option value="business_owner">Business Owner</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <button type="submit" class="btn btn-success w-100">Login</button>
+            </div>
+            <div class="text-center">
+              <a href="#" class="text-muted">Forgot Password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </header>
 
+  <script>
+    // Toggle Login Dropdown
+    document.getElementById('loginBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      var dropdown = document.getElementById('loginDropdown');
+      dropdown.classList.toggle('show');
+    });
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('#loginBtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .login-section {
+      position: relative;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      min-width: 300px;
+    }
+
+    .dropdown-content.show {
+      display: block;
+    }
+
+    .dropdown-content form {
+      padding: 15px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      border: none;
+      padding: 10px;
+    }
+
+    .text-muted {
+      color: #6c757d !important;
+    }
+
+    .text-muted:hover {
+      color: #007bff !important;
+    }
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <main class="main">
 
-    <!-- Page Title -->
-    <div class="page-title">
-      <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Community News</h1>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="category.html">News</a></li>
-            <li class="current">Article</li>
-          </ol>
-        </nav>
-      </div>
-    </div><!-- End Page Title -->
+    <!-- Slider Section -->
+    <section id="slider" class="slider section dark-background">
 
-    <div class="container">
-      <div class="row">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="col-lg-8">
+        <div class="swiper init-swiper">
 
-          <!-- Blog Details Section -->
-          <section id="blog-details" class="blog-details section">
-            <div class="container">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "centeredSlides": true,
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
+              }
+            }
+          </script>
 
-              <article class="article">
+          <div class="swiper-wrapper">
 
-                <div class="post-img">
-                  <img src="assets/img/blog/blog-1.jpg" alt="Community meeting in Elim" class="img-fluid rounded" loading="lazy">
-                </div>
-
-                <h1 class="title">New Community Center Opens in Shihlobyeni</h1>
-
-                <div class="meta-top">
-                  <ul>
-                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">Thabo Mokoena</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2024-06-15">June 15, 2024</time></a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#comments">24 Comments</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-eye"></i> 1,245 Views</li>
-                  </ul>
-                </div><!-- End meta top -->
-
-                <div class="content">
-                  <p>
-                    The community of Shihlobyeni celebrated the grand opening of its new multipurpose center this past weekend. 
-                    The facility, funded through a partnership between local government and community contributions, will serve 
-                    as a hub for education, social gatherings, and skills development programs.
-                  </p>
-
-                  <p>
-                    Local dignitaries including Mayor Ndlovu and Chief Mabunda attended the ribbon-cutting ceremony, 
-                    emphasizing the importance of community spaces for social cohesion and youth development. 
-                    "This center represents our commitment to building a brighter future together," said Mayor Ndlovu.
-                  </p>
-
-                  <blockquote class="blockquote">
-                    <p>
-                      "When we invest in our community spaces, we invest in our children's future. This center will be 
-                      a place of learning, celebration, and growth for generations to come."
-                    </p>
-                    <footer class="blockquote-footer">Chief Mabunda at the opening ceremony</footer>
-                  </blockquote>
-
-                  <p>
-                    The two-story building features a computer lab, meeting rooms, a kitchen, and a large hall that can 
-                    accommodate up to 200 people. Construction began in January and was completed ahead of schedule thanks 
-                    to volunteer labor from community members.
-                  </p>
-
-                  <h3>Community Impact</h3>
-                  <p>
-                    Already, several groups have scheduled use of the facility. The local women's cooperative will hold 
-                    sewing classes, the youth forum plans career guidance workshops, and the elders council will host 
-                    monthly community meetings. A schedule will be posted at the center and on the Tolleya community app.
-                  </p>
-                  <img src="assets/img/blog/blog-inside-post.jpg" class="img-fluid rounded" alt="Inside the new community center" loading="lazy">
-
-                  <h3>Future Plans</h3>
-                  <p>
-                    The management committee is exploring partnerships with NGOs to offer adult education classes and 
-                    health screenings. "We're just getting started," said committee chairperson Mrs. Khumalo. "This 
-                    building is just the shell - it's the people and programs that will bring it to life."
-                  </p>
-                  <p>
-                    Volunteers are needed for various roles at the center. Those interested can sign up at the facility 
-                    or through the Tolleya platform.
-                  </p>
-
-                  <div class="article-footer mt-4 pt-3 border-top">
-                    <div class="tags">
-                      <a href="#" class="btn btn-sm btn-outline-secondary me-1">#Community</a>
-                      <a href="#" class="btn btn-sm btn-outline-secondary me-1">#Development</a>
-                      <a href="#" class="btn btn-sm btn-outline-secondary me-1">#Shihlobyeni</a>
-                    </div>
-                    <div class="share-buttons mt-3">
-                      <span class="me-2">Share:</span>
-                      <a href="#" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-facebook"></i></a>
-                      <a href="#" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-twitter-x"></i></a>
-                      <a href="#" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-whatsapp"></i></a>
-                      <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-link-45deg"></i></a>
-                    </div>
-                  </div>
-
-                </div><!-- End post content -->
-
-              </article>
-
-            </div>
-          </section><!-- /Blog Details Section -->
-
-          <!-- Comment System Section -->
-          <section id="comments" class="comment-system section">
-
-            <div class="container">
-
-              <div class="section-header d-flex justify-content-between align-items-center mb-4">
-                <h3>Community Discussion <span class="badge bg-primary">24</span></h3>
-                <button class="btn btn-sm btn-outline-primary" id="sort-comments">
-                  <i class="bi bi-arrow-down-up"></i> Sort
-                </button>
+            <div class="swiper-slide" style="background-image: url('assets/img/latest/AFP__20240826__36EV8DJ__v1__HighRes__IndonesiaHealthVirusMpox.jpg.jpg');">
+              <div class="content">
+                <h2><a href="single-post.html">South African Medical Research Council Work hard to curb Mpox</a></h2>
+                <p> 2 hours ago</p>
               </div>
-
-              <!-- Comment Form -->
-              <div class="comment-form mb-5">
-                <h4>Add Your Voice</h4>
-                <form id="main-comment-form">
-                  <div class="mb-3">
-                    <textarea class="form-control" id="comment-text" rows="3" placeholder="Share your thoughts..." required></textarea>
-                  </div>
-                  <div class="row g-2">
-                    <div class="col-md-4">
-                      <input type="text" class="form-control" id="comment-name" placeholder="Your name" required>
-                    </div>
-                    <div class="col-md-4">
-                      <input type="email" class="form-control" id="comment-email" placeholder="Your email (optional)">
-                    </div>
-                    <div class="col-md-4">
-                      <button type="submit" class="btn btn-primary w-100">Post Comment</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-              <!-- Comments List -->
-              <div class="comments-list" id="comments-container">
-
-                <!-- Top Comment (Most Liked) -->
-                <div class="comment top-comment" id="comment-3">
-                  <span class="top-comment-badge">Top Comment</span>
-                  <div class="d-flex">
-                    <div class="flex-shrink-0">
-                      <img src="assets/img/blog/comments-4.jpg" alt="User" class="comment-avatar" loading="lazy">
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      <div class="d-flex justify-content-between">
-                        <h5 class="mb-1">David Mahlangu</h5>
-                        <small class="comment-meta">Yesterday</small>
-                      </div>
-                      <p class="mb-2">
-                        I helped with the construction on weekends. So proud to see the finished product! 
-                        The community really came together for this one.
-                      </p>
-                      <div class="comment-actions">
-                        <div class="reaction-container">
-                          <button class="reaction-btn active">
-                            <i class="bi bi-hand-thumbs-up-fill"></i>
-                            <span class="reaction-count">32</span>
-                          </button>
-                          <div class="reaction-preview">You and 31 others</div>
-                          <div class="reaction-options">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
-                          </div>
-                        </div>
-                        <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
-                      </div>
-                      
-                      <!-- Reply Form -->
-                      <div class="reply-form">
-                        <form class="reply-to-comment">
-                          <input type="hidden" name="parent-id" value="3">
-                          <div class="mb-2">
-                            <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
-                          </div>
-                          <div class="d-flex justify-content-end gap-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div><!-- End Top Comment -->
-
-                <!-- Comment 1 -->
-                <div class="comment" id="comment-1">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0">
-                      <img src="assets/img/blog/comments-1.jpg" alt="User" class="comment-avatar" loading="lazy">
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      <div class="d-flex justify-content-between">
-                        <h5 class="mb-1">Sarah Khumalo</h5>
-                        <small class="comment-meta">2 hours ago</small>
-                      </div>
-                      <p class="mb-2">
-                        This is such wonderful news! My daughter can't wait for the computer classes to start. 
-                        Thank you to everyone who made this possible.
-                      </p>
-                      <div class="comment-actions">
-                        <div class="reaction-container">
-                          <button class="reaction-btn">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <span class="reaction-count">12</span>
-                          </button>
-                          <div class="reaction-preview">12 people</div>
-                          <div class="reaction-options">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
-                          </div>
-                        </div>
-                        <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
-                      </div>
-                      
-                      <!-- Reply Form (Hidden by default) -->
-                      <div class="reply-form">
-                        <form class="reply-to-comment">
-                          <input type="hidden" name="parent-id" value="1">
-                          <div class="mb-2">
-                            <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
-                          </div>
-                          <div class="d-flex justify-content-end gap-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Replies -->
-                  <div class="replies mt-3">
-                    
-                    <!-- Reply 1 -->
-                    <div class="comment comment-reply" id="reply-1-1">
-                      <div class="d-flex">
-                        <div class="flex-shrink-0">
-                          <img src="assets/img/blog/comments-2.jpg" alt="User" class="comment-avatar" loading="lazy">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                          <div class="d-flex justify-content-between">
-                            <h5 class="mb-1">Thomas Mabasa</h5>
-                            <small class="comment-meta">1 hour ago</small>
-                          </div>
-                          <p class="mb-2">
-                            @Sarah Khumalo The computer lab has 10 new machines with internet access! 
-                            Perfect for school projects.
-                          </p>
-                          <div class="comment-actions">
-                            <div class="reaction-container">
-                              <button class="reaction-btn">
-                                <i class="bi bi-hand-thumbs-up"></i>
-                                <span class="reaction-count">4</span>
-                              </button>
-                              <div class="reaction-preview">4 people</div>
-                              <div class="reaction-options">
-                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
-                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
-                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
-                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
-                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
-                              </div>
-                            </div>
-                            <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
-                          </div>
-                          
-                          <!-- Nested Reply Form -->
-                          <div class="reply-form">
-                            <form class="reply-to-comment">
-                              <input type="hidden" name="parent-id" value="1-1">
-                              <div class="mb-2">
-                                <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
-                              </div>
-                              <div class="d-flex justify-content-end gap-2">
-                                <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
-                                <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div><!-- End Reply 1 -->
-                    
-                  </div><!-- End Replies -->
-                </div><!-- End Comment 1 -->
-
-                <!-- Comment 2 -->
-                <div class="comment" id="comment-2">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0">
-                      <img src="assets/img/blog/comments-3.jpg" alt="User" class="comment-avatar" loading="lazy">
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      <div class="d-flex justify-content-between">
-                        <h5 class="mb-1">Nomsa Dlamini</h5>
-                        <small class="comment-meta">5 hours ago</small>
-                      </div>
-                      <p class="mb-2">
-                        Does anyone know the opening hours? I'd like to visit with my grandmother who 
-                        has limited mobility - is the building wheelchair accessible?
-                      </p>
-                      <div class="comment-actions">
-                        <div class="reaction-container">
-                          <button class="reaction-btn">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <span class="reaction-count">8</span>
-                          </button>
-                          <div class="reaction-preview">8 people</div>
-                          <div class="reaction-options">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
-                          </div>
-                        </div>
-                        <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
-                      </div>
-                      
-                      <!-- Reply Form -->
-                      <div class="reply-form">
-                        <form class="reply-to-comment">
-                          <input type="hidden" name="parent-id" value="2">
-                          <div class="mb-2">
-                            <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
-                          </div>
-                          <div class="d-flex justify-content-end gap-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div><!-- End Comment 2 -->
-
-              </div><!-- End Comments List -->
-
-              <div class="text-center mt-4">
-                <button class="btn btn-outline-primary load-more" id="load-more-comments">Load More Comments</button>
-              </div>
-
             </div>
 
-          </section><!-- /Comment System Section -->
+            <div class="swiper-slide" style="background-image: url('assets/img/latest/crime_scene_tape.jpeg.jpg');">
+              <div class="content">
+                <h2><a href="single-post.html">Crime in SA| Discussion| SA facing widespread extotion and intimidation</a></h2>
+                <p>4 hours ago</p>
+              </div>
+            </div>
 
+            <div class="swiper-slide" style="background-image: url('assets/img/latest/etv_pb_results.jpg.jpg');">
+              <div class="content">
+                <h2><a href="single-post.html">PowerBall and PowerBall Plus Result|30 August 2024</a></h2>
+                <p>POWERBALL TONIGHT AT 9PM. PLEASE EMBED TWEET WITH WINNING NUMBWERS @sa_lottery</p>
+                <h3>2 hours ago</h3>
+              </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('assets/img/latest/GettyImages-1039929888.jpg.jpg');">
+              <div class="content">
+                <h2><a href="single-post.html">Milnerton residents left traumatised by police shootout</a></h2>
+                <h3>3 hours ago</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+
+          <div class="swiper-pagination"></div>
         </div>
 
-        <div class="col-lg-4 sidebar">
+      </div>
 
-          <div class="widgets-container">
+    </section><!-- /Slider Section -->
 
-            <!-- Blog Author Widget -->
-            <div class="blog-author-widget widget-item">
+    <!-- Trending Category Section -->
+    <section id="trending-category" class="trending-category section">
 
-              <div class="d-flex flex-column align-items-center">
-                <div class="d-flex align-items-center w-100">
-                  <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="Reporter" loading="lazy">
-                  <div>
-                    <h4>Thabo Mokoena</h4>
-                    <div class="social-links">
-                      <a href="#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="#"><i class="bi bi-facebook"></i></a>
-                    </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="container" data-aos="fade-up">
+          <div class="row g-5">
+            <div class="col-lg-4">
+
+              <div class="post-entry lg">
+                <a href="blog-details.html"><img src="assets/img/latest/women moth.jpeg" alt="" class="img-fluid"></a>
+                <div class="post-meta"><span class="date">Top Story</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+                <h2><a href="blog-details.html">Women's Month | SA Defence Force honours its serving women </a></h2>
+                <p class="mb-4 d-block">As Women’s month draws to a close the South African National Defence Force is presenting a Women’s Day Parade in honour of the women serving in the SANDF.Defence and Military Veterans Minister, Angie Motshekga, says the event is aimed at celebrating the strength and resilience of women and their contribution to society and the country.</p>
+
+                <div class="d-flex align-items-center author">
+                  <div class="photo"><img src="assets/img/latest/image qw.jpg" alt="" class="img-fluid"></div>
+                  <div class="name">
+                    <h3 class="m-0 p-0">Cameron Williamson</h3>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-lg-8">
+              <div class="row g-5">
+                <div class="col-lg-4 border-start custom-border">
+                  <div class="post-entry">
+                    <a href="blog-details.html"><img src="assets/img/latest/doc-36EY8VU-@photo2.jpg.jpg" alt="" class="img-fluid"></a>
+                    <div class="post-meta"><span class="date">police</span> <span class="mx-1">•</span> <span>Aug 30th '24 </span></div>
+                    <h2><a href="blog-details.html">Frenchman accused of enlisting strangers to rape drugged wife</a></h2>
+                  </div>
+                  <div class="post-entry">
+                    <a href="blog-details.html"><img src="assets/img/latest/FCJ Excellence Awards_940x529.jpg.jpg" alt="" class="img-fluid"></a>
+                    <div class="post-meta"><span class="date">Food</span> <span class="mx-1">•</span> <span>Aug 30th '24</span></div>
+                    <h2><a href="blog-details.html">Venezuela hit by nationwide power outage</a></h2>
+                  </div>
+                  <div class="post-entry">
+                    <a href="blog-details.html"><img src="assets/img/latest/oorwerk.jpg.jpg" alt="" class="img-fluid"></a>
+                    <div class="post-meta"><span class="date">Medicine</span> <span class="mx-1">•</span> <span>Aug 30th '24</span></div>
+                    <h2><a href="blog-details.html">New TB treatment influences global health policy</a></h2>
+                  </div>
+                </div>
+                <div class="col-lg-4 border-start custom-border">
+                  <div class="post-entry">
+                    <a href="blog-details.html"><img src="assets/img/latest/petrol.jpeg.jpg" alt="" class="img-fluid"></a>
+                    <div class="post-meta"><span class="date">Petrol</span> <span class="mx-1">•</span> <span>Aug 30th '24</span></div>
+                    <h2><a href="blog-details.html">AA says fuel prices likely to decrease in September</a></h2>
+                  </div>
+                  <div class="post-entry">
+                    <a href="blog-details.html"><img src="assets/img/latest/GettyImages-2157685525.jpg.jpg" alt="" class="img-fluid"></a>
+                    <div class="post-meta"><span class="date">Tech</span> <span class="mx-1">•</span> <span>Aug 30th '24</span></div>
+                    <h2><a href="blog-details.html">Lesufi’s plan to bring shine back to the City of Gold</a></h2>
+                  </div>
+                  <div class="post-entry">
+                    <a href="blog-details.html"><img src="assets/img/latest/doc-33Q34R3-_40photo4.jpg.jpg" alt="" class="img-fluid"></a>
+                    <div class="post-meta"><span class="date">Top Story</span> <span class="mx-1">•</span> <span>Aug 30th '24</span></div>
+                    <h2><a href="blog-details.html">Hundreds of substance abuse patients in Gauteng left stranded </a></h2>
                   </div>
                 </div>
 
-                <p class="mt-2 text-center">
-                  Community reporter covering Elim and Shihlobyeni news. Passionate about local development stories.
-                </p>
+                <!-- Trending Section -->
+                <div class="col-lg-4">
+
+                  <div class="trending">
+                    <h3>Trending</h3>
+                    <ul class="trending-post">
+                      <li>
+                        <a href="blog-details.html">
+                          <span class="number">1</span>
+                          <h3>SA Weather | Yellow level 2 warning still in place for coastal provinces</h3>
+                          <span class="author">Made News SA</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="blog-details.html">
+                          <span class="number">2</span>
+                          <h3>Typhoon Shanshan barrels up japen as five reported dead</h3>
+                          <span class="author">Made News SA</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="blog-details.html">
+                          <span class="number">3</span>
+                          <h3>13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h3>
+                          <span class="author">Esther Howard</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="blog-details.html">
+                          <span class="number">4</span>
+                          <h3>Only four KZN municipalities Received clean audits</h3>
+                          <span class="author">Made News SA</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="blog-details.html">
+                          <span class="number">5</span>
+                          <h3>Justice Department | Official dismissed for various farm of misconduct</h3>
+                          <span class="author">Made News SA</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div> <!-- End Trending Section -->
+              </div>
+            </div>
+
+          </div> <!-- End .row -->
+        </div>
+
+      </div>
+
+    </section><!-- /Trending Category Section -->
+
+
+
+
+    <!-- Culture Category Section -->
+    <section id="culture-category" class="culture-category section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <div class="section-title-container d-flex align-items-center justify-content-between">
+          <h2>Politics</h2>
+          <p><a href="categories.html">See All Political news</a></p>
+        </div>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+          <div class="col-md-9">
+
+            <div class="d-lg-flex post-entry">
+              <a href="blog-details.html" class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
+                <img src="assets/img/politics/doc-36EQ474-@photo0.jpg.jpg" alt="" class="img-fluid">
+              </a>
+              <div>
+                <div class="post-meta"><span class="date">Politics</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+                <h3><a href="blog-details.html">Macron denies Telegram founder's France arrest 'political'</a></h3>
+                <p>
+
+                  President Emmanuel Macron on Monday denied any political link to the arrest of Telegram founder Pavel Durov as the tech tycoon spent a second day in French custody following his surprise arrest at a Paris airport.
+                  
+                  Numerous questions have been raised about the timing and circumstances of Durov's detention.
+                  </p>
+                <div class="d-flex align-items-center author">
+                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
+                  <div class="name">
+                    <h3 class="m-0 p-0">President Macron</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="post-list border-bottom">
+                  <a href="blog-details.html"><img src="assets/img/politics/Educational Standards.jpg" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">Politics</span> <span class="mx-1">•</span> <span>23 August 2024</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Educational Standards | Calls for tertiary qualifications for political leaders</a></h2>
+                  <span class="author mb-3 d-block">12 August 2024 </span>
+                  <p class="mb-4 d-block">
+
+                    JOHANNESBURG - There’s growing concern that many political office bearers lack the educational qualifications necessary for effective governance. 
+                    
+                    A handful of Ministers in the Government of National Unity don’t have a higher degree.
+                    </p>
+                </div>
+
+                <div class="post-list">
+                  <div class="post-meta"><span class="date">Politics</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Discussion | Unpacking this week in politics</a></h2>
+                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="post-list">
+                  <a href="blog-details.html"><img src="assets/img/politics/MK-party.jpg" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">Politics</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">MK Party's axed MPs vow to fight for their positions</a></h2>
+                  <span class="author mb-3 d-block">MK Party</span>
+                  <p class="mb-4 d-block">Axed uMkhonto weSizwe Party MP’s have vowed to stay the course in their pursuit of justice. Axed uMkhonto weSizwe party MP’s will continue fighting the termination of their party membership in court next month. </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="post-list border-bottom">
+              <div class="post-meta"><span class="date">Politics</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Whitewashing the past: Students give Bangladesh a makeover</a></h2>
+              <span class="author mb-3 d-block">Bangladesh</span>
+            </div>
+
+            <div class="post-list border-bottom">
+              <div class="post-meta"><span class="date">Politics</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Political Party Funding Act | My Vote Counts wants funding thresholds reinstated</a></h2>
+              <span class="author mb-3 d-block">IEC</span>
+            </div>
+
+            <div class="post-list border-bottom">
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+
+            <div class="post-list border-bottom">
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Life Insurance And Pregnancy: A Working Mom’s Guide</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+
+            <div class="post-list border-bottom">
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+
+            <div class="post-list border-bottom">
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Culture Category Section -->
+
+
+
+
+
+
+
+
+    <!-- Business Category Section -->
+<section id="business-category" class="business-category section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <div class="section-title-container d-flex align-items-center justify-content-between">
+      <h2>Business</h2>
+      <p><a href="categories.html">See All Business</a></p>
+    </div>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row">
+      <!-- Main Content Section (col-md-9) -->
+      <div class="col-lg-9 col-md-8 order-md-2">
+        <div class="d-lg-flex post-entry mb-4">
+
+
+
+         <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+  {
+  "width": "980",
+  "height": "580",
+  "symbol": "NASDAQ:AAPL",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "light",
+  "style": "1",
+  "locale": "en",
+  "backgroundColor": "rgba(216, 216, 216, 1)",
+  "allow_symbol_change": true,
+  "watchlist": [
+    "BLACKBULL:US30"
+  ],
+  "details": true,
+  "calendar": false,
+  "support_host": "https://www.tradingview.com"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+        </div>
+
+
+
+
+
+        <div class="row">
+          <!-- Left Column for Smaller Widgets -->
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="post-list border-bottom mb-4">
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <div class="tradingview-widget-copyright">
+                  <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                    <span class="blue-text"></span>
+                  </a>
+                </div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                  {
+                    "feedMode": "all_symbols",
+                    "isTransparent": false,
+                    "displayMode": "regular",
+                    "width": "100%",
+                    "height": "400",
+                    "colorTheme": "light",
+                    "locale": "en"
+                  }
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+            </div>
+          </div>
+
+          <!-- Right Column for Larger Widgets -->
+          <div class="col-lg-8 col-sm-6 mb-4">
+            <div class="post-list">
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <div class="tradingview-widget-copyright">
+                  <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                    <span class="blue-text"></span>
+                  </a>
+                </div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                  {
+                    "colorTheme": "light",
+                    "isTransparent": false,
+                    "width": "100%",
+                    "height": "400",
+                    "locale": "en",
+                    "importanceFilter": "-1,0,1",
+                    "countryFilter": "ar,au,br,ca,cn,fr,de,in,id,it,jp,kr,mx,ru,sa,za,tr,gb,us,eu"
+                  }
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Content (col-md-3) -->
+      <div class="col-lg-3 col-md-4 order-md-1 mb-4">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <div class="tradingview-widget-copyright">
+            <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+              <span class="blue-text"></span>
+            </a>
+          </div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+            {
+              "isTransparent": false,
+              "largeChartUrl": "",
+              "displayMode": "regular",
+              "width": "100%",
+              "height": "400",
+              "colorTheme": "light",
+              "symbol": "NASDAQ:AAPL",
+              "locale": "en"
+            }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Business Category Section -->
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Lifestyle Category Section -->
+    <section id="lifestyle-category" class="lifestyle-category section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <div class="section-title-container d-flex align-items-center justify-content-between">
+          <h2>Sports</h2>
+          <p><a href="categories.html">See All Sports News</a></p>
+        </div>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <div class="post-list lg">
+              <a href="blog-details.html"><img src="assets/img/Sports/Verstappen.jpg" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Aug 30th '24</span></div>
+              <h2><a href="blog-details.html">Verstappen quickest in opening F1 Italian GP practice</a></h2>
+              <p class="mb-4 d-block">Championship leader Verstappen clocked one minute, 21.676 seconds, 0.228sec ahead of Leclerc.</p>
+
+              <div class="d-flex align-items-center author">
+                <div class="photo"><img src="assets/img/person-7.jpg" alt="" class="img-fluid"></div>
+                <div class="name">
+                  <h3 class="m-0 p-0">Esther Howard</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="post-list border-bottom">
+              <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+
+            <div class="post-list">
+              <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Aug 30th '24</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Southampton sign Arsenal keeper Ramsdale</a></h2>
+              <span class="author mb-3 d-block">Jerald</span>
+            </div>
+
+          </div>
+
+          <div class="col-lg-8">
+            <div class="row g-5">
+              <div class="col-lg-4 border-start custom-border">
+                <div class="post-list">
+                  <a href="blog-details.html"><img src="assets/img/Sports/Ronaldo.jpg" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+                  <h2><a href="blog-details.html">Ronaldo in Portugal squad for Nations League games</a></h2>
+                </div>
+                <div class="post-list">
+                  <a href="blog-details.html"><img src="assets/img/Sports/william.jpg" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Aug 30th '24</span></div>
+                  <h2><a href="blog-details.html">Williams injury leaves Bafana in need of captain</a></h2>
+                </div>
+                <div class="post-list">
+                  <a href="blog-details.html"><img src="assets/img/Sports/Rain.jpg" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">•</span> <span>Aug 28th '24</span></div>
+                  <h2><a href="blog-details.html">Rain washes out opening day of Pakistan-Bangladesh second Test</a></h2>
+                </div>
+              </div>
+              <div class="col-lg-4 border-start custom-border">
+                <div class="post-list">
+                  <a href="blog-details.html"><img src="assets/img/Sports/Two-time.jpg" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Aug 28th '24</span></div>
+                  <h2><a href="blog-details.html">Two-time champion Osaka falls to Muchova at US Open</a></h2>
+                </div>
+                <div class="post-list">
+                  <a href="blog-details.html"><img src="assets/img/post-landscape-2.jpg" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Aug 28st '24</span></div>
+                  <h2><a href="blog-details.html">First Paralympic champions crowned as French fans roar on swimmer</a></h2>
+                </div>
+                <div class="post-list">
+                  <a href="blog-details.html"><img src="assets/img/Sports/Jack Chan.jpg" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Aug 25th '24</span></div>
+                  <h2><a href="blog-details.html">Jackie Chan | Hong Kong action star and Paris Paralympics torchbearer</a></h2>
+                </div>
+              </div>
+              <div class="col-lg-4">
+
+                <div class="post-list border-bottom">
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Aug 28th '24</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Ko ends eight-year major drought with Women's British Open win</a></h2>
+                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                </div>
+
+                <div class="post-list border-bottom">
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Two key Paris landmarks for Paralympics opening ceremony</a></h2>
+                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                </div>
+
+                <div class="post-list border-bottom">
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Chinese swimmer Sun Yang wins on return from doping ban</a></h2>
+                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                </div>
+
+                <div class="post-list border-bottom">
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Aug 25th '24</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Babe Ruth baseball jersey shatters sports memorabilia auction record</a></h2>
+                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                </div>
+
+                <div class="post-list border-bottom">
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
+                  <span class="author mb-3 d-block">Jeon</span>
+                </div>
+
+                <div class="post-list border-bottom">
+                  <div class="post-meta"><span class="date">Sports</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="blog-details.html">Defending champs Djokovic, Gauff headline US Open Day 1</a></h2>
+                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                </div>
 
               </div>
-
-            </div><!--/Blog Author Widget -->
-
-            <!-- Trending Now Widget -->
-            <div class="trending-widget widget-item">
-
-              <h3 class="widget-title">Trending in Elim</h3>
-
-              <div class="post-item">
-                <img src="assets/img/blog/blog-recent-1.jpg" alt="" class="flex-shrink-0" loading="lazy">
-                <div>
-                  <h4><a href="blog-details.html">New soccer field construction begins</a></h4>
-                  <time datetime="2024-06-14">Jun 14, 2024</time>
-                </div>
-              </div>
-
-              <div class="post-item">
-                <img src="assets/img/blog/blog-recent-2.jpg" alt="" class="flex-shrink-0" loading="lazy">
-                <div>
-                  <h4><a href="blog-details.html">Local farmers market every Saturday</a></h4>
-                  <time datetime="2024-06-10">Jun 10, 2024</time>
-                </div>
-              </div>
-
-              <div class="post-item">
-                <img src="assets/img/blog/blog-recent-3.jpg" alt="" class="flex-shrink-0" loading="lazy">
-                <div>
-                  <h4><a href="blog-details.html">Youth entrepreneurship workshop</a></h4>
-                  <time datetime="2024-06-08">Jun 8, 2024</time>
-                </div>
-              </div>
-
-            </div><!--/Trending Now Widget -->
-
-            <!-- Community Events Widget -->
-            <div class="events-widget widget-item">
-
-              <h3 class="widget-title">Upcoming Events</h3>
-
-              <div class="event-item">
-                <div class="event-date">
-                  <span class="day">20</span>
-                  <span class="month">Jun</span>
-                </div>
-                <div class="event-info">
-                  <h4><a href="#">Computer basics class</a></h4>
-                  <p>New community center • 10:00 AM</p>
-                </div>
-              </div>
-
-              <div class="event-item">
-                <div class="event-date">
-                  <span class="day">22</span>
-                  <span class="month">Jun</span>
-                </div>
-                <div class="event-info">
-                  <h4><a href="#">Community clean-up day</a></h4>
-                  <p>Meet at soccer field • 8:00 AM</p>
-                </div>
-              </div>
-
-              <div class="event-item">
-                <div class="event-date">
-                  <span class="day">25</span>
-                  <span class="month">Jun</span>
-                </div>
-                <div class="event-info">
-                  <h4><a href="#">Elders council meeting</a></h4>
-                  <p>Community hall • 3:00 PM</p>
-                </div>
-              </div>
-
-              <div class="text-center mt-3">
-                <button class="btn btn-sm btn-outline-primary load-more" id="load-more-events">View More Events</button>
-              </div>
-
-            </div><!--/Community Events Widget -->
-
+            </div>
           </div>
 
         </div>
 
       </div>
+
+    </section><!-- /Sports Category Section -->
+
+
+
+
+
+
+
+
+ <!-- Educational Category Section -->
+ <section id="business-category" class="business-category section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <div class="section-title-container d-flex align-items-center justify-content-between">
+      <h2>Educational</h2>
+      <p><a href="categories.html">See All Educational News</a></p>
     </div>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row">
+      <div class="col-md-9 order-md-2">
+
+        <div class="d-lg-flex post-entry">
+          <a href="blog-details.html" class="me-4 thumbnail d-inline-block mb-4 mb-lg-0">
+            <img src="assets/img/Education/Education 1.jpg" alt="" class="img-fluid">
+          </a>
+          <div>
+            <div class="post-meta"><span class="date">Education</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+            <h3><a href="blog-details.html">Educational Department | Umalusi chairing regional body </a></h3>
+            <p>
+              JOHANNESBURG - South Africa has been elected chair of the Association for Educational Assessment in Africa. 
+
+              READ: | Umalusi warns against bogus institutions
+              
+              The body looks at upholding best practices in educational assessments, as well as curriculum development and research within the Southern Africa region. 
+              
+              </p>
+            <div class="d-flex align-items-center author">
+              <div class="photo"><img src="assets/img/person-4.jpg" alt="" class="img-fluid"></div>
+              <div class="name">
+                <h3 class="m-0 p-0">Umalusi</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="post-list border-bottom">
+              <a href="blog-details.html"><img src="assets/img/Education/Edu.jpg" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">Education</span> <span class="mx-1">•</span> <span>Aug 31th '24</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Eastern Cape education launches online lessons to enhance learning</a></h2>
+              <span class="author mb-3 d-block">Eastern cape</span>
+              <p class="mb-4 d-block">EAST LONDON - Despite many challenges, Eastern Cape Education authorities are seeing an improvement in the pass rate.  </p>
+            </div>
+
+            <div class="post-list">
+              <div class="post-meta"><span class="date">Education</span> <span class="mx-1">•</span> <span>Aug 5th '24</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Discussion | Higher Education | Student debt ballooning</a></h2>
+              <span class="author mb-3 d-block">NSFAS</span>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="post-list">
+              <a href="blog-details.html"><img src="assets/img/Education/Gauteng edu.png" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">Education</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Gauteng education requests police assistance in Eldorado Park.</a></h2>
+              <span class="author mb-3 d-block">GE</span>
+              <p class="mb-4 d-block">JOHANNESBURG - The Gauteng Education Department says they've approached law enforcement and community policing forums to assist in patrolling gang-ridden parts of Eldorado Park. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Education</span> <span class="mx-1">•</span> <span>Aug 31th '24</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Discussion | Student funding issues in tertiary education</a></h2>
+          <span class="author mb-3 d-block">Jenny Wilson</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Education</span> <span class="mx-1">•</span> <span>Aug 29th '24</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Educational Standards | Calls for tertiary qualifications for political leaders</a></h2>
+          <span class="author mb-3 d-block">T-Man</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Education</span> <span class="mx-1">•</span> <span>Aug 31th '26</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Asian markets rally on US data after Dow hits record on Wall St</a></h2>
+          <span class="author mb-3 d-block">US Market</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Education</span> <span class="mx-1">•</span> <span>Aug 29th '24</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Basic Education Law Amendment Bill | Calls for BELA Bill to return to parliament</a></h2>
+          <span class="author mb-3 d-block">Akani Miyn</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Education</span> <span class="mx-1">•</span> <span>Aug 29th '24</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Two South African named finalists in the African Education Awards</a></h2>
+          <span class="author mb-3 d-block">Jenny</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Education</span> <span class="mx-1">•</span> <span>Aug 28th '24</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Alleged custody battle plays out at Katlehong school</a></h2>
+          <span class="author mb-3 d-block">Jenny Wilson</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Business Category Section -->
+
+
+
+
+
+
+
+<!-- Entertainment Category Section -->
+<section id="culture-category" class="culture-category section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <div class="section-title-container d-flex align-items-center justify-content-between">
+      <h2>Entertainment</h2>
+      <p><a href="categories.html">See All entertainment news</a></p>
+    </div>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row">
+      <div class="col-md-9">
+
+        <div class="d-lg-flex post-entry">
+          <a href="blog-details.html" class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
+            <img src="assets/img/Entertainment/Entertainment.jpg" alt="" class="img-fluid">
+          </a>
+          <div>
+            <div class="post-meta"><span class="date">Entertainment</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+            <h3><a href="blog-details.html">Great entertainers Spain bring much-needed thrills to Euro 2024</a></h3>
+            <p> England and Spain face off in Sunday's Euro 2024 final after taking very different routes to Berlin in a tournament that has at times lacked for thrills.</p>
+            <div class="d-flex align-items-center author">
+              <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
+              <div class="name">
+                <h3 class="m-0 p-0">President Macron</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="post-list border-bottom">
+              <a href="blog-details.html"><img src="assets/img/politics/Educational Standards.jpg" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">Entertainment</span> <span class="mx-1">•</span> <span>23 August 2024</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Dortmund down sloppy Man United in Vegas friendly</a></h2>
+              <span class="author mb-3 d-block">12 August 2024 </span>
+              <p class="mb-4 d-block"> Borussia Dortmund punished Manchester United's defensive lapses on Sunday as the English Premier League giants wrapped up their North American tour.</p>
+            </div>
+
+            <div class="post-list">
+              <div class="post-meta"><span class="date">Entertainment</span> <span class="mx-1">•</span> <span>Aug 30th '24</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">'Gran Turismo' barely outraces 'Barbie' in theatres</a></h2>
+              <span class="author mb-3 d-block">Wilson</span>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="post-list">
+              <a href="blog-details.html"><img src="assets/img/Entertainment/Pakistan.jpg" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">Entertainment</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Monkey business in Pakistan court during smuggling case</a></h2>
+              <span class="author mb-3 d-block">Pakistan</span>
+              <p class="mb-4 d-block">A baby monkey caused chaos in a Pakistan court after escaping from a troop presented as evidence in a case of wildlife smuggling.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Entertainment</span> <span class="mx-1">•</span> <span>Aug 25th '24</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Sony PlayStation CEO Ryan to retire</a></h2>
+          <span class="author mb-3 d-block">CEO Ryan</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Entertainment</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Local entertainment industry stifling actors through unfair clauses: SAGA</a></h2>
+          <span class="author mb-3 d-block">SAGA</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Entertainment</span> <span class="mx-1">•</span> <span>Aug 25th '24</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Britney Spears says she had abortion while dating Justin Timberlake</a></h2>
+          <span class="author mb-3 d-block">Jenny Wilson</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Entertainment</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Life Insurance And Pregnancy: A Working Mom’s Guide</a></h2>
+          <span class="author mb-3 d-block">Jenny Wilson</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Entertainment</span> <span class="mx-1">•</span> <span>Jun 5th '24</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Celebrities to urge climate action at Hollywood gathering</a></h2>
+          <span class="author mb-3 d-block">Dr.Robot</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Entertainment</span> <span class="mx-1">•</span> <span>Jun 5th '24</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Anderson promises 'more aggression' against Australia</a></h2>
+          <span class="author mb-3 d-block">Romeo jane</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Entertainment Category Section -->
+
+
+
+
+
+
+
+
+ <!-- Technology Category Section -->
+ <section id="business-category" class="business-category section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <div class="section-title-container d-flex align-items-center justify-content-between">
+      <h2>Technology</h2>
+      <p><a href="categories.html">See All Technology</a></p>
+    </div>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row">
+      <div class="col-md-9 order-md-2">
+
+        <div class="d-lg-flex post-entry">
+          <a href="blog-details.html" class="me-4 thumbnail d-inline-block mb-4 mb-lg-0">
+            <img src="assets/img/Technology/Technology.jpg" alt="" class="img-fluid">
+          </a>
+          <div>
+            <div class="post-meta"><span class="date">Tchnology</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+            <h3><a href="blog-details.html">
+              Bongani Mthombeni
+              Women's month | Women in engineering and technology </a></h3>
+            <p>The proportion of women working in engineering or technical departments fell to 16-percent in 2022. </p>
+            <div class="d-flex align-items-center author">
+              <div class="photo"><img src="assets/img/person-1.jpg" alt="" class="img-fluid"></div>
+              <div class="name">
+                <h3 class="m-0 p-0">Rotondwa</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="post-list border-bottom">
+              <a href="blog-details.html"><img src="assets/img/Technology/Professor Nokuthula Sibiya.jpg.jpg" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">Technology</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Sibiya ushers in new era at Mangosuthu University of Technology</a></h2>
+              <span class="author mb-3 d-block">JApple</span>
+              <p class="mb-4 d-block">Professor Sibiya started her role as Vice-Chancellor on 1 August.</p>
+            </div>
+
+            <div class="post-list">
+              <div class="post-meta"><span class="date">Technology</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">WATCH | Is SA's healthcare technologically ready for NHI? </a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="post-list">
+              <a href="blog-details.html"><img src="assets/img/Technology/Green Energy.jpg" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">Technology</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="blog-details.html">Green energy | SA making progress in transition to green energy</a></h2>
+              <span class="author mb-3 d-block">Jenny Wilson</span>
+              <p class="mb-4 d-block">To make further inroads, trade partnerships with countries that have experience in green energy technology are crucial.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Technology</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Science and Technology | Tangible Africa project takes the world by storm</a></h2>
+          <span class="author mb-3 d-block">Jenny Wilson</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Technology</span> <span class="mx-1">•</span> <span>Aug 52th '24</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">NASA picks SpaceX to carry ISS to its watery graveyard after 2030</a></h2>
+          <span class="author mb-3 d-block">T-Man</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Technology</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Asian markets rally on US data after Dow hits record on Wall St</a></h2>
+          <span class="author mb-3 d-block">US Market</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Technology</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Brazil judge, Musk standoff intensifies as Starlink assets frozen</a></h2>
+          <span class="author mb-3 d-block">Akani Miyn</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Technology</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">Amazon cloud giant AWS wants public sector to embrace AI</a></h2>
+          <span class="author mb-3 d-block">Jenny</span>
+        </div>
+
+        <div class="post-list border-bottom">
+          <div class="post-meta"><span class="date">Technology</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
+          <h2 class="mb-2"><a href="blog-details.html">UN says 800,000 have fled fierce fighting in Rafah</a></h2>
+          <span class="author mb-3 d-block">Jenny Wilson</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Business Category Section -->
+
+
+
+
+
+
+
+
+
 
   </main>
 
@@ -781,59 +1288,77 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Tolleya</span>
+            <span class="sitename">Made News</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>Elim, Shihlobyeni</p>
-            <p>Limpopo, South Africa</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>060 205 3583</span></p>
-            <p><strong>Email:</strong> <span>tolleyanet@gmail.com</span></p>
+            <p>North west</p>
+            <p>Port Elizabeth, NY 535022</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>060-205-3583</span></p>
+            <p><strong>Email:</strong> <span>Tolleya.site@gmail.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-whatsapp"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Quick Links</h4>
+          <h4>Useful Links</h4>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="category.html">News</a></li>
-            <li><a href="category.html">Sports</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Categories</h4>
+          <h4>Our Services</h4>
           <ul>
-            <li><a href="#">Local News</a></li>
-            <li><a href="#">Sports</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Business</a></li>
-            <li><a href="#">Announcements</a></li>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
           </ul>
         </div>
 
-        <div class="col-lg-4 col-md-6 footer-newsletter">
-          <h4>Community Alerts</h4>
-          <p>Get important updates directly to your phone</p>
-          <form action="">
-            <input type="tel" class="form-control" placeholder="Your phone number" required>
-            <button type="submit" class="btn btn-primary mt-2">Subscribe</button>
-          </form>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Hic solutasetp</h4>
+          <ul>
+            <li><a href="#">Molestiae accusamus iure</a></li>
+            <li><a href="#">Excepturi dignissimos</a></li>
+            <li><a href="#">Suscipit distinctio</a></li>
+            <li><a href="#">Dilecta</a></li>
+            <li><a href="#">Sit quas consectetur</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Nobis illum</h4>
+          <ul>
+            <li><a href="#">Ipsam</a></li>
+            <li><a href="#">Laudantium dolorum</a></li>
+            <li><a href="#">Dinera</a></li>
+            <li><a href="#">Trodelas</a></li>
+            <li><a href="#">Flexo</a></li>
+          </ul>
         </div>
 
       </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Tolleya</strong> <span>2024. All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Made News</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        Proudly serving the Elim community
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://madenet.site/">mademet.site</a>
       </div>
     </div>
 
@@ -842,508 +1367,16 @@
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-
-  <script>
-    // Enhanced Comment System Functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      // Track reaction timers
-      const reactionTimers = {};
-      
-      // Toggle reply forms
-      const replyButtons = document.querySelectorAll('.reply-btn');
-      replyButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          const replyForm = this.closest('.comment').querySelector('.reply-form');
-          replyForm.classList.toggle('active');
-        });
-      });
-      
-      // Cancel reply
-      const cancelButtons = document.querySelectorAll('.cancel-reply');
-      cancelButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          this.closest('.reply-form').classList.remove('active');
-        });
-      });
-      
-      // Facebook-style reactions with hover and hold
-      const reactionContainers = document.querySelectorAll('.reaction-container');
-      reactionContainers.forEach(container => {
-        const button = container.querySelector('.reaction-btn');
-        const options = container.querySelector('.reaction-options');
-        const preview = container.querySelector('.reaction-preview');
-        
-        // Show preview on hover
-        button.addEventListener('mouseenter', function() {
-          preview.style.display = 'block';
-        });
-        
-        button.addEventListener('mouseleave', function() {
-          preview.style.display = 'none';
-        });
-        
-        // Show options on click or hold
-        button.addEventListener('mousedown', function() {
-          // Start timer for long press
-          reactionTimers[button.id] = setTimeout(() => {
-            options.classList.add('active');
-          }, 500);
-        });
-        
-        button.addEventListener('mouseup', function() {
-          // Clear timer if released before timeout
-          clearTimeout(reactionTimers[button.id]);
-        });
-        
-        button.addEventListener('mouseleave', function() {
-          // Clear timer if mouse leaves
-          clearTimeout(reactionTimers[button.id]);
-        });
-        
-        button.addEventListener('click', function(e) {
-          // On click (not hold), just toggle like
-          if (!options.classList.contains('active')) {
-            if (!button.classList.contains('active')) {
-              button.classList.add('active');
-              const icon = button.querySelector('i');
-              const count = button.querySelector('.reaction-count');
-              
-              icon.classList.replace('bi-hand-thumbs-up', 'bi-hand-thumbs-up-fill');
-              count.textContent = parseInt(count.textContent) + 1;
-              
-              // Update preview text if this is the first like
-              if (preview.textContent.includes('people')) {
-                preview.textContent = 'You and ' + (parseInt(count.textContent) - 1) + ' others';
-              }
-            }
-          }
-        });
-        
-        // Handle selecting specific reactions
-        const reactionImgs = options.querySelectorAll('img');
-        reactionImgs.forEach(img => {
-          img.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const btn = container.querySelector('.reaction-btn');
-            const count = btn.querySelector('.reaction-count');
-            
-            // Update reaction count
-            if (!btn.classList.contains('active')) {
-              count.textContent = parseInt(count.textContent) + 1;
-            }
-            
-            btn.classList.add('active');
-            btn.querySelector('i').className = 'bi bi-hand-thumbs-up-fill';
-            
-            // Update preview text
-            preview.textContent = 'You and ' + (parseInt(count.textContent) - 1) + ' others';
-            
-            // Hide reaction options after selection
-            options.classList.remove('active');
-          });
-        });
-        
-        // Hide options when clicking elsewhere
-        document.addEventListener('click', function(e) {
-          if (!container.contains(e.target)) {
-            options.classList.remove('active');
-          }
-        });
-      });
-      
-      // Form submission with immediate display
-      const commentForm = document.getElementById('main-comment-form');
-      const commentsContainer = document.getElementById('comments-container');
-      let commentCount = 3; // Starting count for new comment IDs
-      
-      commentForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('comment-name').value;
-        const text = document.getElementById('comment-text').value;
-        
-        if (name && text) {
-          // Create new comment element
-          const newComment = document.createElement('div');
-          newComment.className = 'comment new-comment';
-          newComment.id = `comment-${++commentCount}`;
-          
-          newComment.innerHTML = `
-            <div class="d-flex">
-              <div class="flex-shrink-0">
-                <img src="assets/img/blog/avatar-placeholder.jpg" alt="User" class="comment-avatar" loading="lazy">
-              </div>
-              <div class="flex-grow-1 ms-3">
-                <div class="d-flex justify-content-between">
-                  <h5 class="mb-1">${name}</h5>
-                  <small class="comment-meta">Just now</small>
-                </div>
-                <p class="mb-2">${text}</p>
-                <div class="comment-actions">
-                  <div class="reaction-container">
-                    <button class="reaction-btn">
-                      <i class="bi bi-hand-thumbs-up"></i>
-                      <span class="reaction-count">0</span>
-                    </button>
-                    <div class="reaction-preview">0 people</div>
-                    <div class="reaction-options">
-                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
-                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
-                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
-                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
-                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
-                    </div>
-                  </div>
-                  <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
-                </div>
-                
-                <!-- Reply Form (Hidden by default) -->
-                <div class="reply-form">
-                  <form class="reply-to-comment">
-                    <input type="hidden" name="parent-id" value="${commentCount}">
-                    <div class="mb-2">
-                      <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
-                    </div>
-                    <div class="d-flex justify-content-end gap-2">
-                      <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
-                      <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          `;
-          
-          // Prepend new comment to the list
-          commentsContainer.insertBefore(newComment, commentsContainer.firstChild.nextSibling);
-          
-          // Reset form
-          this.reset();
-          
-          // Update comment count in header
-          const commentBadge = document.querySelector('.section-header .badge');
-          commentBadge.textContent = parseInt(commentBadge.textContent) + 1;
-          
-          // Add event listeners to new comment
-          addCommentEventListeners(newComment);
-        }
-      });
-      
-      // Add event listeners to all reply forms (including dynamically added ones)
-      function addCommentEventListeners(commentElement) {
-        // Reply button
-        const replyBtn = commentElement.querySelector('.reply-btn');
-        if (replyBtn) {
-          replyBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const replyForm = this.closest('.comment').querySelector('.reply-form');
-            replyForm.classList.toggle('active');
-          });
-        }
-        
-        // Cancel reply
-        const cancelBtn = commentElement.querySelector('.cancel-reply');
-        if (cancelBtn) {
-          cancelBtn.addEventListener('click', function() {
-            this.closest('.reply-form').classList.remove('active');
-          });
-        }
-        
-        // Reply form submission
-        const replyForm = commentElement.querySelector('.reply-to-comment');
-        if (replyForm) {
-          replyForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const text = this.querySelector('textarea').value;
-            const parentId = this.querySelector('[name="parent-id"]').value;
-            
-            if (text) {
-              // Create new reply element
-              const newReply = document.createElement('div');
-              newReply.className = 'comment comment-reply new-comment';
-              newReply.id = `reply-${parentId}-${Date.now()}`;
-              
-              newReply.innerHTML = `
-                <div class="d-flex">
-                  <div class="flex-shrink-0">
-                    <img src="assets/img/blog/avatar-placeholder.jpg" alt="User" class="comment-avatar" loading="lazy">
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <div class="d-flex justify-content-between">
-                      <h5 class="mb-1">${document.getElementById('comment-name').value || 'Anonymous'}</h5>
-                      <small class="comment-meta">Just now</small>
-                    </div>
-                    <p class="mb-2">${text}</p>
-                    <div class="comment-actions">
-                      <div class="reaction-container">
-                        <button class="reaction-btn">
-                          <i class="bi bi-hand-thumbs-up"></i>
-                          <span class="reaction-count">0</span>
-                        </button>
-                        <div class="reaction-preview">0 people</div>
-                        <div class="reaction-options">
-                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
-                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
-                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
-                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
-                          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
-                        </div>
-                      </div>
-                      <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
-                    </div>
-                  </div>
-                </div>
-              `;
-              
-              // Find the replies container or create one
-              let repliesContainer = commentElement.querySelector('.replies');
-              if (!repliesContainer) {
-                repliesContainer = document.createElement('div');
-                repliesContainer.className = 'replies mt-3';
-                commentElement.appendChild(repliesContainer);
-              }
-              
-              // Add the new reply
-              repliesContainer.appendChild(newReply);
-              
-              // Reset form
-              this.reset();
-              this.closest('.reply-form').classList.remove('active');
-              
-              // Update comment count in header
-              const commentBadge = document.querySelector('.section-header .badge');
-              commentBadge.textContent = parseInt(commentBadge.textContent) + 1;
-              
-              // Add event listeners to new reply
-              addCommentEventListeners(newReply);
-            }
-          });
-        }
-        
-        // Reaction button
-        const container = commentElement.querySelector('.reaction-container');
-        if (container) {
-          const button = container.querySelector('.reaction-btn');
-          const options = container.querySelector('.reaction-options');
-          const preview = container.querySelector('.reaction-preview');
-          
-          // Generate unique ID for this button
-          button.id = 'reaction-btn-' + Math.random().toString(36).substr(2, 9);
-          
-          // Show preview on hover
-          button.addEventListener('mouseenter', function() {
-            preview.style.display = 'block';
-          });
-          
-          button.addEventListener('mouseleave', function() {
-            preview.style.display = 'none';
-          });
-          
-          // Show options on click or hold
-          button.addEventListener('mousedown', function() {
-            // Start timer for long press
-            reactionTimers[button.id] = setTimeout(() => {
-              options.classList.add('active');
-            }, 500);
-          });
-          
-          button.addEventListener('mouseup', function() {
-            // Clear timer if released before timeout
-            clearTimeout(reactionTimers[button.id]);
-          });
-          
-          button.addEventListener('mouseleave', function() {
-            // Clear timer if mouse leaves
-            clearTimeout(reactionTimers[button.id]);
-          });
-          
-          button.addEventListener('click', function(e) {
-            // On click (not hold), just toggle like
-            if (!options.classList.contains('active')) {
-              if (!button.classList.contains('active')) {
-                button.classList.add('active');
-                const icon = button.querySelector('i');
-                const count = button.querySelector('.reaction-count');
-                
-                icon.classList.replace('bi-hand-thumbs-up', 'bi-hand-thumbs-up-fill');
-                count.textContent = parseInt(count.textContent) + 1;
-                
-                // Update preview text if this is the first like
-                if (preview.textContent.includes('people')) {
-                  preview.textContent = 'You and ' + (parseInt(count.textContent) - 1) + ' others';
-                }
-              }
-            }
-          });
-          
-          // Handle selecting specific reactions
-          const reactionImgs = options.querySelectorAll('img');
-          reactionImgs.forEach(img => {
-            img.addEventListener('click', function(e) {
-              e.stopPropagation();
-              const btn = container.querySelector('.reaction-btn');
-              const count = btn.querySelector('.reaction-count');
-              
-              // Update reaction count
-              if (!btn.classList.contains('active')) {
-                count.textContent = parseInt(count.textContent) + 1;
-              }
-              
-              btn.classList.add('active');
-              btn.querySelector('i').className = 'bi bi-hand-thumbs-up-fill';
-              
-              // Update preview text
-              preview.textContent = 'You and ' + (parseInt(count.textContent) - 1) + ' others';
-              
-              // Hide reaction options after selection
-              options.classList.remove('active');
-            });
-          });
-        }
-      }
-      
-      // Sort comments functionality
-      const sortButton = document.getElementById('sort-comments');
-      sortButton.addEventListener('click', function() {
-        alert('Sorting comments... (This would reorder comments in a live system)');
-      });
-      
-      // Load more comments
-      const loadMoreCommentsBtn = document.getElementById('load-more-comments');
-      loadMoreCommentsBtn.addEventListener('click', function() {
-        this.classList.add('loading');
-        this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
-        
-        // Simulate AJAX loading
-        setTimeout(() => {
-          // Create new comments (in a real app, these would come from the server)
-          for (let i = 0; i < 2; i++) {
-            const newComment = document.createElement('div');
-            newComment.className = 'comment new-comment';
-            newComment.id = `comment-${++commentCount}`;
-            
-            newComment.innerHTML = `
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img src="assets/img/blog/comments-${Math.floor(Math.random() * 5) + 1}.jpg" alt="User" class="comment-avatar" loading="lazy">
-                </div>
-                <div class="flex-grow-1 ms-3">
-                  <div class="d-flex justify-content-between">
-                    <h5 class="mb-1">Community Member ${commentCount}</h5>
-                    <small class="comment-meta">${Math.floor(Math.random() * 24)} hours ago</small>
-                  </div>
-                  <p class="mb-2">This is an additional loaded comment to show the load more functionality working properly.</p>
-                  <div class="comment-actions">
-                    <div class="reaction-container">
-                      <button class="reaction-btn">
-                        <i class="bi bi-hand-thumbs-up"></i>
-                        <span class="reaction-count">${Math.floor(Math.random() * 10)}</span>
-                      </button>
-                      <div class="reaction-preview">${Math.floor(Math.random() * 10)} people</div>
-                      <div class="reaction-options">
-                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f44d.svg" alt="Like" title="Like" data-reaction="like">
-                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f606.svg" alt="Love" title="Love" data-reaction="love">
-                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f602.svg" alt="Haha" title="Haha" data-reaction="haha">
-                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f622.svg" alt="Sad" title="Sad" data-reaction="sad">
-                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f621.svg" alt="Angry" title="Angry" data-reaction="angry">
-                      </div>
-                    </div>
-                    <a href="#" class="reply-btn text-decoration-none"><i class="bi bi-reply-fill"></i> Reply</a>
-                  </div>
-                  
-                  <!-- Reply Form (Hidden by default) -->
-                  <div class="reply-form">
-                    <form class="reply-to-comment">
-                      <input type="hidden" name="parent-id" value="${commentCount}">
-                      <div class="mb-2">
-                        <textarea class="form-control form-control-sm" rows="2" placeholder="Write your reply..." required></textarea>
-                      </div>
-                      <div class="d-flex justify-content-end gap-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary cancel-reply">Cancel</button>
-                        <button type="submit" class="btn btn-sm btn-primary">Post Reply</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            `;
-            
-            // Append new comment
-            commentsContainer.appendChild(newComment);
-            
-            // Add event listeners
-            addCommentEventListeners(newComment);
-          }
-          
-          // Update button state
-          this.classList.remove('loading');
-          this.textContent = 'Load More Comments';
-          
-          // Update comment count in header
-          const commentBadge = document.querySelector('.section-header .badge');
-          commentBadge.textContent = parseInt(commentBadge.textContent) + 2;
-        }, 800);
-      });
-      
-      // Load more events
-      const loadMoreEventsBtn = document.getElementById('load-more-events');
-      const eventsWidget = document.querySelector('.events-widget');
-      
-      loadMoreEventsBtn.addEventListener('click', function() {
-        this.classList.add('loading');
-        this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
-        
-        // Simulate AJAX loading
-        setTimeout(() => {
-          // Create new events (in a real app, these would come from the server)
-          for (let i = 0; i < 2; i++) {
-            const days = [28, 30, 2, 5, 8];
-            const months = ['Jun', 'Jul'];
-            const events = [
-              'Youth talent show auditions',
-              'Community health screening',
-              'Women\'s empowerment workshop',
-              'Local soccer tournament',
-              'Farmers cooperative meeting'
-            ];
-            
-            const newEvent = document.createElement('div');
-            newEvent.className = 'event-item';
-            
-            newEvent.innerHTML = `
-              <div class="event-date">
-                <span class="day">${days[Math.floor(Math.random() * days.length)]}</span>
-                <span class="month">${months[Math.floor(Math.random() * months.length)]}</span>
-              </div>
-              <div class="event-info">
-                <h4><a href="#">${events[Math.floor(Math.random() * events.length)]}</a></h4>
-                <p>Community center • ${Math.floor(Math.random() * 12) + 1}:00 ${Math.random() > 0.5 ? 'AM' : 'PM'}</p>
-              </div>
-            `;
-            
-            // Insert before the load more button
-            eventsWidget.insertBefore(newEvent, loadMoreEventsBtn.parentElement);
-          }
-          
-          // Update button state
-          this.classList.remove('loading');
-          this.textContent = 'View More Events';
-        }, 800);
-      });
-    });
-  </script>
 
 </body>
 
