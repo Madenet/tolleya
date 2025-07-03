@@ -3,835 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Justice & Civic Engagement</title>
+    <title>Social Justice & Civic Engagement - Tolleya</title>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles */
-        :root {
-            --primary-blue: #1a73e8;
-            --dark-blue: #0d47a1;
-            --light-blue: #e8f0fe;
-            --blue-gray: #34495e;
-            --accent-blue: #4285f4;
-            --background-color: #f7fafc;
-            --text-color: #2d3748;
-            --white: #ffffff;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
+            font-family: 'Inter', sans-serif;
+        }
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            transition: all 0.3s ease;
+        }
+        #mobile-menu a {
+            padding: 0.5rem 0;
+        }
+        #mobile-menu .flex {
+            gap: 0.5rem;
         }
         
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-blue);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--blue-gray);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary-blue);
-        }
-        
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background-image: linear-gradient(rgba(10, 71, 161, 0.7), rgba(10, 71, 161, 0.8)), url('/api/placeholder/1200/400');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            text-align: center;
-            padding: 100px 20px;
-            margin-bottom: 2rem;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border: 2px solid var(--primary-blue);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--dark-blue);
-            border-color: var(--dark-blue);
-            transform: translateY(-2px);
-        }
-        
-        /* Awareness Campaigns Section */
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            color: var(--dark-blue);
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            color: var(--blue-gray);
-        }
-        
-        .campaigns-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .campaign-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
+        /* Custom hover effects */
         .campaign-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
         
-        .campaign-image {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
+        .event-card:hover {
+            background-color: #f8fafc;
+            transition: background-color 0.3s ease;
         }
         
-        .campaign-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .campaign-content h3 {
-            margin-bottom: 0.75rem;
-            color: var(--dark-blue);
-        }
-        
-        .campaign-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: auto;
-            padding-top: 1rem;
-        }
-        
-        .tag {
-            background-color: var(--light-blue);
-            color: var(--primary-blue);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-        
-        /* Events Calendar */
-        .events-section {
-            background-color: var(--light-blue);
-            padding: 3rem 0;
-            margin: 3rem 0;
-        }
-        
-        .events-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .event-card {
-            display: flex;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--primary-blue);
-            padding: 1rem;
-            background-color: var(--white);
-            border-radius: 0 8px 8px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-        
-        .event-date {
-            min-width: 100px;
-            text-align: center;
-            font-weight: bold;
-            color: var(--primary-blue);
-        }
-        
-        .event-details {
-            flex-grow: 1;
-        }
-        
-        .event-details h3 {
-            color: var(--dark-blue);
-            margin-bottom: 0.5rem;
-        }
-        
-        .event-location {
-            color: var(--blue-gray);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-        
-        /* Legal Resources */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .resource-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border-top: 4px solid var(--primary-blue);
-        }
-        
-        .resource-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--light-blue);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
-            font-size: 1.5rem;
-        }
-        
-        .resource-title {
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-            color: var(--dark-blue);
-        }
-        
-        .resource-description {
-            color: var(--blue-gray);
-            flex-grow: 1;
-            margin-bottom: 1rem;
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            background-color: var(--dark-blue);
-            color: var(--white);
-            padding: 3rem 0;
-        }
-        
-        .contact-section .section-title,
-        .contact-section .section-subtitle {
-            color: var(--white);
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .contact-card {
-            display: flex;
-            flex-direction: column;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-            height: 100%;
-        }
-        
-        .contact-card h3 {
-            margin-bottom: 1rem;
-            color: var(--light-blue);
-        }
-        
-        .contact-info {
-            margin-bottom: 0.5rem;
-        }
-        
-        .contact-link {
-            color: var(--white);
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 1rem;
-            border-bottom: 1px solid var(--light-blue);
-            padding-bottom: 2px;
-            transition: transform 0.3s;
-        }
-        
-        .contact-link:hover {
-            transform: translateX(5px);
-        }
-        
-        /* Call to Action */
-        .cta-section {
-            text-align: center;
-            padding: 5rem 0;
-            background-color: var(--light-blue);
-        }
-        
-        .cta-title {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark-blue);
-        }
-        
-        .cta-description {
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: var(--blue-gray);
-            font-size: 1.1rem;
-        }
-        
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--blue-gray);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-column h3 {
-            color: var(--light-blue);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-        
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--light-blue);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .social-links a {
-            display: block;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary-blue);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Newsletter Form */
-        .newsletter-form {
-            margin-top: 1rem;
-        }
-        
-        .newsletter-form input {
-            padding: 0.8rem;
-            width: 100%;
-            margin-top: 0.5rem;
-            border-radius: 4px;
-            border: none;
-            margin-bottom: 0.5rem;
-        }
-        
-        .newsletter-form button {
-            width: 100%;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .campaigns-grid,
-            .resources-grid,
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                background-color: var(--white);
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                padding: 1rem;
-                text-align: center;
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .campaigns-grid,
-            .resources-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.8rem;
-            }
-            
-            .campaign-card {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .event-card {
-                flex-direction: column;
-            }
-            
-            .event-date {
-                margin-bottom: 0.5rem;
-                text-align: left;
-                display: flex;
-                gap: 0.5rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero {
-                padding: 70px 20px;
-            }
-            
-            .cta-title {
-                font-size: 2rem;
-            }
+        .resource-card:hover {
+            transform: translateY(-3px);
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
-<body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">Community Action Hub</div>
-                <button class="menu-toggle">☰</button>
-                <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Jobs</a></li>
-                    <li><a href="#">Healthcare</a></li>
-                    <li><a href="#">Crowdfunding</a></li>
-                    <li><a href="#">Education</a></li>
-                    <li><a href="#">Agriculture</a></li>
-                    <li><a href="#" class="active">Social Justice</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Social Justice & Civic Engagement</h1>
-            <p>Join a community of advocates working together to create meaningful change. Access resources, connect with others, and take action on the issues that matter most.</p>
-            <a href="#" class="btn btn-primary">Get Involved Today</a>
-        </div>
-    </section>
-    
-    <!-- Awareness Campaigns -->
-    <section class="container">
-        <h2 class="section-title">Current Campaigns</h2>
-        <p class="section-subtitle">Learn about pressing social issues and how you can support ongoing advocacy efforts in your community and beyond.</p>
-        
-        <div class="campaigns-grid">
-            <div class="campaign-card">
-                <img src="/api/placeholder/400/200" alt="Education Access Campaign" class="campaign-image">
-                <div class="campaign-content">
-                    <h3>Equal Education Access</h3>
-                    <p>Working to ensure quality education is accessible to all children regardless of background or location.</p>
-                    <div class="campaign-tags">
-                        <span class="tag">Education</span>
-                        <span class="tag">Equality</span>
-                        <span class="tag">Youth</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="campaign-card">
-                <img src="/api/placeholder/400/200" alt="Healthcare Rights Campaign" class="campaign-image">
-                <div class="campaign-content">
-                    <h3>Healthcare as a Right</h3>
-                    <p>Advocating for policies that ensure everyone has access to affordable, quality healthcare services.</p>
-                    <div class="campaign-tags">
-                        <span class="tag">Healthcare</span>
-                        <span class="tag">Policy</span>
-                        <span class="tag">Advocacy</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="campaign-card">
-                <img src="/api/placeholder/400/200" alt="Environmental Justice Campaign" class="campaign-image">
-                <div class="campaign-content">
-                    <h3>Environmental Justice</h3>
-                    <p>Fighting for communities disproportionately affected by pollution and climate change impacts.</p>
-                    <div class="campaign-tags">
-                        <span class="tag">Environment</span>
-                        <span class="tag">Climate</span>
-                        <span class="tag">Community</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Events Calendar -->
-    <section class="events-section">
-        <div class="container">
-            <h2 class="section-title">Upcoming Events</h2>
-            <p class="section-subtitle">Connect with like-minded individuals and organizations at these upcoming events and protests.</p>
-            
-            <div class="events-list">
-                <div class="event-card">
-                    <div class="event-date">
-                        <div>MAR</div>
-                        <div>15</div>
-                        <div>2025</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>Community Town Hall: Housing Rights</h3>
-                        <p>Join local activists and policymakers to discuss the housing crisis and potential solutions.</p>
-                        <div class="event-location">
-                            <i class="fa fa-map-marker"></i> Community Center, Downtown
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <div class="event-date">
-                        <div>MAR</div>
-                        <div>22</div>
-                        <div>2025</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>Peaceful Protest: Climate Action</h3>
-                        <p>Stand in solidarity with youth climate activists demanding meaningful policy changes from local government.</p>
-                        <div class="event-location">
-                            <i class="fa fa-map-marker"></i> City Hall Square
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <div class="event-date">
-                        <div>APR</div>
-                        <div>05</div>
-                        <div>2025</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>Workshop: Know Your Rights</h3>
-                        <p>Learn about your legal rights from experienced activists and legal professionals in an interactive workshop.</p>
-                        <div class="event-location">
-                            <i class="fa fa-map-marker"></i> Public Library, East Wing
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Legal Resources -->
-    <section class="container">
-        <h2 class="section-title">Legal Rights & Resources</h2>
-        <p class="section-subtitle">Educate yourself about important laws and policies that affect your community.</p>
-        
-        <div class="resources-grid">
-            <div class="resource-card">
-                <div class="resource-icon">📋</div>
-                <h3 class="resource-title">Housing Rights Guide</h3>
-                <p class="resource-description">Comprehensive information about tenant rights, eviction processes, and housing discrimination laws.</p>
-                <a href="#" class="btn btn-secondary">Download PDF</a>
-            </div>
-            
-            <div class="resource-card">
-                <div class="resource-icon">⚖️</div>
-                <h3 class="resource-title">Legal Aid Directory</h3>
-                <p class="resource-description">Connect with pro bono legal services and community-based legal aid organizations.</p>
-                <a href="#" class="btn btn-secondary">Find Help</a>
-            </div>
-            
-            <div class="resource-card">
-                <div class="resource-icon">🔍</div>
-                <h3 class="resource-title">Policy Tracker</h3>
-                <p class="resource-description">Monitor local and national policy developments on key social justice issues.</p>
-                <a href="#" class="btn btn-secondary">View Policies</a>
-            </div>
-            
-            <div class="resource-card">
-                <div class="resource-icon">🗣️</div>
-                <h3 class="resource-title">Advocacy Toolkit</h3>
-                <p class="resource-description">Resources and templates for contacting representatives and organizing grassroots campaigns.</p>
-                <a href="#" class="btn btn-secondary">Get Toolkit</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Authorities Section -->
-    <section class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Support Organizations</h2>
-            <p class="section-subtitle">Connect with these organizations working to advance social justice causes in various areas.</p>
-            
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <h3>Human Rights Watch</h3>
-                    <p>International non-governmental organization that conducts research and advocacy on human rights.</p>
-                    <div class="contact-info">Email: info@hrw.org</div>
-                    <div class="contact-info">Phone: +1-212-290-4700</div>
-                    <a href="#" class="contact-link">Visit Website</a>
-                </div>
-                
-                <div class="contact-card">
-                    <h3>Legal Aid Society</h3>
-                    <p>Provides free legal services to low-income individuals and fights for legal rights for underserved communities.</p>
-                    <div class="contact-info">Email: help@legalaid.org</div>
-                    <div class="contact-info">Phone: +1-800-123-4567</div>
-                    <a href="#" class="contact-link">Visit Website</a>
-                </div>
-                
-                <div class="contact-card">
-                    <h3>Equal Justice Initiative</h3>
-                    <p>Working to end mass incarceration and excessive punishment, challenging racial and economic injustice.</p>
-                    <div class="contact-info">Email: contact@eji.org</div>
-                    <div class="contact-info">Phone: +1-334-269-1803</div>
-                    <a href="#" class="contact-link">Visit Website</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-title">Join the Movement</h2>
-            <p class="cta-description">Your voice matters. Together, we can create meaningful change and work toward a more just and equitable society for all.</p>
-            <div class="btn-group">
-                <a href="#" class="btn btn-primary">Become a Volunteer</a>
-                <a href="#" class="btn btn-secondary">Donate</a>
-                <a href="#" class="btn btn-secondary">Sign Up for Updates</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Site Sections</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Jobs & Skills</a></li>
-                        <li><a href="#">Healthcare Access</a></li>
-                        <li><a href="#">Crowdfunding</a></li>
-                        <li><a href="#">Education</a></li>
-                        <li><a href="#">Agriculture</a></li>
-                        <li><a href="#">Social Justice</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Legal Rights</a></li>
-                        <li><a href="#">Policy Education</a></li>
-                        <li><a href="#">Campaign Guides</a></li>
-                        <li><a href="#">Event Planning</a></li>
-                        <li><a href="#">Community Forums</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul class="footer-links">
-                        <li>Email: info@communityactionhub.org</li>
-                        <li>Phone: +1-800-555-0123</li>
-                        <li>Address: 123 Community Way, Anytown, ST 12345</li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Newsletter</h3>
-                    <p>Stay updated with our latest campaigns and events.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your email">
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 Community Action Hub. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+<body class="bg-gray-50">
+    <!-- Include Header -->
+    <div id="header-placeholder"></div>
 
-    <script>
-        // Simple mobile navigation toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
+    <!-- Hero Section -->
+    <section class="bg-indigo-900 text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">Social Justice & Civic Engagement</h1>
+                    <p class="text-lg md:text-xl mb-8">Join a community of advocates working together to create meaningful change. Access resources, connect with others, and take action on the issues that matter most.</p>
+                    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold">Get Involved Today</button>
+                        <button class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-900 text-white px-8 py-4 rounded-lg font-semibold">Learn More</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="/placeholder.svg?height=400&width=600" alt="Social Justice" class="rounded-lg shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awareness Campaigns -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Current Campaigns</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Learn about pressing social issues and how you can support ongoing advocacy efforts in your community and beyond.</p>
+            </div>
             
-            menuToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-            });
-        });
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="campaign-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Education Access Campaign" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-indigo-600">Equal Education Access</h3>
+                        <p class="text-gray-600 mb-4">Working to ensure quality education is accessible to all children regardless of background or location.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Education</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Equality</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Youth</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campaign-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Healthcare Rights Campaign" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-indigo-600">Healthcare as a Right</h3>
+                        <p class="text-gray-600 mb-4">Advocating for policies that ensure everyone has access to affordable, quality healthcare services.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Healthcare</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Policy</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Advocacy</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campaign-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Environmental Justice Campaign" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-indigo-600">Environmental Justice</h3>
+                        <p class="text-gray-600 mb-4">Fighting for communities disproportionately affected by pollution and climate change impacts.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Environment</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Climate</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Community</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Calendar -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Upcoming Events</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Connect with like-minded individuals and organizations at these upcoming events and protests.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="event-card bg-white rounded-lg shadow-md p-6 flex flex-col md:flex-row items-start md:items-center border-l-4 border-indigo-600">
+                    <div class="flex-shrink-0 text-center mb-4 md:mb-0 md:mr-6">
+                        <div class="text-2xl font-bold text-indigo-600">MAR</div>
+                        <div class="text-3xl font-bold text-indigo-600">15</div>
+                        <div class="text-sm text-gray-500">2025</div>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Community Town Hall: Housing Rights</h3>
+                        <p class="text-gray-600 mb-2">Join local activists and policymakers to discuss the housing crisis and potential solutions.</p>
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-2"></i>Community Center, Downtown
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card bg-white rounded-lg shadow-md p-6 flex flex-col md:flex-row items-start md:items-center border-l-4 border-indigo-600">
+                    <div class="flex-shrink-0 text-center mb-4 md:mb-0 md:mr-6">
+                        <div class="text-2xl font-bold text-indigo-600">MAR</div>
+                        <div class="text-3xl font-bold text-indigo-600">22</div>
+                        <div class="text-sm text-gray-500">2025</div>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Peaceful Protest: Climate Action</h3>
+                        <p class="text-gray-600 mb-2">Stand in solidarity with youth climate activists demanding meaningful policy changes from local government.</p>
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-2"></i>City Hall Square
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card bg-white rounded-lg shadow-md p-6 flex flex-col md:flex-row items-start md:items-center border-l-4 border-indigo-600">
+                    <div class="flex-shrink-0 text-center mb-4 md:mb-0 md:mr-6">
+                        <div class="text-2xl font-bold text-indigo-600">APR</div>
+                        <div class="text-3xl font-bold text-indigo-600">05</div>
+                        <div class="text-sm text-gray-500">2025</div>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Workshop: Know Your Rights</h3>
+                        <p class="text-gray-600 mb-2">Learn about your legal rights from experienced activists and legal professionals in an interactive workshop.</p>
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-2"></i>Public Library, East Wing
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Resources -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Legal Rights & Resources</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Educate yourself about important laws and policies that affect your community.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="resource-card bg-white rounded-lg shadow-md p-6 border-t-4 border-indigo-600">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-file-alt text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-800">Housing Rights Guide</h3>
+                    <p class="text-gray-600 mb-4">Comprehensive information about tenant rights, eviction processes, and housing discrimination laws.</p>
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-semibold w-full">Download PDF</button>
+                </div>
+                
+                <div class="resource-card bg-white rounded-lg shadow-md p-6 border-t-4 border-indigo-600">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-balance-scale text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-800">Legal Aid Directory</h3>
+                    <p class="text-gray-600 mb-4">Connect with pro bono legal services and community-based legal aid organizations.</p>
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-semibold w-full">Find Help</button>
+                </div>
+                
+                <div class="resource-card bg-white rounded-lg shadow-md p-6 border-t-4 border-indigo-600">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-search text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-800">Policy Tracker</h3>
+                    <p class="text-gray-600 mb-4">Monitor local and national policy developments on key social justice issues.</p>
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-semibold w-full">View Policies</button>
+                </div>
+                
+                <div class="resource-card bg-white rounded-lg shadow-md p-6 border-t-4 border-indigo-600">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-bullhorn text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-800">Advocacy Toolkit</h3>
+                    <p class="text-gray-600 mb-4">Resources and templates for contacting representatives and organizing grassroots campaigns.</p>
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-semibold w-full">Get Toolkit</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Authorities Section -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Support Organizations</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Connect with these organizations working to advance social justice causes in various areas.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-400">Human Rights Watch</h3>
+                    <p class="text-gray-300 mb-4">International non-governmental organization that conducts research and advocacy on human rights.</p>
+                    <div class="space-y-2 text-sm text-gray-400 mb-4">
+                        <div><i class="fas fa-envelope mr-2"></i>info@hrw.org</div>
+                        <div><i class="fas fa-phone mr-2"></i>+1-212-290-4700</div>
+                    </div>
+                    <button class="text-indigo-400 hover:text-indigo-300 font-semibold">Visit Website →</button>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-400">Legal Aid Society</h3>
+                    <p class="text-gray-300 mb-4">Provides free legal services to low-income individuals and fights for legal rights for underserved communities.</p>
+                    <div class="space-y-2 text-sm text-gray-400 mb-4">
+                        <div><i class="fas fa-envelope mr-2"></i>help@legalaid.org</div>
+                        <div><i class="fas fa-phone mr-2"></i>+1-800-123-4567</div>
+                    </div>
+                    <button class="text-indigo-400 hover:text-indigo-300 font-semibold">Visit Website →</button>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-400">Equal Justice Initiative</h3>
+                    <p class="text-gray-300 mb-4">Working to end mass incarceration and excessive punishment, challenging racial and economic injustice.</p>
+                    <div class="space-y-2 text-sm text-gray-400 mb-4">
+                        <div><i class="fas fa-envelope mr-2"></i>contact@eji.org</div>
+                        <div><i class="fas fa-phone mr-2"></i>+1-334-269-1803</div>
+                    </div>
+                    <button class="text-indigo-400 hover:text-indigo-300 font-semibold">Visit Website →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-indigo-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Join the Movement</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Your voice matters. Together, we can create meaningful change and work toward a more just and equitable society for all.</p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <button class="bg-white text-indigo-800 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-100">Become a Volunteer</button>
+                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-800 px-8 py-4 rounded-lg font-semibold">Donate</button>
+                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-800 px-8 py-4 rounded-lg font-semibold">Sign Up for Updates</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Script to load header and footer -->
+    <script>
+        // Load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+
+        // Load footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
     </script>
 </body>
 </html>

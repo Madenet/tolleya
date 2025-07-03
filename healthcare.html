@@ -3,839 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare Access - Community Empowerment Platform</title>
+    <title>Healthcare Access - Tolleya</title>
+    <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            transition: all 0.3s ease;
         }
-
-        .page-title {
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            font-size: 2.5rem;
-            text-align: center;
+        #mobile-menu a {
+            padding: 0.5rem 0;
         }
-
-        .page-description {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #555;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        #mobile-menu .flex {
+            gap: 0.5rem;
         }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .service-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
+        
+        /* Custom hover effects */
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .service-image {
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-        }
-
-
-
-
-
-        
-         
-        
-
-        .telemedicine-img {
-            background-image: url('/api/placeholder/500/300');
-            
-        }
-
-        .health-education-img {
-            background-image: url('/api/placeholder/500/300');
-        }
-
-        .clinic-locator-img {
-            background-image: url('/api/placeholder/500/300');
-        }
-
-        .emergency-contacts-img {
-            background-image: url('/api/placeholder/500/300');
-        }
-
-        .service-content {
-            padding: 1.5rem;
-        }
-
-        .service-title {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-
-        .service-description {
-            margin-bottom: 1.5rem;
-            color: #555;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-        }
-
-        .search-section {
-            background-color: #edf2f7;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 3rem;
-        }
-
-        .search-title {
-            margin-bottom: 1rem;
-            color: #2c3e50;
-            text-align: center;
-        }
-
-        .search-form {
-            display: flex;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
-            font-size: 1rem;
-        }
-
-        .search-btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 0 1.5rem;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .search-btn:hover {
-            background-color: #2980b9;
-        }
-
-        .resources-section {
-            margin-bottom: 3rem;
-        }
-
-        .resources-title {
-            margin-bottom: 1.5rem;
-            color: #2c3e50;
-            text-align: center;
-        }
-
-        .resources-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .resource-item {
-            background-color: white;
-            margin-bottom: 1rem;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-        }
-
-        .resource-icon {
-            background-color: #3498db;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .resource-info h3 {
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 3rem 0;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 0 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #3498db;
-        }
-
-        .social-links {
-            display: flex;
-            margin-top: 1rem;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            transition: background-color 0.3s;
-            text-decoration: none;
-            color: white;
-        }
-
-        .social-icon:hover {
-            background-color: #3498db;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .search-form {
-                flex-direction: column;
-            }
-
-            .search-input {
-                border-radius: 4px;
-                margin-bottom: 1rem;
-            }
-
-            .search-btn {
-                border-radius: 4px;
-                padding: 0.8rem;
-            }
-        }
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-        :root {
-            
-            --primary:    #146eed;
-            --secondary:  #2C3E4F;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --accent: #5c95ff;
-            --danger: #ea4335;
-            --success: #34a853;
-            --info: #46b3e6;
+            transition: transform 0.3s ease;
         }
         
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            margin: 0;
-            padding: 0;
-            background-color: #f5f7f9;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-        
-        .hero {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/400');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .features {
-            padding: 3rem 0;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .feature-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        }
-        
-        .feature-icon {
-            background-color: var(--light);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .feature-card h3 {
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: var(--secondary);
-        }
-        
-        .telemedicine-section, .health-education-section, .clinic-locator-section, .emergency-section {
-            padding: 3rem 0;
-            border-bottom: 1px solid #eaeaea;
+        .resource-card:hover {
+            transform: translateY(-3px);
+            transition: transform 0.3s ease;
         }
         
         .appointment-form {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 2rem auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
-        .form-group {
-            margin-bottom: 1.5rem;
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        .resource-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .resource-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .resource-image {
-            height: 150px;
-            background-color: #eee;
-        }
-        
-        .resource-content {
-            padding: 1rem;
-        }
-        
-        .resource-card h4 {
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-        }
-        
-        .map-container {
-            height: 400px;
-            background-color: #e9ecef;
-            border-radius: 8px;
-            margin-top: 2rem;
-        }
-        
-        .clinic-list {
-            margin-top: 2rem;
-        }
-        
-        .clinic-item {
-            background-color: white;
-            padding: 1rem;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .emergency-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .emergency-card {
-            background-color: #f8d7da;
-            border-left: 4px solid var(--danger);
-            padding: 1.5rem;
-            border-radius: 4px;
-        }
-        
-        .emergency-card h4 {
-            margin-top: 0;
-            color: var(--danger);
-        }
-        
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .footer-column h4 {
-            margin-top: 0;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-column ul li a {
-            color: #adb5bd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: white;
-        }
-        
-        .copyright {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #adb5bd;
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-
-   /* Custom styles for mobile menu */
-   #mobile-menu {
-            display: none;
-        }
-
-        #mobile-menu.active {
-            display: block;
-        }
-
-
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
     </style>
 </head>
-<body class="font-sans bg-gray-50">
-    <!-- Header Section -->
-    <nav class="bg-indigo-800 text-white shadow-lg">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <a class="navbar-brand pl-0" href="index.html">
-                    <img src="image/logo.png" alt="Makhado Logo" class="h-10">
-                </a>
+<body class="bg-gray-50">
+    <!-- Include Header -->
+    <div id="header-placeholder"></div>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-7">
-                    <a href="index.html" class="hover:text-indigo-200">Home</a>
-                    <a href="jobs.html" class="hover:text-indigo-200">Jobs</a>
-                    <a href="healthcare.html" class="hover:text-indigo-200">Healthcare</a>
-                    <a href="crowdfunding.html" class="hover:text-indigo-200">Crowdfunding</a>
-                    <a href="Agriculture.html" class="hover:text-indigo-200">Agriculture</a>
-                    <a href="educational res.html" class="hover:text-indigo-200">Education</a>
-                    <a href="social j and civil e.html" class="hover:text-indigo-200">Social Justice</a>
+    <!-- Hero Section -->
+    <section class="bg-indigo-900 text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">Healthcare Access for All</h1>
+                    <p class="text-lg md:text-xl mb-8">Everyone deserves access to quality healthcare. Our platform connects you with medical professionals, health resources, and educational content to help you and your community stay healthy.</p>
+                    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold">Book Consultation</button>
+                        <button class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-900 text-white px-8 py-4 rounded-lg font-semibold">Find Clinics</button>
+                    </div>
                 </div>
-
-                <!-- Sign In/Sign Up Buttons -->
-                <div class="hidden md:flex space-x-4">
-                    <button class="bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100">Sign In</button>
-                    <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">Sign Up</button>
-                </div>
-
-                <!-- Mobile Menu Toggle Button -->
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-white focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="mt-4 md:hidden">
-                <a href="index.html" class="block py-2 px-4 hover:bg-indigo-700">Home</a>
-                <a href="jobs.html" class="block py-2 px-4 hover:bg-indigo-700">Jobs</a>
-                <a href="healthcare.html" class="block py-2 px-4 hover:bg-indigo-700">Healthcare</a>
-                <a href="crowdfunding.html" class="block py-2 px-4 hover:bg-indigo-700">Crowdfunding</a>
-                <a href="Agriculture.html" class="block py-2 px-4 hover:bg-indigo-700">Agriculture</a>
-                <a href="educational res.html" class="block py-2 px-4 hover:bg-indigo-700">Education</a>
-                <a href="social j and civil e.html" class="block py-2 px-4 hover:bg-indigo-700">Social Justice</a>
-                <div class="mt-2">
-                    <button class="w-full bg-white text-indigo-800 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100">Sign In</button>
-                    <button class="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold mt-2 hover:bg-indigo-700">Sign Up</button>
+                <div class="md:w-1/2">
+                    <img src="/placeholder.svg?height=400&width=600" alt="Healthcare Access" class="rounded-lg shadow-2xl">
                 </div>
             </div>
         </div>
-    </nav>
+    </section>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
-        <h1 class="text-3xl font-bold text-center">Welcome to SAimpactHub</h1>
-        <p class="text-center mt-4">Empowering communities through accessible resources.</p>
-    </main>
-
-    <!-- Script for Mobile Menu Toggle -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            menuToggle.addEventListener('click', function () {
-                mobileMenu.classList.toggle('active');
-            });
-        });
-    </script>
-
-    <!-- Main Content -->
-    <main class="container">
-        <h1 class="page-title">Healthcare Access</h1>
-        <p class="page-description">
-            Everyone deserves access to quality healthcare. Our platform connects you with medical professionals, 
-            health resources, and educational content to help you and your community stay healthy.
-        </p>        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-image telemedicine-img">
-                    <img src="image/telemedicine.png" alt="Telemedicine Consultations">
-                </div>
-                
-                <div class="service-content">
-
-                    <div class="feature-icon">
-                        <span>📱</span>
-                    </div>
-                    <h2 class="service-title">Telemedicine Consultations</h2>
-                    <p class="service-description">
-                        Connect with healthcare professionals virtually from anywhere. Book appointments, 
-                        get prescriptions, and receive medical advice without leaving your home.
-                    </p>
-                    <a href="telenedicine book consultation.html" class="btn">Book Consultation</a>
-                </div>
+    <!-- Healthcare Services Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Our Healthcare Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Access comprehensive healthcare services designed to meet your needs and improve your well-being.</p>
             </div>
-
-
-
             
-
-            <div class="feature-card">
-                <div class="service-image clinic-locator-img">
-                     <img src="image/telemedicine.png" alt="Mathematics Tutorial">
-                </div>   
-                <div class="service-content">
-
-                  <div class="feature-icon">
-                    <span>📚</span>
-                  </div>
-
-                    <h2 class="service-title">Health Education</h2>
-                    <p class="service-description">
-                        Access educational articles, videos, and guides on common health issues, 
-                        preventive care, and wellness strategies for you and your family.
-                    </p>
-                    <a href="HE explore resources.html" class="btn">Explore Resources</a>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image clinic-locator-img">
-                    <img src="image/telemedicine.png" alt="Mathematics Tutorial">
-                </div>
-                <div class="service-content">
-
-                    <div class="feature-icon">
-                        <span>🏥</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Telemedicine Card -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Telemedicine" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-video text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Telemedicine</h3>
+                        <p class="text-gray-600 mb-4">Connect with healthcare professionals virtually from anywhere. Get consultations and prescriptions online.</p>
+                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-semibold w-full">Book Consultation</button>
                     </div>
-
-                    <h2 class="service-title">Clinic Locator</h2>
-                    <p class="service-description">
-                        Find healthcare facilities near you including hospitals, clinics, 
-                        pharmacies, and specialized care centers with our interactive map.
-                    </p>
-                    <a href="clinic-locator.html" class="btn">Find Clinics</a>
                 </div>
-            </div>
 
-            <div class="service-card">
-                <div class="service-image emergency-contacts-img">
-                    <img src="image/telemedicine.png" alt="Mathematics Tutorial">
-                </div>
-                <div class="service-content">
-
-                    <div class="feature-icon">
-                        <span>🚑</span>
+                <!-- Health Education Card -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Health Education" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-book-medical text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Health Education</h3>
+                        <p class="text-gray-600 mb-4">Access educational resources, articles, and guides on health topics and preventive care.</p>
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold w-full">Explore Resources</button>
                     </div>
+                </div>
 
-                    <h2 class="service-title">Emergency Information</h2>
-                    <p class="service-description">
-                        Access emergency contact information, first aid guides, and 
-                        critical health resources for urgent situations.
-                    </p>
-                    <a href="emergency-information.html" class="btn">Emergency Contacts</a>
+                <!-- Clinic Locator Card -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Clinic Locator" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Clinic Locator</h3>
+                        <p class="text-gray-600 mb-4">Find healthcare facilities near you including hospitals, clinics, and specialized care centers.</p>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold w-full">Find Clinics</button>
+                    </div>
+                </div>
+
+                <!-- Emergency Info Card -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Emergency Information" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-ambulance text-red-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Emergency Info</h3>
+                        <p class="text-gray-600 mb-4">Access emergency contacts, first aid guides, and critical health resources for urgent situations.</p>
+                        <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold w-full">Emergency Contacts</button>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-
-
-
-
-
-        <section id="telemedicine" class="telemedicine-section">
-            <div class="container">
-                <h1 class="page-title">Telemedicine Servives</h1>
-                <p>Connect with qualified healthcare providers from the comfort of your home. Our telemedicine service provides secure video consultations for various health concerns.</p>
+    <!-- Telemedicine Booking Section -->
+    <section class="py-16 appointment-form">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Book a Virtual Consultation</h2>
+                    <p class="text-white text-lg">Connect with qualified healthcare providers from the comfort of your home</p>
+                </div>
                 
-                <div class="appointment-form">
-                    
-                    <h3 class="page-title">Book a Virtual Consultation</h3>
-                    
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your full name">
+                <div class="form-container rounded-lg p-8">
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-user mr-2 text-indigo-600"></i>Full Name
+                            </label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter your full name" required>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-envelope mr-2 text-indigo-600"></i>Email Address
+                            </label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter your email" required>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+
+                        <div>
+                            <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-phone mr-2 text-indigo-600"></i>Phone Number
+                            </label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter your phone number" required>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="specialty">Medical Specialty</label>
-                            <select id="specialty" class="form-control">
+
+                        <div>
+                            <label for="specialty" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-stethoscope mr-2 text-indigo-600"></i>Medical Specialty
+                            </label>
+                            <select id="specialty" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
                                 <option value="">Select a specialty</option>
                                 <option value="general">General Practice</option>
                                 <option value="pediatrics">Pediatrics</option>
@@ -845,142 +181,321 @@
                                 <option value="gynecology">Gynecology</option>
                             </select>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="date">Preferred Date</label>
-                            <input type="date" id="date" class="form-control">
+
+                        <div>
+                            <label for="date" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-calendar mr-2 text-indigo-600"></i>Preferred Date
+                            </label>
+                            <input type="date" id="date" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="time">Preferred Time</label>
-                            <input type="time" id="time" class="form-control">
+
+                        <div>
+                            <label for="time" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-clock mr-2 text-indigo-600"></i>Preferred Time
+                            </label>
+                            <input type="time" id="time" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="reason">Reason for Consultation</label>
-                            <textarea id="reason" class="form-control" rows="3" placeholder="Briefly describe your symptoms or concerns"></textarea>
+
+                        <div class="md:col-span-2">
+                            <label for="reason" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-notes-medical mr-2 text-indigo-600"></i>Reason for Consultation
+                            </label>
+                            <textarea id="reason" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Briefly describe your symptoms or concerns" required></textarea>
                         </div>
-                        
-                        <button type="submit" class="btn">Schedule Appointment</button>
+
+                        <div class="md:col-span-2">
+                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
+                                <i class="fas fa-calendar-check mr-2"></i>Schedule Appointment
+                            </button>
+                        </div>
                     </form>
-                </div>
-            </div>
-        </section>
-
-
-
-
-        <section class="search-section">
-            <h2 class="search-title">Find Healthcare Facilities</h2>
-            <form class="search-form">
-                <input type="text" class="search-input" placeholder="Enter your location...">
-                <button type="submit" class="search-btn">Search</button>
-            </form>
-        </section>
-
-        <section class="resources-section">
-            <h2 class="resources-title">Health Resources</h2>
-            <ul class="resources-list">
-                <li class="resource-item">
-                    <div class="resource-icon">📋</div>
-                    <div class="resource-info">
-                        <h3>Free Health Screenings</h3>
-                        <p>Information about upcoming free health screening events in your community.</p>
-                    </div>
-                </li>
-                <li class="resource-item">
-                    <div class="resource-icon">💊</div>
-                    <div class="resource-info">
-                        <h3>Medication Assistance Programs</h3>
-                        <p>Resources to help you access affordable medications and prescriptions.</p>
-                    </div>
-                </li>
-                <li class="resource-item">
-                    <div class="resource-icon">🩺</div>
-                    <div class="resource-info">
-                        <h3>Health Insurance Navigator</h3>
-                        <p>Get guidance on health insurance options and application assistance.</p>
-                    </div>
-                </li>
-                <li class="resource-item">
-                    <div class="resource-icon">🧠</div>
-                    <div class="resource-info">
-                        <h3>Mental Health Support</h3>
-                        <p>Connect with mental health professionals and support groups in your area.</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
-    </main>
-
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">SAimpactHub</h3>
-                    <p class="text-gray-400">Empowering communities through connection and access to essential resources.</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp"></i></a>
-
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
-                        <li><a href="jobs.html" class="text-gray-400 hover:text-white">Jobs</a></li>
-                        <li><a href="health.html" class="text-gray-400 hover:text-white">Healthcare</a></li>
-                        <li><a href="crowdfunding.html" class="text-gray-400 hover:text-white">Crowdfunding</a></li>
-                        <li><a href="Agriculture.html" class="text-gray-400 hover:text-white">Agriculture</a></li>
-                        <li><a href="educational res.html" class="text-gray-400 hover:text-white">Education</a></li>
-                        <li><a href="social j and civil e.html" class="text-gray-400 hover:text-white">Social Justice</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Contact Us</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-map-marker-alt mr-2"></i>17 Thondoni, Mashamba, Limpopo</li>
-                        <li><i class="fas fa-phone mr-2"></i>+27 71 136 7089</li>
-                        <li><i class="fas fa-envelope mr-2"></i> info@saimpactadminhub.com</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Subscribe</h4>
-                    <p class="text-gray-400 mb-4">Stay updated with our latest initiatives and opportunities.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full text-gray-900">
-                        <button type="submit" class="bg-indigo-600 px-4 py-2 rounded-r-lg hover:bg-indigo-700">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 SAimpactHub. All rights reserved.</p>
-                <div class="mt-2">
-                    <a href="#" class="text-gray-400 hover:text-white mx-2">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-white mx-2">Terms of Service</a>
-                    <a href="#" class="text-gray-400 hover:text-white mx-2">Cookie Policy</a>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
 
+    <!-- Healthcare Facility Finder -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Find Healthcare Facilities</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Locate hospitals, clinics, pharmacies, and specialized care centers in your area</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1">
+                        <input type="text" placeholder="Enter your location or zip code" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div class="flex-1">
+                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="">All Facilities</option>
+                            <option value="hospital">Hospitals</option>
+                            <option value="clinic">Clinics</option>
+                            <option value="pharmacy">Pharmacies</option>
+                            <option value="urgent-care">Urgent Care</option>
+                            <option value="specialist">Specialists</option>
+                        </select>
+                    </div>
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-lg font-semibold">
+                        <i class="fas fa-search mr-2"></i>Search
+                    </button>
+                </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="bg-gray-300 rounded-lg h-96 flex items-center justify-center mb-8">
+                <div class="text-center text-gray-600">
+                    <i class="fas fa-map text-4xl mb-4"></i>
+                    <p class="text-lg">Interactive Map</p>
+                    <p class="text-sm">Healthcare facilities will be displayed here</p>
+                </div>
+            </div>
+
+            <!-- Sample Clinic Results -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">City General Hospital</h3>
+                            <p class="text-gray-600">General Hospital</p>
+                        </div>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm">Open</span>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-indigo-600"></i>
+                            <span>123 Main Street, City Center</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-indigo-600"></i>
+                            <span>(555) 123-4567</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-indigo-600"></i>
+                            <span>24/7 Emergency Services</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex space-x-2">
+                        <button class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-semibold">Directions</button>
+                        <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg text-sm font-semibold">Call</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Community Health Clinic</h3>
+                            <p class="text-gray-600">Primary Care Clinic</p>
+                        </div>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm">Open</span>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-indigo-600"></i>
+                            <span>456 Health Ave, Downtown</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-indigo-600"></i>
+                            <span>(555) 987-6543</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-indigo-600"></i>
+                            <span>Mon-Fri: 8AM-6PM</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex space-x-2">
+                        <button class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-semibold">Directions</button>
+                        <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg text-sm font-semibold">Call</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">MediCare Pharmacy</h3>
+                            <p class="text-gray-600">Pharmacy</p>
+                        </div>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm">Closes 9PM</span>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-indigo-600"></i>
+                            <span>789 Wellness Blvd, Suburb</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-indigo-600"></i>
+                            <span>(555) 456-7890</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-indigo-600"></i>
+                            <span>Mon-Sun: 7AM-9PM</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex space-x-2">
+                        <button class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-semibold">Directions</button>
+                        <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg text-sm font-semibold">Call</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Resources Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Health Resources & Support</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Access additional healthcare resources and support services available in your community</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="resource-card bg-white rounded-lg shadow-md p-6 border-t-4 border-blue-500">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-clipboard-list text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-800">Free Health Screenings</h3>
+                    <p class="text-gray-600 mb-4">Information about upcoming free health screening events in your community.</p>
+                    <button class="text-blue-600 hover:text-blue-700 font-semibold">Learn More →</button>
+                </div>
+
+                <div class="resource-card bg-white rounded-lg shadow-md p-6 border-t-4 border-green-500">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-pills text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-800">Medication Assistance</h3>
+                    <p class="text-gray-600 mb-4">Resources to help you access affordable medications and prescription assistance programs.</p>
+                    <button class="text-green-600 hover:text-green-700 font-semibold">Get Help →</button>
+                </div>
+
+                <div class="resource-card bg-white rounded-lg shadow-md p-6 border-t-4 border-purple-500">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-800">Insurance Navigator</h3>
+                    <p class="text-gray-600 mb-4">Get guidance on health insurance options and application assistance.</p>
+                    <button class="text-purple-600 hover:text-purple-700 font-semibold">Get Guidance →</button>
+                </div>
+
+                <div class="resource-card bg-white rounded-lg shadow-md p-6 border-t-4 border-red-500">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-brain text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-800">Mental Health Support</h3>
+                    <p class="text-gray-600 mb-4">Connect with mental health professionals and support groups in your area.</p>
+                    <button class="text-red-600 hover:text-red-700 font-semibold">Find Support →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Information Section -->
+    <section class="py-16 bg-red-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-red-800">Emergency Information</h2>
+                <p class="text-red-600 max-w-2xl mx-auto">Important emergency contacts and resources for urgent health situations</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-red-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-phone text-red-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Emergency Services</h3>
+                            <p class="text-red-600 text-2xl font-bold">911</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">For life-threatening emergencies, call 911 immediately.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user-md text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Poison Control</h3>
+                            <p class="text-blue-600 text-xl font-bold">1-800-222-1222</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">24/7 poison emergency helpline for poisoning emergencies.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-heart text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Crisis Helpline</h3>
+                            <p class="text-green-600 text-xl font-bold">988</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">Suicide & Crisis Lifeline - 24/7 mental health support.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <button class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold">
+                    <i class="fas fa-download mr-2"></i>Download Emergency Guide
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-indigo-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Take Control of Your Health?</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Join thousands of community members who are already using our platform to access quality healthcare services.</p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <button class="bg-white text-indigo-800 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-100">Get Started Today</button>
+                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-800 px-8 py-4 rounded-lg font-semibold">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Script to load header and footer -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.querySelector('.md:hidden button');
-            const navLinks = document.querySelector('.nav-links');
+        // Load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
 
-            menuButton.addEventListener('click', function() {
-                navLinks.classList.toggle('hidden');
-            });
+        // Load footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Scheduling...';
+            submitBtn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                alert('Appointment request submitted successfully! We will contact you within 24 hours to confirm your appointment.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
         });
     </script>
 </body>
