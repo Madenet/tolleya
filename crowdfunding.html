@@ -3,160 +3,570 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crowdfunding for NPOs - CommunityCare</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <title>Crowdfunding - Tolleya</title>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom CSS for progress bar */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            transition: all 0.3s ease;
+        }
+        #mobile-menu a {
+            padding: 0.5rem 0;
+        }
+        #mobile-menu .flex {
+            gap: 0.5rem;
+        }
+        
+        /* Custom hover effects */
+        .campaign-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-3px);
+            transition: transform 0.3s ease;
+        }
+        
         .progress-bar {
-            background-color: #e5e7eb; /* Light gray */
-            border-radius: 9999px; /* Fully rounded */
-            overflow: hidden;
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
         }
-
-        .progress-fill {
-            height: 100%;
-            background-color: #4f46e5; /* Indigo */
-            transition: width 0.3s ease;
+        
+        .campaign-form {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-
-        /* Modal styling */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            max-width: 400px;
-            width: 100%;
+        
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
     </style>
 </head>
 <body class="bg-gray-50">
-     <!-- Include Header -->
+    <!-- Include Header -->
     <div id="header-placeholder"></div>
 
     <!-- Hero Section -->
-    <section class="bg-indigo-600 text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl font-bold mb-4">Empower Change Through Crowdfunding</h1>
-            <p class="text-lg mb-8">Support local non-profit organizations making a difference in our communities. Every contribution helps create lasting impact for those who need it most.</p>
-            <a href="Start Campaign CFNG.html" class="bg-white text-indigo-800 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-100">Start a Campaign</a>
+    <section class="bg-indigo-900 text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">Fund the Change You Want to See</h1>
+                    <p class="text-lg md:text-xl mb-8">Support community initiatives, help individuals in need, and make a real difference in South African communities. Every Rand counts towards building a better future.</p>
+                    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold">Start a Campaign</button>
+                        <button class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-900 text-white px-8 py-4 rounded-lg font-semibold">Explore Campaigns</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="/placeholder.svg?height=400&width=600" alt="Community Crowdfunding" class="rounded-lg shadow-2xl">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <!-- Featured Campaigns Section -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold text-indigo-800 mb-6">Featured Campaigns</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">R2.8M+</div>
+                    <div class="text-gray-600">Total Raised</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-green-600 mb-2">1,247</div>
+                    <div class="text-gray-600">Campaigns Funded</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-purple-600 mb-2">15,000+</div>
+                    <div class="text-gray-600">Donors</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-orange-600 mb-2">89%</div>
+                    <div class="text-gray-600">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Campaigns Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Featured Campaigns</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Support these urgent campaigns making a real difference in South African communities</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Campaign 1 -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <img src="/api/placeholder/300/200" alt="Education for All" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-bold mb-2">Education for All Initiative</h3>
-                    <p class="text-gray-600 mb-4">Help us provide educational resources to underserved schools in rural communities. Your donations will fund books, computers, and school supplies.</p>
-                    <div class="progress-bar h-2 mb-4">
-                        <div class="progress-fill" style="width: 75%;"></div>
+                <div class="campaign-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=400" alt="School Water Project" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Education</span>
+                            <span class="text-sm text-gray-500">12 days left</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Clean Water for Limpopo Primary School</h3>
+                        <p class="text-gray-600 mb-4">Help us install a borehole and water purification system for 300 learners in rural Limpopo who currently walk 5km daily for water.</p>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                <span>R45,000 raised</span>
+                                <span>75% funded</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-2">Goal: R60,000</div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-users mr-1"></i>127 donors
+                            </div>
+                            <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-semibold">Donate Now</button>
+                        </div>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4">$15,000 raised of $20,000 goal</p>
-                    <a href="Donate for Edu.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 donate-button">Donate Now</a>
                 </div>
 
                 <!-- Campaign 2 -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <img src="/api/placeholder/300/200" alt="Clean Water Project" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-bold mb-2">Clean Water Project</h3>
-                    <p class="text-gray-600 mb-4">Support our initiative to bring clean drinking water to communities affected by drought. We aim to build sustainable water systems.</p>
-                    <div class="progress-bar h-2 mb-4">
-                        <div class="progress-fill" style="width: 45%;"></div>
+                <div class="campaign-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Medical Treatment" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Medical</span>
+                            <span class="text-sm text-gray-500">8 days left</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Heart Surgery for Little Thabo</h3>
+                        <p class="text-gray-600 mb-4">5-year-old Thabo from Soweto needs urgent heart surgery. His family cannot afford the R180,000 procedure at a private hospital.</p>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                <span>R95,500 raised</span>
+                                <span>53% funded</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: 53%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-2">Goal: R180,000</div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-users mr-1"></i>203 donors
+                            </div>
+                            <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-semibold">Donate Now</button>
+                        </div>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4">$9,000 raised of $20,000 goal</p>
-                    <a href="donate for clean water.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 donate-button">Donate Now</a>
                 </div>
 
                 <!-- Campaign 3 -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <img src="/api/placeholder/300/200" alt="Youth Empowerment" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-bold mb-2">Youth Empowerment Program</h3>
-                    <p class="text-gray-600 mb-4">Help us equip young adults with skills and mentorship needed to succeed in today's job market through workshops and training.</p>
-                    <div class="progress-bar h-2 mb-4">
-                        <div class="progress-fill" style="width: 85%;"></div>
+                <div class="campaign-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Community Garden" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Community</span>
+                            <span class="text-sm text-gray-500">25 days left</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Khayelitsha Community Food Garden</h3>
+                        <p class="text-gray-600 mb-4">Create a sustainable food garden to feed 50 families in Khayelitsha and provide skills training for unemployed youth.</p>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                <span>R8,200 raised</span>
+                                <span>41% funded</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: 41%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-2">Goal: R20,000</div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-users mr-1"></i>34 donors
+                            </div>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold">Donate Now</button>
+                        </div>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4">R12,750 raised of R15,000 goal</p>
-                    <a href="Youth Empowerment Program Donate.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 donate-button">Donate Now</a>
+                </div>
+
+                <!-- Campaign 4 -->
+                <div class="campaign-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Small Business" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Business</span>
+                            <span class="text-sm text-gray-500">18 days left</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Nomsa's Bakery Equipment</h3>
+                        <p class="text-gray-600 mb-4">Help single mother Nomsa from Durban buy professional baking equipment to expand her home bakery and employ 3 local women.</p>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                <span>R12,800 raised</span>
+                                <span>64% funded</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: 64%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-2">Goal: R20,000</div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-users mr-1"></i>67 donors
+                            </div>
+                            <button class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-semibold">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign 5 -->
+                <div class="campaign-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Disaster Relief" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Emergency</span>
+                            <span class="text-sm text-gray-500">5 days left</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">KZN Flood Relief Fund</h3>
+                        <p class="text-gray-600 mb-4">Emergency relief for families affected by recent flooding in KwaZulu-Natal. Providing food, shelter, and basic necessities.</p>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                <span>R78,900 raised</span>
+                                <span>79% funded</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: 79%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-2">Goal: R100,000</div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-users mr-1"></i>189 donors
+                            </div>
+                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-lg font-semibold">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign 6 -->
+                <div class="campaign-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Animal Shelter" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">Animals</span>
+                            <span class="text-sm text-gray-500">30 days left</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Cape Town Animal Shelter Renovation</h3>
+                        <p class="text-gray-600 mb-4">Help renovate kennels and medical facilities at our local animal shelter to provide better care for 200+ rescued animals.</p>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                <span>R15,600 raised</span>
+                                <span>31% funded</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: 31%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-2">Goal: R50,000</div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-users mr-1"></i>89 donors
+                            </div>
+                            <button class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-lg font-semibold">Donate Now</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Start a Campaign Section -->
-        <section class="bg-indigo-100 py-12">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-2xl font-bold text-indigo-800 mb-4">Start Your Own Fundraising Campaign</h2>
-                <p class="text-gray-600 mb-8">Whether you're a registered non-profit organization or an individual with a cause, you can start a campaign to raise funds for what matters most to you. Our platform provides the tools you need to reach donors and make an impact.</p>
-                <a href="Start Campaign CFNG.html" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">Create Campaign</a>
+            <div class="text-center mt-12">
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold">View All Campaigns</button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Transparency Section -->
-        <section class="my-12">
-            <h2 class="text-2xl font-bold text-indigo-800 mb-6">Transparency You Can Trust</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-lg shadow-md p-6 text-center">
-                    <div class="text-4xl mb-4">💰</div>
-                    <h3 class="text-xl font-bold mb-2">Fund Utilization Breakdown</h3>
-                    <p class="text-gray-600">Track exactly how your donations are spent with detailed fund utilization reports for each campaign.</p>
+    <!-- Categories Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Browse by Category</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Find campaigns that matter to you across different causes and communities</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="category-card bg-blue-50 rounded-lg p-6 text-center hover:bg-blue-100 cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-graduation-cap text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Education</h3>
+                    <p class="text-sm text-gray-600">47 campaigns</p>
                 </div>
-                <div class="bg-white rounded-lg shadow-md p-6 text-center">
-                    <div class="text-4xl mb-4">🔒</div>
-                    <h3 class="text-xl font-bold mb-2">Secure Donations</h3>
-                    <p class="text-gray-600">All donations are processed through secure payment gateways like Paystack and Stripe to ensure your financial information is protected.</p>
+
+                <div class="category-card bg-red-50 rounded-lg p-6 text-center hover:bg-red-100 cursor-pointer">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heartbeat text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Medical</h3>
+                    <p class="text-sm text-gray-600">89 campaigns</p>
                 </div>
-                <div class="bg-white rounded-lg shadow-md p-6 text-center">
-                    <div class="text-4xl mb-4">📊</div>
-                    <h3 class="text-xl font-bold mb-2">Impact Reporting</h3>
-                    <p class="text-gray-600">Regular updates from campaign creators show the real-world impact of your contributions.</p>
+
+                <div class="category-card bg-green-50 rounded-lg p-6 text-center hover:bg-green-100 cursor-pointer">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Community</h3>
+                    <p class="text-sm text-gray-600">62 campaigns</p>
+                </div>
+
+                <div class="category-card bg-purple-50 rounded-lg p-6 text-center hover:bg-purple-100 cursor-pointer">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-briefcase text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Business</h3>
+                    <p class="text-sm text-gray-600">34 campaigns</p>
+                </div>
+
+                <div class="category-card bg-orange-50 rounded-lg p-6 text-center hover:bg-orange-100 cursor-pointer">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-exclamation-triangle text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Emergency</h3>
+                    <p class="text-sm text-gray-600">23 campaigns</p>
+                </div>
+
+                <div class="category-card bg-pink-50 rounded-lg p-6 text-center hover:bg-pink-100 cursor-pointer">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-paw text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Animals</h3>
+                    <p class="text-sm text-gray-600">18 campaigns</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Volunteer Opportunities Section -->
-        <section class="my-12">
-            <h2 class="text-2xl font-bold text-indigo-800 mb-6">Volunteer Opportunities</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Start Campaign Section -->
+    <section class="py-16 campaign-form">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Start Your Own Campaign</h2>
+                    <p class="text-white text-lg">Turn your idea into reality. Create a campaign and get the support you need from the community.</p>
+                </div>
+                
+                <div class="form-container rounded-lg p-8">
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="campaignTitle" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-bullhorn mr-2 text-indigo-600"></i>Campaign Title
+                            </label>
+                            <input type="text" id="campaignTitle" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Give your campaign a compelling title" required>
+                        </div>
+
+                        <div>
+                            <label for="category" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-tags mr-2 text-indigo-600"></i>Category
+                            </label>
+                            <select id="category" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                                <option value="">Select a category</option>
+                                <option value="education">Education</option>
+                                <option value="medical">Medical</option>
+                                <option value="community">Community</option>
+                                <option value="business">Business</option>
+                                <option value="emergency">Emergency</option>
+                                <option value="animals">Animals</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="goalAmount" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-coins mr-2 text-indigo-600"></i>Funding Goal (ZAR)
+                            </label>
+                            <input type="number" id="goalAmount" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="R 10,000" min="1000" required>
+                        </div>
+
+                        <div>
+                            <label for="duration" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-calendar mr-2 text-indigo-600"></i>Campaign Duration
+                            </label>
+                            <select id="duration" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                                <option value="">Select duration</option>
+                                <option value="30">30 days</option>
+                                <option value="60">60 days</option>
+                                <option value="90">90 days</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="location" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-map-marker-alt mr-2 text-indigo-600"></i>Location
+                            </label>
+                            <select id="location" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                                <option value="">Select province</option>
+                                <option value="gauteng">Gauteng</option>
+                                <option value="western-cape">Western Cape</option>
+                                <option value="kwazulu-natal">KwaZulu-Natal</option>
+                                <option value="eastern-cape">Eastern Cape</option>
+                                <option value="limpopo">Limpopo</option>
+                                <option value="mpumalanga">Mpumalanga</option>
+                                <option value="north-west">North West</option>
+                                <option value="free-state">Free State</option>
+                                <option value="northern-cape">Northern Cape</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="contactEmail" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-envelope mr-2 text-indigo-600"></i>Contact Email
+                            </label>
+                            <input type="email" id="contactEmail" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="your.email@example.com" required>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label for="description" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-align-left mr-2 text-indigo-600"></i>Campaign Description
+                            </label>
+                            <textarea id="description" rows="6" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Tell your story. Explain why this campaign matters and how the funds will be used..." required></textarea>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label for="campaignImage" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-image mr-2 text-indigo-600"></i>Campaign Image
+                            </label>
+                            <input type="file" id="campaignImage" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" accept="image/*">
+                            <p class="text-sm text-gray-500 mt-1">Upload a compelling image that represents your campaign</p>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
+                                <i class="fas fa-rocket mr-2"></i>Launch Campaign
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Success Stories</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">See how crowdfunding has made a real difference in South African communities</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-2">Campaign Ambassadors</h3>
-                    <p class="text-gray-600 mb-4">Help spread the word about ongoing campaigns through your networks and social media channels.</p>
-                    <a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign Up</a>
+                    <div class="flex items-center mb-4">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Success Story" class="w-15 h-15 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold text-lg">Mandela High School</h3>
+                            <p class="text-gray-600 text-sm">Raised R85,000</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Thanks to our supporters, we now have a fully equipped computer lab. Our learners can now access digital education and prepare for the future."</p>
+                    <div class="text-green-600 font-semibold">✓ Campaign Successful</div>
                 </div>
+
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-2">Tech Volunteers</h3>
-                    <p class="text-gray-600 mb-4">Offer your technical skills to help NPOs with their digital needs, from website development to social media management.</p>
-                    <a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign Up</a>
+                    <div class="flex items-center mb-4">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Success Story" class="w-15 h-15 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold text-lg">Sarah's Bakery</h3>
+                            <p class="text-gray-600 text-sm">Raised R25,000</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"The community support was incredible! I now employ 5 people and we're supplying bread to 3 local shops. Dreams do come true!"</p>
+                    <div class="text-green-600 font-semibold">✓ Campaign Successful</div>
                 </div>
+
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-2">Event Organizers</h3>
-                    <p class="text-gray-600 mb-4">Help plan and execute fundraising events both online and offline to boost campaign visibility.</p>
-                    <a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign Up</a>
+                    <div class="flex items-center mb-4">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Success Story" class="w-15 h-15 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold text-lg">Aisha's Surgery</h3>
+                            <p class="text-gray-600 text-sm">Raised R120,000</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Our daughter is healthy and happy thanks to everyone who donated. The surgery was successful and she's back to being a normal 7-year-old."</p>
+                    <div class="text-green-600 font-semibold">✓ Campaign Successful</div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-   <!-- Include Footer -->
+    <!-- How It Works Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">How It Works</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Simple steps to start fundraising or support a cause</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-indigo-600">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Create Your Campaign</h3>
+                    <p class="text-gray-600">Tell your story, set your goal, and upload compelling images. Our team will review and approve your campaign within 24 hours.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-indigo-600">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Share & Promote</h3>
+                    <p class="text-gray-600">Share your campaign with friends, family, and social networks. Use our built-in tools to reach more potential supporters.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-indigo-600">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Receive Funds</h3>
+                    <p class="text-gray-600">Receive donations directly to your bank account. Keep supporters updated with progress reports and thank you messages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-indigo-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Whether you need support or want to help others, join thousands of South Africans making positive change happen.</p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <button class="bg-white text-indigo-800 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-100">Start a Campaign</button>
+                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-800 px-8 py-4 rounded-lg font-semibold">Browse Campaigns</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
     <div id="footer-placeholder"></div>
 
     <!-- Script to load header and footer -->
@@ -176,36 +586,33 @@
                 document.getElementById('footer-placeholder').innerHTML = data;
             })
             .catch(error => console.error('Error loading footer:', error));
-    </script>
 
-    <!-- JavaScript -->
-    <script>
-        // Open Donation Modal
-        const donateButtons = document.querySelectorAll('.donate-button');
-        const modal = document.getElementById('donation-modal');
-        const closeModal = document.getElementById('close-modal');
-        const donationForm = document.getElementById('donation-form');
-
-        donateButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                modal.classList.add('active');
-            });
-        });
-
-        // Close Donation Modal
-        closeModal.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
-
-        // Handle Donation Form Submission
-        donationForm.addEventListener('submit', (e) => {
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const amount = document.getElementById('amount').value;
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Creating Campaign...';
+            submitBtn.disabled = true;
 
-            alert(`Thank you, ${name}, for your donation of $${amount}!`);
-            modal.classList.remove('active');
+            // Simulate API call
+            setTimeout(() => {
+                alert('Campaign submitted successfully! We will review your campaign and notify you within 24 hours.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Category filter functionality
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.querySelector('h3').textContent.toLowerCase();
+                // Here you would implement filtering logic
+                console.log('Filter by category:', category);
+            });
         });
     </script>
 </body>
