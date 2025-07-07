@@ -3,6 +3,7 @@ from django.http import Http404
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView, CreateView
 from .models import Post, Comment, Notification, UserProfile, PostActivity, TradingActivity
 #from marketoverview.models import TradingActivity
+from django.views.generic import TemplateView
 from photo.models import Photo, Category
 from .forms import PostForm, EditForm, CommentForm, PostSearchForm 
 from django.urls import reverse_lazy, reverse
@@ -764,3 +765,87 @@ class DeleteActivityView(View):
             pass
 
         return redirect('theblog:activity_list')
+
+#homeview
+class HealthcareView(TemplateView):
+    template_name = 'health/healthcare.html'
+
+#crowdfunding
+class CrowdfundingView(TemplateView):
+    template_name = 'crowdfunding.html'
+
+#social justice and civil rights
+class SocialJusticeView(TemplateView):
+    template_name = 'social_justice.html'
+
+#agriculture
+class AgricultureView(TemplateView):
+    template_name = 'agriculture.html'
+
+#news section
+# ########################################################
+# News & Events
+# ########################################################
+
+def news_view(request):
+    items = NewsAndEvents.objects.all().order_by("-updated_date")
+    context = {
+        "title": "News & Events",
+        "items": items,
+    }
+    return render(request, "core/news.html", context)
+
+
+#add news events posts
+def post_add(request):
+    if request.method == 'POST':
+        data = request.POST
+        image = request.FILES.get('image')
+
+        post = NewsAndEvents.objects.create(
+            title=data.get('title'),
+            summary=data.get('summary'),
+            posted_as=data.get('posted_as'),
+            image=image,
+        )
+
+        # Email logic here...
+
+        messages.success(request, "News post added!")
+        return redirect('home')
+
+    return render(request, 'core/post_add.html')
+
+
+
+def edit_post(request, pk):
+    instance = get_object_or_404(NewsAndEvents, pk=pk)
+    if request.method == "POST":
+        form = NewsAndEventsForm(request.POST, instance=instance)
+        title = request.POST.get("title")
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, (title + " has been updated."))
+            return redirect("home")
+        else:
+            messages.error(request, "Please correct the error(s) below.")
+    else:
+        form = NewsAndEventsForm(instance=instance)
+    return render(
+        request,
+        "hod_template/post_add.html",
+        {
+            "title": "Edit Post",
+            "form": form,
+        },
+    )
+
+
+
+def delete_post(request, pk):
+    post = get_object_or_404(NewsAndEvents, pk=pk)
+    title = post.title
+    post.delete()
+    messages.success(request, (title + " has been deleted."))
+    return redirect("staff_home")

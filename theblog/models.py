@@ -13,7 +13,70 @@ from io import BytesIO
 from django.core.files import File
 from PIL import Image, ImageDraw
 #create your models here
+NEWS = "News"
+EVENTS = "Event"
 
+POST = (
+    (NEWS, "News"),
+    (EVENTS, "Event"),
+)
+
+
+
+#news portal
+
+# QuerySet for NewsAndEvents
+class NewsAndEventsQuerySet(models.query.QuerySet):
+    def search(self, query):
+        lookups = Q(title__icontains=query) | Q(summary__icontains=query) | Q(posted_as__icontains=query)
+        return self.filter(lookups).distinct()
+
+# Manager for NewsAndEvents
+class NewsAndEventsManager(models.Manager):
+    def get_queryset(self):
+        return NewsAndEventsQuerySet(self.model, using=self._db)
+
+    def search(self, query):
+        return self.get_queryset().search(query)
+
+# NewsAndEvents model
+class NewsAndEvents(models.Model):
+    title = models.CharField(max_length=200, null=True)
+    summary = models.TextField(max_length=2000, blank=True, null=True)
+    posted_as = models.CharField(choices=POST, max_length=10)
+    updated_date = models.DateTimeField(auto_now=True)
+    upload_time = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to="news_images/%y/%m/%d/", default="default.png", null=True)
+    objects = NewsAndEventsManager()
+
+    # Get the image URL or the default image
+    def get_image(self):
+        try:
+            return self.image.url
+        except:
+            return settings.MEDIA_URL + "default.png"
+
+    # Resize the image if necessary
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        try:
+            img = Image.open(self.image.path)
+            if img.height > 300 or img.width > 300:
+                output_size = (300, 300)
+                img.thumbnail(output_size)
+                img.save(self.image.path)
+        except:
+            pass
+
+    # Delete the image file if it's not the default image
+    def delete(self, *args, **kwargs):
+        if self.image.url != settings.MEDIA_URL + "default.png":
+            self.image.delete()
+        super().delete(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+#End
 
 #open profile page and web link.
 class UserProfile(models.Model): #user will be accessed at their businesses and websites

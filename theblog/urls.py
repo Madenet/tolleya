@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, PostDetailView, EditActivityView, DeleteActivityView, TradingActivityCreateView, TradingActivityListView, PostListView, AddPostView, PostEditView, PostDeleteView, CommentDeleteView, AddFollower, RemoveFollower, AddLike, AddDislike, UserSearch, ListFollowers, AddCommentLike, AddCommentView, AddCommentDislike, CommentReplyView, ProfileView, PostNotification, FollowNotification, RemoveNotification, PostListView
+from .views import HomeView, PostDetailView, EditActivityView, DeleteActivityView, TradingActivityCreateView, TradingActivityListView, PostListView, AddPostView, PostEditView, PostDeleteView, CommentDeleteView, AddFollower, RemoveFollower, AddLike, AddDislike, UserSearch, ListFollowers, AddCommentLike, AddCommentView, AddCommentDislike, CommentReplyView, ProfileView, PostNotification, FollowNotification, RemoveNotification, PostListView, HealthcareView, CrowdfundingView, SocialJusticeView, AgricultureView, AddCommentLike, AddCommentDislike
 from django.views.generic import  ListView
 from . import views
 from django.conf import settings
@@ -10,6 +10,10 @@ from .views import external_redirect
 urlpatterns = [
     #home page and main color view
     path('home/', HomeView.as_view(), name="home"),
+    path('crowdfunding/', CrowdfundingView.as_view(), name='crowdfunding'),
+    path('agriculture/', AgricultureView.as_view(), name='agriculture'),
+    path('healthcare/', HealthcareView.as_view(), name='healthcare'),
+    path('social-justice/', SocialJusticeView.as_view(), name='social j and civil e'),
     path('post-list/', PostListView.as_view(), name='post-list'),
     #external redirect url
     path('submit_activity/<int:post_id>/', views.submit_activity, name='submit_activity'),
@@ -19,6 +23,10 @@ urlpatterns = [
     path('add_post/', AddPostView.as_view(), name='add_post'),
     path('post/edit/<int:pk>/', PostEditView.as_view(), name='post-edit'),
     #email
+    #news and events.
+    path("news/", views.post_add, name="news"),
+    path("item/<int:pk>/edit/", views.edit_post, name="edit_post"),
+    path("item/<int:pk>/delete/", views.delete_post, name="delete_post"),
     #New comment section
     path('add_comment/', views.add_comment, name='add_comment'),
     #update and detail post
@@ -49,5 +57,5 @@ urlpatterns = [
     path('tradingactivity/list/', TradingActivityListView.as_view(), name='trading-activity-list'),
     path('edit-activity/<int:activity_id>/', EditActivityView.as_view(), name='edit_activity'),
     path('delete-activity/<int:activity_id>/', DeleteActivityView.as_view(), name='delete_activity'),
-
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
